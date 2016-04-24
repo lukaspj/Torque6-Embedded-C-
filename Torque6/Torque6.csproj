@@ -1,0 +1,263 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B9B3190A-6555-4A3B-8C8E-414B6DAA4D1C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Torque6</RootNamespace>
+    <AssemblyName>Torque6</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Engine\Namespaces\Audio.cs" />
+    <Compile Include="Engine\Namespaces\Console.cs" />
+    <Compile Include="Engine\Namespaces\Debugger.cs" />
+    <Compile Include="Engine\Namespaces\Engine.cs" />
+    <Compile Include="Engine\Namespaces\Expando.cs" />
+    <Compile Include="Engine\Namespaces\Game.cs" />
+    <Compile Include="Engine\Namespaces\Globals.cs" />
+    <Compile Include="Engine\Namespaces\Graphics.cs" />
+    <Compile Include="Engine\Namespaces\Gui.cs" />
+    <Compile Include="Engine\Namespaces\Input.cs" />
+    <Compile Include="Engine\Namespaces\Mac.cs" />
+    <Compile Include="Engine\Namespaces\Plugins.cs" />
+    <Compile Include="Engine\Namespaces\Profiler.cs" />
+    <Compile Include="Engine\Namespaces\Scene.cs" />
+    <Compile Include="Engine\Namespaces\Script.cs" />
+    <Compile Include="Engine\Namespaces\Sim.cs" />
+    <Compile Include="Engine\Namespaces\SysGUI.cs" />
+    <Compile Include="Engine\Namespaces\Version.cs" />
+    <Compile Include="Engine\SimObjects\ActionMap.cs" />
+    <Compile Include="Engine\SimObjects\AssetBase.cs" />
+    <Compile Include="Engine\SimObjects\AssetManager.cs" />
+    <Compile Include="Engine\SimObjects\AssetQuery.cs" />
+    <Compile Include="Engine\SimObjects\AssetTagsManifest.cs" />
+    <Compile Include="Engine\SimObjects\AudioAsset.cs" />
+    <Compile Include="Engine\SimObjects\AudioEnvironment.cs" />
+    <Compile Include="Engine\SimObjects\AudioSampleEnvironment.cs" />
+    <Compile Include="Engine\SimObjects\ConsoleLogger.cs" />
+    <Compile Include="Engine\SimObjects\DeclaredAssets.cs" />
+    <Compile Include="Engine\SimObjects\DInputDevice.cs" />
+    <Compile Include="Engine\SimObjects\DInputManager.cs" />
+    <Compile Include="Engine\SimObjects\EventManager.cs" />
+    <Compile Include="Engine\SimObjects\FileDialog.cs" />
+    <Compile Include="Engine\SimObjects\FileObject.cs" />
+    <Compile Include="Engine\SimObjects\FileStreamObject.cs" />
+    <Compile Include="Engine\SimObjects\GameConnection.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\DbgFileView.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\GuiArrayCtrl.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\GuiAutoScrollCtrl.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\GuiBackgroundCtrl.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\GuiBitmapButtonCtrl.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\GuiBitmapButtonTextCtrl.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\GuiBitmapCtrl.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\GuiBubbleTextCtrl.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\GuiButtonBaseCtrl.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\GuiButtonCtrl.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\GuiCanvas.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\GuiCheckBoxCtrl.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\GuiColorPickerCtrl.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\GuiConsole.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\GuiConsoleEditCtrl.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\GuiConsoleTextCtrl.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\GuiControl.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\GuiControlArrayControl.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\GuiControlProfile.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\GuiCursor.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\GuiCurveCtrl.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\GuiDragAndDropControl.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\GuiDynamicCtrlArrayControl.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\GuiEditCtrl.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\GuiFilterCtrl.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\GuiFormCtrl.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\GuiFrameSetCtrl.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\GuiGraphCtrl.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\GuiGridControl.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\GuiIconButtonCtrl.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\GuiImageButtonCtrl.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\GuiImageList.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\GuiInputCtrl.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\GuiInspector.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\GuiInspectorDatablockField.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\GuiInspectorDynamicField.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\GuiInspectorDynamicGroup.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\GuiInspectorField.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\GuiInspectorGroup.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\GuiInspectorTypeCheckBox.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\GuiInspectorTypeColor.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\GuiInspectorTypeColorF.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\GuiInspectorTypeColorI.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\GuiInspectorTypeEnum.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\GuiInspectorTypeFileName.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\GuiInspectorTypeGuiProfile.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\GuiListBoxCtrl.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\GuiMenuBackgroundCtrl.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\GuiMenuBar.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\GuiMenuTextListCtrl.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\GuiMessageVectorCtrl.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\GuiMLTextCtrl.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\GuiMLTextEditCtrl.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\GuiMouseEventCtrl.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\GuiPaneControl.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\GuiPopUpBackgroundCtrl.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\GuiPopUpMenuCtrl.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\GuiPopupTextListCtrl.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\GuiProgressCtrl.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\GuiRadioCtrl.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\GuiRolloutCtrl.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\GuiScriptNotifyCtrl.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\GuiScrollCtrl.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\GuiSeparatorCtrl.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\GuiSliderCtrl.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\GuiSpriteCtrl.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\GuiStackControl.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\GuiSubmenuBackgroundCtrl.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\GuiTabBookCtrl.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\GuiTabPageCtrl.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\GuiTextCtrl.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\GuiTextEditCtrl.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\GuiTextEditSliderCtrl.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\GuiTextListCtrl.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\GuiTickCtrl.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\GuiToolboxButtonCtrl.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\GuiTreeViewCtrl.cs" />
+    <Compile Include="Engine\SimObjects\GuiControls\GuiWindowCtrl.cs" />
+    <Compile Include="Engine\SimObjects\HTTPObject.cs" />
+    <Compile Include="Engine\SimObjects\ImageAsset.cs" />
+    <Compile Include="Engine\SimObjects\InputDevice.cs" />
+    <Compile Include="Engine\SimObjects\InputManager.cs" />
+    <Compile Include="Engine\SimObjects\LangTable.cs" />
+    <Compile Include="Engine\SimObjects\MaterialAsset.cs" />
+    <Compile Include="Engine\SimObjects\MeshAsset.cs" />
+    <Compile Include="Engine\SimObjects\Message.cs" />
+    <Compile Include="Engine\SimObjects\MessageForwarder.cs" />
+    <Compile Include="Engine\SimObjects\MessageVector.cs" />
+    <Compile Include="Engine\SimObjects\ModuleDefinition.cs" />
+    <Compile Include="Engine\SimObjects\ModuleManager.cs" />
+    <Compile Include="Engine\SimObjects\ModuleMergeDefinition.cs" />
+    <Compile Include="Engine\SimObjects\NameTags.cs" />
+    <Compile Include="Engine\SimObjects\NetConnection.cs" />
+    <Compile Include="Engine\SimObjects\NetObject.cs" />
+    <Compile Include="Engine\SimObjects\ObjectTemplate.cs" />
+    <Compile Include="Engine\SimObjects\ObjectTemplateAsset.cs" />
+    <Compile Include="Engine\SimObjects\OpenFileDialog.cs" />
+    <Compile Include="Engine\SimObjects\OpenFolderDialog.cs" />
+    <Compile Include="Engine\SimObjects\PluginAsset.cs" />
+    <Compile Include="Engine\SimObjects\PNGImage.cs" />
+    <Compile Include="Engine\SimObjects\PopupMenu.cs" />
+    <Compile Include="Engine\SimObjects\ReferencedAssets.cs" />
+    <Compile Include="Engine\SimObjects\RemoteDebugger1.cs" />
+    <Compile Include="Engine\SimObjects\RemoteDebuggerBase.cs" />
+    <Compile Include="Engine\SimObjects\SaveFileDialog.cs" />
+    <Compile Include="Engine\SimObjects\Scene\AddNode.cs" />
+    <Compile Include="Engine\SimObjects\Scene\AnimationComponent.cs" />
+    <Compile Include="Engine\SimObjects\Scene\BaseComponent.cs" />
+    <Compile Include="Engine\SimObjects\Scene\BaseNode.cs" />
+    <Compile Include="Engine\SimObjects\Scene\BehaviorComponent.cs" />
+    <Compile Include="Engine\SimObjects\Scene\BehaviorInstance.cs" />
+    <Compile Include="Engine\SimObjects\Scene\BehaviorTemplate.cs" />
+    <Compile Include="Engine\SimObjects\Scene\CameraComponent.cs" />
+    <Compile Include="Engine\SimObjects\Scene\ControllerComponent.cs" />
+    <Compile Include="Engine\SimObjects\Scene\CosNode.cs" />
+    <Compile Include="Engine\SimObjects\Scene\DecalComponent.cs" />
+    <Compile Include="Engine\SimObjects\Scene\DirectionalLight.cs" />
+    <Compile Include="Engine\SimObjects\Scene\DivideNode.cs" />
+    <Compile Include="Engine\SimObjects\Scene\DLAA.cs" />
+    <Compile Include="Engine\SimObjects\Scene\DynamicConsoleMethodComponent.cs" />
+    <Compile Include="Engine\SimObjects\Scene\EnvironmentProbe.cs" />
+    <Compile Include="Engine\SimObjects\Scene\FloatNode.cs" />
+    <Compile Include="Engine\SimObjects\Scene\FrustumCulling.cs" />
+    <Compile Include="Engine\SimObjects\Scene\GameObject.cs" />
+    <Compile Include="Engine\SimObjects\Scene\LerpNode.cs" />
+    <Compile Include="Engine\SimObjects\Scene\LightComponent.cs" />
+    <Compile Include="Engine\SimObjects\Scene\MaterialTemplate.cs" />
+    <Compile Include="Engine\SimObjects\Scene\MeshComponent.cs" />
+    <Compile Include="Engine\SimObjects\Scene\MultiplyNode.cs" />
+    <Compile Include="Engine\SimObjects\Scene\OpaqueNode.cs" />
+    <Compile Include="Engine\SimObjects\Scene\PhysicsBaseComponent.cs" />
+    <Compile Include="Engine\SimObjects\Scene\PhysicsBoxComponent.cs" />
+    <Compile Include="Engine\SimObjects\Scene\PhysicsCharacterComponent.cs" />
+    <Compile Include="Engine\SimObjects\Scene\PhysicsSphereComponent.cs" />
+    <Compile Include="Engine\SimObjects\Scene\RootNode.cs" />
+    <Compile Include="Engine\SimObjects\Scene\SceneObject.cs" />
+    <Compile Include="Engine\SimObjects\Scene\SimComponent.cs" />
+    <Compile Include="Engine\SimObjects\Scene\SinNode.cs" />
+    <Compile Include="Engine\SimObjects\Scene\SkyLight.cs" />
+    <Compile Include="Engine\SimObjects\Scene\SubtractNode.cs" />
+    <Compile Include="Engine\SimObjects\Scene\TextComponent.cs" />
+    <Compile Include="Engine\SimObjects\Scene\TextureNode.cs" />
+    <Compile Include="Engine\SimObjects\Scene\TimeNode.cs" />
+    <Compile Include="Engine\SimObjects\Scene\Vec2Node.cs" />
+    <Compile Include="Engine\SimObjects\Scene\Vec3Node.cs" />
+    <Compile Include="Engine\SimObjects\Scene\Vec4Node.cs" />
+    <Compile Include="Engine\SimObjects\ScriptGroup.cs" />
+    <Compile Include="Engine\SimObjects\ScriptMsgListener.cs" />
+    <Compile Include="Engine\SimObjects\ScriptObject.cs" />
+    <Compile Include="Engine\SimObjects\ShaderAsset.cs" />
+    <Compile Include="Engine\SimObjects\SimDataBlock.cs" />
+    <Compile Include="Engine\SimObjects\SimDataBlockGroup.cs" />
+    <Compile Include="Engine\SimObjects\SimGroup.cs" />
+    <Compile Include="Engine\SimObjects\SimObject.cs" />
+    <Compile Include="Engine\SimObjects\SimSet.cs" />
+    <Compile Include="Engine\SimObjects\SimXMLDocument.cs" />
+    <Compile Include="Engine\SimObjects\StreamObject.cs" />
+    <Compile Include="Engine\SimObjects\Taml.cs" />
+    <Compile Include="Engine\SimObjects\TCPObject.cs" />
+    <Compile Include="Engine\SimObjects\TextureAsset.cs" />
+    <Compile Include="Engine\SimObjects\UndoAction.cs" />
+    <Compile Include="Engine\SimObjects\UndoManager.cs" />
+    <Compile Include="Engine\SimObjects\UndoScriptAction.cs" />
+    <Compile Include="Engine\SimObjects\ZipObject.cs" />
+    <Compile Include="Interop\Attributes.cs" />
+    <Compile Include="Interop\CustomMarshalling.cs" />
+    <Compile Include="Interop\DllLoadUtils.cs" />
+    <Compile Include="Interop\EngineCallbacks.cs" />
+    <Compile Include="Interop\Initializer.cs" />
+    <Compile Include="Interop\Torque6.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utility\Exceptions.cs" />
+    <Compile Include="Utility\FieldVector.cs" />
+    <Compile Include="Utility\MathTypes.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
