@@ -93,7 +93,7 @@ namespace Torque6.Engine.SimObjects
       public string GetAddress()
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.NetConnectionGetAddress(ObjectPtr->ObjPtr);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.NetConnectionGetAddress(ObjectPtr->ObjPtr));
       }
 
       public void SetSimulatedNetParams(float packetLoss, int delay)
@@ -153,7 +153,7 @@ namespace Torque6.Engine.SimObjects
       public string ConnectLocal()
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.NetConnectionConnectLocal(ObjectPtr->ObjPtr);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.NetConnectionConnectLocal(ObjectPtr->ObjPtr));
       }
 
       public int GetGhostsActive()

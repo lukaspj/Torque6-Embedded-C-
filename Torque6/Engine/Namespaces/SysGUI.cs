@@ -172,7 +172,7 @@ namespace Torque6.Engine.Namespaces
 
       public static string GetLabelValue(int id)
       {
-         return InternalUnsafeMethods.SysGUI_GetLabelValue(id);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.SysGUI_GetLabelValue(id));
       }
 
       public static void SetLabelValue(int id, string val)
@@ -182,7 +182,7 @@ namespace Torque6.Engine.Namespaces
 
       public static string GetTextValue(int id)
       {
-         return InternalUnsafeMethods.SysGUI_GetTextValue(id);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.SysGUI_GetTextValue(id));
       }
 
       public static void SetTextValue(int id, string val)
@@ -232,7 +232,7 @@ namespace Torque6.Engine.Namespaces
 
       public static string GetListValue(int id, int idx)
       {
-         return InternalUnsafeMethods.SysGUI_GetListValue(id, idx);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.SysGUI_GetListValue(id, idx));
       }
 
       public static int GetListSelected(int id)

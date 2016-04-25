@@ -96,7 +96,7 @@ namespace Torque6.Engine.SimObjects
       public string GetAssetName()
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.AssetBaseGetAssetName(ObjectPtr->ObjPtr);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.AssetBaseGetAssetName(ObjectPtr->ObjPtr));
       }
 
       public void SetAssetName(string name)
@@ -108,7 +108,7 @@ namespace Torque6.Engine.SimObjects
       public string GetAssetDescription()
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.AssetBaseGetAssetDescription(ObjectPtr->ObjPtr);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.AssetBaseGetAssetDescription(ObjectPtr->ObjPtr));
       }
 
       public void SetAssetDescription(string val)
@@ -120,7 +120,7 @@ namespace Torque6.Engine.SimObjects
       public string GetAssetCategory()
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.AssetBaseGetAssetCategory(ObjectPtr->ObjPtr);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.AssetBaseGetAssetCategory(ObjectPtr->ObjPtr));
       }
 
       public void SetAssetCategory(string val)
@@ -168,7 +168,7 @@ namespace Torque6.Engine.SimObjects
       public string GetAssetId()
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.AssetBaseGetAssetId(ObjectPtr->ObjPtr);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.AssetBaseGetAssetId(ObjectPtr->ObjPtr));
       }
       
       #endregion

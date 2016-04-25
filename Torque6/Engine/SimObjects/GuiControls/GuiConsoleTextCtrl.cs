@@ -59,7 +59,7 @@ namespace Torque6.Engine.SimObjects.GuiControls
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.GuiConsoleTextCtrlGetExpression(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.GuiConsoleTextCtrlGetExpression(ObjectPtr->ObjPtr));
          }
          set
          {

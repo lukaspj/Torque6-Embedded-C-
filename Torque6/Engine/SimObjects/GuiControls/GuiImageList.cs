@@ -75,7 +75,7 @@ namespace Torque6.Engine.SimObjects.GuiControls
       public string GetImage(int index)
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.GuiImageListGetImage(ObjectPtr->ObjPtr, index);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.GuiImageListGetImage(ObjectPtr->ObjPtr, index));
       }
 
       public bool Clear()

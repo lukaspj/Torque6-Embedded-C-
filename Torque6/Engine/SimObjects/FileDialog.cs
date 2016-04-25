@@ -92,7 +92,7 @@ namespace Torque6.Engine.SimObjects
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.FileDialogGetDefaultPath(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.FileDialogGetDefaultPath(ObjectPtr->ObjPtr));
          }
          set
          {
@@ -105,7 +105,7 @@ namespace Torque6.Engine.SimObjects
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.FileDialogGetDefaultFile(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.FileDialogGetDefaultFile(ObjectPtr->ObjPtr));
          }
          set
          {
@@ -118,7 +118,7 @@ namespace Torque6.Engine.SimObjects
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.FileDialogGetFileName(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.FileDialogGetFileName(ObjectPtr->ObjPtr));
          }
          set
          {
@@ -131,7 +131,7 @@ namespace Torque6.Engine.SimObjects
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.FileDialogGetFilters(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.FileDialogGetFilters(ObjectPtr->ObjPtr));
          }
          set
          {
@@ -144,7 +144,7 @@ namespace Torque6.Engine.SimObjects
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.FileDialogGetTitle(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.FileDialogGetTitle(ObjectPtr->ObjPtr));
          }
          set
          {

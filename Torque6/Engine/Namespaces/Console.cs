@@ -70,12 +70,12 @@ namespace Torque6.Engine.Namespaces
 
       public static string ExpandEscape(string text)
       {
-         return InternalUnsafeMethods.Console_ExpandEscape(text);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.Console_ExpandEscape(text));
       }
 
       public static string CollapseEscape(string text)
       {
-         return InternalUnsafeMethods.Console_CollapseEscape(text);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.Console_CollapseEscape(text));
       }
 
       public static void SetLogMode(int mode)

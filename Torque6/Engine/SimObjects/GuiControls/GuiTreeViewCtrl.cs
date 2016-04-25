@@ -419,13 +419,13 @@ namespace Torque6.Engine.SimObjects.GuiControls
       public string GetItemText(int item)
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.GuiTreeViewCtrlGetItemText(ObjectPtr->ObjPtr, item);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.GuiTreeViewCtrlGetItemText(ObjectPtr->ObjPtr, item));
       }
 
       public string GetItemValue(int item)
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.GuiTreeViewCtrlGetItemValue(ObjectPtr->ObjPtr, item);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.GuiTreeViewCtrlGetItemValue(ObjectPtr->ObjPtr, item));
       }
 
       public bool EditItem(int item, string newText, string newValue)
@@ -527,13 +527,13 @@ namespace Torque6.Engine.SimObjects.GuiControls
       public string GetTextToRoot(int item, string delimiter)
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.GuiTreeViewCtrlGetTextToRoot(ObjectPtr->ObjPtr, item, delimiter);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.GuiTreeViewCtrlGetTextToRoot(ObjectPtr->ObjPtr, item, delimiter));
       }
 
       public string GetSelectedItemList()
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.GuiTreeViewCtrlGetSelectedItemList(ObjectPtr->ObjPtr);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.GuiTreeViewCtrlGetSelectedItemList(ObjectPtr->ObjPtr));
       }
 
       public int FindItemByObject(SimObject obj)

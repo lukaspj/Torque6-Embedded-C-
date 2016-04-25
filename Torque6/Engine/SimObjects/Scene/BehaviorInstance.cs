@@ -97,7 +97,7 @@ namespace Torque6.Engine.SimObjects.Scene
       public string GetTemplateName()
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.BehaviorInstanceGetTemplateName(ObjectPtr->ObjPtr);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.BehaviorInstanceGetTemplateName(ObjectPtr->ObjPtr));
       }
       
       #endregion

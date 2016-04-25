@@ -71,7 +71,7 @@ namespace Torque6.Engine.SimObjects.GuiControls
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.GuiTextEditSliderCtrlGetFormat(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.GuiTextEditSliderCtrlGetFormat(ObjectPtr->ObjPtr));
          }
          set
          {

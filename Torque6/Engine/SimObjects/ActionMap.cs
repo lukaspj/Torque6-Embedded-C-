@@ -144,13 +144,13 @@ namespace Torque6.Engine.SimObjects
       public string GetBinding(string command)
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.ActionMapGetBinding(ObjectPtr->ObjPtr, command);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.ActionMapGetBinding(ObjectPtr->ObjPtr, command));
       }
 
       public string GetCommand(string device, string action)
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.ActionMapGetCommand(ObjectPtr->ObjPtr, device, action);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.ActionMapGetCommand(ObjectPtr->ObjPtr, device, action));
       }
 
       public bool IsInverted(string device, string action)
@@ -168,7 +168,7 @@ namespace Torque6.Engine.SimObjects
       public string GetDeadZone(string device, string action)
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.ActionMapGetDeadZone(ObjectPtr->ObjPtr, device, action);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.ActionMapGetDeadZone(ObjectPtr->ObjPtr, device, action));
       }
       
       #endregion

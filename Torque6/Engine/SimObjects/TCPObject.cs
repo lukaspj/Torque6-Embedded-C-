@@ -105,7 +105,7 @@ namespace Torque6.Engine.SimObjects
       public string URLEncodeString(string data)
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.TCPObjectURLEncodeString(ObjectPtr->ObjPtr, data);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.TCPObjectURLEncodeString(ObjectPtr->ObjPtr, data));
       }
       
       #endregion

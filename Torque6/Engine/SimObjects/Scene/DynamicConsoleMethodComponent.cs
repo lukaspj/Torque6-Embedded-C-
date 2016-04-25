@@ -60,7 +60,7 @@ namespace Torque6.Engine.SimObjects.Scene
       public string CallOnBehaviors(string methodName, int argc, string[] argv)
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.DynamicConsoleMethodComponentCallOnBehaviors(ObjectPtr->ObjPtr, methodName, argc, argv);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.DynamicConsoleMethodComponentCallOnBehaviors(ObjectPtr->ObjPtr, methodName, argc, argv));
       }
       
       #endregion

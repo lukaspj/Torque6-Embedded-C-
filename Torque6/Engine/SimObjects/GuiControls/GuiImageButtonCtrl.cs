@@ -80,7 +80,7 @@ namespace Torque6.Engine.SimObjects.GuiControls
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.GuiImageButtonCtrlGetNormalImage(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.GuiImageButtonCtrlGetNormalImage(ObjectPtr->ObjPtr));
          }
          set
          {
@@ -93,7 +93,7 @@ namespace Torque6.Engine.SimObjects.GuiControls
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.GuiImageButtonCtrlGetHoverImage(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.GuiImageButtonCtrlGetHoverImage(ObjectPtr->ObjPtr));
          }
          set
          {
@@ -106,7 +106,7 @@ namespace Torque6.Engine.SimObjects.GuiControls
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.GuiImageButtonCtrlGetDownImage(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.GuiImageButtonCtrlGetDownImage(ObjectPtr->ObjPtr));
          }
          set
          {
@@ -119,7 +119,7 @@ namespace Torque6.Engine.SimObjects.GuiControls
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.GuiImageButtonCtrlGetInactiveImage(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.GuiImageButtonCtrlGetInactiveImage(ObjectPtr->ObjPtr));
          }
          set
          {

@@ -480,7 +480,7 @@ namespace Torque6.Engine.SimObjects.GuiControls
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.GuiControlProfileGetFontType(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.GuiControlProfileGetFontType(ObjectPtr->ObjPtr));
          }
          set
          {
@@ -711,7 +711,7 @@ namespace Torque6.Engine.SimObjects.GuiControls
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.GuiControlProfileGetBitmap(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.GuiControlProfileGetBitmap(ObjectPtr->ObjPtr));
          }
          set
          {

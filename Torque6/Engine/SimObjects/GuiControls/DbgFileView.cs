@@ -87,7 +87,7 @@ namespace Torque6.Engine.SimObjects.GuiControls
       public string GetCurrentLine(int line, bool selected)
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.DbgFileViewGetCurrentLine(ObjectPtr->ObjPtr, line, selected);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.DbgFileViewGetCurrentLine(ObjectPtr->ObjPtr, line, selected));
       }
 
       public bool Open(string fileName)

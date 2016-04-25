@@ -13,8 +13,7 @@ namespace Torque6.Engine.SimObjects.GuiControls
       
       public GuiSubmenuBackgroundCtrl()
       {
-         throw new NotImplementedException();
-         //ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.GuiSubmenuBackgroundCtrlCreateInstance());
+         ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.GuiSubmenuBackgroundCtrlCreateInstance());
       }
 
       public GuiSubmenuBackgroundCtrl(uint pId) : base(pId)

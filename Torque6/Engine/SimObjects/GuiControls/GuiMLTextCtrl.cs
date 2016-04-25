@@ -162,7 +162,7 @@ namespace Torque6.Engine.SimObjects.GuiControls
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.GuiMLTextCtrlGetText(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.GuiMLTextCtrlGetText(ObjectPtr->ObjPtr));
          }
          set
          {
@@ -184,7 +184,7 @@ namespace Torque6.Engine.SimObjects.GuiControls
       public string GetCurrentText()
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.GuiMLTextCtrlGetCurrentText(ObjectPtr->ObjPtr);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.GuiMLTextCtrlGetCurrentText(ObjectPtr->ObjPtr));
       }
 
       public void AddText(string text, bool reformat)

@@ -120,13 +120,13 @@ namespace Torque6.Engine.SimObjects
       public string GetUndoName(int index)
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.UndoManagerGetUndoName(ObjectPtr->ObjPtr, index);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.UndoManagerGetUndoName(ObjectPtr->ObjPtr, index));
       }
 
       public string GetRedoName(int index)
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.UndoManagerGetRedoName(ObjectPtr->ObjPtr, index);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.UndoManagerGetRedoName(ObjectPtr->ObjPtr, index));
       }
 
       public void Undo()
@@ -144,13 +144,13 @@ namespace Torque6.Engine.SimObjects
       public string GetNextUndoName()
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.UndoManagerGetNextUndoName(ObjectPtr->ObjPtr);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.UndoManagerGetNextUndoName(ObjectPtr->ObjPtr));
       }
 
       public string GetNextRedoName()
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.UndoManagerGetNextRedoName(ObjectPtr->ObjPtr);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.UndoManagerGetNextRedoName(ObjectPtr->ObjPtr));
       }
       
       #endregion

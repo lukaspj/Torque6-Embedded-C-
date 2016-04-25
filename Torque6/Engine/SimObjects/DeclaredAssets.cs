@@ -71,7 +71,7 @@ namespace Torque6.Engine.SimObjects
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.DeclaredAssetsGetPath(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.DeclaredAssetsGetPath(ObjectPtr->ObjPtr));
          }
          set
          {
@@ -84,7 +84,7 @@ namespace Torque6.Engine.SimObjects
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.DeclaredAssetsGetExtension(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.DeclaredAssetsGetExtension(ObjectPtr->ObjPtr));
          }
          set
          {

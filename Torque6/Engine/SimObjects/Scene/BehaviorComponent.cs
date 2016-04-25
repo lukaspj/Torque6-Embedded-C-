@@ -159,7 +159,7 @@ namespace Torque6.Engine.SimObjects.Scene
       public string GetBehaviorConnection(BehaviorInstance outputBehavior, string outputName, uint connectionIndex)
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.BehaviorComponentGetBehaviorConnection(ObjectPtr->ObjPtr, outputBehavior.ObjectPtr->ObjPtr, outputName, connectionIndex);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.BehaviorComponentGetBehaviorConnection(ObjectPtr->ObjPtr, outputBehavior.ObjectPtr->ObjPtr, outputName, connectionIndex));
       }
       
       #endregion

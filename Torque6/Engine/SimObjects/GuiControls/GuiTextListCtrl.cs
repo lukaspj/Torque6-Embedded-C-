@@ -267,7 +267,7 @@ namespace Torque6.Engine.SimObjects.GuiControls
       public string GetRowTextById(uint ID)
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.GuiTextListCtrlGetRowTextById(ObjectPtr->ObjPtr, ID);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.GuiTextListCtrlGetRowTextById(ObjectPtr->ObjPtr, ID));
       }
 
       public int GetRowNumById(uint ID)
@@ -279,7 +279,7 @@ namespace Torque6.Engine.SimObjects.GuiControls
       public string GetRowText(uint row)
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.GuiTextListCtrlGetRowText(ObjectPtr->ObjPtr, row);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.GuiTextListCtrlGetRowText(ObjectPtr->ObjPtr, row));
       }
 
       public void RemoveRowById(uint ID)

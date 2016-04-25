@@ -54,27 +54,27 @@ namespace Torque6.Engine.Namespaces
 
       public static string GetVersionString()
       {
-         return InternalUnsafeMethods.Version_GetVersionString();
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.Version_GetVersionString());
       }
 
       public static string GetCompileTimeString()
       {
-         return InternalUnsafeMethods.Version_GetCompileTimeString();
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.Version_GetCompileTimeString());
       }
 
       public static string GetBuildString()
       {
-         return InternalUnsafeMethods.Version_GetBuildString();
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.Version_GetBuildString());
       }
 
       public static string GetEngineVersion()
       {
-         return InternalUnsafeMethods.Version_GetEngineVersion();
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.Version_GetEngineVersion());
       }
 
       public static string GetiPhoneToolsVersion()
       {
-         return InternalUnsafeMethods.Version_GetiPhoneToolsVersion();
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.Version_GetiPhoneToolsVersion());
       }
 
       public static void SetCompanyAndProduct(string company, string product)

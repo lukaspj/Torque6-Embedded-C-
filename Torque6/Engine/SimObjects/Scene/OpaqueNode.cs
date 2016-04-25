@@ -83,7 +83,7 @@ namespace Torque6.Engine.SimObjects.Scene
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.OpaqueNodeGetColorSrc(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.OpaqueNodeGetColorSrc(ObjectPtr->ObjPtr));
          }
          set
          {
@@ -96,7 +96,7 @@ namespace Torque6.Engine.SimObjects.Scene
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.OpaqueNodeGetNormalSrc(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.OpaqueNodeGetNormalSrc(ObjectPtr->ObjPtr));
          }
          set
          {
@@ -109,7 +109,7 @@ namespace Torque6.Engine.SimObjects.Scene
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.OpaqueNodeGetMetallicSrc(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.OpaqueNodeGetMetallicSrc(ObjectPtr->ObjPtr));
          }
          set
          {
@@ -122,7 +122,7 @@ namespace Torque6.Engine.SimObjects.Scene
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.OpaqueNodeGetRoughnessSrc(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.OpaqueNodeGetRoughnessSrc(ObjectPtr->ObjPtr));
          }
          set
          {
@@ -135,7 +135,7 @@ namespace Torque6.Engine.SimObjects.Scene
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.OpaqueNodeGetWorldPosOffsetSrc(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.OpaqueNodeGetWorldPosOffsetSrc(ObjectPtr->ObjPtr));
          }
          set
          {

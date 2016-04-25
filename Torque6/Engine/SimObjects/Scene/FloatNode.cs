@@ -65,7 +65,7 @@ namespace Torque6.Engine.SimObjects.Scene
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.FloatNodeGetUniformName(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.FloatNodeGetUniformName(ObjectPtr->ObjPtr));
          }
          set
          {

@@ -205,7 +205,7 @@ namespace Torque6.Engine.SimObjects
       public string CopyModule(ModuleDefinition sourceModuleDefinition, string targetModuleId, string targetPath, bool useVersionPathing)
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.ModuleManagerCopyModule(ObjectPtr->ObjPtr, sourceModuleDefinition.ObjectPtr->ObjPtr, targetModuleId, targetPath, useVersionPathing);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.ModuleManagerCopyModule(ObjectPtr->ObjPtr, sourceModuleDefinition.ObjectPtr->ObjPtr, targetModuleId, targetPath, useVersionPathing));
       }
 
       public bool SynchronizeDependencies(ModuleDefinition rootModuleDefinition, string targetDependencyFolder)

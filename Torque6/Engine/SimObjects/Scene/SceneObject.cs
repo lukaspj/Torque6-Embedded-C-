@@ -65,7 +65,7 @@ namespace Torque6.Engine.SimObjects.Scene
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.SceneObjectGetTemplate(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.SceneObjectGetTemplate(ObjectPtr->ObjPtr));
          }
          set
          {

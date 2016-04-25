@@ -81,7 +81,7 @@ namespace Torque6.Engine.SimObjects
          internal static extern bool SimObjectRegisterObject(IntPtr obj);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr SimObjectGetName(IntPtr obj);
+         internal static extern string SimObjectGetName(IntPtr obj);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void SimObjectSetName(IntPtr obj, string val);
@@ -193,7 +193,7 @@ namespace Torque6.Engine.SimObjects
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.SimObjectGetInternalName(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.SimObjectGetInternalName(ObjectPtr->ObjPtr));
          }
          set
          {
@@ -219,7 +219,7 @@ namespace Torque6.Engine.SimObjects
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.SimObjectGetSuperClass(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.SimObjectGetSuperClass(ObjectPtr->ObjPtr));
          }
          set
          {
@@ -232,7 +232,7 @@ namespace Torque6.Engine.SimObjects
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.SimObjectGetClass(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.SimObjectGetClass(ObjectPtr->ObjPtr));
          }
          set
          {
@@ -302,13 +302,13 @@ namespace Torque6.Engine.SimObjects
       public string GetClassName()
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.SimObjectGetClassName(ObjectPtr->ObjPtr);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.SimObjectGetClassName(ObjectPtr->ObjPtr));
       }
 
       public string GetFieldValue(string fieldName)
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.SimObjectGetFieldValue(ObjectPtr->ObjPtr, fieldName);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.SimObjectGetFieldValue(ObjectPtr->ObjPtr, fieldName));
       }
 
       public void SetFieldValue(string fieldName, string value)
@@ -326,7 +326,7 @@ namespace Torque6.Engine.SimObjects
       public string GetDynamicField(int index)
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.SimObjectGetDynamicField(ObjectPtr->ObjPtr, index);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.SimObjectGetDynamicField(ObjectPtr->ObjPtr, index));
       }
 
       public int GetFieldCount()
@@ -338,13 +338,13 @@ namespace Torque6.Engine.SimObjects
       public string GetField(int index)
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.SimObjectGetField(ObjectPtr->ObjPtr, index);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.SimObjectGetField(ObjectPtr->ObjPtr, index));
       }
 
       public string GetProgenitorFile()
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.SimObjectGetProgenitorFile(ObjectPtr->ObjPtr);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.SimObjectGetProgenitorFile(ObjectPtr->ObjPtr));
       }
 
       public void SetProgenitorFile(string file)
@@ -362,7 +362,7 @@ namespace Torque6.Engine.SimObjects
       public string GetFieldType(string fieldName)
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.SimObjectGetFieldType(ObjectPtr->ObjPtr, fieldName);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.SimObjectGetFieldType(ObjectPtr->ObjPtr, fieldName));
       }
 
       public bool IsChildOfGroup(SimGroup group)

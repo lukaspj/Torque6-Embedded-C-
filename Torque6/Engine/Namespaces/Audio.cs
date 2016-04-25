@@ -117,7 +117,7 @@ namespace Torque6.Engine.Namespaces
 
       public static string AlGetString(string ALEnum)
       {
-         return InternalUnsafeMethods.Audio_AlGetString(ALEnum);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.Audio_AlGetString(ALEnum));
       }
 
       public static int AlxGetAudioLength(string assetId)

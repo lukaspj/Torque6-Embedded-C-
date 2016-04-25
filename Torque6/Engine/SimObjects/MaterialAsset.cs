@@ -56,7 +56,7 @@ namespace Torque6.Engine.SimObjects
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.MaterialAssetGetTemplateFile(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.MaterialAssetGetTemplateFile(ObjectPtr->ObjPtr));
          }
 
       }

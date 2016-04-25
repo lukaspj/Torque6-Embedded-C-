@@ -191,7 +191,7 @@ namespace Torque6.Engine.SimObjects
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.ImageAssetGetImageFile(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.ImageAssetGetImageFile(ObjectPtr->ObjPtr));
          }
          set
          {
@@ -217,7 +217,7 @@ namespace Torque6.Engine.SimObjects
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.ImageAssetGetFilterMode(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.ImageAssetGetFilterMode(ObjectPtr->ObjPtr));
          }
          set
          {
@@ -375,7 +375,7 @@ namespace Torque6.Engine.SimObjects
       public string GetImageSize()
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.ImageAssetGetImageSize(ObjectPtr->ObjPtr);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.ImageAssetGetImageSize(ObjectPtr->ObjPtr));
       }
 
       public bool GetIsImagePOT()
@@ -393,7 +393,7 @@ namespace Torque6.Engine.SimObjects
       public string GetFrameSize(int frame)
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.ImageAssetGetFrameSize(ObjectPtr->ObjPtr, frame);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.ImageAssetGetFrameSize(ObjectPtr->ObjPtr, frame));
       }
 
       public bool ClearExplicitCells()
@@ -435,13 +435,13 @@ namespace Torque6.Engine.SimObjects
       public string GetExplicitCellOffset(int cellIdx)
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.ImageAssetGetExplicitCellOffset(ObjectPtr->ObjPtr, cellIdx);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.ImageAssetGetExplicitCellOffset(ObjectPtr->ObjPtr, cellIdx));
       }
 
       public string GetExplicitCellOffsetByName(string cellName)
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.ImageAssetGetExplicitCellOffsetByName(ObjectPtr->ObjPtr, cellName);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.ImageAssetGetExplicitCellOffsetByName(ObjectPtr->ObjPtr, cellName));
       }
 
       public int GetExplicitCellWidth(int cellIdx)
@@ -471,7 +471,7 @@ namespace Torque6.Engine.SimObjects
       public string GetExplicitCellName(int cellIdx)
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.ImageAssetGetExplicitCellName(ObjectPtr->ObjPtr, cellIdx);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.ImageAssetGetExplicitCellName(ObjectPtr->ObjPtr, cellIdx));
       }
 
       public int GetExplicitCellIndex(string cellName)

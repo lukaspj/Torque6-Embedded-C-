@@ -92,7 +92,7 @@ namespace Torque6.Engine.SimObjects.GuiControls
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.GuiButtonBaseCtrlGetText(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.GuiButtonBaseCtrlGetText(ObjectPtr->ObjPtr));
          }
          set
          {
@@ -105,7 +105,7 @@ namespace Torque6.Engine.SimObjects.GuiControls
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.GuiButtonBaseCtrlGetTextID(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.GuiButtonBaseCtrlGetTextID(ObjectPtr->ObjPtr));
          }
          set
          {

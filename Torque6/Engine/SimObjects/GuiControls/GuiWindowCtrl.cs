@@ -194,7 +194,7 @@ namespace Torque6.Engine.SimObjects.GuiControls
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.GuiWindowCtrlGetCloseCommand(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.GuiWindowCtrlGetCloseCommand(ObjectPtr->ObjPtr));
          }
          set
          {

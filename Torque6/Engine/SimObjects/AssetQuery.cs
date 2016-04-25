@@ -87,7 +87,7 @@ namespace Torque6.Engine.SimObjects
       public string GetAsset(int resultIndex)
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.AssetQueryGetAsset(ObjectPtr->ObjPtr, resultIndex);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.AssetQueryGetAsset(ObjectPtr->ObjPtr, resultIndex));
       }
       
       #endregion

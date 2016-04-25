@@ -108,13 +108,13 @@ namespace Torque6.Engine.SimObjects
       public string ReadLine()
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.FileObjectReadLine(ObjectPtr->ObjPtr);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.FileObjectReadLine(ObjectPtr->ObjPtr));
       }
 
       public string PeekLine()
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.FileObjectPeekLine(ObjectPtr->ObjPtr);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.FileObjectPeekLine(ObjectPtr->ObjPtr));
       }
 
       public void WriteLine(string text)

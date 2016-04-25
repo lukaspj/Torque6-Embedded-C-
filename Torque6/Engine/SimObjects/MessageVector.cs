@@ -150,7 +150,7 @@ namespace Torque6.Engine.SimObjects
       public string GetLineTextByTag(int tag)
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.MessageVectorGetLineTextByTag(ObjectPtr->ObjPtr, tag);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.MessageVectorGetLineTextByTag(ObjectPtr->ObjPtr, tag));
       }
 
       public int GetLineIndexByTag(int tag)
@@ -162,7 +162,7 @@ namespace Torque6.Engine.SimObjects
       public string GetLineText(uint index)
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.MessageVectorGetLineText(ObjectPtr->ObjPtr, index);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.MessageVectorGetLineText(ObjectPtr->ObjPtr, index));
       }
 
       public int GetLineTag(uint index)

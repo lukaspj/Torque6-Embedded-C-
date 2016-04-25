@@ -84,7 +84,7 @@ namespace Torque6.Engine.SimObjects.GuiControls
       public string GetValue()
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.GuiFilterCtrlGetValue(ObjectPtr->ObjPtr);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.GuiFilterCtrlGetValue(ObjectPtr->ObjPtr));
       }
 
       public void SetValue(int argc, string[] argv)

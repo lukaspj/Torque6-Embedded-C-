@@ -250,7 +250,7 @@ namespace Torque6.Engine.SimObjects.GuiControls
       public string GetItemtext(int index)
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.GuiListBoxCtrlGetItemtext(ObjectPtr->ObjPtr, index);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.GuiListBoxCtrlGetItemtext(ObjectPtr->ObjPtr, index));
       }
       
       #endregion

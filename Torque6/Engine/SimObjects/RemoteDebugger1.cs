@@ -63,7 +63,7 @@ namespace Torque6.Engine.SimObjects
       public string GetCodeFiles()
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.RemoteDebugger1GetCodeFiles(ObjectPtr->ObjPtr);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.RemoteDebugger1GetCodeFiles(ObjectPtr->ObjPtr));
       }
 
       public void SetNextStatementBreak(bool enabled)

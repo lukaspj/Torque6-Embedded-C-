@@ -44,12 +44,12 @@ namespace Torque6.Engine.Namespaces
 
       public static string ExpandPath(string path)
       {
-         return InternalUnsafeMethods.Expando_ExpandPath(path);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.Expando_ExpandPath(path));
       }
 
       public static string CollapsePath(string path)
       {
-         return InternalUnsafeMethods.Expando_CollapsePath(path);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.Expando_CollapsePath(path));
       }
 
       public static void AddPathExpando(string expando, string path)
@@ -74,12 +74,12 @@ namespace Torque6.Engine.Namespaces
 
       public static string GetPathExpandoKey(int expandoIndex)
       {
-         return InternalUnsafeMethods.Expando_GetPathExpandoKey(expandoIndex);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.Expando_GetPathExpandoKey(expandoIndex));
       }
 
       public static string GetPathExpandoValue(int expandoIndex)
       {
-         return InternalUnsafeMethods.Expando_GetPathExpandoValue(expandoIndex);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.Expando_GetPathExpandoValue(expandoIndex));
       }      
 
       #endregion

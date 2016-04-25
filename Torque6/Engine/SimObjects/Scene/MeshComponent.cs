@@ -59,7 +59,7 @@ namespace Torque6.Engine.SimObjects.Scene
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.MeshComponentGetMeshAsset(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.MeshComponentGetMeshAsset(ObjectPtr->ObjPtr));
          }
          set
          {

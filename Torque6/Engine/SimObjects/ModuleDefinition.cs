@@ -185,7 +185,7 @@ namespace Torque6.Engine.SimObjects
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.ModuleDefinitionGetModuleId(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.ModuleDefinitionGetModuleId(ObjectPtr->ObjPtr));
          }
          set
          {
@@ -276,7 +276,7 @@ namespace Torque6.Engine.SimObjects
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.ModuleDefinitionGetDescription(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.ModuleDefinitionGetDescription(ObjectPtr->ObjPtr));
          }
          set
          {
@@ -289,7 +289,7 @@ namespace Torque6.Engine.SimObjects
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.ModuleDefinitionGetAuthor(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.ModuleDefinitionGetAuthor(ObjectPtr->ObjPtr));
          }
          set
          {
@@ -302,7 +302,7 @@ namespace Torque6.Engine.SimObjects
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.ModuleDefinitionGetGroup(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.ModuleDefinitionGetGroup(ObjectPtr->ObjPtr));
          }
          set
          {
@@ -315,7 +315,7 @@ namespace Torque6.Engine.SimObjects
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.ModuleDefinitionGetType(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.ModuleDefinitionGetType(ObjectPtr->ObjPtr));
          }
          set
          {
@@ -328,7 +328,7 @@ namespace Torque6.Engine.SimObjects
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.ModuleDefinitionGetDependencies(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.ModuleDefinitionGetDependencies(ObjectPtr->ObjPtr));
          }
          set
          {
@@ -341,7 +341,7 @@ namespace Torque6.Engine.SimObjects
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.ModuleDefinitionGetScriptFile(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.ModuleDefinitionGetScriptFile(ObjectPtr->ObjPtr));
          }
          set
          {
@@ -354,7 +354,7 @@ namespace Torque6.Engine.SimObjects
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.ModuleDefinitionGetCreateFunction(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.ModuleDefinitionGetCreateFunction(ObjectPtr->ObjPtr));
          }
          set
          {
@@ -367,7 +367,7 @@ namespace Torque6.Engine.SimObjects
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.ModuleDefinitionGetDestroyFunction(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.ModuleDefinitionGetDestroyFunction(ObjectPtr->ObjPtr));
          }
          set
          {
@@ -380,7 +380,7 @@ namespace Torque6.Engine.SimObjects
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.ModuleDefinitionGetAssetTagsManifest(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.ModuleDefinitionGetAssetTagsManifest(ObjectPtr->ObjPtr));
          }
          set
          {
@@ -402,7 +402,7 @@ namespace Torque6.Engine.SimObjects
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.ModuleDefinitionGetModulePath(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.ModuleDefinitionGetModulePath(ObjectPtr->ObjPtr));
          }
 
       }
@@ -411,7 +411,7 @@ namespace Torque6.Engine.SimObjects
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.ModuleDefinitionGetModuleFile(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.ModuleDefinitionGetModuleFile(ObjectPtr->ObjPtr));
          }
 
       }
@@ -420,7 +420,7 @@ namespace Torque6.Engine.SimObjects
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.ModuleDefinitionGetModuleFilePath(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.ModuleDefinitionGetModuleFilePath(ObjectPtr->ObjPtr));
          }
 
       }
@@ -429,7 +429,7 @@ namespace Torque6.Engine.SimObjects
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.ModuleDefinitionGetModuleScriptFilePath(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.ModuleDefinitionGetModuleScriptFilePath(ObjectPtr->ObjPtr));
          }
 
       }
@@ -441,7 +441,7 @@ namespace Torque6.Engine.SimObjects
       public string GetSignature()
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.ModuleDefinitionGetSignature(ObjectPtr->ObjPtr);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.ModuleDefinitionGetSignature(ObjectPtr->ObjPtr));
       }
 
       public bool Save()
@@ -465,7 +465,7 @@ namespace Torque6.Engine.SimObjects
       public string GetDependency(int dependencyIndex)
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.ModuleDefinitionGetDependency(ObjectPtr->ObjPtr, dependencyIndex);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.ModuleDefinitionGetDependency(ObjectPtr->ObjPtr, dependencyIndex));
       }
 
       public bool AddDependency(string moduleId, int versionId)

@@ -114,7 +114,7 @@ namespace Torque6.Engine.SimObjects
       public string GetTagName(int tagId)
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.NameTagsGetTagName(ObjectPtr->ObjPtr, tagId);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.NameTagsGetTagName(ObjectPtr->ObjPtr, tagId));
       }
 
       public int GetTagId(string tagName)
@@ -126,7 +126,7 @@ namespace Torque6.Engine.SimObjects
       public string GetAllTags()
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.NameTagsGetAllTags(ObjectPtr->ObjPtr);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.NameTagsGetAllTags(ObjectPtr->ObjPtr));
       }
 
       public bool Tag(int objectId, int tagIdsC, int[] tagIdsV)
@@ -150,7 +150,7 @@ namespace Torque6.Engine.SimObjects
       public string QueryTags(int tagIdsC, int[] tagIdsV, bool excluded = false)
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.NameTagsQueryTags(ObjectPtr->ObjPtr, tagIdsC, tagIdsV, excluded);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.NameTagsQueryTags(ObjectPtr->ObjPtr, tagIdsC, tagIdsV, excluded));
       }
       
       #endregion

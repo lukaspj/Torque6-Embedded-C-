@@ -83,7 +83,7 @@ namespace Torque6.Engine.SimObjects
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.AudioAssetGetAudioFile(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.AudioAssetGetAudioFile(ObjectPtr->ObjPtr));
          }
          set
          {

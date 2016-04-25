@@ -65,7 +65,7 @@ namespace Torque6.Engine.SimObjects.Scene
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.DivideNodeGetInputASrc(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.DivideNodeGetInputASrc(ObjectPtr->ObjPtr));
          }
          set
          {
@@ -78,7 +78,7 @@ namespace Torque6.Engine.SimObjects.Scene
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.DivideNodeGetInputBSrc(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.DivideNodeGetInputBSrc(ObjectPtr->ObjPtr));
          }
          set
          {

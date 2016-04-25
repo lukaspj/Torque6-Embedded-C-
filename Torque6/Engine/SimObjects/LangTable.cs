@@ -84,7 +84,7 @@ namespace Torque6.Engine.SimObjects
       public string GetString(int langString)
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.LangTableGetString(ObjectPtr->ObjPtr, langString);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.LangTableGetString(ObjectPtr->ObjPtr, langString));
       }
 
       public void SetDefaultLanguage(int language)
@@ -108,7 +108,7 @@ namespace Torque6.Engine.SimObjects
       public string GetLangName(int language)
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.LangTableGetLangName(ObjectPtr->ObjPtr, language);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.LangTableGetLangName(ObjectPtr->ObjPtr, language));
       }
 
       public int GetNumLang()

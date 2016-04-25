@@ -102,7 +102,7 @@ namespace Torque6.Engine.SimObjects.GuiControls
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.GuiBitmapButtonCtrlGetBitmap(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.GuiBitmapButtonCtrlGetBitmap(ObjectPtr->ObjPtr));
          }
          set
          {
@@ -115,7 +115,7 @@ namespace Torque6.Engine.SimObjects.GuiControls
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.GuiBitmapButtonCtrlGetBitmapNormal(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.GuiBitmapButtonCtrlGetBitmapNormal(ObjectPtr->ObjPtr));
          }
          set
          {
@@ -128,7 +128,7 @@ namespace Torque6.Engine.SimObjects.GuiControls
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.GuiBitmapButtonCtrlGetBitmapHilight(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.GuiBitmapButtonCtrlGetBitmapHilight(ObjectPtr->ObjPtr));
          }
          set
          {
@@ -141,7 +141,7 @@ namespace Torque6.Engine.SimObjects.GuiControls
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.GuiBitmapButtonCtrlGetBitmapDepressed(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.GuiBitmapButtonCtrlGetBitmapDepressed(ObjectPtr->ObjPtr));
          }
          set
          {
@@ -154,7 +154,7 @@ namespace Torque6.Engine.SimObjects.GuiControls
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.GuiBitmapButtonCtrlGetBitmapInactive(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.GuiBitmapButtonCtrlGetBitmapInactive(ObjectPtr->ObjPtr));
          }
          set
          {

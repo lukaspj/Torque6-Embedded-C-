@@ -120,7 +120,7 @@ namespace Torque6.Engine.SimObjects
       public string GetTag(int tagIndex)
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.AssetTagsManifestGetTag(ObjectPtr->ObjPtr, tagIndex);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.AssetTagsManifestGetTag(ObjectPtr->ObjPtr, tagIndex));
       }
 
       public int GetAssetTagCount(string assetId)
@@ -132,7 +132,7 @@ namespace Torque6.Engine.SimObjects
       public string GetAssetTag(string assetId, int tagIndex)
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.AssetTagsManifestGetAssetTag(ObjectPtr->ObjPtr, assetId, tagIndex);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.AssetTagsManifestGetAssetTag(ObjectPtr->ObjPtr, assetId, tagIndex));
       }
 
       public bool Tag(string assetId, string tagName)

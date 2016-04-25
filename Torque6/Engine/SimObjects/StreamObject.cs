@@ -99,7 +99,7 @@ namespace Torque6.Engine.SimObjects
       public string GetStatus()
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.StreamObjectGetStatus(ObjectPtr->ObjPtr);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.StreamObjectGetStatus(ObjectPtr->ObjPtr));
       }
 
       public bool IsEOS()
@@ -135,7 +135,7 @@ namespace Torque6.Engine.SimObjects
       public string ReadLine()
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.StreamObjectReadLine(ObjectPtr->ObjPtr);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.StreamObjectReadLine(ObjectPtr->ObjPtr));
       }
 
       public void WriteLine(string line)
@@ -147,19 +147,19 @@ namespace Torque6.Engine.SimObjects
       public string ReadSTString(bool caseSensitive = false)
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.StreamObjectReadSTString(ObjectPtr->ObjPtr, caseSensitive);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.StreamObjectReadSTString(ObjectPtr->ObjPtr, caseSensitive));
       }
 
       public string ReadString()
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.StreamObjectReadString(ObjectPtr->ObjPtr);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.StreamObjectReadString(ObjectPtr->ObjPtr));
       }
 
       public string ReadLongString(int maxLength)
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.StreamObjectReadLongString(ObjectPtr->ObjPtr, maxLength);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.StreamObjectReadLongString(ObjectPtr->ObjPtr, maxLength));
       }
 
       public void WriteLongString(int maxLength, string longString)

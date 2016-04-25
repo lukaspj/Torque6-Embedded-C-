@@ -141,7 +141,7 @@ namespace Torque6.Engine.SimObjects
       public string GetFileEntry(int index)
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.ZipObjectGetFileEntry(ObjectPtr->ObjPtr, index);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.ZipObjectGetFileEntry(ObjectPtr->ObjPtr, index));
       }
       
       #endregion

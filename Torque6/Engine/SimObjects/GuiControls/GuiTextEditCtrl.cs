@@ -116,7 +116,7 @@ namespace Torque6.Engine.SimObjects.GuiControls
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.GuiTextEditCtrlGetValidate(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.GuiTextEditCtrlGetValidate(ObjectPtr->ObjPtr));
          }
          set
          {
@@ -129,7 +129,7 @@ namespace Torque6.Engine.SimObjects.GuiControls
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.GuiTextEditCtrlGetEscapeCommand(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.GuiTextEditCtrlGetEscapeCommand(ObjectPtr->ObjPtr));
          }
          set
          {
@@ -207,7 +207,7 @@ namespace Torque6.Engine.SimObjects.GuiControls
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.GuiTextEditCtrlGetPasswordMask(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.GuiTextEditCtrlGetPasswordMask(ObjectPtr->ObjPtr));
          }
          set
          {
@@ -223,7 +223,7 @@ namespace Torque6.Engine.SimObjects.GuiControls
       public string GetText()
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.GuiTextEditCtrlGetText(ObjectPtr->ObjPtr);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.GuiTextEditCtrlGetText(ObjectPtr->ObjPtr));
       }
 
       public int GetCursorPos()

@@ -568,7 +568,7 @@ namespace Torque6.Engine.Namespaces
 
       public static string GetAppleDeviceIPAddress()
       {
-         return InternalUnsafeMethods.Engine_GetAppleDeviceIPAddress();
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.Engine_GetAppleDeviceIPAddress());
       }
 
       public static void Quit()
@@ -583,12 +583,12 @@ namespace Torque6.Engine.Namespaces
 
       public static string Detag(int tagId)
       {
-         return InternalUnsafeMethods.Engine_Detag(tagId);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.Engine_Detag(tagId));
       }
 
       public static string GetTag(string taggedString)
       {
-         return InternalUnsafeMethods.Engine_GetTag(taggedString);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.Engine_GetTag(taggedString));
       }
 
       public static int GetStockColorCount()
@@ -598,7 +598,7 @@ namespace Torque6.Engine.Namespaces
 
       public static string GetStockColorName(int index)
       {
-         return InternalUnsafeMethods.Engine_GetStockColorName(index);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.Engine_GetStockColorName(index));
       }
 
       public static bool IsStockColor(string name)
@@ -673,7 +673,7 @@ namespace Torque6.Engine.Namespaces
 
       public static string MaterialAssetGetTextureFile(TextureAsset textureAsset)
       {
-         return InternalUnsafeMethods.Engine_MaterialAssetGetTextureFile(textureAsset.ObjectPtr->ObjPtr);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.Engine_MaterialAssetGetTextureFile(textureAsset.ObjectPtr->ObjPtr));
       }
 
       public static void FlushTextureCache()
@@ -703,7 +703,7 @@ namespace Torque6.Engine.Namespaces
 
       public static string StripMLControlChars(string sourceString)
       {
-         return InternalUnsafeMethods.Engine_StripMLControlChars(sourceString);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.Engine_StripMLControlChars(sourceString));
       }
 
       public static void InitLeapMotionManager()
@@ -748,12 +748,12 @@ namespace Torque6.Engine.Namespaces
 
       public static string FindFirstFile(string pattern)
       {
-         return InternalUnsafeMethods.Engine_FindFirstFile(pattern);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.Engine_FindFirstFile(pattern));
       }
 
       public static string FindNextFile(string pattern)
       {
-         return InternalUnsafeMethods.Engine_FindNextFile(pattern);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.Engine_FindNextFile(pattern));
       }
 
       public static int GetFileCount(string pattern)
@@ -763,12 +763,12 @@ namespace Torque6.Engine.Namespaces
 
       public static string FindFirstFileMultiExpr(string pattern)
       {
-         return InternalUnsafeMethods.Engine_FindFirstFileMultiExpr(pattern);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.Engine_FindFirstFileMultiExpr(pattern));
       }
 
       public static string FindNextFileMultiExpr(string pattern)
       {
-         return InternalUnsafeMethods.Engine_FindNextFileMultiExpr(pattern);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.Engine_FindNextFileMultiExpr(pattern));
       }
 
       public static int GetFileCountMultiExpr(string pattern)
@@ -798,12 +798,12 @@ namespace Torque6.Engine.Namespaces
 
       public static string GetDirectoryList(string dirPath, int depth)
       {
-         return InternalUnsafeMethods.Engine_GetDirectoryList(dirPath, depth);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.Engine_GetDirectoryList(dirPath, depth));
       }
 
       public static string GetFileList(string strPath)
       {
-         return InternalUnsafeMethods.Engine_GetFileList(strPath);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.Engine_GetFileList(strPath));
       }
 
       public static int FileSize(string fileName)
@@ -828,22 +828,22 @@ namespace Torque6.Engine.Namespaces
 
       public static string FileExt(string fileName)
       {
-         return InternalUnsafeMethods.Engine_FileExt(fileName);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.Engine_FileExt(fileName));
       }
 
       public static string FileBase(string fileName)
       {
-         return InternalUnsafeMethods.Engine_FileBase(fileName);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.Engine_FileBase(fileName));
       }
 
       public static string FileName(string fileName)
       {
-         return InternalUnsafeMethods.Engine_FileName(fileName);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.Engine_FileName(fileName));
       }
 
       public static string FilePath(string fileName)
       {
-         return InternalUnsafeMethods.Engine_FilePath(fileName);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.Engine_FilePath(fileName));
       }
 
       public static void OpenFolder(string path)
@@ -858,7 +858,7 @@ namespace Torque6.Engine.Namespaces
 
       public static string GetCurrentDirectory()
       {
-         return InternalUnsafeMethods.Engine_GetCurrentDirectory();
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.Engine_GetCurrentDirectory());
       }
 
       public static bool SetCurrentDirectory(string absolutePathName)
@@ -868,27 +868,27 @@ namespace Torque6.Engine.Namespaces
 
       public static string GetExecutableName()
       {
-         return InternalUnsafeMethods.Engine_GetExecutableName();
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.Engine_GetExecutableName());
       }
 
       public static string GetMainDotCsDir()
       {
-         return InternalUnsafeMethods.Engine_GetMainDotCsDir();
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.Engine_GetMainDotCsDir());
       }
 
       public static string MakeFullPath(string path, string currentWorkingDirectory)
       {
-         return InternalUnsafeMethods.Engine_MakeFullPath(path, currentWorkingDirectory);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.Engine_MakeFullPath(path, currentWorkingDirectory));
       }
 
       public static string MakeRelativePath(string path, string to)
       {
-         return InternalUnsafeMethods.Engine_MakeRelativePath(path, to);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.Engine_MakeRelativePath(path, to));
       }
 
       public static string PathConcat(string path, int argc, string[] argv)
       {
-         return InternalUnsafeMethods.Engine_PathConcat(path, argc, argv);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.Engine_PathConcat(path, argc, argv));
       }
 
       public static void RestartInstance()
@@ -923,7 +923,7 @@ namespace Torque6.Engine.Namespaces
 
       public static string GetModPaths()
       {
-         return InternalUnsafeMethods.Engine_GetModPaths();
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.Engine_GetModPaths());
       }
 
       public static void PurgeResources()
@@ -1008,17 +1008,17 @@ namespace Torque6.Engine.Namespaces
 
       public static string AddTaggedString(string tag)
       {
-         return InternalUnsafeMethods.Engine_AddTaggedString(tag);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.Engine_AddTaggedString(tag));
       }
 
       public static string GetTaggedString(string tag)
       {
-         return InternalUnsafeMethods.Engine_GetTaggedString(tag);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.Engine_GetTaggedString(tag));
       }
 
       public static string BuildTaggedString(string format, int argc, string[] argv)
       {
-         return InternalUnsafeMethods.Engine_BuildTaggedString(format, argc, argv);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.Engine_BuildTaggedString(format, argc, argv));
       }
 
       public static void QueryLanServers(uint lanPort, byte flags, string gameType, string missionType, byte minPlayers, byte maxPlayers, byte maxBots, uint regionMask, uint maxPing, ushort minCPU, byte filterFlags)
@@ -1098,22 +1098,22 @@ namespace Torque6.Engine.Namespaces
 
       public static string GetTemporaryDirectory()
       {
-         return InternalUnsafeMethods.Engine_GetTemporaryDirectory();
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.Engine_GetTemporaryDirectory());
       }
 
       public static string GetTemporaryFileName()
       {
-         return InternalUnsafeMethods.Engine_GetTemporaryFileName();
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.Engine_GetTemporaryFileName());
       }
 
       public static string GetUserDataDirectory()
       {
-         return InternalUnsafeMethods.Engine_GetUserDataDirectory();
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.Engine_GetUserDataDirectory());
       }
 
       public static string GetUserHomeDirectory()
       {
-         return InternalUnsafeMethods.Engine_GetUserHomeDirectory();
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.Engine_GetUserHomeDirectory());
       }
 
       public static void SetMainDotCsDir(string csDir)
@@ -1198,12 +1198,12 @@ namespace Torque6.Engine.Namespaces
 
       public static string StripChars(string sourceString, string chars)
       {
-         return InternalUnsafeMethods.Engine_StripChars(sourceString, chars);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.Engine_StripChars(sourceString, chars));
       }
 
       public static string StripColorCodes(string sourceString, string chars)
       {
-         return InternalUnsafeMethods.Engine_StripColorCodes(sourceString, chars);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.Engine_StripColorCodes(sourceString, chars));
       }
 
       public static bool SetDisplayDevice(string deviceName, uint width, uint height, uint bpp, bool fullScreen)
@@ -1243,7 +1243,7 @@ namespace Torque6.Engine.Namespaces
 
       public static string GetResolution()
       {
-         return InternalUnsafeMethods.Engine_GetResolution();
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.Engine_GetResolution());
       }
 
       public static bool SetResolution(uint width, uint height, uint bpp)
@@ -1253,22 +1253,22 @@ namespace Torque6.Engine.Namespaces
 
       public static string GetDesktopResolution()
       {
-         return InternalUnsafeMethods.Engine_GetDesktopResolution();
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.Engine_GetDesktopResolution());
       }
 
       public static string GetDisplayDeviceList()
       {
-         return InternalUnsafeMethods.Engine_GetDisplayDeviceList();
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.Engine_GetDisplayDeviceList());
       }
 
       public static string GetResolutionList(string deviceName)
       {
-         return InternalUnsafeMethods.Engine_GetResolutionList(deviceName);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.Engine_GetResolutionList(deviceName));
       }
 
       public static string GetVideoDriverInfo()
       {
-         return InternalUnsafeMethods.Engine_GetVideoDriverInfo();
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.Engine_GetVideoDriverInfo());
       }
 
       public static bool IsDeviceFullScreenOnly(string deviceName)
@@ -1308,12 +1308,12 @@ namespace Torque6.Engine.Namespaces
 
       public static string GetLocalTime()
       {
-         return InternalUnsafeMethods.Engine_GetLocalTime();
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.Engine_GetLocalTime());
       }
 
       public static string GetClipboard()
       {
-         return InternalUnsafeMethods.Engine_GetClipboard();
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.Engine_GetClipboard());
       }
 
       public static bool SetClipboard(string val)
@@ -1323,7 +1323,7 @@ namespace Torque6.Engine.Namespaces
 
       public static string CreateUUID()
       {
-         return InternalUnsafeMethods.Engine_CreateUUID();
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.Engine_CreateUUID());
       }
 
       public static int MessageBox(string title, string message, string buttons, string icon)
@@ -1373,7 +1373,7 @@ namespace Torque6.Engine.Namespaces
 
       public static string GetJoystickAxes(int instance)
       {
-         return InternalUnsafeMethods.Engine_GetJoystickAxes(instance);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.Engine_GetJoystickAxes(instance));
       }
 
       public static int GetJoystickCount()

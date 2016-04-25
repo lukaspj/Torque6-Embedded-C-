@@ -113,7 +113,7 @@ namespace Torque6.Engine.SimObjects.Scene
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.BehaviorTemplateGetFriendlyName(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.BehaviorTemplateGetFriendlyName(ObjectPtr->ObjPtr));
          }
          set
          {
@@ -126,7 +126,7 @@ namespace Torque6.Engine.SimObjects.Scene
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.BehaviorTemplateGetDescription(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.BehaviorTemplateGetDescription(ObjectPtr->ObjPtr));
          }
          set
          {
@@ -139,7 +139,7 @@ namespace Torque6.Engine.SimObjects.Scene
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.BehaviorTemplateGetBehaviorType(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.BehaviorTemplateGetBehaviorType(ObjectPtr->ObjPtr));
          }
          set
          {
@@ -173,19 +173,19 @@ namespace Torque6.Engine.SimObjects.Scene
       public string GetBehaviorField(int fieldIndex)
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.BehaviorTemplateGetBehaviorField(ObjectPtr->ObjPtr, fieldIndex);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.BehaviorTemplateGetBehaviorField(ObjectPtr->ObjPtr, fieldIndex));
       }
 
       public string GetBehaviorFieldUserData(int fieldIndex)
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.BehaviorTemplateGetBehaviorFieldUserData(ObjectPtr->ObjPtr, fieldIndex);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.BehaviorTemplateGetBehaviorFieldUserData(ObjectPtr->ObjPtr, fieldIndex));
       }
 
       public string GetBehaviorFieldDescription(int fieldIndex)
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.BehaviorTemplateGetBehaviorFieldDescription(ObjectPtr->ObjPtr, fieldIndex);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.BehaviorTemplateGetBehaviorFieldDescription(ObjectPtr->ObjPtr, fieldIndex));
       }
 
       public bool AddBehaviorOutput(string outputName, string label, string description)
@@ -203,7 +203,7 @@ namespace Torque6.Engine.SimObjects.Scene
       public string GetBehaviorOutput(int fieldIndex)
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.BehaviorTemplateGetBehaviorOutput(ObjectPtr->ObjPtr, fieldIndex);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.BehaviorTemplateGetBehaviorOutput(ObjectPtr->ObjPtr, fieldIndex));
       }
 
       public bool HasBehaviorOutput(string outputName)
@@ -227,7 +227,7 @@ namespace Torque6.Engine.SimObjects.Scene
       public string GetBehaviorInput(int fieldIndex)
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.BehaviorTemplateGetBehaviorInput(ObjectPtr->ObjPtr, fieldIndex);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.BehaviorTemplateGetBehaviorInput(ObjectPtr->ObjPtr, fieldIndex));
       }
 
       public bool HasBehaviorInput(string inputName)

@@ -119,12 +119,12 @@ namespace Torque6.Engine.Namespaces
 
       public static string Call(string funcName, int argc, string[] argv)
       {
-         return InternalUnsafeMethods.Script_Call(funcName, argc, argv);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.Script_Call(funcName, argc, argv));
       }
 
       public static string GetDSOPath(string scriptFileName)
       {
-         return InternalUnsafeMethods.Script_GetDSOPath(scriptFileName);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.Script_GetDSOPath(scriptFileName));
       }
 
       public static bool Compile(string scriptFileName)
@@ -149,12 +149,12 @@ namespace Torque6.Engine.Namespaces
 
       public static string Eval(string script)
       {
-         return InternalUnsafeMethods.Script_Eval(script);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.Script_Eval(script));
       }
 
       public static string GetVariable(string varName)
       {
-         return InternalUnsafeMethods.Script_GetVariable(varName);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.Script_GetVariable(varName));
       }
 
       public static bool IsFunction(string funcName)
@@ -169,12 +169,12 @@ namespace Torque6.Engine.Namespaces
 
       public static string GetModNameFromPath(string path)
       {
-         return InternalUnsafeMethods.Script_GetModNameFromPath(path);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.Script_GetModNameFromPath(path));
       }
 
       public static string GetPrefsPath(string fileName)
       {
-         return InternalUnsafeMethods.Script_GetPrefsPath(fileName);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.Script_GetPrefsPath(fileName));
       }
 
       public static bool ExecPrefs(string fileName, bool nocalls, bool journalScript)
@@ -199,7 +199,7 @@ namespace Torque6.Engine.Namespaces
 
       public static string EnumerateConsoleClasses(string baseClass)
       {
-         return InternalUnsafeMethods.Script_EnumerateConsoleClasses(baseClass);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.Script_EnumerateConsoleClasses(baseClass));
       }      
 
       #endregion

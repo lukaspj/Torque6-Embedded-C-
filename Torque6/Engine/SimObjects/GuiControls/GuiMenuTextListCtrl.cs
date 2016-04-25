@@ -13,8 +13,7 @@ namespace Torque6.Engine.SimObjects.GuiControls
       
       public GuiMenuTextListCtrl()
       {
-         throw new NotImplementedException();
-         //ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.GuiMenuTextListCtrlCreateInstance());
+         ObjectPtr = Sim.WrapObject(InternalUnsafeMethods.GuiMenuTextListCtrlCreateInstance());
       }
 
       public GuiMenuTextListCtrl(uint pId) : base(pId)
@@ -38,6 +37,11 @@ namespace Torque6.Engine.SimObjects.GuiControls
       }
       
       #region UnsafeNativeMethods
+
+      new internal struct InternalUnsafeMethods
+      {
+         
+      }
       
       #endregion
 

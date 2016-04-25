@@ -71,7 +71,7 @@ namespace Torque6.Engine.SimObjects.GuiControls
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.GuiToolboxButtonCtrlGetNormalBitmap(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.GuiToolboxButtonCtrlGetNormalBitmap(ObjectPtr->ObjPtr));
          }
          set
          {
@@ -84,7 +84,7 @@ namespace Torque6.Engine.SimObjects.GuiControls
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.GuiToolboxButtonCtrlGetLoweredBitmap(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.GuiToolboxButtonCtrlGetLoweredBitmap(ObjectPtr->ObjPtr));
          }
          set
          {
@@ -97,7 +97,7 @@ namespace Torque6.Engine.SimObjects.GuiControls
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.GuiToolboxButtonCtrlGetHoverBitmap(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.GuiToolboxButtonCtrlGetHoverBitmap(ObjectPtr->ObjPtr));
          }
          set
          {

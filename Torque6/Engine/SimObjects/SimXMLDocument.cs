@@ -183,7 +183,7 @@ namespace Torque6.Engine.SimObjects
       public string GetErrorDesc()
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.SimXMLDocumentGetErrorDesc(ObjectPtr->ObjPtr);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.SimXMLDocumentGetErrorDesc(ObjectPtr->ObjPtr));
       }
 
       public void ClearError()
@@ -213,7 +213,7 @@ namespace Torque6.Engine.SimObjects
       public string ElementValue()
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.SimXMLDocumentElementValue(ObjectPtr->ObjPtr);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.SimXMLDocumentElementValue(ObjectPtr->ObjPtr));
       }
 
       public void PopElement()
@@ -225,7 +225,7 @@ namespace Torque6.Engine.SimObjects
       public string Attribute(string attribute)
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.SimXMLDocumentAttribute(ObjectPtr->ObjPtr, attribute);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.SimXMLDocumentAttribute(ObjectPtr->ObjPtr, attribute));
       }
 
       public float AttributeF32(string attribute)
@@ -249,25 +249,25 @@ namespace Torque6.Engine.SimObjects
       public string FirstAttribute()
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.SimXMLDocumentFirstAttribute(ObjectPtr->ObjPtr);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.SimXMLDocumentFirstAttribute(ObjectPtr->ObjPtr));
       }
 
       public string LastAttribute()
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.SimXMLDocumentLastAttribute(ObjectPtr->ObjPtr);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.SimXMLDocumentLastAttribute(ObjectPtr->ObjPtr));
       }
 
       public string NextAttribute()
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.SimXMLDocumentNextAttribute(ObjectPtr->ObjPtr);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.SimXMLDocumentNextAttribute(ObjectPtr->ObjPtr));
       }
 
       public string PrevAttribute()
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.SimXMLDocumentPrevAttribute(ObjectPtr->ObjPtr);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.SimXMLDocumentPrevAttribute(ObjectPtr->ObjPtr));
       }
 
       public void SetAttribute(string attribute, string attributeValue)
@@ -309,7 +309,7 @@ namespace Torque6.Engine.SimObjects
       public string ReadComment(int index)
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.SimXMLDocumentReadComment(ObjectPtr->ObjPtr, index);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.SimXMLDocumentReadComment(ObjectPtr->ObjPtr, index));
       }
 
       public void AddText(string text)
@@ -321,7 +321,7 @@ namespace Torque6.Engine.SimObjects
       public string GetText()
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.SimXMLDocumentGetText(ObjectPtr->ObjPtr);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.SimXMLDocumentGetText(ObjectPtr->ObjPtr));
       }
 
       public void RemoveText()
@@ -339,7 +339,7 @@ namespace Torque6.Engine.SimObjects
       public string GetData()
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.SimXMLDocumentGetData(ObjectPtr->ObjPtr);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.SimXMLDocumentGetData(ObjectPtr->ObjPtr));
       }
       
       #endregion

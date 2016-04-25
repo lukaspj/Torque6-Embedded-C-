@@ -259,7 +259,7 @@ namespace Torque6.Engine.SimObjects
       public string AddPrivateAsset(AssetBase assetObject)
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.AssetManagerAddPrivateAsset(ObjectPtr->ObjPtr, assetObject.ObjectPtr->ObjPtr);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.AssetManagerAddPrivateAsset(ObjectPtr->ObjPtr, assetObject.ObjectPtr->ObjPtr));
       }
 
       public bool RemoveDeclaredAssets(ModuleDefinition moduleDefinition)
@@ -277,37 +277,37 @@ namespace Torque6.Engine.SimObjects
       public string GetAssetName(string assetId)
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.AssetManagerGetAssetName(ObjectPtr->ObjPtr, assetId);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.AssetManagerGetAssetName(ObjectPtr->ObjPtr, assetId));
       }
 
       public string GetAssetDescription(string assetId)
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.AssetManagerGetAssetDescription(ObjectPtr->ObjPtr, assetId);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.AssetManagerGetAssetDescription(ObjectPtr->ObjPtr, assetId));
       }
 
       public string GetAssetCategory(string assetId)
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.AssetManagerGetAssetCategory(ObjectPtr->ObjPtr, assetId);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.AssetManagerGetAssetCategory(ObjectPtr->ObjPtr, assetId));
       }
 
       public string GetAssetType(string assetId)
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.AssetManagerGetAssetType(ObjectPtr->ObjPtr, assetId);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.AssetManagerGetAssetType(ObjectPtr->ObjPtr, assetId));
       }
 
       public string GetAssetFilePath(string assetId)
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.AssetManagerGetAssetFilePath(ObjectPtr->ObjPtr, assetId);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.AssetManagerGetAssetFilePath(ObjectPtr->ObjPtr, assetId));
       }
 
       public string GetAssetPath(string assetId)
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.AssetManagerGetAssetPath(ObjectPtr->ObjPtr, assetId);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.AssetManagerGetAssetPath(ObjectPtr->ObjPtr, assetId));
       }
 
       public ModuleDefinition GetAssetModule(string assetId)
@@ -367,7 +367,7 @@ namespace Torque6.Engine.SimObjects
       public string AcquireAsset(string assetId, bool asPrivate = false)
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.AssetManagerAcquireAsset(ObjectPtr->ObjPtr, assetId, asPrivate);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.AssetManagerAcquireAsset(ObjectPtr->ObjPtr, assetId, asPrivate));
       }
 
       public bool ReleaseAsset(string assetId)

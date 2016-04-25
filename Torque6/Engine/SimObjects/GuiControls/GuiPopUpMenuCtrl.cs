@@ -129,7 +129,7 @@ namespace Torque6.Engine.SimObjects.GuiControls
       public string GetText()
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.GuiPopUpMenuCtrlGetText(ObjectPtr->ObjPtr);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.GuiPopUpMenuCtrlGetText(ObjectPtr->ObjPtr));
       }
 
       public void Clear()
@@ -189,7 +189,7 @@ namespace Torque6.Engine.SimObjects.GuiControls
       public string GetTextById(int ID)
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.GuiPopUpMenuCtrlGetTextById(ObjectPtr->ObjPtr, ID);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.GuiPopUpMenuCtrlGetTextById(ObjectPtr->ObjPtr, ID));
       }
 
       public void SetEnumContent(string contentClass, string contentEnum)

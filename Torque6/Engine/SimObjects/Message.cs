@@ -66,7 +66,7 @@ namespace Torque6.Engine.SimObjects
       public string GetType()
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.MessageGetType(ObjectPtr->ObjPtr);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.MessageGetType(ObjectPtr->ObjPtr));
       }
 
       public void AddReference()

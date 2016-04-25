@@ -95,7 +95,7 @@ namespace Torque6.Engine.SimObjects.GuiControls
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.GuiSpriteCtrlGetImage(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.GuiSpriteCtrlGetImage(ObjectPtr->ObjPtr));
          }
          set
          {
@@ -121,7 +121,7 @@ namespace Torque6.Engine.SimObjects.GuiControls
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.GuiSpriteCtrlGetNamedFrame(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.GuiSpriteCtrlGetNamedFrame(ObjectPtr->ObjPtr));
          }
          set
          {
@@ -134,7 +134,7 @@ namespace Torque6.Engine.SimObjects.GuiControls
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.GuiSpriteCtrlGetAnimation(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.GuiSpriteCtrlGetAnimation(ObjectPtr->ObjPtr));
          }
          set
          {
@@ -180,7 +180,7 @@ namespace Torque6.Engine.SimObjects.GuiControls
       public string GetNamedImageFrame()
       {
          if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-         return InternalUnsafeMethods.GuiSpriteCtrlGetNamedImageFrame(ObjectPtr->ObjPtr);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.GuiSpriteCtrlGetNamedImageFrame(ObjectPtr->ObjPtr));
       }
       
       #endregion

@@ -74,7 +74,7 @@ namespace Torque6.Engine.Namespaces
 
       public static string GetString(string variable)
       {
-         return InternalUnsafeMethods.Globals_GetString(variable);
+         return Marshal.PtrToStringAnsi(InternalUnsafeMethods.Globals_GetString(variable));
       }
 
       public static void SetString(string variable, string val)

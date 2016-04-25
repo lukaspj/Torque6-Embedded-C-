@@ -59,7 +59,7 @@ namespace Torque6.Engine.SimObjects
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.OpenFolderDialogGetFileMustExist(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.OpenFolderDialogGetFileMustExist(ObjectPtr->ObjPtr));
          }
          set
          {

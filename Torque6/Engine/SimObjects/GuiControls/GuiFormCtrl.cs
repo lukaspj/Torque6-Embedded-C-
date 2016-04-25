@@ -86,7 +86,7 @@ namespace Torque6.Engine.SimObjects.GuiControls
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.GuiFormCtrlGetCaption(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.GuiFormCtrlGetCaption(ObjectPtr->ObjPtr));
          }
          set
          {
@@ -99,7 +99,7 @@ namespace Torque6.Engine.SimObjects.GuiControls
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.GuiFormCtrlGetContentLibrary(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.GuiFormCtrlGetContentLibrary(ObjectPtr->ObjPtr));
          }
          set
          {
@@ -112,7 +112,7 @@ namespace Torque6.Engine.SimObjects.GuiControls
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.GuiFormCtrlGetContent(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.GuiFormCtrlGetContent(ObjectPtr->ObjPtr));
          }
          set
          {

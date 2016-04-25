@@ -65,7 +65,7 @@ namespace Torque6.Engine.SimObjects.Scene
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.MultiplyNodeGetInputASrc(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.MultiplyNodeGetInputASrc(ObjectPtr->ObjPtr));
          }
          set
          {
@@ -78,7 +78,7 @@ namespace Torque6.Engine.SimObjects.Scene
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.MultiplyNodeGetInputBSrc(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.MultiplyNodeGetInputBSrc(ObjectPtr->ObjPtr));
          }
          set
          {

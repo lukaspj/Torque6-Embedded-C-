@@ -113,7 +113,7 @@ namespace Torque6.Engine.SimObjects
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.TamlGetFormat(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.TamlGetFormat(ObjectPtr->ObjPtr));
          }
          set
          {
@@ -191,7 +191,7 @@ namespace Torque6.Engine.SimObjects
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.TamlGetAutoFormatXmlExtension(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.TamlGetAutoFormatXmlExtension(ObjectPtr->ObjPtr));
          }
          set
          {
@@ -204,7 +204,7 @@ namespace Torque6.Engine.SimObjects
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.TamlGetAutoFormatBinaryExtension(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.TamlGetAutoFormatBinaryExtension(ObjectPtr->ObjPtr));
          }
          set
          {
@@ -217,7 +217,7 @@ namespace Torque6.Engine.SimObjects
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.TamlGetAutoFormatJSONExtension(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.TamlGetAutoFormatJSONExtension(ObjectPtr->ObjPtr));
          }
          set
          {

@@ -83,7 +83,7 @@ namespace Torque6.Engine.SimObjects
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.EventManagerGetQueue(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.EventManagerGetQueue(ObjectPtr->ObjPtr));
          }
          set
          {

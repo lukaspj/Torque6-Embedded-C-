@@ -86,7 +86,7 @@ namespace Torque6.Engine.SimObjects.GuiControls
          get
          {
             if (IsDead()) throw new Exceptions.SimObjectPointerInvalidException();
-            return InternalUnsafeMethods.GuiBitmapCtrlGetBitmap(ObjectPtr->ObjPtr);
+            return Marshal.PtrToStringAnsi(InternalUnsafeMethods.GuiBitmapCtrlGetBitmap(ObjectPtr->ObjPtr));
          }
          set
          {
