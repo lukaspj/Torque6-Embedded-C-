@@ -41,13 +41,13 @@ namespace Torque6.Engine.SimObjects.Scene
       new internal struct InternalUnsafeMethods
       {
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string DivideNodeGetInputASrc(IntPtr DivideNode);
+         internal static extern IntPtr DivideNodeGetInputASrc(IntPtr DivideNode);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void DivideNodeSetInputASrc(IntPtr DivideNode, string src);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string DivideNodeGetInputBSrc(IntPtr DivideNode);
+         internal static extern IntPtr DivideNodeGetInputBSrc(IntPtr DivideNode);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void DivideNodeSetInputBSrc(IntPtr DivideNode, string src);

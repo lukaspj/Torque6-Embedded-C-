@@ -51,7 +51,7 @@ namespace Torque6.Engine.SimObjects
          internal static extern void SimObjectSetCanSaveDynamicFields(IntPtr obj, bool val);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string SimObjectGetInternalName(IntPtr obj);
+         internal static extern IntPtr SimObjectGetInternalName(IntPtr obj);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void SimObjectSetInternalName(IntPtr obj, string val);
@@ -63,13 +63,13 @@ namespace Torque6.Engine.SimObjects
          internal static extern void SimObjectSetParentGroup(IntPtr obj, IntPtr parent);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string SimObjectGetSuperClass(IntPtr obj);
+         internal static extern IntPtr SimObjectGetSuperClass(IntPtr obj);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void SimObjectSetSuperClass(IntPtr obj, string val);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string SimObjectGetClass(IntPtr obj);
+         internal static extern IntPtr SimObjectGetClass(IntPtr obj);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void SimObjectSetClass(IntPtr obj, string val);
@@ -81,7 +81,7 @@ namespace Torque6.Engine.SimObjects
          internal static extern bool SimObjectRegisterObject(IntPtr obj);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string SimObjectGetName(IntPtr obj);
+         internal static extern IntPtr SimObjectGetName(IntPtr obj);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void SimObjectSetName(IntPtr obj, string val);
@@ -105,10 +105,10 @@ namespace Torque6.Engine.SimObjects
          internal static extern bool SimObjectIsMemberOfClass(IntPtr obj, string className);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string SimObjectGetClassName(IntPtr obj);
+         internal static extern IntPtr SimObjectGetClassName(IntPtr obj);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string SimObjectGetFieldValue(IntPtr obj, string fieldName);
+         internal static extern IntPtr SimObjectGetFieldValue(IntPtr obj, string fieldName);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void SimObjectSetFieldValue(IntPtr obj, string fieldName, string value);
@@ -117,16 +117,16 @@ namespace Torque6.Engine.SimObjects
          internal static extern int SimObjectGetDynamicFieldCount(IntPtr obj);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string SimObjectGetDynamicField(IntPtr obj, int index);
+         internal static extern IntPtr SimObjectGetDynamicField(IntPtr obj, int index);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern int SimObjectGetFieldCount(IntPtr obj);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string SimObjectGetField(IntPtr obj, int index);
+         internal static extern IntPtr SimObjectGetField(IntPtr obj, int index);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string SimObjectGetProgenitorFile(IntPtr obj);
+         internal static extern IntPtr SimObjectGetProgenitorFile(IntPtr obj);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void SimObjectSetProgenitorFile(IntPtr obj, string file);
@@ -135,7 +135,7 @@ namespace Torque6.Engine.SimObjects
          internal static extern int SimObjectGetType(IntPtr obj);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string SimObjectGetFieldType(IntPtr obj, string fieldName);
+         internal static extern IntPtr SimObjectGetFieldType(IntPtr obj, string fieldName);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern bool SimObjectIsChildOfGroup(IntPtr obj, IntPtr group);

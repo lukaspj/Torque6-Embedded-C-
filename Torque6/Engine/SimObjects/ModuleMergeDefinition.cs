@@ -41,7 +41,7 @@ namespace Torque6.Engine.SimObjects
       new internal struct InternalUnsafeMethods
       {
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string ModuleMergeDefinitionGetMergePath(IntPtr mergeDefinition);
+         internal static extern IntPtr ModuleMergeDefinitionGetMergePath(IntPtr mergeDefinition);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void ModuleMergeDefinitionSetMergePath(IntPtr mergeDefinition, string value);

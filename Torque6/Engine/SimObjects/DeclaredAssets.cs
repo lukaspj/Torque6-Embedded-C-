@@ -41,13 +41,13 @@ namespace Torque6.Engine.SimObjects
       new internal struct InternalUnsafeMethods
       {
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string DeclaredAssetsGetPath(IntPtr assets);
+         internal static extern IntPtr DeclaredAssetsGetPath(IntPtr assets);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void DeclaredAssetsSetPath(IntPtr assets, string path);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string DeclaredAssetsGetExtension(IntPtr assets);
+         internal static extern IntPtr DeclaredAssetsGetExtension(IntPtr assets);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void DeclaredAssetsSetExtension(IntPtr assets, string path);

@@ -104,13 +104,13 @@ namespace Torque6.Engine.SimObjects.GuiControls
          internal static extern uint GuiTextListCtrlGetRowId(IntPtr ctrl, uint row);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string GuiTextListCtrlGetRowTextById(IntPtr ctrl, uint ID);
+         internal static extern IntPtr GuiTextListCtrlGetRowTextById(IntPtr ctrl, uint ID);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern int GuiTextListCtrlGetRowNumById(IntPtr ctrl, uint ID);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string GuiTextListCtrlGetRowText(IntPtr ctrl, uint row);
+         internal static extern IntPtr GuiTextListCtrlGetRowText(IntPtr ctrl, uint row);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void GuiTextListCtrlRemoveRowById(IntPtr ctrl, uint ID);

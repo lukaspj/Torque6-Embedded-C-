@@ -53,13 +53,13 @@ namespace Torque6.Engine.Namespaces
          internal static extern int SysGUI_Slider(string label, int value, int min, int max);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string SysGUI_GetLabelValue(int id);
+         internal static extern IntPtr SysGUI_GetLabelValue(int id);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void SysGUI_SetLabelValue(int id, string val);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string SysGUI_GetTextValue(int id);
+         internal static extern IntPtr SysGUI_GetTextValue(int id);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void SysGUI_SetTextValue(int id, string val);
@@ -89,7 +89,7 @@ namespace Torque6.Engine.Namespaces
          internal static extern void SysGUI_AddListValue(int id, string value);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string SysGUI_GetListValue(int id, int idx);
+         internal static extern IntPtr SysGUI_GetListValue(int id, int idx);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern int SysGUI_GetListSelected(int id);

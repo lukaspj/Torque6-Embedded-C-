@@ -56,13 +56,13 @@ namespace Torque6.Engine.SimObjects
          internal static extern int NameTagsGetTagCount(IntPtr nameTags);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string NameTagsGetTagName(IntPtr nameTags, int tagId);
+         internal static extern IntPtr NameTagsGetTagName(IntPtr nameTags, int tagId);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern int NameTagsGetTagId(IntPtr nameTags, string tagName);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string NameTagsGetAllTags(IntPtr nameTags);
+         internal static extern IntPtr NameTagsGetAllTags(IntPtr nameTags);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern bool NameTagsTag(IntPtr nameTags, int objectId, int tagIdsC, int[] tagIdsV);
@@ -74,7 +74,7 @@ namespace Torque6.Engine.SimObjects
          internal static extern bool NameTagsHasTag(IntPtr nameTags, int objectId, int tagIdsC, int[] tagIdsV);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string NameTagsQueryTags(IntPtr nameTags, int tagIdsC, int[] tagIdsV, bool excluded);
+         internal static extern IntPtr NameTagsQueryTags(IntPtr nameTags, int tagIdsC, int[] tagIdsV, bool excluded);
       }
       
       #endregion

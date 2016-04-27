@@ -17,7 +17,7 @@ namespace Torque6.Engine.Namespaces
          internal static extern void Engine_DebugBreak();
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string Engine_GetAppleDeviceIPAddress();
+         internal static extern IntPtr Engine_GetAppleDeviceIPAddress();
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void Engine_Quit();
@@ -26,16 +26,16 @@ namespace Torque6.Engine.Namespaces
          internal static extern void Engine_QuitWithErrorMessage(string msg);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string Engine_Detag(int tagId);
+         internal static extern IntPtr Engine_Detag(int tagId);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string Engine_GetTag(string taggedString);
+         internal static extern IntPtr Engine_GetTag(string taggedString);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern int Engine_GetStockColorCount();
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string Engine_GetStockColorName(int index);
+         internal static extern IntPtr Engine_GetStockColorName(int index);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern bool Engine_IsStockColor(string name);
@@ -80,7 +80,7 @@ namespace Torque6.Engine.Namespaces
          internal static extern void Engine_DuplicateCachedFont(string oldFontName, int oldFontSize, string newFontName, int newFontSize);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string Engine_MaterialAssetGetTextureFile(IntPtr textureAsset);
+         internal static extern IntPtr Engine_MaterialAssetGetTextureFile(IntPtr textureAsset);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void Engine_FlushTextureCache();
@@ -98,7 +98,7 @@ namespace Torque6.Engine.Namespaces
          internal static extern void Engine_ScreenShot(string file, string format);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string Engine_StripMLControlChars(string sourceString);
+         internal static extern IntPtr Engine_StripMLControlChars(string sourceString);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void Engine_InitLeapMotionManager();
@@ -125,19 +125,19 @@ namespace Torque6.Engine.Namespaces
          internal static extern void Engine_GetPointFromIntersection(int fingerID, Point2F outPos);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string Engine_FindFirstFile(string pattern);
+         internal static extern IntPtr Engine_FindFirstFile(string pattern);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string Engine_FindNextFile(string pattern);
+         internal static extern IntPtr Engine_FindNextFile(string pattern);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern int Engine_GetFileCount(string pattern);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string Engine_FindFirstFileMultiExpr(string pattern);
+         internal static extern IntPtr Engine_FindFirstFileMultiExpr(string pattern);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string Engine_FindNextFileMultiExpr(string pattern);
+         internal static extern IntPtr Engine_FindNextFileMultiExpr(string pattern);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern int Engine_GetFileCountMultiExpr(string pattern);
@@ -155,10 +155,10 @@ namespace Torque6.Engine.Namespaces
          internal static extern bool Engine_IsWriteableFileName(string fileName);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string Engine_GetDirectoryList(string dirPath, int depth);
+         internal static extern IntPtr Engine_GetDirectoryList(string dirPath, int depth);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string Engine_GetFileList(string strPath);
+         internal static extern IntPtr Engine_GetFileList(string strPath);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern int Engine_FileSize(string fileName);
@@ -173,16 +173,16 @@ namespace Torque6.Engine.Namespaces
          internal static extern bool Engine_IsValidImageFile(string filePath);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string Engine_FileExt(string fileName);
+         internal static extern IntPtr Engine_FileExt(string fileName);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string Engine_FileBase(string fileName);
+         internal static extern IntPtr Engine_FileBase(string fileName);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string Engine_FileName(string fileName);
+         internal static extern IntPtr Engine_FileName(string fileName);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string Engine_FilePath(string fileName);
+         internal static extern IntPtr Engine_FilePath(string fileName);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void Engine_OpenFolder(string path);
@@ -191,25 +191,25 @@ namespace Torque6.Engine.Namespaces
          internal static extern bool Engine_PathCopy(string fromFile, string toFile, bool noOverwrite);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string Engine_GetCurrentDirectory();
+         internal static extern IntPtr Engine_GetCurrentDirectory();
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern bool Engine_SetCurrentDirectory(string absolutePathName);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string Engine_GetExecutableName();
+         internal static extern IntPtr Engine_GetExecutableName();
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string Engine_GetMainDotCsDir();
+         internal static extern IntPtr Engine_GetMainDotCsDir();
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string Engine_MakeFullPath(string path, string currentWorkingDirectory);
+         internal static extern IntPtr Engine_MakeFullPath(string path, string currentWorkingDirectory);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string Engine_MakeRelativePath(string path, string to);
+         internal static extern IntPtr Engine_MakeRelativePath(string path, string to);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string Engine_PathConcat(string path, int argc, string[] argv);
+         internal static extern IntPtr Engine_PathConcat(string path, int argc, string[] argv);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void Engine_RestartInstance();
@@ -230,7 +230,7 @@ namespace Torque6.Engine.Namespaces
          internal static extern void Engine_SetModPaths(string path);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string Engine_GetModPaths();
+         internal static extern IntPtr Engine_GetModPaths();
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void Engine_PurgeResources();
@@ -281,13 +281,13 @@ namespace Torque6.Engine.Namespaces
          internal static extern void Engine_RemoveTaggedString(string tag);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string Engine_AddTaggedString(string tag);
+         internal static extern IntPtr Engine_AddTaggedString(string tag);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string Engine_GetTaggedString(string tag);
+         internal static extern IntPtr Engine_GetTaggedString(string tag);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string Engine_BuildTaggedString(string format, int argc, string[] argv);
+         internal static extern IntPtr Engine_BuildTaggedString(string format, int argc, string[] argv);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void Engine_QueryLanServers(uint lanPort, byte flags, string gameType, string missionType, byte minPlayers, byte maxPlayers, byte maxBots, uint regionMask, uint maxPing, ushort minCPU, byte filterFlags);
@@ -335,16 +335,16 @@ namespace Torque6.Engine.Namespaces
          internal static extern void Engine_InputPopCursor();
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string Engine_GetTemporaryDirectory();
+         internal static extern IntPtr Engine_GetTemporaryDirectory();
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string Engine_GetTemporaryFileName();
+         internal static extern IntPtr Engine_GetTemporaryFileName();
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string Engine_GetUserDataDirectory();
+         internal static extern IntPtr Engine_GetUserDataDirectory();
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string Engine_GetUserHomeDirectory();
+         internal static extern IntPtr Engine_GetUserHomeDirectory();
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void Engine_SetMainDotCsDir(string csDir);
@@ -395,10 +395,10 @@ namespace Torque6.Engine.Namespaces
          internal static extern void Engine_CloseNetPort();
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string Engine_StripChars(string sourceString, string chars);
+         internal static extern IntPtr Engine_StripChars(string sourceString, string chars);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string Engine_StripColorCodes(string sourceString, string chars);
+         internal static extern IntPtr Engine_StripColorCodes(string sourceString, string chars);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern bool Engine_SetDisplayDevice(string deviceName, uint width, uint height, uint bpp, bool fullScreen);
@@ -422,22 +422,22 @@ namespace Torque6.Engine.Namespaces
          internal static extern bool Engine_NextResolution();
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string Engine_GetResolution();
+         internal static extern IntPtr Engine_GetResolution();
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern bool Engine_SetResolution(uint width, uint height, uint bpp);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string Engine_GetDesktopResolution();
+         internal static extern IntPtr Engine_GetDesktopResolution();
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string Engine_GetDisplayDeviceList();
+         internal static extern IntPtr Engine_GetDisplayDeviceList();
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string Engine_GetResolutionList(string deviceName);
+         internal static extern IntPtr Engine_GetResolutionList(string deviceName);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string Engine_GetVideoDriverInfo();
+         internal static extern IntPtr Engine_GetVideoDriverInfo();
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern bool Engine_IsDeviceFullScreenOnly(string deviceName);
@@ -461,16 +461,16 @@ namespace Torque6.Engine.Namespaces
          internal static extern int Engine_GetRealTime();
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string Engine_GetLocalTime();
+         internal static extern IntPtr Engine_GetLocalTime();
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string Engine_GetClipboard();
+         internal static extern IntPtr Engine_GetClipboard();
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern bool Engine_SetClipboard(string val);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string Engine_CreateUUID();
+         internal static extern IntPtr Engine_CreateUUID();
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern int Engine_MessageBox(string title, string message, string buttons, string icon);
@@ -500,7 +500,7 @@ namespace Torque6.Engine.Namespaces
          internal static extern bool Engine_IsJoystickDetected();
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string Engine_GetJoystickAxes(int instance);
+         internal static extern IntPtr Engine_GetJoystickAxes(int instance);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern int Engine_GetJoystickCount();

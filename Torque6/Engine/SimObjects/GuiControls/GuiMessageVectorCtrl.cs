@@ -1,8 +1,5 @@
 using System;
-using System.Linq;
 using System.Runtime.InteropServices;
-using Torque6.Engine.SimObjects;
-using Torque6.Engine.SimObjects.Scene;
 using Torque6.Engine.Namespaces;
 using Torque6.Utility;
 
@@ -53,7 +50,7 @@ namespace Torque6.Engine.SimObjects.GuiControls
          internal static extern void GuiMessageVectorCtrlSetLineContinuedIndex(IntPtr ctrl, int index);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string GuiMessageVectorCtrlGetAllowedMatches(IntPtr ctrl, int index);
+         internal static extern IntPtr GuiMessageVectorCtrlGetAllowedMatches(IntPtr ctrl, int index);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void GuiMessageVectorCtrlSetAllowedMatches(IntPtr ctrl, int index, string match);
@@ -115,7 +112,7 @@ namespace Torque6.Engine.SimObjects.GuiControls
       {
          get
          {
-            return new PrimitiveFieldVector<string>(this, 16, InternalUnsafeMethods.GuiMessageVectorCtrlGetAllowedMatches,
+            return new PrimitiveFieldVector<string>(this, 16, (ctrl, index) => Marshal.PtrToStringAnsi(InternalUnsafeMethods.GuiMessageVectorCtrlGetAllowedMatches(ctrl, index)),
                InternalUnsafeMethods.GuiMessageVectorCtrlSetAllowedMatches);
          }
       }

@@ -41,13 +41,13 @@ namespace Torque6.Engine.SimObjects.GuiControls
       new internal struct InternalUnsafeMethods
       {
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string GuiTextEditCtrlGetValidate(IntPtr ctrl);
+         internal static extern IntPtr GuiTextEditCtrlGetValidate(IntPtr ctrl);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void GuiTextEditCtrlSetValidate(IntPtr ctrl, string validateCommand);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string GuiTextEditCtrlGetEscapeCommand(IntPtr ctrl);
+         internal static extern IntPtr GuiTextEditCtrlGetEscapeCommand(IntPtr ctrl);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void GuiTextEditCtrlSetEscapeCommand(IntPtr ctrl, string EscapeCommand);
@@ -83,7 +83,7 @@ namespace Torque6.Engine.SimObjects.GuiControls
          internal static extern void GuiTextEditCtrlSetPassword(IntPtr ctrl, bool isPasswordText);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string GuiTextEditCtrlGetPasswordMask(IntPtr ctrl);
+         internal static extern IntPtr GuiTextEditCtrlGetPasswordMask(IntPtr ctrl);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void GuiTextEditCtrlSetPasswordMask(IntPtr ctrl, string PasswordMaskCommand);
@@ -92,7 +92,7 @@ namespace Torque6.Engine.SimObjects.GuiControls
          internal static extern IntPtr GuiTextEditCtrlCreateInstance();
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string GuiTextEditCtrlGetText(IntPtr ctrl);
+         internal static extern IntPtr GuiTextEditCtrlGetText(IntPtr ctrl);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern int GuiTextEditCtrlGetCursorPos(IntPtr ctrl);

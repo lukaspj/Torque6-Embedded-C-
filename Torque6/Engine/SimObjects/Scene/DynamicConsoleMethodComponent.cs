@@ -44,7 +44,7 @@ namespace Torque6.Engine.SimObjects.Scene
          internal static extern IntPtr DynamicConsoleMethodComponentCreateInstance();
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string DynamicConsoleMethodComponentCallOnBehaviors(IntPtr component, string methodName, int argc, string[] argv);
+         internal static extern IntPtr DynamicConsoleMethodComponentCallOnBehaviors(IntPtr component, string methodName, int argc, string[] argv);
       }
       
       #endregion

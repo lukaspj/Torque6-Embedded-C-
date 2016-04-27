@@ -131,7 +131,7 @@ namespace Torque6.Engine.SimObjects.GuiControls
          internal static extern void GuiControlProfileSetBevelColorLL(IntPtr controlProfile, Color value);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string GuiControlProfileGetFontType(IntPtr controlProfile);
+         internal static extern IntPtr GuiControlProfileGetFontType(IntPtr controlProfile);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void GuiControlProfileSetFontType(IntPtr controlProfile, string value);
@@ -233,7 +233,7 @@ namespace Torque6.Engine.SimObjects.GuiControls
          internal static extern void GuiControlProfileSetCursorColor(IntPtr controlProfile, Color value);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string GuiControlProfileGetBitmap(IntPtr controlProfile);
+         internal static extern IntPtr GuiControlProfileGetBitmap(IntPtr controlProfile);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void GuiControlProfileSetBitmap(IntPtr controlProfile, string value);

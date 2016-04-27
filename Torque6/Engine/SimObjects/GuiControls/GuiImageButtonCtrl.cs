@@ -41,25 +41,25 @@ namespace Torque6.Engine.SimObjects.GuiControls
       new internal struct InternalUnsafeMethods
       {
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string GuiImageButtonCtrlGetNormalImage(IntPtr ctrl);
+         internal static extern IntPtr GuiImageButtonCtrlGetNormalImage(IntPtr ctrl);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void GuiImageButtonCtrlSetNormalImage(IntPtr ctrl, string imageAssetId);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string GuiImageButtonCtrlGetHoverImage(IntPtr ctrl);
+         internal static extern IntPtr GuiImageButtonCtrlGetHoverImage(IntPtr ctrl);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void GuiImageButtonCtrlSetHoverImage(IntPtr ctrl, string imageAssetId);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string GuiImageButtonCtrlGetDownImage(IntPtr ctrl);
+         internal static extern IntPtr GuiImageButtonCtrlGetDownImage(IntPtr ctrl);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void GuiImageButtonCtrlSetDownImage(IntPtr ctrl, string imageAssetId);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string GuiImageButtonCtrlGetInactiveImage(IntPtr ctrl);
+         internal static extern IntPtr GuiImageButtonCtrlGetInactiveImage(IntPtr ctrl);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void GuiImageButtonCtrlSetInactiveImage(IntPtr ctrl, string imageAssetId);

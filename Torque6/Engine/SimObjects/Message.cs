@@ -44,7 +44,7 @@ namespace Torque6.Engine.SimObjects
          internal static extern IntPtr MessageCreateInstance();
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string MessageGetType(IntPtr message);
+         internal static extern IntPtr MessageGetType(IntPtr message);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void MessageAddReference(IntPtr message);

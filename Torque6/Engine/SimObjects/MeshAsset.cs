@@ -41,7 +41,7 @@ namespace Torque6.Engine.SimObjects
       new internal struct InternalUnsafeMethods
       {
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string MeshAssetGetMeshFile(IntPtr meshAsset);
+         internal static extern IntPtr MeshAssetGetMeshFile(IntPtr meshAsset);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void MeshAssetSetMeshFile(IntPtr meshAsset, string val);

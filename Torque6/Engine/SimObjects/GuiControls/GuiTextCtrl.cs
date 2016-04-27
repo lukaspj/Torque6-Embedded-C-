@@ -41,13 +41,13 @@ namespace Torque6.Engine.SimObjects.GuiControls
       new internal struct InternalUnsafeMethods
       {
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string GuiTextCtrlGetText(IntPtr ctrl);
+         internal static extern IntPtr GuiTextCtrlGetText(IntPtr ctrl);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void GuiTextCtrlSetText(IntPtr ctrl, string text);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string GuiTextCtrlGetTextID(IntPtr ctrl);
+         internal static extern IntPtr GuiTextCtrlGetTextID(IntPtr ctrl);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void GuiTextCtrlSetTextID(IntPtr ctrl, string text);

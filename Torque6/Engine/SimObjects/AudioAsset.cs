@@ -41,7 +41,7 @@ namespace Torque6.Engine.SimObjects
       new internal struct InternalUnsafeMethods
       {
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string AudioAssetGetAudioFile(IntPtr audioAsset);
+         internal static extern IntPtr AudioAssetGetAudioFile(IntPtr audioAsset);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void AudioAssetSetAudioFile(IntPtr audioAsset, string val);

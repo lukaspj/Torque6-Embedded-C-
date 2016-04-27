@@ -20,7 +20,7 @@ namespace Torque6.Engine.Namespaces
          internal static extern void Audio_OpenALShutdownDriver();
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string Audio_AlGetString(string ALEnum);
+         internal static extern IntPtr Audio_AlGetString(string ALEnum);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern int Audio_AlxGetAudioLength(string assetId);

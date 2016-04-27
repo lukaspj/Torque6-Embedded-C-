@@ -41,7 +41,7 @@ namespace Torque6.Engine.SimObjects
       new internal struct InternalUnsafeMethods
       {
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string ImageAssetGetImageFile(IntPtr imageAsset);
+         internal static extern IntPtr ImageAssetGetImageFile(IntPtr imageAsset);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void ImageAssetSetImageFile(IntPtr imageAsset, string imageFile);
@@ -53,7 +53,7 @@ namespace Torque6.Engine.SimObjects
          internal static extern void ImageAssetSetForce16Bit(IntPtr imageAsset, bool value);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string ImageAssetGetFilterMode(IntPtr imageAsset);
+         internal static extern IntPtr ImageAssetGetFilterMode(IntPtr imageAsset);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void ImageAssetSetFilterMode(IntPtr imageAsset, string filterMode);
@@ -128,7 +128,7 @@ namespace Torque6.Engine.SimObjects
          internal static extern int ImageAssetGetImageHeight(IntPtr imageAsset);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string ImageAssetGetImageSize(IntPtr imageAsset);
+         internal static extern IntPtr ImageAssetGetImageSize(IntPtr imageAsset);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern bool ImageAssetGetIsImagePOT(IntPtr imageAsset);
@@ -137,7 +137,7 @@ namespace Torque6.Engine.SimObjects
          internal static extern int ImageAssetGetFrameCount(IntPtr imageAsset);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string ImageAssetGetFrameSize(IntPtr imageAsset, int frame);
+         internal static extern IntPtr ImageAssetGetFrameSize(IntPtr imageAsset, int frame);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern bool ImageAssetClearExplicitCells(IntPtr imageAsset);
@@ -158,10 +158,10 @@ namespace Torque6.Engine.SimObjects
          internal static extern int ImageAssetGetExplicitCellCount(IntPtr imageAsset);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string ImageAssetGetExplicitCellOffset(IntPtr imageAsset, int cellIdx);
+         internal static extern IntPtr ImageAssetGetExplicitCellOffset(IntPtr imageAsset, int cellIdx);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string ImageAssetGetExplicitCellOffsetByName(IntPtr imageAsset, string cellName);
+         internal static extern IntPtr ImageAssetGetExplicitCellOffsetByName(IntPtr imageAsset, string cellName);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern int ImageAssetGetExplicitCellWidth(IntPtr imageAsset, int cellIdx);
@@ -176,7 +176,7 @@ namespace Torque6.Engine.SimObjects
          internal static extern int ImageAssetGetExplicitCellHeightByName(IntPtr imageAsset, string cellName);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string ImageAssetGetExplicitCellName(IntPtr imageAsset, int cellIdx);
+         internal static extern IntPtr ImageAssetGetExplicitCellName(IntPtr imageAsset, int cellIdx);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern int ImageAssetGetExplicitCellIndex(IntPtr imageAsset, string cellName);

@@ -59,7 +59,7 @@ namespace Torque6.Engine.SimObjects
          internal static extern void TCPObjectDisconnect(IntPtr tcpObj);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string TCPObjectURLEncodeString(IntPtr tcpObj, string data);
+         internal static extern IntPtr TCPObjectURLEncodeString(IntPtr tcpObj, string data);
       }
       
       #endregion

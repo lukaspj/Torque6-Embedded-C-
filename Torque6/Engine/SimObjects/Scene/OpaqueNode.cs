@@ -41,31 +41,31 @@ namespace Torque6.Engine.SimObjects.Scene
       new internal struct InternalUnsafeMethods
       {
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string OpaqueNodeGetColorSrc(IntPtr opaqueNode);
+         internal static extern IntPtr OpaqueNodeGetColorSrc(IntPtr opaqueNode);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void OpaqueNodeSetColorSrc(IntPtr opaqueNode, string src);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string OpaqueNodeGetNormalSrc(IntPtr opaqueNode);
+         internal static extern IntPtr OpaqueNodeGetNormalSrc(IntPtr opaqueNode);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void OpaqueNodeSetNormalSrc(IntPtr opaqueNode, string src);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string OpaqueNodeGetMetallicSrc(IntPtr opaqueNode);
+         internal static extern IntPtr OpaqueNodeGetMetallicSrc(IntPtr opaqueNode);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void OpaqueNodeSetMetallicSrc(IntPtr opaqueNode, string src);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string OpaqueNodeGetRoughnessSrc(IntPtr opaqueNode);
+         internal static extern IntPtr OpaqueNodeGetRoughnessSrc(IntPtr opaqueNode);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void OpaqueNodeSetRoughnessSrc(IntPtr opaqueNode, string src);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string OpaqueNodeGetWorldPosOffsetSrc(IntPtr opaqueNode);
+         internal static extern IntPtr OpaqueNodeGetWorldPosOffsetSrc(IntPtr opaqueNode);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void OpaqueNodeSetWorldPosOffsetSrc(IntPtr opaqueNode, string src);

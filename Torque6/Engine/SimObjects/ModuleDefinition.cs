@@ -41,7 +41,7 @@ namespace Torque6.Engine.SimObjects
       new internal struct InternalUnsafeMethods
       {
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string ModuleDefinitionGetModuleId(IntPtr moduleDefinition);
+         internal static extern IntPtr ModuleDefinitionGetModuleId(IntPtr moduleDefinition);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void ModuleDefinitionSetModuleId(IntPtr moduleDefinition, string value);
@@ -83,55 +83,55 @@ namespace Torque6.Engine.SimObjects
          internal static extern void ModuleDefinitionSetCriticalMerge(IntPtr moduleDefinition, bool value);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string ModuleDefinitionGetDescription(IntPtr moduleDefinition);
+         internal static extern IntPtr ModuleDefinitionGetDescription(IntPtr moduleDefinition);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void ModuleDefinitionSetDescription(IntPtr moduleDefinition, string value);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string ModuleDefinitionGetAuthor(IntPtr moduleDefinition);
+         internal static extern IntPtr ModuleDefinitionGetAuthor(IntPtr moduleDefinition);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void ModuleDefinitionSetAuthor(IntPtr moduleDefinition, string value);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string ModuleDefinitionGetGroup(IntPtr moduleDefinition);
+         internal static extern IntPtr ModuleDefinitionGetGroup(IntPtr moduleDefinition);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void ModuleDefinitionSetGroup(IntPtr moduleDefinition, string value);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string ModuleDefinitionGetType(IntPtr moduleDefinition);
+         internal static extern IntPtr ModuleDefinitionGetType(IntPtr moduleDefinition);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void ModuleDefinitionSetType(IntPtr moduleDefinition, string value);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string ModuleDefinitionGetDependencies(IntPtr moduleDefinition);
+         internal static extern IntPtr ModuleDefinitionGetDependencies(IntPtr moduleDefinition);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void ModuleDefinitionSetDependencies(IntPtr moduleDefinition, string value);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string ModuleDefinitionGetScriptFile(IntPtr moduleDefinition);
+         internal static extern IntPtr ModuleDefinitionGetScriptFile(IntPtr moduleDefinition);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void ModuleDefinitionSetScriptFile(IntPtr moduleDefinition, string value);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string ModuleDefinitionGetCreateFunction(IntPtr moduleDefinition);
+         internal static extern IntPtr ModuleDefinitionGetCreateFunction(IntPtr moduleDefinition);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void ModuleDefinitionSetCreateFunction(IntPtr moduleDefinition, string value);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string ModuleDefinitionGetDestroyFunction(IntPtr moduleDefinition);
+         internal static extern IntPtr ModuleDefinitionGetDestroyFunction(IntPtr moduleDefinition);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void ModuleDefinitionSetDestroyFunction(IntPtr moduleDefinition, string value);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string ModuleDefinitionGetAssetTagsManifest(IntPtr moduleDefinition);
+         internal static extern IntPtr ModuleDefinitionGetAssetTagsManifest(IntPtr moduleDefinition);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void ModuleDefinitionSetAssetTagsManifest(IntPtr moduleDefinition, string value);
@@ -140,22 +140,22 @@ namespace Torque6.Engine.SimObjects
          internal static extern int ModuleDefinitionGetScopeSet(IntPtr moduleDefinition);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string ModuleDefinitionGetModulePath(IntPtr moduleDefinition);
+         internal static extern IntPtr ModuleDefinitionGetModulePath(IntPtr moduleDefinition);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string ModuleDefinitionGetModuleFile(IntPtr moduleDefinition);
+         internal static extern IntPtr ModuleDefinitionGetModuleFile(IntPtr moduleDefinition);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string ModuleDefinitionGetModuleFilePath(IntPtr moduleDefinition);
+         internal static extern IntPtr ModuleDefinitionGetModuleFilePath(IntPtr moduleDefinition);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string ModuleDefinitionGetModuleScriptFilePath(IntPtr moduleDefinition);
+         internal static extern IntPtr ModuleDefinitionGetModuleScriptFilePath(IntPtr moduleDefinition);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern IntPtr ModuleDefinitionCreateInstance();
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string ModuleDefinitionGetSignature(IntPtr moduleDefinition);
+         internal static extern IntPtr ModuleDefinitionGetSignature(IntPtr moduleDefinition);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern bool ModuleDefinitionSave(IntPtr moduleDefinition);
@@ -167,7 +167,7 @@ namespace Torque6.Engine.SimObjects
          internal static extern int ModuleDefinitionGetDependencyCount(IntPtr moduleDefinition);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string ModuleDefinitionGetDependency(IntPtr moduleDefinition, int dependencyIndex);
+         internal static extern IntPtr ModuleDefinitionGetDependency(IntPtr moduleDefinition, int dependencyIndex);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern bool ModuleDefinitionAddDependency(IntPtr moduleDefinition, string moduleId, int versionId);

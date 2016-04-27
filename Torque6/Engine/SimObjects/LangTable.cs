@@ -47,7 +47,7 @@ namespace Torque6.Engine.SimObjects
          internal static extern int LangTableAddLanguage(IntPtr langTable, string filename, string languageName);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string LangTableGetString(IntPtr langTable, int langString);
+         internal static extern IntPtr LangTableGetString(IntPtr langTable, int langString);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void LangTableSetDefaultLanguage(IntPtr langTable, int language);
@@ -59,7 +59,7 @@ namespace Torque6.Engine.SimObjects
          internal static extern int LangTableGetCurrentLanguage(IntPtr langTable);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string LangTableGetLangName(IntPtr langTable, int language);
+         internal static extern IntPtr LangTableGetLangName(IntPtr langTable, int language);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern int LangTableGetNumLang(IntPtr langTable);

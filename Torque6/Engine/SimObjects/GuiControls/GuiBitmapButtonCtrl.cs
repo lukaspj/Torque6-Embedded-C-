@@ -47,31 +47,31 @@ namespace Torque6.Engine.SimObjects.GuiControls
          internal static extern void GuiBitmapButtonCtrlSetIsLegacyVersion(IntPtr ctrl, bool isLegacy);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string GuiBitmapButtonCtrlGetBitmap(IntPtr ctrl);
+         internal static extern IntPtr GuiBitmapButtonCtrlGetBitmap(IntPtr ctrl);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void GuiBitmapButtonCtrlSetBitmap(IntPtr ctrl, string bitmap);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string GuiBitmapButtonCtrlGetBitmapNormal(IntPtr ctrl);
+         internal static extern IntPtr GuiBitmapButtonCtrlGetBitmapNormal(IntPtr ctrl);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void GuiBitmapButtonCtrlSetBitmapNormal(IntPtr ctrl, string bitmap);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string GuiBitmapButtonCtrlGetBitmapHilight(IntPtr ctrl);
+         internal static extern IntPtr GuiBitmapButtonCtrlGetBitmapHilight(IntPtr ctrl);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void GuiBitmapButtonCtrlSetBitmapHilight(IntPtr ctrl, string bitmap);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string GuiBitmapButtonCtrlGetBitmapDepressed(IntPtr ctrl);
+         internal static extern IntPtr GuiBitmapButtonCtrlGetBitmapDepressed(IntPtr ctrl);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void GuiBitmapButtonCtrlSetBitmapDepressed(IntPtr ctrl, string bitmap);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string GuiBitmapButtonCtrlGetBitmapInactive(IntPtr ctrl);
+         internal static extern IntPtr GuiBitmapButtonCtrlGetBitmapInactive(IntPtr ctrl);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void GuiBitmapButtonCtrlSetBitmapInactive(IntPtr ctrl, string bitmap);

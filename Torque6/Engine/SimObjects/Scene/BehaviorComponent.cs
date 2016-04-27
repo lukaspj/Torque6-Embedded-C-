@@ -77,7 +77,7 @@ namespace Torque6.Engine.SimObjects.Scene
          internal static extern uint BehaviorComponentGetBehaviorConnectionCount(IntPtr component, IntPtr outputBehavior, string outputName);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string BehaviorComponentGetBehaviorConnection(IntPtr component, IntPtr outputBehavior, string outputName, uint connectionIndex);
+         internal static extern IntPtr BehaviorComponentGetBehaviorConnection(IntPtr component, IntPtr outputBehavior, string outputName, uint connectionIndex);
       }
       
       #endregion

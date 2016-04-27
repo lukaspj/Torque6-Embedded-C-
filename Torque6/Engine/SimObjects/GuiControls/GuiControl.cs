@@ -95,25 +95,25 @@ namespace Torque6.Engine.SimObjects.GuiControls
          internal static extern void GuiControlSetVisible(IntPtr ctrl, bool isVisible);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string GuiControlGetVariable(IntPtr ctrl);
+         internal static extern IntPtr GuiControlGetVariable(IntPtr ctrl);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void GuiControlSetVariable(IntPtr ctrl, string variable);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string GuiControlGetCommand(IntPtr ctrl);
+         internal static extern IntPtr GuiControlGetCommand(IntPtr ctrl);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void GuiControlSetCommand(IntPtr ctrl, string command);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string GuiControlGetAltCommand(IntPtr ctrl);
+         internal static extern IntPtr GuiControlGetAltCommand(IntPtr ctrl);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void GuiControlSetAltCommand(IntPtr ctrl, string command);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string GuiControlGetAccelerator(IntPtr ctrl);
+         internal static extern IntPtr GuiControlGetAccelerator(IntPtr ctrl);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void GuiControlSetAccelerator(IntPtr ctrl, string acceleratorKey);
@@ -131,7 +131,7 @@ namespace Torque6.Engine.SimObjects.GuiControls
          internal static extern void GuiControlSetTooltipProfile(IntPtr ctrl, IntPtr profile);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string GuiControlGetTooltip(IntPtr ctrl);
+         internal static extern IntPtr GuiControlGetTooltip(IntPtr ctrl);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void GuiControlSetTooltip(IntPtr ctrl, string tooltip);
@@ -149,7 +149,7 @@ namespace Torque6.Engine.SimObjects.GuiControls
          internal static extern void GuiControlSetHoverTime(IntPtr ctrl, int time);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string GuiControlGetLangTableMod(IntPtr ctrl);
+         internal static extern IntPtr GuiControlGetLangTableMod(IntPtr ctrl);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void GuiControlSetLangTableMod(IntPtr ctrl, string langTableName);
@@ -173,7 +173,7 @@ namespace Torque6.Engine.SimObjects.GuiControls
          internal static extern void GuiControlSetValue(IntPtr ctrl, string value);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string GuiControlGetValue(IntPtr ctrl);
+         internal static extern IntPtr GuiControlGetValue(IntPtr ctrl);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern bool GuiControlIsActive(IntPtr ctrl);

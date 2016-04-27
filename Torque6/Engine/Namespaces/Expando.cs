@@ -14,10 +14,10 @@ namespace Torque6.Engine.Namespaces
       new internal struct InternalUnsafeMethods
       {
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string Expando_ExpandPath(string path);
+         internal static extern IntPtr Expando_ExpandPath(string path);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string Expando_CollapsePath(string path);
+         internal static extern IntPtr Expando_CollapsePath(string path);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void Expando_AddPathExpando(string expando, string path);
@@ -32,10 +32,10 @@ namespace Torque6.Engine.Namespaces
          internal static extern int Expando_GetPathExpandoCount();
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string Expando_GetPathExpandoKey(int expandoIndex);
+         internal static extern IntPtr Expando_GetPathExpandoKey(int expandoIndex);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string Expando_GetPathExpandoValue(int expandoIndex);
+         internal static extern IntPtr Expando_GetPathExpandoValue(int expandoIndex);
       }
 
       #endregion

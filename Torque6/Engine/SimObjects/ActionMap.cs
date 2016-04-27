@@ -68,10 +68,10 @@ namespace Torque6.Engine.SimObjects
          internal static extern void ActionMapPop(IntPtr map);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string ActionMapGetBinding(IntPtr map, string command);
+         internal static extern IntPtr ActionMapGetBinding(IntPtr map, string command);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string ActionMapGetCommand(IntPtr map, string device, string action);
+         internal static extern IntPtr ActionMapGetCommand(IntPtr map, string device, string action);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern bool ActionMapIsInverted(IntPtr map, string device, string action);
@@ -80,7 +80,7 @@ namespace Torque6.Engine.SimObjects
          internal static extern float ActionMapGetScale(IntPtr map, string device, string action);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string ActionMapGetDeadZone(IntPtr map, string device, string action);
+         internal static extern IntPtr ActionMapGetDeadZone(IntPtr map, string device, string action);
       }
       
       #endregion

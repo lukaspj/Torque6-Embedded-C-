@@ -47,7 +47,7 @@ namespace Torque6.Engine.SimObjects.GuiControls
          internal static extern void DbgFileViewSetCurrentLine(IntPtr view, int line, bool selected);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string DbgFileViewGetCurrentLine(IntPtr view, int line, bool selected);
+         internal static extern IntPtr DbgFileViewGetCurrentLine(IntPtr view, int line, bool selected);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern bool DbgFileViewOpen(IntPtr view, string fileName);

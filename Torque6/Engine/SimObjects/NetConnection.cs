@@ -44,7 +44,7 @@ namespace Torque6.Engine.SimObjects
          internal static extern IntPtr NetConnectionCreateInstance();
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string NetConnectionGetAddress(IntPtr connection);
+         internal static extern IntPtr NetConnectionGetAddress(IntPtr connection);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void NetConnectionSetSimulatedNetParams(IntPtr connection, float packetLoss, int delay);
@@ -74,7 +74,7 @@ namespace Torque6.Engine.SimObjects
          internal static extern void NetConnectionConnect(IntPtr connection, string remoteAddress);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string NetConnectionConnectLocal(IntPtr connection);
+         internal static extern IntPtr NetConnectionConnectLocal(IntPtr connection);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern int NetConnectionGetGhostsActive(IntPtr connection);

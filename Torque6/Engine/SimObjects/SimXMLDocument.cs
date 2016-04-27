@@ -59,7 +59,7 @@ namespace Torque6.Engine.SimObjects
          internal static extern void SimXMLDocumentClear(IntPtr xmlDocument);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string SimXMLDocumentGetErrorDesc(IntPtr xmlDocument);
+         internal static extern IntPtr SimXMLDocumentGetErrorDesc(IntPtr xmlDocument);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void SimXMLDocumentClearError(IntPtr xmlDocument);
@@ -74,13 +74,13 @@ namespace Torque6.Engine.SimObjects
          internal static extern bool SimXMLDocumentNextSiblingElement(IntPtr xmlDocument, string name);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string SimXMLDocumentElementValue(IntPtr xmlDocument);
+         internal static extern IntPtr SimXMLDocumentElementValue(IntPtr xmlDocument);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void SimXMLDocumentPopElement(IntPtr xmlDocument);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string SimXMLDocumentAttribute(IntPtr xmlDocument, string attribute);
+         internal static extern IntPtr SimXMLDocumentAttribute(IntPtr xmlDocument, string attribute);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern float SimXMLDocumentAttributeF32(IntPtr xmlDocument, string attribute);
@@ -92,16 +92,16 @@ namespace Torque6.Engine.SimObjects
          internal static extern bool SimXMLDocumentAttributeExists(IntPtr xmlDocument, string attribute);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string SimXMLDocumentFirstAttribute(IntPtr xmlDocument);
+         internal static extern IntPtr SimXMLDocumentFirstAttribute(IntPtr xmlDocument);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string SimXMLDocumentLastAttribute(IntPtr xmlDocument);
+         internal static extern IntPtr SimXMLDocumentLastAttribute(IntPtr xmlDocument);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string SimXMLDocumentNextAttribute(IntPtr xmlDocument);
+         internal static extern IntPtr SimXMLDocumentNextAttribute(IntPtr xmlDocument);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string SimXMLDocumentPrevAttribute(IntPtr xmlDocument);
+         internal static extern IntPtr SimXMLDocumentPrevAttribute(IntPtr xmlDocument);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void SimXMLDocumentSetAttribute(IntPtr xmlDocument, string attribute, string attributeValue);
@@ -122,13 +122,13 @@ namespace Torque6.Engine.SimObjects
          internal static extern void SimXMLDocumentAddComment(IntPtr xmlDocument, string comment);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string SimXMLDocumentReadComment(IntPtr xmlDocument, int index);
+         internal static extern IntPtr SimXMLDocumentReadComment(IntPtr xmlDocument, int index);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void SimXMLDocumentAddText(IntPtr xmlDocument, string text);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string SimXMLDocumentGetText(IntPtr xmlDocument);
+         internal static extern IntPtr SimXMLDocumentGetText(IntPtr xmlDocument);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void SimXMLDocumentRemoveText(IntPtr xmlDocument);
@@ -137,7 +137,7 @@ namespace Torque6.Engine.SimObjects
          internal static extern void SimXMLDocumentAddData(IntPtr xmlDocument, string text);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string SimXMLDocumentGetData(IntPtr xmlDocument);
+         internal static extern IntPtr SimXMLDocumentGetData(IntPtr xmlDocument);
       }
       
       #endregion

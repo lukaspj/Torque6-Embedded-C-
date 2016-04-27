@@ -41,7 +41,7 @@ namespace Torque6.Engine.SimObjects.GuiControls
       new internal struct InternalUnsafeMethods
       {
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string GuiBitmapCtrlGetBitmap(IntPtr ctrl);
+         internal static extern IntPtr GuiBitmapCtrlGetBitmap(IntPtr ctrl);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void GuiBitmapCtrlSetBitmap(IntPtr ctrl, string bitmapFile);

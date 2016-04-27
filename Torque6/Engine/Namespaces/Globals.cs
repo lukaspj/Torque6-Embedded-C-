@@ -32,7 +32,7 @@ namespace Torque6.Engine.Namespaces
          internal static extern void Globals_SetFloat(string variable, float val);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string Globals_GetString(string variable);
+         internal static extern IntPtr Globals_GetString(string variable);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void Globals_SetString(string variable, string val);

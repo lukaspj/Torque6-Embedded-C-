@@ -41,7 +41,7 @@ namespace Torque6.Engine.SimObjects
       new internal struct InternalUnsafeMethods
       {
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string PluginAssetGetPluginFile(IntPtr pluginAsset);
+         internal static extern IntPtr PluginAssetGetPluginFile(IntPtr pluginAsset);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void PluginAssetSetPluginFile(IntPtr pluginAsset, string val);

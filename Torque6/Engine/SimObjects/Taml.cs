@@ -41,7 +41,7 @@ namespace Torque6.Engine.SimObjects
       new internal struct InternalUnsafeMethods
       {
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string TamlGetFormat(IntPtr tamlObj);
+         internal static extern IntPtr TamlGetFormat(IntPtr tamlObj);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void TamlSetFormat(IntPtr tamlObj, string value);
@@ -77,19 +77,19 @@ namespace Torque6.Engine.SimObjects
          internal static extern void TamlSetAutoFormat(IntPtr tamlObj, bool value);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string TamlGetAutoFormatXmlExtension(IntPtr tamlObj);
+         internal static extern IntPtr TamlGetAutoFormatXmlExtension(IntPtr tamlObj);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void TamlSetAutoFormatXmlExtension(IntPtr tamlObj, string value);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string TamlGetAutoFormatBinaryExtension(IntPtr tamlObj);
+         internal static extern IntPtr TamlGetAutoFormatBinaryExtension(IntPtr tamlObj);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void TamlSetAutoFormatBinaryExtension(IntPtr tamlObj, string value);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string TamlGetAutoFormatJSONExtension(IntPtr tamlObj);
+         internal static extern IntPtr TamlGetAutoFormatJSONExtension(IntPtr tamlObj);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void TamlSetAutoFormatJSONExtension(IntPtr tamlObj, string value);

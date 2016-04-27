@@ -59,10 +59,10 @@ namespace Torque6.Engine.SimObjects
          internal static extern int UndoManagerGetUndoCount(IntPtr undoManager);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string UndoManagerGetUndoName(IntPtr undoManager, int index);
+         internal static extern IntPtr UndoManagerGetUndoName(IntPtr undoManager, int index);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string UndoManagerGetRedoName(IntPtr undoManager, int index);
+         internal static extern IntPtr UndoManagerGetRedoName(IntPtr undoManager, int index);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void UndoManagerUndo(IntPtr undoManager);
@@ -71,10 +71,10 @@ namespace Torque6.Engine.SimObjects
          internal static extern void UndoManagerRedo(IntPtr undoManager);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string UndoManagerGetNextUndoName(IntPtr undoManager);
+         internal static extern IntPtr UndoManagerGetNextUndoName(IntPtr undoManager);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string UndoManagerGetNextRedoName(IntPtr undoManager);
+         internal static extern IntPtr UndoManagerGetNextRedoName(IntPtr undoManager);
       }
       
       #endregion

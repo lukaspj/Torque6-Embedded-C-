@@ -53,7 +53,7 @@ namespace Torque6.Engine.SimObjects.GuiControls
          internal static extern void GuiPopUpMenuCtrlSetText(IntPtr ctrl, string text);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string GuiPopUpMenuCtrlGetText(IntPtr ctrl);
+         internal static extern IntPtr GuiPopUpMenuCtrlGetText(IntPtr ctrl);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void GuiPopUpMenuCtrlClear(IntPtr ctrl);
@@ -83,7 +83,7 @@ namespace Torque6.Engine.SimObjects.GuiControls
          internal static extern void GuiPopUpMenuCtrlSetNoneSelected(IntPtr ctrl);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string GuiPopUpMenuCtrlGetTextById(IntPtr ctrl, int ID);
+         internal static extern IntPtr GuiPopUpMenuCtrlGetTextById(IntPtr ctrl, int ID);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void GuiPopUpMenuCtrlSetEnumContent(IntPtr ctrl, string contentClass, string contentEnum);

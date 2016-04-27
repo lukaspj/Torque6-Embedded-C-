@@ -41,31 +41,31 @@ namespace Torque6.Engine.SimObjects
       new internal struct InternalUnsafeMethods
       {
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string FileDialogGetDefaultPath(IntPtr fileDialog);
+         internal static extern IntPtr FileDialogGetDefaultPath(IntPtr fileDialog);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void FileDialogSetDefaultPath(IntPtr fileDialog, string value);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string FileDialogGetDefaultFile(IntPtr fileDialog);
+         internal static extern IntPtr FileDialogGetDefaultFile(IntPtr fileDialog);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void FileDialogSetDefaultFile(IntPtr fileDialog, string value);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string FileDialogGetFileName(IntPtr fileDialog);
+         internal static extern IntPtr FileDialogGetFileName(IntPtr fileDialog);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void FileDialogSetFileName(IntPtr fileDialog, string value);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string FileDialogGetFilters(IntPtr fileDialog);
+         internal static extern IntPtr FileDialogGetFilters(IntPtr fileDialog);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void FileDialogSetFilters(IntPtr fileDialog, string value);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string FileDialogGetTitle(IntPtr fileDialog);
+         internal static extern IntPtr FileDialogGetTitle(IntPtr fileDialog);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void FileDialogSetTitle(IntPtr fileDialog, string value);

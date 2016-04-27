@@ -41,7 +41,7 @@ namespace Torque6.Engine.SimObjects
       new internal struct InternalUnsafeMethods
       {
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string UndoActionGetActionName(IntPtr undoAction);
+         internal static extern IntPtr UndoActionGetActionName(IntPtr undoAction);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void UndoActionSetActionName(IntPtr undoAction, string value);

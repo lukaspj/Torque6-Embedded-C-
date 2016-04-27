@@ -53,7 +53,7 @@ namespace Torque6.Engine.SimObjects
          internal static extern int AssetQueryGetCount(IntPtr assetQuery);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string AssetQueryGetAsset(IntPtr assetQuery, int resultIndex);
+         internal static extern IntPtr AssetQueryGetAsset(IntPtr assetQuery, int resultIndex);
       }
       
       #endregion

@@ -44,19 +44,19 @@ namespace Torque6.Engine.SimObjects
          internal static extern IntPtr AssetBaseCreateInstance();
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string AssetBaseGetAssetName(IntPtr assetBase);
+         internal static extern IntPtr AssetBaseGetAssetName(IntPtr assetBase);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void AssetBaseSetAssetName(IntPtr assetBase, string name);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string AssetBaseGetAssetDescription(IntPtr assetBase);
+         internal static extern IntPtr AssetBaseGetAssetDescription(IntPtr assetBase);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void AssetBaseSetAssetDescription(IntPtr assetBase, string val);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string AssetBaseGetAssetCategory(IntPtr assetBase);
+         internal static extern IntPtr AssetBaseGetAssetCategory(IntPtr assetBase);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void AssetBaseSetAssetCategory(IntPtr assetBase, string val);
@@ -80,7 +80,7 @@ namespace Torque6.Engine.SimObjects
          internal static extern void AssetBaseRefreshAsset(IntPtr assetBase);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string AssetBaseGetAssetId(IntPtr assetBase);
+         internal static extern IntPtr AssetBaseGetAssetId(IntPtr assetBase);
       }
       
       #endregion

@@ -41,7 +41,7 @@ namespace Torque6.Engine.SimObjects
       new internal struct InternalUnsafeMethods
       {
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string OpenFolderDialogGetFileMustExist(IntPtr openFolderDialog);
+         internal static extern IntPtr OpenFolderDialogGetFileMustExist(IntPtr openFolderDialog);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void OpenFolderDialogSetFileMustExist(IntPtr openFolderDialog, string value);

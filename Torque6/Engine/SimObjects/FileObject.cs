@@ -56,10 +56,10 @@ namespace Torque6.Engine.SimObjects
          internal static extern bool FileObjectIsEOF(IntPtr fileObj);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string FileObjectReadLine(IntPtr fileObj);
+         internal static extern IntPtr FileObjectReadLine(IntPtr fileObj);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string FileObjectPeekLine(IntPtr fileObj);
+         internal static extern IntPtr FileObjectPeekLine(IntPtr fileObj);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void FileObjectWriteLine(IntPtr fileObj, string text);

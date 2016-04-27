@@ -41,7 +41,7 @@ namespace Torque6.Engine.SimObjects.Scene
       new internal struct InternalUnsafeMethods
       {
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string FloatNodeGetUniformName(IntPtr floatNode);
+         internal static extern IntPtr FloatNodeGetUniformName(IntPtr floatNode);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void FloatNodeSetUniformName(IntPtr floatNode, string src);

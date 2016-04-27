@@ -20,19 +20,19 @@ namespace Torque6.Engine.Namespaces
          internal static extern int Version_GetVersionNumber();
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string Version_GetVersionString();
+         internal static extern IntPtr Version_GetVersionString();
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string Version_GetCompileTimeString();
+         internal static extern IntPtr Version_GetCompileTimeString();
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string Version_GetBuildString();
+         internal static extern IntPtr Version_GetBuildString();
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string Version_GetEngineVersion();
+         internal static extern IntPtr Version_GetEngineVersion();
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string Version_GetiPhoneToolsVersion();
+         internal static extern IntPtr Version_GetiPhoneToolsVersion();
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void Version_SetCompanyAndProduct(string company, string product);

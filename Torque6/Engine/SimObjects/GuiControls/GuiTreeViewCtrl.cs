@@ -140,10 +140,10 @@ namespace Torque6.Engine.SimObjects.GuiControls
          internal static extern void GuiTreeViewCtrlOpen(IntPtr ctrl, IntPtr target, bool okToEdit);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string GuiTreeViewCtrlGetItemText(IntPtr ctrl, int item);
+         internal static extern IntPtr GuiTreeViewCtrlGetItemText(IntPtr ctrl, int item);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string GuiTreeViewCtrlGetItemValue(IntPtr ctrl, int item);
+         internal static extern IntPtr GuiTreeViewCtrlGetItemValue(IntPtr ctrl, int item);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern bool GuiTreeViewCtrlEditItem(IntPtr ctrl, int item, string newText, string newValue);
@@ -194,10 +194,10 @@ namespace Torque6.Engine.SimObjects.GuiControls
          internal static extern int GuiTreeViewCtrlGetSelectedItemsCount(IntPtr ctrl);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string GuiTreeViewCtrlGetTextToRoot(IntPtr ctrl, int item, string delimiter);
+         internal static extern IntPtr GuiTreeViewCtrlGetTextToRoot(IntPtr ctrl, int item, string delimiter);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string GuiTreeViewCtrlGetSelectedItemList(IntPtr ctrl);
+         internal static extern IntPtr GuiTreeViewCtrlGetSelectedItemList(IntPtr ctrl);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern int GuiTreeViewCtrlFindItemByObject(IntPtr ctrl, IntPtr obj);

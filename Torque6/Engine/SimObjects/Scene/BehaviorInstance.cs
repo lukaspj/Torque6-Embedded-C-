@@ -56,7 +56,7 @@ namespace Torque6.Engine.SimObjects.Scene
          internal static extern IntPtr BehaviorInstanceCreateInstance();
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string BehaviorInstanceGetTemplateName(IntPtr instance);
+         internal static extern IntPtr BehaviorInstanceGetTemplateName(IntPtr instance);
       }
       
       #endregion

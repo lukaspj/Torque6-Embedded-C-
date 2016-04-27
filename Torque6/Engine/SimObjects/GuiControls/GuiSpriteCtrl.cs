@@ -41,7 +41,7 @@ namespace Torque6.Engine.SimObjects.GuiControls
       new internal struct InternalUnsafeMethods
       {
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string GuiSpriteCtrlGetImage(IntPtr ctrl);
+         internal static extern IntPtr GuiSpriteCtrlGetImage(IntPtr ctrl);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void GuiSpriteCtrlSetImage(IntPtr ctrl, string imageAssetId);
@@ -53,13 +53,13 @@ namespace Torque6.Engine.SimObjects.GuiControls
          internal static extern void GuiSpriteCtrlSetFrame(IntPtr ctrl, int frame);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string GuiSpriteCtrlGetNamedFrame(IntPtr ctrl);
+         internal static extern IntPtr GuiSpriteCtrlGetNamedFrame(IntPtr ctrl);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void GuiSpriteCtrlSetNamedFrame(IntPtr ctrl, string frame);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string GuiSpriteCtrlGetAnimation(IntPtr ctrl);
+         internal static extern IntPtr GuiSpriteCtrlGetAnimation(IntPtr ctrl);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void GuiSpriteCtrlSetAnimation(IntPtr ctrl, string animationAssetid);
@@ -83,7 +83,7 @@ namespace Torque6.Engine.SimObjects.GuiControls
          internal static extern bool GuiSpriteCtrlSetNamedImageFrame(IntPtr ctrl, string frame);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string GuiSpriteCtrlGetNamedImageFrame(IntPtr ctrl);
+         internal static extern IntPtr GuiSpriteCtrlGetNamedImageFrame(IntPtr ctrl);
       }
       
       #endregion

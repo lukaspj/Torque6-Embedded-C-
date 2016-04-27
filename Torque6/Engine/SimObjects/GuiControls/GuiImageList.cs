@@ -44,7 +44,7 @@ namespace Torque6.Engine.SimObjects.GuiControls
          internal static extern IntPtr GuiImageListCreateInstance();
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string GuiImageListGetImage(IntPtr list, int index);
+         internal static extern IntPtr GuiImageListGetImage(IntPtr list, int index);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern bool GuiImageListClear(IntPtr list);

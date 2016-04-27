@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Torque6</RootNamespace>
     <AssemblyName>Torque6</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -33,12 +34,6 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Engine\Namespaces\Audio.cs" />
@@ -79,7 +74,6 @@
     <Compile Include="Engine\SimObjects\GuiControls\DbgFileView.cs" />
     <Compile Include="Engine\SimObjects\GuiControls\GuiArrayCtrl.cs" />
     <Compile Include="Engine\SimObjects\GuiControls\GuiAutoScrollCtrl.cs" />
-    <Compile Include="Engine\SimObjects\GuiControls\GuiBackgroundCtrl.cs" />
     <Compile Include="Engine\SimObjects\GuiControls\GuiBitmapButtonCtrl.cs" />
     <Compile Include="Engine\SimObjects\GuiControls\GuiBitmapButtonTextCtrl.cs" />
     <Compile Include="Engine\SimObjects\GuiControls\GuiBitmapCtrl.cs" />
@@ -123,15 +117,12 @@
     <Compile Include="Engine\SimObjects\GuiControls\GuiInspectorTypeFileName.cs" />
     <Compile Include="Engine\SimObjects\GuiControls\GuiInspectorTypeGuiProfile.cs" />
     <Compile Include="Engine\SimObjects\GuiControls\GuiListBoxCtrl.cs" />
-    <Compile Include="Engine\SimObjects\GuiControls\GuiMenuBackgroundCtrl.cs" />
     <Compile Include="Engine\SimObjects\GuiControls\GuiMenuBar.cs" />
-    <Compile Include="Engine\SimObjects\GuiControls\GuiMenuTextListCtrl.cs" />
     <Compile Include="Engine\SimObjects\GuiControls\GuiMessageVectorCtrl.cs" />
     <Compile Include="Engine\SimObjects\GuiControls\GuiMLTextCtrl.cs" />
     <Compile Include="Engine\SimObjects\GuiControls\GuiMLTextEditCtrl.cs" />
     <Compile Include="Engine\SimObjects\GuiControls\GuiMouseEventCtrl.cs" />
     <Compile Include="Engine\SimObjects\GuiControls\GuiPaneControl.cs" />
-    <Compile Include="Engine\SimObjects\GuiControls\GuiPopUpBackgroundCtrl.cs" />
     <Compile Include="Engine\SimObjects\GuiControls\GuiPopUpMenuCtrl.cs" />
     <Compile Include="Engine\SimObjects\GuiControls\GuiPopupTextListCtrl.cs" />
     <Compile Include="Engine\SimObjects\GuiControls\GuiProgressCtrl.cs" />
@@ -143,7 +134,6 @@
     <Compile Include="Engine\SimObjects\GuiControls\GuiSliderCtrl.cs" />
     <Compile Include="Engine\SimObjects\GuiControls\GuiSpriteCtrl.cs" />
     <Compile Include="Engine\SimObjects\GuiControls\GuiStackControl.cs" />
-    <Compile Include="Engine\SimObjects\GuiControls\GuiSubmenuBackgroundCtrl.cs" />
     <Compile Include="Engine\SimObjects\GuiControls\GuiTabBookCtrl.cs" />
     <Compile Include="Engine\SimObjects\GuiControls\GuiTabPageCtrl.cs" />
     <Compile Include="Engine\SimObjects\GuiControls\GuiTextCtrl.cs" />

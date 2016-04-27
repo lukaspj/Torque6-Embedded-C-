@@ -41,19 +41,19 @@ namespace Torque6.Engine.SimObjects.GuiControls
       new internal struct InternalUnsafeMethods
       {
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string GuiToolboxButtonCtrlGetNormalBitmap(IntPtr ctrl);
+         internal static extern IntPtr GuiToolboxButtonCtrlGetNormalBitmap(IntPtr ctrl);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void GuiToolboxButtonCtrlSetNormalBitmap(IntPtr ctrl, string bitmap);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string GuiToolboxButtonCtrlGetLoweredBitmap(IntPtr ctrl);
+         internal static extern IntPtr GuiToolboxButtonCtrlGetLoweredBitmap(IntPtr ctrl);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void GuiToolboxButtonCtrlSetLoweredBitmap(IntPtr ctrl, string bitmap);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string GuiToolboxButtonCtrlGetHoverBitmap(IntPtr ctrl);
+         internal static extern IntPtr GuiToolboxButtonCtrlGetHoverBitmap(IntPtr ctrl);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void GuiToolboxButtonCtrlSetHoverBitmap(IntPtr ctrl, string bitmap);

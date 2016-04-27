@@ -32,10 +32,10 @@ namespace Torque6.Engine.Namespaces
          internal static extern void Script_DeactivatePackage(string packageName);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string Script_Call(string funcName, int argc, string[] argv);
+         internal static extern IntPtr Script_Call(string funcName, int argc, string[] argv);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string Script_GetDSOPath(string scriptFileName);
+         internal static extern IntPtr Script_GetDSOPath(string scriptFileName);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern bool Script_Compile(string scriptFileName);
@@ -50,10 +50,10 @@ namespace Torque6.Engine.Namespaces
          internal static extern bool Script_Exec(string fileName, bool noCalls, bool journalScript);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string Script_Eval(string script);
+         internal static extern IntPtr Script_Eval(string script);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string Script_GetVariable(string varName);
+         internal static extern IntPtr Script_GetVariable(string varName);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern bool Script_IsFunction(string funcName);
@@ -62,10 +62,10 @@ namespace Torque6.Engine.Namespaces
          internal static extern bool Script_IsMethod(string nameSpace, string method);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string Script_GetModNameFromPath(string path);
+         internal static extern IntPtr Script_GetModNameFromPath(string path);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string Script_GetPrefsPath(string fileName);
+         internal static extern IntPtr Script_GetPrefsPath(string fileName);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern bool Script_ExecPrefs(string fileName, bool nocalls, bool journalScript);
@@ -80,7 +80,7 @@ namespace Torque6.Engine.Namespaces
          internal static extern void Script_Trace(bool enable);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string Script_EnumerateConsoleClasses(string baseClass);
+         internal static extern IntPtr Script_EnumerateConsoleClasses(string baseClass);
       }
 
       #endregion

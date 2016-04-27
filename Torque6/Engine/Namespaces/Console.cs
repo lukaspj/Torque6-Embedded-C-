@@ -26,10 +26,10 @@ namespace Torque6.Engine.Namespaces
          internal static extern void Console_Error(string text);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string Console_ExpandEscape(string text);
+         internal static extern IntPtr Console_ExpandEscape(string text);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string Console_CollapseEscape(string text);
+         internal static extern IntPtr Console_CollapseEscape(string text);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void Console_SetLogMode(int mode);

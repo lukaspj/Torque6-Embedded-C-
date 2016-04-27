@@ -41,13 +41,13 @@ namespace Torque6.Engine.SimObjects.Scene
       new internal struct InternalUnsafeMethods
       {
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string LerpNodeGetInputASrc(IntPtr LerpNode);
+         internal static extern IntPtr LerpNodeGetInputASrc(IntPtr LerpNode);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void LerpNodeSetInputASrc(IntPtr LerpNode, string src);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string LerpNodeGetInputBSrc(IntPtr LerpNode);
+         internal static extern IntPtr LerpNodeGetInputBSrc(IntPtr LerpNode);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void LerpNodeSetInputBSrc(IntPtr LerpNode, string src);

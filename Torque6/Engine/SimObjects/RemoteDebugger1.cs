@@ -44,7 +44,7 @@ namespace Torque6.Engine.SimObjects
          internal static extern IntPtr RemoteDebugger1CreateInstance();
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string RemoteDebugger1GetCodeFiles(IntPtr debugger1);
+         internal static extern IntPtr RemoteDebugger1GetCodeFiles(IntPtr debugger1);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void RemoteDebugger1SetNextStatementBreak(IntPtr debugger1, bool enabled);

@@ -71,7 +71,7 @@ namespace Torque6.Engine.SimObjects
          internal static extern int ZipObjectGetFileEntryCount(IntPtr zipObj);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string ZipObjectGetFileEntry(IntPtr zipObj, int index);
+         internal static extern IntPtr ZipObjectGetFileEntry(IntPtr zipObj, int index);
       }
       
       #endregion

@@ -41,19 +41,19 @@ namespace Torque6.Engine.SimObjects.Scene
       new internal struct InternalUnsafeMethods
       {
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string BehaviorTemplateGetFriendlyName(IntPtr instance);
+         internal static extern IntPtr BehaviorTemplateGetFriendlyName(IntPtr instance);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void BehaviorTemplateSetFriendlyName(IntPtr instance, string name);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string BehaviorTemplateGetDescription(IntPtr instance);
+         internal static extern IntPtr BehaviorTemplateGetDescription(IntPtr instance);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void BehaviorTemplateSetDescription(IntPtr instance, string description);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string BehaviorTemplateGetBehaviorType(IntPtr instance);
+         internal static extern IntPtr BehaviorTemplateGetBehaviorType(IntPtr instance);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void BehaviorTemplateSetBehaviorType(IntPtr instance, string type);
@@ -71,13 +71,13 @@ namespace Torque6.Engine.SimObjects.Scene
          internal static extern int BehaviorTemplateGetBehaviorFieldCount(IntPtr instance);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string BehaviorTemplateGetBehaviorField(IntPtr instance, int fieldIndex);
+         internal static extern IntPtr BehaviorTemplateGetBehaviorField(IntPtr instance, int fieldIndex);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string BehaviorTemplateGetBehaviorFieldUserData(IntPtr instance, int fieldIndex);
+         internal static extern IntPtr BehaviorTemplateGetBehaviorFieldUserData(IntPtr instance, int fieldIndex);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string BehaviorTemplateGetBehaviorFieldDescription(IntPtr instance, int fieldIndex);
+         internal static extern IntPtr BehaviorTemplateGetBehaviorFieldDescription(IntPtr instance, int fieldIndex);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern bool BehaviorTemplateAddBehaviorOutput(IntPtr instance, string outputName, string label, string description);
@@ -86,7 +86,7 @@ namespace Torque6.Engine.SimObjects.Scene
          internal static extern int BehaviorTemplateGetBehaviorOutputCount(IntPtr instance);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string BehaviorTemplateGetBehaviorOutput(IntPtr instance, int fieldIndex);
+         internal static extern IntPtr BehaviorTemplateGetBehaviorOutput(IntPtr instance, int fieldIndex);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern bool BehaviorTemplateHasBehaviorOutput(IntPtr instance, string outputName);
@@ -98,7 +98,7 @@ namespace Torque6.Engine.SimObjects.Scene
          internal static extern int BehaviorTemplateGetBehaviorInputCount(IntPtr instance);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string BehaviorTemplateGetBehaviorInput(IntPtr instance, int fieldIndex);
+         internal static extern IntPtr BehaviorTemplateGetBehaviorInput(IntPtr instance, int fieldIndex);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern bool BehaviorTemplateHasBehaviorInput(IntPtr instance, string inputName);

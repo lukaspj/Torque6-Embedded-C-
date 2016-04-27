@@ -53,7 +53,7 @@ namespace Torque6.Engine.SimObjects.GuiControls
          internal static extern void GuiCursorSetRenderOffset(IntPtr guiCursor, Point2F value);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string GuiCursorGetBitmapName(IntPtr guiCursor);
+         internal static extern IntPtr GuiCursorGetBitmapName(IntPtr guiCursor);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void GuiCursorSetBitmapName(IntPtr guiCursor, string value);

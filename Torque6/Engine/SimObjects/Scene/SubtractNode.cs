@@ -41,13 +41,13 @@ namespace Torque6.Engine.SimObjects.Scene
       new internal struct InternalUnsafeMethods
       {
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string SubtractNodeGetInputASrc(IntPtr SubtractNode);
+         internal static extern IntPtr SubtractNodeGetInputASrc(IntPtr SubtractNode);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void SubtractNodeSetInputASrc(IntPtr SubtractNode, string src);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string SubtractNodeGetInputBSrc(IntPtr SubtractNode);
+         internal static extern IntPtr SubtractNodeGetInputBSrc(IntPtr SubtractNode);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void SubtractNodeSetInputBSrc(IntPtr SubtractNode, string src);

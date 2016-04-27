@@ -65,7 +65,7 @@ namespace Torque6.Engine.SimObjects
          internal static extern bool AssetManagerAddDeclaredAsset(IntPtr assetManager, IntPtr moduleDefinition, string assetFilePath);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string AssetManagerAddPrivateAsset(IntPtr assetManager, IntPtr assetObject);
+         internal static extern IntPtr AssetManagerAddPrivateAsset(IntPtr assetManager, IntPtr assetObject);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern bool AssetManagerRemoveDeclaredAssets(IntPtr assetManager, IntPtr moduleDefinition);
@@ -74,22 +74,22 @@ namespace Torque6.Engine.SimObjects
          internal static extern bool AssetManagerRemoveDeclaredAsset(IntPtr assetManager, string assetId);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string AssetManagerGetAssetName(IntPtr assetManager, string assetId);
+         internal static extern IntPtr AssetManagerGetAssetName(IntPtr assetManager, string assetId);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string AssetManagerGetAssetDescription(IntPtr assetManager, string assetId);
+         internal static extern IntPtr AssetManagerGetAssetDescription(IntPtr assetManager, string assetId);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string AssetManagerGetAssetCategory(IntPtr assetManager, string assetId);
+         internal static extern IntPtr AssetManagerGetAssetCategory(IntPtr assetManager, string assetId);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string AssetManagerGetAssetType(IntPtr assetManager, string assetId);
+         internal static extern IntPtr AssetManagerGetAssetType(IntPtr assetManager, string assetId);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string AssetManagerGetAssetFilePath(IntPtr assetManager, string assetId);
+         internal static extern IntPtr AssetManagerGetAssetFilePath(IntPtr assetManager, string assetId);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string AssetManagerGetAssetPath(IntPtr assetManager, string assetId);
+         internal static extern IntPtr AssetManagerGetAssetPath(IntPtr assetManager, string assetId);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern IntPtr AssetManagerGetAssetModule(IntPtr assetManager, string assetId);
@@ -119,7 +119,7 @@ namespace Torque6.Engine.SimObjects
          internal static extern bool AssetManagerRenameReferencedAsset(IntPtr assetManager, string assetIdFrom, string assetIdTo);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string AssetManagerAcquireAsset(IntPtr assetManager, string assetId, bool asPrivate);
+         internal static extern IntPtr AssetManagerAcquireAsset(IntPtr assetManager, string assetId, bool asPrivate);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern bool AssetManagerReleaseAsset(IntPtr assetManager, string assetId);

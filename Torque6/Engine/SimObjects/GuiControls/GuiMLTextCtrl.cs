@@ -65,7 +65,7 @@ namespace Torque6.Engine.SimObjects.GuiControls
          internal static extern void GuiMLTextCtrlSetDeniedSound(IntPtr ctrl, IntPtr sound);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string GuiMLTextCtrlGetText(IntPtr ctrl);
+         internal static extern IntPtr GuiMLTextCtrlGetText(IntPtr ctrl);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void GuiMLTextCtrlSetText(IntPtr ctrl, string text);
@@ -77,7 +77,7 @@ namespace Torque6.Engine.SimObjects.GuiControls
          internal static extern void GuiMLTextCtrlSetCurrentText(IntPtr ctrl, string text);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string GuiMLTextCtrlGetCurrentText(IntPtr ctrl);
+         internal static extern IntPtr GuiMLTextCtrlGetCurrentText(IntPtr ctrl);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void GuiMLTextCtrlAddText(IntPtr ctrl, string text, bool reformat);

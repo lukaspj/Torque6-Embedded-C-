@@ -41,7 +41,7 @@ namespace Torque6.Engine.SimObjects
       new internal struct InternalUnsafeMethods
       {
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string MessageForwarderGetToQueue(IntPtr forwarder);
+         internal static extern IntPtr MessageForwarderGetToQueue(IntPtr forwarder);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void MessageForwarderSetToQueue(IntPtr forwarder, string value);

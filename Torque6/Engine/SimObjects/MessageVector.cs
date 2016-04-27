@@ -71,13 +71,13 @@ namespace Torque6.Engine.SimObjects
          internal static extern int MessageVectorGetNumLines(IntPtr messageVector);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string MessageVectorGetLineTextByTag(IntPtr messageVector, int tag);
+         internal static extern IntPtr MessageVectorGetLineTextByTag(IntPtr messageVector, int tag);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern int MessageVectorGetLineIndexByTag(IntPtr messageVector, int tag);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string MessageVectorGetLineText(IntPtr messageVector, uint index);
+         internal static extern IntPtr MessageVectorGetLineText(IntPtr messageVector, uint index);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern int MessageVectorGetLineTag(IntPtr messageVector, uint index);

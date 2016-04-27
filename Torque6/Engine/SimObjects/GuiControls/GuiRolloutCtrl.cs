@@ -41,7 +41,7 @@ namespace Torque6.Engine.SimObjects.GuiControls
       new internal struct InternalUnsafeMethods
       {
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string GuiRolloutCtrlGetCaption(IntPtr ctrl);
+         internal static extern IntPtr GuiRolloutCtrlGetCaption(IntPtr ctrl);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void GuiRolloutCtrlSetCaption(IntPtr ctrl, string caption);

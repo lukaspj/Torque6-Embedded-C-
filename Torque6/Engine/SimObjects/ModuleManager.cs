@@ -86,7 +86,7 @@ namespace Torque6.Engine.SimObjects
          internal static extern IntPtr[] ModuleManagerFindModuleTypes(IntPtr moduleManager, string moduleType, bool loadedOnly);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string ModuleManagerCopyModule(IntPtr moduleManager, IntPtr sourceModuleDefinition, string targetModuleId, string targetPath, bool useVersionPathing);
+         internal static extern IntPtr ModuleManagerCopyModule(IntPtr moduleManager, IntPtr sourceModuleDefinition, string targetModuleId, string targetPath, bool useVersionPathing);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern bool ModuleManagerSynchronizeDependencies(IntPtr moduleManager, IntPtr rootModuleDefinition, string targetDependencyFolder);

@@ -50,7 +50,7 @@ namespace Torque6.Engine.SimObjects.GuiControls
          internal static extern IntPtr GuiFilterCtrlCreateInstance();
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string GuiFilterCtrlGetValue(IntPtr ctrl);
+         internal static extern IntPtr GuiFilterCtrlGetValue(IntPtr ctrl);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void GuiFilterCtrlSetValue(IntPtr ctrl, int argc, string[] argv);

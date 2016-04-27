@@ -41,7 +41,7 @@ namespace Torque6.Engine.SimObjects
       new internal struct InternalUnsafeMethods
       {
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string ObjectTemplateAssetGetTemplateFile(IntPtr ObjectTemplateAsset);
+         internal static extern IntPtr ObjectTemplateAssetGetTemplateFile(IntPtr ObjectTemplateAsset);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void ObjectTemplateAssetSetTemplateFile(IntPtr ObjectTemplateAsset, string file);

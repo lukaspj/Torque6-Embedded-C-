@@ -53,7 +53,7 @@ namespace Torque6.Engine.SimObjects.Scene
          internal static extern void AnimationComponentSetTarget(IntPtr animationComponent, IntPtr val);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string AnimationComponentGetMeshAsset(IntPtr animationComponent);
+         internal static extern IntPtr AnimationComponentGetMeshAsset(IntPtr animationComponent);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void AnimationComponentSetMeshAsset(IntPtr animationComponent, string meshAssetId);

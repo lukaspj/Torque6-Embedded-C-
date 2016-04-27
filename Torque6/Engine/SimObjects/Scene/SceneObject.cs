@@ -41,7 +41,7 @@ namespace Torque6.Engine.SimObjects.Scene
       new internal struct InternalUnsafeMethods
       {
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string SceneObjectGetTemplate(IntPtr SceneObject);
+         internal static extern IntPtr SceneObjectGetTemplate(IntPtr SceneObject);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void SceneObjectSetTemplate(IntPtr SceneObject, string templatePath);

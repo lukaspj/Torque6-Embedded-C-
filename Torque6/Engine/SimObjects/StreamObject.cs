@@ -44,7 +44,7 @@ namespace Torque6.Engine.SimObjects
          internal static extern IntPtr StreamObjectCreateInstance();
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string StreamObjectGetStatus(IntPtr streamObj);
+         internal static extern IntPtr StreamObjectGetStatus(IntPtr streamObj);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern bool StreamObjectIsEOS(IntPtr streamObj);
@@ -62,19 +62,19 @@ namespace Torque6.Engine.SimObjects
          internal static extern int StreamObjectGetStreamSize(IntPtr streamObj);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string StreamObjectReadLine(IntPtr streamObj);
+         internal static extern IntPtr StreamObjectReadLine(IntPtr streamObj);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void StreamObjectWriteLine(IntPtr streamObj, string line);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string StreamObjectReadSTString(IntPtr streamObj, bool caseSensitive);
+         internal static extern IntPtr StreamObjectReadSTString(IntPtr streamObj, bool caseSensitive);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string StreamObjectReadString(IntPtr streamObj);
+         internal static extern IntPtr StreamObjectReadString(IntPtr streamObj);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string StreamObjectReadLongString(IntPtr streamObj, int maxLength);
+         internal static extern IntPtr StreamObjectReadLongString(IntPtr streamObj, int maxLength);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void StreamObjectWriteLongString(IntPtr streamObj, int maxLength, string longString);

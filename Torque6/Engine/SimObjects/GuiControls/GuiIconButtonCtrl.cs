@@ -47,7 +47,7 @@ namespace Torque6.Engine.SimObjects.GuiControls
          internal static extern void GuiIconButtonCtrlSetButtonMargin(IntPtr ctrl, Point2I margin);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string GuiIconButtonCtrlGetIconBitmap(IntPtr ctrl);
+         internal static extern IntPtr GuiIconButtonCtrlGetIconBitmap(IntPtr ctrl);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void GuiIconButtonCtrlSetIconBitmap(IntPtr ctrl, string bitmap);

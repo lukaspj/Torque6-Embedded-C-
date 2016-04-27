@@ -107,7 +107,7 @@ namespace Torque6.Engine.SimObjects.GuiControls
          internal static extern void GuiListBoxCtrlSetItemtext(IntPtr ctrl, int index, string newText);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string GuiListBoxCtrlGetItemtext(IntPtr ctrl, int index);
+         internal static extern IntPtr GuiListBoxCtrlGetItemtext(IntPtr ctrl, int index);
       }
       
       #endregion

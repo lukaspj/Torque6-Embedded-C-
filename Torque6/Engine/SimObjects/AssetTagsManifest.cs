@@ -59,13 +59,13 @@ namespace Torque6.Engine.SimObjects
          internal static extern int AssetTagsManifestGetTagCount(IntPtr assetTagsManifest);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string AssetTagsManifestGetTag(IntPtr assetTagsManifest, int tagIndex);
+         internal static extern IntPtr AssetTagsManifestGetTag(IntPtr assetTagsManifest, int tagIndex);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern int AssetTagsManifestGetAssetTagCount(IntPtr assetTagsManifest, string assetId);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string AssetTagsManifestGetAssetTag(IntPtr assetTagsManifest, string assetId, int tagIndex);
+         internal static extern IntPtr AssetTagsManifestGetAssetTag(IntPtr assetTagsManifest, string assetId, int tagIndex);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern bool AssetTagsManifestTag(IntPtr assetTagsManifest, string assetId, string tagName);

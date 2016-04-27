@@ -41,7 +41,7 @@ namespace Torque6.Engine.SimObjects
       new internal struct InternalUnsafeMethods
       {
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern string EventManagerGetQueue(IntPtr eventManager);
+         internal static extern IntPtr EventManagerGetQueue(IntPtr eventManager);
 
          [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
          internal static extern void EventManagerSetQueue(IntPtr eventManager, string value);
