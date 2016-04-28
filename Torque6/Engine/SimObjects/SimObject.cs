@@ -442,6 +442,18 @@ namespace Torque6.Engine.SimObjects
 
       public Sim.SimObjectPtr* ObjectPtr { get; protected set; }
 
+      public void SetPointerFromObject(SimObject obj)
+      {
+         if (ObjectPtr == null)
+         {
+            ObjectPtr = obj.ObjectPtr;
+         }
+         else
+         {
+            throw new Exception("Don't set the pointer of an object that already has a pointer.");
+         }
+      }
+
       public bool IsDead()
       {
          return ObjectPtr->ObjPtr == IntPtr.Zero;

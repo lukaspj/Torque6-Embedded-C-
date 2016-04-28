@@ -99,7 +99,7 @@ namespace Torque6.Interop
          string _name = Marshal.PtrToStringAnsi(name);
 
          SimObject objectWrapper = new SimObject(obj);
-         string[] strings = null;
+         string[] strings = {};
          if (argv != IntPtr.Zero)
             strings = CustomMarshalling.IntPtrToStringArray(argv, argc);
          string strRes = EngineCallbacks.CallScriptMethod(_className, objectWrapper, _name, strings, out result);

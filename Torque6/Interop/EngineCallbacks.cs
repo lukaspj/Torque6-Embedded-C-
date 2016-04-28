@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
+using System.Runtime.Serialization;
 using Torque6.Engine.SimObjects;
 
 namespace Torque6.Interop
@@ -59,7 +60,7 @@ namespace Torque6.Interop
             found = true;
             object simObj = null;
             if (!callbackMethod.IsStatic)
-               simObj = objectWrapper;
+               simObj = CreateInstance(type, objectWrapper);
             if (callbackMethod.ReturnType == typeof (string))
                return (string) callbackMethod.Invoke(simObj, args);
             callbackMethod.Invoke(simObj, args);
@@ -67,6 +68,13 @@ namespace Torque6.Interop
          }
          found = false;
          return null;
+      }
+
+      private static object CreateInstance(Type type, SimObject objectWrapper)
+      {
+         SimObject obj = (SimObject)FormatterServices.GetUninitializedObject(type);
+         obj.SetPointerFromObject(objectWrapper);
+         return obj;
       }
 
       public static bool IsMethod(string className, string methodName)
