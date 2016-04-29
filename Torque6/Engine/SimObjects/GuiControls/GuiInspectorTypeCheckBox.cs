@@ -40,8 +40,20 @@ namespace Torque6.Engine.SimObjects.GuiControls
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiInspectorTypeCheckBoxCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiInspectorTypeCheckBoxCreateInstance();
+         private static _GuiInspectorTypeCheckBoxCreateInstance _GuiInspectorTypeCheckBoxCreateInstanceFunc;
+         internal static IntPtr GuiInspectorTypeCheckBoxCreateInstance()
+         {
+            if (_GuiInspectorTypeCheckBoxCreateInstanceFunc == null)
+            {
+               _GuiInspectorTypeCheckBoxCreateInstanceFunc =
+                  (_GuiInspectorTypeCheckBoxCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiInspectorTypeCheckBoxCreateInstance"), typeof(_GuiInspectorTypeCheckBoxCreateInstance));
+            }
+
+            return _GuiInspectorTypeCheckBoxCreateInstanceFunc();
+         }
       }
       
       #endregion

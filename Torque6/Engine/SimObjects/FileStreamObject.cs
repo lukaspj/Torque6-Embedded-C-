@@ -40,14 +40,50 @@ namespace Torque6.Engine.SimObjects
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr FileStreamObjectCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _FileStreamObjectCreateInstance();
+         private static _FileStreamObjectCreateInstance _FileStreamObjectCreateInstanceFunc;
+         internal static IntPtr FileStreamObjectCreateInstance()
+         {
+            if (_FileStreamObjectCreateInstanceFunc == null)
+            {
+               _FileStreamObjectCreateInstanceFunc =
+                  (_FileStreamObjectCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "FileStreamObjectCreateInstance"), typeof(_FileStreamObjectCreateInstance));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool FileStreamObjectOpen(IntPtr fileStream, string fileName, int mode);
+            return _FileStreamObjectCreateInstanceFunc();
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void FileStreamObjectClose(IntPtr fileStream);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _FileStreamObjectOpen(IntPtr fileStream, string fileName, int mode);
+         private static _FileStreamObjectOpen _FileStreamObjectOpenFunc;
+         internal static bool FileStreamObjectOpen(IntPtr fileStream, string fileName, int mode)
+         {
+            if (_FileStreamObjectOpenFunc == null)
+            {
+               _FileStreamObjectOpenFunc =
+                  (_FileStreamObjectOpen)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "FileStreamObjectOpen"), typeof(_FileStreamObjectOpen));
+            }
+
+            return _FileStreamObjectOpenFunc(fileStream, fileName, mode);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _FileStreamObjectClose(IntPtr fileStream);
+         private static _FileStreamObjectClose _FileStreamObjectCloseFunc;
+         internal static void FileStreamObjectClose(IntPtr fileStream)
+         {
+            if (_FileStreamObjectCloseFunc == null)
+            {
+               _FileStreamObjectCloseFunc =
+                  (_FileStreamObjectClose)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "FileStreamObjectClose"), typeof(_FileStreamObjectClose));
+            }
+
+            _FileStreamObjectCloseFunc(fileStream);
+         }
       }
       
       #endregion

@@ -40,20 +40,80 @@ namespace Torque6.Engine.SimObjects.Scene
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr AddNodeGetInputASrc(IntPtr AddNode);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _AddNodeGetInputASrc(IntPtr AddNode);
+         private static _AddNodeGetInputASrc _AddNodeGetInputASrcFunc;
+         internal static IntPtr AddNodeGetInputASrc(IntPtr AddNode)
+         {
+            if (_AddNodeGetInputASrcFunc == null)
+            {
+               _AddNodeGetInputASrcFunc =
+                  (_AddNodeGetInputASrc)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "AddNodeGetInputASrc"), typeof(_AddNodeGetInputASrc));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void AddNodeSetInputASrc(IntPtr AddNode, string src);
+            return _AddNodeGetInputASrcFunc(AddNode);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr AddNodeGetInputBSrc(IntPtr AddNode);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _AddNodeSetInputASrc(IntPtr AddNode, string src);
+         private static _AddNodeSetInputASrc _AddNodeSetInputASrcFunc;
+         internal static void AddNodeSetInputASrc(IntPtr AddNode, string src)
+         {
+            if (_AddNodeSetInputASrcFunc == null)
+            {
+               _AddNodeSetInputASrcFunc =
+                  (_AddNodeSetInputASrc)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "AddNodeSetInputASrc"), typeof(_AddNodeSetInputASrc));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void AddNodeSetInputBSrc(IntPtr AddNode, string src);
+            _AddNodeSetInputASrcFunc(AddNode, src);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr AddNodeCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _AddNodeGetInputBSrc(IntPtr AddNode);
+         private static _AddNodeGetInputBSrc _AddNodeGetInputBSrcFunc;
+         internal static IntPtr AddNodeGetInputBSrc(IntPtr AddNode)
+         {
+            if (_AddNodeGetInputBSrcFunc == null)
+            {
+               _AddNodeGetInputBSrcFunc =
+                  (_AddNodeGetInputBSrc)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "AddNodeGetInputBSrc"), typeof(_AddNodeGetInputBSrc));
+            }
+
+            return _AddNodeGetInputBSrcFunc(AddNode);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _AddNodeSetInputBSrc(IntPtr AddNode, string src);
+         private static _AddNodeSetInputBSrc _AddNodeSetInputBSrcFunc;
+         internal static void AddNodeSetInputBSrc(IntPtr AddNode, string src)
+         {
+            if (_AddNodeSetInputBSrcFunc == null)
+            {
+               _AddNodeSetInputBSrcFunc =
+                  (_AddNodeSetInputBSrc)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "AddNodeSetInputBSrc"), typeof(_AddNodeSetInputBSrc));
+            }
+
+            _AddNodeSetInputBSrcFunc(AddNode, src);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _AddNodeCreateInstance();
+         private static _AddNodeCreateInstance _AddNodeCreateInstanceFunc;
+         internal static IntPtr AddNodeCreateInstance()
+         {
+            if (_AddNodeCreateInstanceFunc == null)
+            {
+               _AddNodeCreateInstanceFunc =
+                  (_AddNodeCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "AddNodeCreateInstance"), typeof(_AddNodeCreateInstance));
+            }
+
+            return _AddNodeCreateInstanceFunc();
+         }
       }
       
       #endregion

@@ -13,11 +13,35 @@ namespace Torque6.Engine.Namespaces
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void Game_SaveJournal(string namedFile);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _Game_SaveJournal(string namedFile);
+         private static _Game_SaveJournal _Game_SaveJournalFunc;
+         internal static void Game_SaveJournal(string namedFile)
+         {
+            if (_Game_SaveJournalFunc == null)
+            {
+               _Game_SaveJournalFunc =
+                  (_Game_SaveJournal)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "Game_SaveJournal"), typeof(_Game_SaveJournal));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void Game_PlayJournal(string filePath, bool doBreak);
+            _Game_SaveJournalFunc(namedFile);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _Game_PlayJournal(string filePath, bool doBreak);
+         private static _Game_PlayJournal _Game_PlayJournalFunc;
+         internal static void Game_PlayJournal(string filePath, bool doBreak)
+         {
+            if (_Game_PlayJournalFunc == null)
+            {
+               _Game_PlayJournalFunc =
+                  (_Game_PlayJournal)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "Game_PlayJournal"), typeof(_Game_PlayJournal));
+            }
+
+            _Game_PlayJournalFunc(filePath, doBreak);
+         }
       }
 
       #endregion

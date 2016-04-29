@@ -40,20 +40,80 @@ namespace Torque6.Engine.SimObjects.Scene
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr LerpNodeGetInputASrc(IntPtr LerpNode);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _LerpNodeGetInputASrc(IntPtr LerpNode);
+         private static _LerpNodeGetInputASrc _LerpNodeGetInputASrcFunc;
+         internal static IntPtr LerpNodeGetInputASrc(IntPtr LerpNode)
+         {
+            if (_LerpNodeGetInputASrcFunc == null)
+            {
+               _LerpNodeGetInputASrcFunc =
+                  (_LerpNodeGetInputASrc)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "LerpNodeGetInputASrc"), typeof(_LerpNodeGetInputASrc));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void LerpNodeSetInputASrc(IntPtr LerpNode, string src);
+            return _LerpNodeGetInputASrcFunc(LerpNode);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr LerpNodeGetInputBSrc(IntPtr LerpNode);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _LerpNodeSetInputASrc(IntPtr LerpNode, string src);
+         private static _LerpNodeSetInputASrc _LerpNodeSetInputASrcFunc;
+         internal static void LerpNodeSetInputASrc(IntPtr LerpNode, string src)
+         {
+            if (_LerpNodeSetInputASrcFunc == null)
+            {
+               _LerpNodeSetInputASrcFunc =
+                  (_LerpNodeSetInputASrc)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "LerpNodeSetInputASrc"), typeof(_LerpNodeSetInputASrc));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void LerpNodeSetInputBSrc(IntPtr LerpNode, string src);
+            _LerpNodeSetInputASrcFunc(LerpNode, src);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr LerpNodeCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _LerpNodeGetInputBSrc(IntPtr LerpNode);
+         private static _LerpNodeGetInputBSrc _LerpNodeGetInputBSrcFunc;
+         internal static IntPtr LerpNodeGetInputBSrc(IntPtr LerpNode)
+         {
+            if (_LerpNodeGetInputBSrcFunc == null)
+            {
+               _LerpNodeGetInputBSrcFunc =
+                  (_LerpNodeGetInputBSrc)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "LerpNodeGetInputBSrc"), typeof(_LerpNodeGetInputBSrc));
+            }
+
+            return _LerpNodeGetInputBSrcFunc(LerpNode);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _LerpNodeSetInputBSrc(IntPtr LerpNode, string src);
+         private static _LerpNodeSetInputBSrc _LerpNodeSetInputBSrcFunc;
+         internal static void LerpNodeSetInputBSrc(IntPtr LerpNode, string src)
+         {
+            if (_LerpNodeSetInputBSrcFunc == null)
+            {
+               _LerpNodeSetInputBSrcFunc =
+                  (_LerpNodeSetInputBSrc)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "LerpNodeSetInputBSrc"), typeof(_LerpNodeSetInputBSrc));
+            }
+
+            _LerpNodeSetInputBSrcFunc(LerpNode, src);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _LerpNodeCreateInstance();
+         private static _LerpNodeCreateInstance _LerpNodeCreateInstanceFunc;
+         internal static IntPtr LerpNodeCreateInstance()
+         {
+            if (_LerpNodeCreateInstanceFunc == null)
+            {
+               _LerpNodeCreateInstanceFunc =
+                  (_LerpNodeCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "LerpNodeCreateInstance"), typeof(_LerpNodeCreateInstance));
+            }
+
+            return _LerpNodeCreateInstanceFunc();
+         }
       }
       
       #endregion

@@ -40,38 +40,170 @@ namespace Torque6.Engine.SimObjects
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr AudioAssetGetAudioFile(IntPtr audioAsset);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _AudioAssetGetAudioFile(IntPtr audioAsset);
+         private static _AudioAssetGetAudioFile _AudioAssetGetAudioFileFunc;
+         internal static IntPtr AudioAssetGetAudioFile(IntPtr audioAsset)
+         {
+            if (_AudioAssetGetAudioFileFunc == null)
+            {
+               _AudioAssetGetAudioFileFunc =
+                  (_AudioAssetGetAudioFile)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "AudioAssetGetAudioFile"), typeof(_AudioAssetGetAudioFile));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void AudioAssetSetAudioFile(IntPtr audioAsset, string val);
+            return _AudioAssetGetAudioFileFunc(audioAsset);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern float AudioAssetGetVolume(IntPtr audioAsset);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _AudioAssetSetAudioFile(IntPtr audioAsset, string val);
+         private static _AudioAssetSetAudioFile _AudioAssetSetAudioFileFunc;
+         internal static void AudioAssetSetAudioFile(IntPtr audioAsset, string val)
+         {
+            if (_AudioAssetSetAudioFileFunc == null)
+            {
+               _AudioAssetSetAudioFileFunc =
+                  (_AudioAssetSetAudioFile)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "AudioAssetSetAudioFile"), typeof(_AudioAssetSetAudioFile));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void AudioAssetSetVolume(IntPtr audioAsset, float val);
+            _AudioAssetSetAudioFileFunc(audioAsset, val);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern int AudioAssetGetVolumeChannel(IntPtr audioAsset);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate float _AudioAssetGetVolume(IntPtr audioAsset);
+         private static _AudioAssetGetVolume _AudioAssetGetVolumeFunc;
+         internal static float AudioAssetGetVolume(IntPtr audioAsset)
+         {
+            if (_AudioAssetGetVolumeFunc == null)
+            {
+               _AudioAssetGetVolumeFunc =
+                  (_AudioAssetGetVolume)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "AudioAssetGetVolume"), typeof(_AudioAssetGetVolume));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void AudioAssetSetVolumeChannel(IntPtr audioAsset, int val);
+            return _AudioAssetGetVolumeFunc(audioAsset);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool AudioAssetGetLooping(IntPtr audioAsset);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _AudioAssetSetVolume(IntPtr audioAsset, float val);
+         private static _AudioAssetSetVolume _AudioAssetSetVolumeFunc;
+         internal static void AudioAssetSetVolume(IntPtr audioAsset, float val)
+         {
+            if (_AudioAssetSetVolumeFunc == null)
+            {
+               _AudioAssetSetVolumeFunc =
+                  (_AudioAssetSetVolume)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "AudioAssetSetVolume"), typeof(_AudioAssetSetVolume));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void AudioAssetSetLooping(IntPtr audioAsset, bool val);
+            _AudioAssetSetVolumeFunc(audioAsset, val);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool AudioAssetGetStreaming(IntPtr audioAsset);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate int _AudioAssetGetVolumeChannel(IntPtr audioAsset);
+         private static _AudioAssetGetVolumeChannel _AudioAssetGetVolumeChannelFunc;
+         internal static int AudioAssetGetVolumeChannel(IntPtr audioAsset)
+         {
+            if (_AudioAssetGetVolumeChannelFunc == null)
+            {
+               _AudioAssetGetVolumeChannelFunc =
+                  (_AudioAssetGetVolumeChannel)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "AudioAssetGetVolumeChannel"), typeof(_AudioAssetGetVolumeChannel));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void AudioAssetSetStreaming(IntPtr audioAsset, bool val);
+            return _AudioAssetGetVolumeChannelFunc(audioAsset);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr AudioAssetCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _AudioAssetSetVolumeChannel(IntPtr audioAsset, int val);
+         private static _AudioAssetSetVolumeChannel _AudioAssetSetVolumeChannelFunc;
+         internal static void AudioAssetSetVolumeChannel(IntPtr audioAsset, int val)
+         {
+            if (_AudioAssetSetVolumeChannelFunc == null)
+            {
+               _AudioAssetSetVolumeChannelFunc =
+                  (_AudioAssetSetVolumeChannel)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "AudioAssetSetVolumeChannel"), typeof(_AudioAssetSetVolumeChannel));
+            }
+
+            _AudioAssetSetVolumeChannelFunc(audioAsset, val);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _AudioAssetGetLooping(IntPtr audioAsset);
+         private static _AudioAssetGetLooping _AudioAssetGetLoopingFunc;
+         internal static bool AudioAssetGetLooping(IntPtr audioAsset)
+         {
+            if (_AudioAssetGetLoopingFunc == null)
+            {
+               _AudioAssetGetLoopingFunc =
+                  (_AudioAssetGetLooping)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "AudioAssetGetLooping"), typeof(_AudioAssetGetLooping));
+            }
+
+            return _AudioAssetGetLoopingFunc(audioAsset);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _AudioAssetSetLooping(IntPtr audioAsset, bool val);
+         private static _AudioAssetSetLooping _AudioAssetSetLoopingFunc;
+         internal static void AudioAssetSetLooping(IntPtr audioAsset, bool val)
+         {
+            if (_AudioAssetSetLoopingFunc == null)
+            {
+               _AudioAssetSetLoopingFunc =
+                  (_AudioAssetSetLooping)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "AudioAssetSetLooping"), typeof(_AudioAssetSetLooping));
+            }
+
+            _AudioAssetSetLoopingFunc(audioAsset, val);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _AudioAssetGetStreaming(IntPtr audioAsset);
+         private static _AudioAssetGetStreaming _AudioAssetGetStreamingFunc;
+         internal static bool AudioAssetGetStreaming(IntPtr audioAsset)
+         {
+            if (_AudioAssetGetStreamingFunc == null)
+            {
+               _AudioAssetGetStreamingFunc =
+                  (_AudioAssetGetStreaming)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "AudioAssetGetStreaming"), typeof(_AudioAssetGetStreaming));
+            }
+
+            return _AudioAssetGetStreamingFunc(audioAsset);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _AudioAssetSetStreaming(IntPtr audioAsset, bool val);
+         private static _AudioAssetSetStreaming _AudioAssetSetStreamingFunc;
+         internal static void AudioAssetSetStreaming(IntPtr audioAsset, bool val)
+         {
+            if (_AudioAssetSetStreamingFunc == null)
+            {
+               _AudioAssetSetStreamingFunc =
+                  (_AudioAssetSetStreaming)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "AudioAssetSetStreaming"), typeof(_AudioAssetSetStreaming));
+            }
+
+            _AudioAssetSetStreamingFunc(audioAsset, val);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _AudioAssetCreateInstance();
+         private static _AudioAssetCreateInstance _AudioAssetCreateInstanceFunc;
+         internal static IntPtr AudioAssetCreateInstance()
+         {
+            if (_AudioAssetCreateInstanceFunc == null)
+            {
+               _AudioAssetCreateInstanceFunc =
+                  (_AudioAssetCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "AudioAssetCreateInstance"), typeof(_AudioAssetCreateInstance));
+            }
+
+            return _AudioAssetCreateInstanceFunc();
+         }
       }
       
       #endregion

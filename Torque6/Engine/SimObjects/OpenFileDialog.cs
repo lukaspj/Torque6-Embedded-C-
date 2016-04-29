@@ -40,20 +40,80 @@ namespace Torque6.Engine.SimObjects
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool OpenFileDialogGetMustExist(IntPtr openFileDialog);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _OpenFileDialogGetMustExist(IntPtr openFileDialog);
+         private static _OpenFileDialogGetMustExist _OpenFileDialogGetMustExistFunc;
+         internal static bool OpenFileDialogGetMustExist(IntPtr openFileDialog)
+         {
+            if (_OpenFileDialogGetMustExistFunc == null)
+            {
+               _OpenFileDialogGetMustExistFunc =
+                  (_OpenFileDialogGetMustExist)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "OpenFileDialogGetMustExist"), typeof(_OpenFileDialogGetMustExist));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void OpenFileDialogSetMustExist(IntPtr openFileDialog, bool value);
+            return _OpenFileDialogGetMustExistFunc(openFileDialog);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool OpenFileDialogGetMultipleFiles(IntPtr openFileDialog);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _OpenFileDialogSetMustExist(IntPtr openFileDialog, bool value);
+         private static _OpenFileDialogSetMustExist _OpenFileDialogSetMustExistFunc;
+         internal static void OpenFileDialogSetMustExist(IntPtr openFileDialog, bool value)
+         {
+            if (_OpenFileDialogSetMustExistFunc == null)
+            {
+               _OpenFileDialogSetMustExistFunc =
+                  (_OpenFileDialogSetMustExist)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "OpenFileDialogSetMustExist"), typeof(_OpenFileDialogSetMustExist));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void OpenFileDialogSetMultipleFiles(IntPtr openFileDialog, bool value);
+            _OpenFileDialogSetMustExistFunc(openFileDialog, value);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr OpenFileDialogCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _OpenFileDialogGetMultipleFiles(IntPtr openFileDialog);
+         private static _OpenFileDialogGetMultipleFiles _OpenFileDialogGetMultipleFilesFunc;
+         internal static bool OpenFileDialogGetMultipleFiles(IntPtr openFileDialog)
+         {
+            if (_OpenFileDialogGetMultipleFilesFunc == null)
+            {
+               _OpenFileDialogGetMultipleFilesFunc =
+                  (_OpenFileDialogGetMultipleFiles)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "OpenFileDialogGetMultipleFiles"), typeof(_OpenFileDialogGetMultipleFiles));
+            }
+
+            return _OpenFileDialogGetMultipleFilesFunc(openFileDialog);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _OpenFileDialogSetMultipleFiles(IntPtr openFileDialog, bool value);
+         private static _OpenFileDialogSetMultipleFiles _OpenFileDialogSetMultipleFilesFunc;
+         internal static void OpenFileDialogSetMultipleFiles(IntPtr openFileDialog, bool value)
+         {
+            if (_OpenFileDialogSetMultipleFilesFunc == null)
+            {
+               _OpenFileDialogSetMultipleFilesFunc =
+                  (_OpenFileDialogSetMultipleFiles)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "OpenFileDialogSetMultipleFiles"), typeof(_OpenFileDialogSetMultipleFiles));
+            }
+
+            _OpenFileDialogSetMultipleFilesFunc(openFileDialog, value);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _OpenFileDialogCreateInstance();
+         private static _OpenFileDialogCreateInstance _OpenFileDialogCreateInstanceFunc;
+         internal static IntPtr OpenFileDialogCreateInstance()
+         {
+            if (_OpenFileDialogCreateInstanceFunc == null)
+            {
+               _OpenFileDialogCreateInstanceFunc =
+                  (_OpenFileDialogCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "OpenFileDialogCreateInstance"), typeof(_OpenFileDialogCreateInstance));
+            }
+
+            return _OpenFileDialogCreateInstanceFunc();
+         }
       }
       
       #endregion

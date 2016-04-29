@@ -40,44 +40,200 @@ namespace Torque6.Engine.SimObjects
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool PopupMenuGetIsPopup(IntPtr popupMenu);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _PopupMenuGetIsPopup(IntPtr popupMenu);
+         private static _PopupMenuGetIsPopup _PopupMenuGetIsPopupFunc;
+         internal static bool PopupMenuGetIsPopup(IntPtr popupMenu)
+         {
+            if (_PopupMenuGetIsPopupFunc == null)
+            {
+               _PopupMenuGetIsPopupFunc =
+                  (_PopupMenuGetIsPopup)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "PopupMenuGetIsPopup"), typeof(_PopupMenuGetIsPopup));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void PopupMenuSetIsPopup(IntPtr popupMenu, bool value);
+            return _PopupMenuGetIsPopupFunc(popupMenu);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr PopupMenuCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _PopupMenuSetIsPopup(IntPtr popupMenu, bool value);
+         private static _PopupMenuSetIsPopup _PopupMenuSetIsPopupFunc;
+         internal static void PopupMenuSetIsPopup(IntPtr popupMenu, bool value)
+         {
+            if (_PopupMenuSetIsPopupFunc == null)
+            {
+               _PopupMenuSetIsPopupFunc =
+                  (_PopupMenuSetIsPopup)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "PopupMenuSetIsPopup"), typeof(_PopupMenuSetIsPopup));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern int PopupMenuInsertItem(IntPtr popupMenu, int pos, string title, string accelerator);
+            _PopupMenuSetIsPopupFunc(popupMenu, value);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void PopupMenuRemoveItem(IntPtr popupMenu, int pos);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _PopupMenuCreateInstance();
+         private static _PopupMenuCreateInstance _PopupMenuCreateInstanceFunc;
+         internal static IntPtr PopupMenuCreateInstance()
+         {
+            if (_PopupMenuCreateInstanceFunc == null)
+            {
+               _PopupMenuCreateInstanceFunc =
+                  (_PopupMenuCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "PopupMenuCreateInstance"), typeof(_PopupMenuCreateInstance));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern int PopupMenuInsertSubMenu(IntPtr popupMenu, int pos, string title, IntPtr submenu);
+            return _PopupMenuCreateInstanceFunc();
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void PopupMenuEnableItem(IntPtr popupMenu, int pos, bool enable);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate int _PopupMenuInsertItem(IntPtr popupMenu, int pos, string title, string accelerator);
+         private static _PopupMenuInsertItem _PopupMenuInsertItemFunc;
+         internal static int PopupMenuInsertItem(IntPtr popupMenu, int pos, string title, string accelerator)
+         {
+            if (_PopupMenuInsertItemFunc == null)
+            {
+               _PopupMenuInsertItemFunc =
+                  (_PopupMenuInsertItem)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "PopupMenuInsertItem"), typeof(_PopupMenuInsertItem));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void PopupMenuCheckItem(IntPtr popupMenu, int pos, bool checkedValue);
+            return _PopupMenuInsertItemFunc(popupMenu, pos, title, accelerator);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void PopupMenuCheckRadioItem(IntPtr popupMenu, int firstPos, int lastPos, int checkPos);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _PopupMenuRemoveItem(IntPtr popupMenu, int pos);
+         private static _PopupMenuRemoveItem _PopupMenuRemoveItemFunc;
+         internal static void PopupMenuRemoveItem(IntPtr popupMenu, int pos)
+         {
+            if (_PopupMenuRemoveItemFunc == null)
+            {
+               _PopupMenuRemoveItemFunc =
+                  (_PopupMenuRemoveItem)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "PopupMenuRemoveItem"), typeof(_PopupMenuRemoveItem));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool PopupMenuIsItemChecked(IntPtr popupMenu, int pos);
+            _PopupMenuRemoveItemFunc(popupMenu, pos);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void PopupMenuAttachToMenuBar(IntPtr popupMenu, int pos, string title);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate int _PopupMenuInsertSubMenu(IntPtr popupMenu, int pos, string title, IntPtr submenu);
+         private static _PopupMenuInsertSubMenu _PopupMenuInsertSubMenuFunc;
+         internal static int PopupMenuInsertSubMenu(IntPtr popupMenu, int pos, string title, IntPtr submenu)
+         {
+            if (_PopupMenuInsertSubMenuFunc == null)
+            {
+               _PopupMenuInsertSubMenuFunc =
+                  (_PopupMenuInsertSubMenu)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "PopupMenuInsertSubMenu"), typeof(_PopupMenuInsertSubMenu));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void PopupMenuRemoveFromMenuBar(IntPtr popupMenu);
+            return _PopupMenuInsertSubMenuFunc(popupMenu, pos, title, submenu);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void PopupMenuShowPopup(IntPtr popupMenu, int x, int y);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _PopupMenuEnableItem(IntPtr popupMenu, int pos, bool enable);
+         private static _PopupMenuEnableItem _PopupMenuEnableItemFunc;
+         internal static void PopupMenuEnableItem(IntPtr popupMenu, int pos, bool enable)
+         {
+            if (_PopupMenuEnableItemFunc == null)
+            {
+               _PopupMenuEnableItemFunc =
+                  (_PopupMenuEnableItem)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "PopupMenuEnableItem"), typeof(_PopupMenuEnableItem));
+            }
+
+            _PopupMenuEnableItemFunc(popupMenu, pos, enable);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _PopupMenuCheckItem(IntPtr popupMenu, int pos, bool checkedValue);
+         private static _PopupMenuCheckItem _PopupMenuCheckItemFunc;
+         internal static void PopupMenuCheckItem(IntPtr popupMenu, int pos, bool checkedValue)
+         {
+            if (_PopupMenuCheckItemFunc == null)
+            {
+               _PopupMenuCheckItemFunc =
+                  (_PopupMenuCheckItem)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "PopupMenuCheckItem"), typeof(_PopupMenuCheckItem));
+            }
+
+            _PopupMenuCheckItemFunc(popupMenu, pos, checkedValue);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _PopupMenuCheckRadioItem(IntPtr popupMenu, int firstPos, int lastPos, int checkPos);
+         private static _PopupMenuCheckRadioItem _PopupMenuCheckRadioItemFunc;
+         internal static void PopupMenuCheckRadioItem(IntPtr popupMenu, int firstPos, int lastPos, int checkPos)
+         {
+            if (_PopupMenuCheckRadioItemFunc == null)
+            {
+               _PopupMenuCheckRadioItemFunc =
+                  (_PopupMenuCheckRadioItem)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "PopupMenuCheckRadioItem"), typeof(_PopupMenuCheckRadioItem));
+            }
+
+            _PopupMenuCheckRadioItemFunc(popupMenu, firstPos, lastPos, checkPos);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _PopupMenuIsItemChecked(IntPtr popupMenu, int pos);
+         private static _PopupMenuIsItemChecked _PopupMenuIsItemCheckedFunc;
+         internal static bool PopupMenuIsItemChecked(IntPtr popupMenu, int pos)
+         {
+            if (_PopupMenuIsItemCheckedFunc == null)
+            {
+               _PopupMenuIsItemCheckedFunc =
+                  (_PopupMenuIsItemChecked)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "PopupMenuIsItemChecked"), typeof(_PopupMenuIsItemChecked));
+            }
+
+            return _PopupMenuIsItemCheckedFunc(popupMenu, pos);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _PopupMenuAttachToMenuBar(IntPtr popupMenu, int pos, string title);
+         private static _PopupMenuAttachToMenuBar _PopupMenuAttachToMenuBarFunc;
+         internal static void PopupMenuAttachToMenuBar(IntPtr popupMenu, int pos, string title)
+         {
+            if (_PopupMenuAttachToMenuBarFunc == null)
+            {
+               _PopupMenuAttachToMenuBarFunc =
+                  (_PopupMenuAttachToMenuBar)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "PopupMenuAttachToMenuBar"), typeof(_PopupMenuAttachToMenuBar));
+            }
+
+            _PopupMenuAttachToMenuBarFunc(popupMenu, pos, title);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _PopupMenuRemoveFromMenuBar(IntPtr popupMenu);
+         private static _PopupMenuRemoveFromMenuBar _PopupMenuRemoveFromMenuBarFunc;
+         internal static void PopupMenuRemoveFromMenuBar(IntPtr popupMenu)
+         {
+            if (_PopupMenuRemoveFromMenuBarFunc == null)
+            {
+               _PopupMenuRemoveFromMenuBarFunc =
+                  (_PopupMenuRemoveFromMenuBar)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "PopupMenuRemoveFromMenuBar"), typeof(_PopupMenuRemoveFromMenuBar));
+            }
+
+            _PopupMenuRemoveFromMenuBarFunc(popupMenu);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _PopupMenuShowPopup(IntPtr popupMenu, int x, int y);
+         private static _PopupMenuShowPopup _PopupMenuShowPopupFunc;
+         internal static void PopupMenuShowPopup(IntPtr popupMenu, int x, int y)
+         {
+            if (_PopupMenuShowPopupFunc == null)
+            {
+               _PopupMenuShowPopupFunc =
+                  (_PopupMenuShowPopup)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "PopupMenuShowPopup"), typeof(_PopupMenuShowPopup));
+            }
+
+            _PopupMenuShowPopupFunc(popupMenu, x, y);
+         }
       }
       
       #endregion

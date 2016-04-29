@@ -40,20 +40,80 @@ namespace Torque6.Engine.SimObjects.Scene
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr SubtractNodeGetInputASrc(IntPtr SubtractNode);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _SubtractNodeGetInputASrc(IntPtr SubtractNode);
+         private static _SubtractNodeGetInputASrc _SubtractNodeGetInputASrcFunc;
+         internal static IntPtr SubtractNodeGetInputASrc(IntPtr SubtractNode)
+         {
+            if (_SubtractNodeGetInputASrcFunc == null)
+            {
+               _SubtractNodeGetInputASrcFunc =
+                  (_SubtractNodeGetInputASrc)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "SubtractNodeGetInputASrc"), typeof(_SubtractNodeGetInputASrc));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void SubtractNodeSetInputASrc(IntPtr SubtractNode, string src);
+            return _SubtractNodeGetInputASrcFunc(SubtractNode);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr SubtractNodeGetInputBSrc(IntPtr SubtractNode);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _SubtractNodeSetInputASrc(IntPtr SubtractNode, string src);
+         private static _SubtractNodeSetInputASrc _SubtractNodeSetInputASrcFunc;
+         internal static void SubtractNodeSetInputASrc(IntPtr SubtractNode, string src)
+         {
+            if (_SubtractNodeSetInputASrcFunc == null)
+            {
+               _SubtractNodeSetInputASrcFunc =
+                  (_SubtractNodeSetInputASrc)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "SubtractNodeSetInputASrc"), typeof(_SubtractNodeSetInputASrc));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void SubtractNodeSetInputBSrc(IntPtr SubtractNode, string src);
+            _SubtractNodeSetInputASrcFunc(SubtractNode, src);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr SubtractNodeCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _SubtractNodeGetInputBSrc(IntPtr SubtractNode);
+         private static _SubtractNodeGetInputBSrc _SubtractNodeGetInputBSrcFunc;
+         internal static IntPtr SubtractNodeGetInputBSrc(IntPtr SubtractNode)
+         {
+            if (_SubtractNodeGetInputBSrcFunc == null)
+            {
+               _SubtractNodeGetInputBSrcFunc =
+                  (_SubtractNodeGetInputBSrc)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "SubtractNodeGetInputBSrc"), typeof(_SubtractNodeGetInputBSrc));
+            }
+
+            return _SubtractNodeGetInputBSrcFunc(SubtractNode);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _SubtractNodeSetInputBSrc(IntPtr SubtractNode, string src);
+         private static _SubtractNodeSetInputBSrc _SubtractNodeSetInputBSrcFunc;
+         internal static void SubtractNodeSetInputBSrc(IntPtr SubtractNode, string src)
+         {
+            if (_SubtractNodeSetInputBSrcFunc == null)
+            {
+               _SubtractNodeSetInputBSrcFunc =
+                  (_SubtractNodeSetInputBSrc)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "SubtractNodeSetInputBSrc"), typeof(_SubtractNodeSetInputBSrc));
+            }
+
+            _SubtractNodeSetInputBSrcFunc(SubtractNode, src);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _SubtractNodeCreateInstance();
+         private static _SubtractNodeCreateInstance _SubtractNodeCreateInstanceFunc;
+         internal static IntPtr SubtractNodeCreateInstance()
+         {
+            if (_SubtractNodeCreateInstanceFunc == null)
+            {
+               _SubtractNodeCreateInstanceFunc =
+                  (_SubtractNodeCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "SubtractNodeCreateInstance"), typeof(_SubtractNodeCreateInstance));
+            }
+
+            return _SubtractNodeCreateInstanceFunc();
+         }
       }
       
       #endregion

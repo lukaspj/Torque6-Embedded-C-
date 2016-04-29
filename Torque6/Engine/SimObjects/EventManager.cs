@@ -40,38 +40,170 @@ namespace Torque6.Engine.SimObjects
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr EventManagerGetQueue(IntPtr eventManager);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _EventManagerGetQueue(IntPtr eventManager);
+         private static _EventManagerGetQueue _EventManagerGetQueueFunc;
+         internal static IntPtr EventManagerGetQueue(IntPtr eventManager)
+         {
+            if (_EventManagerGetQueueFunc == null)
+            {
+               _EventManagerGetQueueFunc =
+                  (_EventManagerGetQueue)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "EventManagerGetQueue"), typeof(_EventManagerGetQueue));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void EventManagerSetQueue(IntPtr eventManager, string value);
+            return _EventManagerGetQueueFunc(eventManager);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr EventManagerCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _EventManagerSetQueue(IntPtr eventManager, string value);
+         private static _EventManagerSetQueue _EventManagerSetQueueFunc;
+         internal static void EventManagerSetQueue(IntPtr eventManager, string value)
+         {
+            if (_EventManagerSetQueueFunc == null)
+            {
+               _EventManagerSetQueueFunc =
+                  (_EventManagerSetQueue)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "EventManagerSetQueue"), typeof(_EventManagerSetQueue));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool EventManagerRegisterEvent(IntPtr eventManager, string eventName);
+            _EventManagerSetQueueFunc(eventManager, value);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void EventManagerUnregisterEvent(IntPtr eventManager, string eventName);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _EventManagerCreateInstance();
+         private static _EventManagerCreateInstance _EventManagerCreateInstanceFunc;
+         internal static IntPtr EventManagerCreateInstance()
+         {
+            if (_EventManagerCreateInstanceFunc == null)
+            {
+               _EventManagerCreateInstanceFunc =
+                  (_EventManagerCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "EventManagerCreateInstance"), typeof(_EventManagerCreateInstance));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool EventManagerIsRegisteredEvent(IntPtr eventManager, string eventName);
+            return _EventManagerCreateInstanceFunc();
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool EventManagerPostEvent(IntPtr eventManager, string eventName, string data);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _EventManagerRegisterEvent(IntPtr eventManager, string eventName);
+         private static _EventManagerRegisterEvent _EventManagerRegisterEventFunc;
+         internal static bool EventManagerRegisterEvent(IntPtr eventManager, string eventName)
+         {
+            if (_EventManagerRegisterEventFunc == null)
+            {
+               _EventManagerRegisterEventFunc =
+                  (_EventManagerRegisterEvent)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "EventManagerRegisterEvent"), typeof(_EventManagerRegisterEvent));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool EventManagerSubscribe(IntPtr eventManager, IntPtr listener, string eventName, string callback);
+            return _EventManagerRegisterEventFunc(eventManager, eventName);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void EventManagerRemove(IntPtr eventManager, IntPtr listener, string eventName);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _EventManagerUnregisterEvent(IntPtr eventManager, string eventName);
+         private static _EventManagerUnregisterEvent _EventManagerUnregisterEventFunc;
+         internal static void EventManagerUnregisterEvent(IntPtr eventManager, string eventName)
+         {
+            if (_EventManagerUnregisterEventFunc == null)
+            {
+               _EventManagerUnregisterEventFunc =
+                  (_EventManagerUnregisterEvent)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "EventManagerUnregisterEvent"), typeof(_EventManagerUnregisterEvent));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void EventManagerDumpEvents(IntPtr eventManager);
+            _EventManagerUnregisterEventFunc(eventManager, eventName);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void EventManagerDumpSubscribers(IntPtr eventManager, string eventName);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _EventManagerIsRegisteredEvent(IntPtr eventManager, string eventName);
+         private static _EventManagerIsRegisteredEvent _EventManagerIsRegisteredEventFunc;
+         internal static bool EventManagerIsRegisteredEvent(IntPtr eventManager, string eventName)
+         {
+            if (_EventManagerIsRegisteredEventFunc == null)
+            {
+               _EventManagerIsRegisteredEventFunc =
+                  (_EventManagerIsRegisteredEvent)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "EventManagerIsRegisteredEvent"), typeof(_EventManagerIsRegisteredEvent));
+            }
+
+            return _EventManagerIsRegisteredEventFunc(eventManager, eventName);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _EventManagerPostEvent(IntPtr eventManager, string eventName, string data);
+         private static _EventManagerPostEvent _EventManagerPostEventFunc;
+         internal static bool EventManagerPostEvent(IntPtr eventManager, string eventName, string data)
+         {
+            if (_EventManagerPostEventFunc == null)
+            {
+               _EventManagerPostEventFunc =
+                  (_EventManagerPostEvent)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "EventManagerPostEvent"), typeof(_EventManagerPostEvent));
+            }
+
+            return _EventManagerPostEventFunc(eventManager, eventName, data);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _EventManagerSubscribe(IntPtr eventManager, IntPtr listener, string eventName, string callback);
+         private static _EventManagerSubscribe _EventManagerSubscribeFunc;
+         internal static bool EventManagerSubscribe(IntPtr eventManager, IntPtr listener, string eventName, string callback)
+         {
+            if (_EventManagerSubscribeFunc == null)
+            {
+               _EventManagerSubscribeFunc =
+                  (_EventManagerSubscribe)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "EventManagerSubscribe"), typeof(_EventManagerSubscribe));
+            }
+
+            return _EventManagerSubscribeFunc(eventManager, listener, eventName, callback);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _EventManagerRemove(IntPtr eventManager, IntPtr listener, string eventName);
+         private static _EventManagerRemove _EventManagerRemoveFunc;
+         internal static void EventManagerRemove(IntPtr eventManager, IntPtr listener, string eventName)
+         {
+            if (_EventManagerRemoveFunc == null)
+            {
+               _EventManagerRemoveFunc =
+                  (_EventManagerRemove)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "EventManagerRemove"), typeof(_EventManagerRemove));
+            }
+
+            _EventManagerRemoveFunc(eventManager, listener, eventName);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _EventManagerDumpEvents(IntPtr eventManager);
+         private static _EventManagerDumpEvents _EventManagerDumpEventsFunc;
+         internal static void EventManagerDumpEvents(IntPtr eventManager)
+         {
+            if (_EventManagerDumpEventsFunc == null)
+            {
+               _EventManagerDumpEventsFunc =
+                  (_EventManagerDumpEvents)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "EventManagerDumpEvents"), typeof(_EventManagerDumpEvents));
+            }
+
+            _EventManagerDumpEventsFunc(eventManager);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _EventManagerDumpSubscribers(IntPtr eventManager, string eventName);
+         private static _EventManagerDumpSubscribers _EventManagerDumpSubscribersFunc;
+         internal static void EventManagerDumpSubscribers(IntPtr eventManager, string eventName)
+         {
+            if (_EventManagerDumpSubscribersFunc == null)
+            {
+               _EventManagerDumpSubscribersFunc =
+                  (_EventManagerDumpSubscribers)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "EventManagerDumpSubscribers"), typeof(_EventManagerDumpSubscribers));
+            }
+
+            _EventManagerDumpSubscribersFunc(eventManager, eventName);
+         }
       }
       
       #endregion

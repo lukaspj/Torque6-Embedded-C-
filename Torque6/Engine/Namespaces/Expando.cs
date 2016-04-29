@@ -13,29 +13,125 @@ namespace Torque6.Engine.Namespaces
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr Expando_ExpandPath(string path);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _Expando_ExpandPath(string path);
+         private static _Expando_ExpandPath _Expando_ExpandPathFunc;
+         internal static IntPtr Expando_ExpandPath(string path)
+         {
+            if (_Expando_ExpandPathFunc == null)
+            {
+               _Expando_ExpandPathFunc =
+                  (_Expando_ExpandPath)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "Expando_ExpandPath"), typeof(_Expando_ExpandPath));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr Expando_CollapsePath(string path);
+            return _Expando_ExpandPathFunc(path);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void Expando_AddPathExpando(string expando, string path);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _Expando_CollapsePath(string path);
+         private static _Expando_CollapsePath _Expando_CollapsePathFunc;
+         internal static IntPtr Expando_CollapsePath(string path)
+         {
+            if (_Expando_CollapsePathFunc == null)
+            {
+               _Expando_CollapsePathFunc =
+                  (_Expando_CollapsePath)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "Expando_CollapsePath"), typeof(_Expando_CollapsePath));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void Expando_RemovePathExpando(string expando);
+            return _Expando_CollapsePathFunc(path);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool Expando_IsPathExpando(string expando);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _Expando_AddPathExpando(string expando, string path);
+         private static _Expando_AddPathExpando _Expando_AddPathExpandoFunc;
+         internal static void Expando_AddPathExpando(string expando, string path)
+         {
+            if (_Expando_AddPathExpandoFunc == null)
+            {
+               _Expando_AddPathExpandoFunc =
+                  (_Expando_AddPathExpando)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "Expando_AddPathExpando"), typeof(_Expando_AddPathExpando));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern int Expando_GetPathExpandoCount();
+            _Expando_AddPathExpandoFunc(expando, path);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr Expando_GetPathExpandoKey(int expandoIndex);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _Expando_RemovePathExpando(string expando);
+         private static _Expando_RemovePathExpando _Expando_RemovePathExpandoFunc;
+         internal static void Expando_RemovePathExpando(string expando)
+         {
+            if (_Expando_RemovePathExpandoFunc == null)
+            {
+               _Expando_RemovePathExpandoFunc =
+                  (_Expando_RemovePathExpando)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "Expando_RemovePathExpando"), typeof(_Expando_RemovePathExpando));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr Expando_GetPathExpandoValue(int expandoIndex);
+            _Expando_RemovePathExpandoFunc(expando);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _Expando_IsPathExpando(string expando);
+         private static _Expando_IsPathExpando _Expando_IsPathExpandoFunc;
+         internal static bool Expando_IsPathExpando(string expando)
+         {
+            if (_Expando_IsPathExpandoFunc == null)
+            {
+               _Expando_IsPathExpandoFunc =
+                  (_Expando_IsPathExpando)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "Expando_IsPathExpando"), typeof(_Expando_IsPathExpando));
+            }
+
+            return _Expando_IsPathExpandoFunc(expando);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate int _Expando_GetPathExpandoCount();
+         private static _Expando_GetPathExpandoCount _Expando_GetPathExpandoCountFunc;
+         internal static int Expando_GetPathExpandoCount()
+         {
+            if (_Expando_GetPathExpandoCountFunc == null)
+            {
+               _Expando_GetPathExpandoCountFunc =
+                  (_Expando_GetPathExpandoCount)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "Expando_GetPathExpandoCount"), typeof(_Expando_GetPathExpandoCount));
+            }
+
+            return _Expando_GetPathExpandoCountFunc();
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _Expando_GetPathExpandoKey(int expandoIndex);
+         private static _Expando_GetPathExpandoKey _Expando_GetPathExpandoKeyFunc;
+         internal static IntPtr Expando_GetPathExpandoKey(int expandoIndex)
+         {
+            if (_Expando_GetPathExpandoKeyFunc == null)
+            {
+               _Expando_GetPathExpandoKeyFunc =
+                  (_Expando_GetPathExpandoKey)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "Expando_GetPathExpandoKey"), typeof(_Expando_GetPathExpandoKey));
+            }
+
+            return _Expando_GetPathExpandoKeyFunc(expandoIndex);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _Expando_GetPathExpandoValue(int expandoIndex);
+         private static _Expando_GetPathExpandoValue _Expando_GetPathExpandoValueFunc;
+         internal static IntPtr Expando_GetPathExpandoValue(int expandoIndex)
+         {
+            if (_Expando_GetPathExpandoValueFunc == null)
+            {
+               _Expando_GetPathExpandoValueFunc =
+                  (_Expando_GetPathExpandoValue)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "Expando_GetPathExpandoValue"), typeof(_Expando_GetPathExpandoValue));
+            }
+
+            return _Expando_GetPathExpandoValueFunc(expandoIndex);
+         }
       }
 
       #endregion

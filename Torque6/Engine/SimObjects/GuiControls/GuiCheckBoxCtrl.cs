@@ -40,17 +40,65 @@ namespace Torque6.Engine.SimObjects.GuiControls
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool GuiCheckBoxCtrlGetUseInactiveState(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _GuiCheckBoxCtrlGetUseInactiveState(IntPtr ctrl);
+         private static _GuiCheckBoxCtrlGetUseInactiveState _GuiCheckBoxCtrlGetUseInactiveStateFunc;
+         internal static bool GuiCheckBoxCtrlGetUseInactiveState(IntPtr ctrl)
+         {
+            if (_GuiCheckBoxCtrlGetUseInactiveStateFunc == null)
+            {
+               _GuiCheckBoxCtrlGetUseInactiveStateFunc =
+                  (_GuiCheckBoxCtrlGetUseInactiveState)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiCheckBoxCtrlGetUseInactiveState"), typeof(_GuiCheckBoxCtrlGetUseInactiveState));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiCheckBoxCtrlSetUseInactiveState(IntPtr ctrl, bool useInactiveState);
+            return _GuiCheckBoxCtrlGetUseInactiveStateFunc(ctrl);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiCheckBoxCtrlCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiCheckBoxCtrlSetUseInactiveState(IntPtr ctrl, bool useInactiveState);
+         private static _GuiCheckBoxCtrlSetUseInactiveState _GuiCheckBoxCtrlSetUseInactiveStateFunc;
+         internal static void GuiCheckBoxCtrlSetUseInactiveState(IntPtr ctrl, bool useInactiveState)
+         {
+            if (_GuiCheckBoxCtrlSetUseInactiveStateFunc == null)
+            {
+               _GuiCheckBoxCtrlSetUseInactiveStateFunc =
+                  (_GuiCheckBoxCtrlSetUseInactiveState)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiCheckBoxCtrlSetUseInactiveState"), typeof(_GuiCheckBoxCtrlSetUseInactiveState));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiCheckBoxCtrlSetStateOn(IntPtr ctrl, int state);
+            _GuiCheckBoxCtrlSetUseInactiveStateFunc(ctrl, useInactiveState);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiCheckBoxCtrlCreateInstance();
+         private static _GuiCheckBoxCtrlCreateInstance _GuiCheckBoxCtrlCreateInstanceFunc;
+         internal static IntPtr GuiCheckBoxCtrlCreateInstance()
+         {
+            if (_GuiCheckBoxCtrlCreateInstanceFunc == null)
+            {
+               _GuiCheckBoxCtrlCreateInstanceFunc =
+                  (_GuiCheckBoxCtrlCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiCheckBoxCtrlCreateInstance"), typeof(_GuiCheckBoxCtrlCreateInstance));
+            }
+
+            return _GuiCheckBoxCtrlCreateInstanceFunc();
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiCheckBoxCtrlSetStateOn(IntPtr ctrl, int state);
+         private static _GuiCheckBoxCtrlSetStateOn _GuiCheckBoxCtrlSetStateOnFunc;
+         internal static void GuiCheckBoxCtrlSetStateOn(IntPtr ctrl, int state)
+         {
+            if (_GuiCheckBoxCtrlSetStateOnFunc == null)
+            {
+               _GuiCheckBoxCtrlSetStateOnFunc =
+                  (_GuiCheckBoxCtrlSetStateOn)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiCheckBoxCtrlSetStateOn"), typeof(_GuiCheckBoxCtrlSetStateOn));
+            }
+
+            _GuiCheckBoxCtrlSetStateOnFunc(ctrl, state);
+         }
       }
       
       #endregion

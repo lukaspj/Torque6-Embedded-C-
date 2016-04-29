@@ -40,11 +40,35 @@ namespace Torque6.Engine.SimObjects.Scene
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr PhysicsBaseComponentCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _PhysicsBaseComponentCreateInstance();
+         private static _PhysicsBaseComponentCreateInstance _PhysicsBaseComponentCreateInstanceFunc;
+         internal static IntPtr PhysicsBaseComponentCreateInstance()
+         {
+            if (_PhysicsBaseComponentCreateInstanceFunc == null)
+            {
+               _PhysicsBaseComponentCreateInstanceFunc =
+                  (_PhysicsBaseComponentCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "PhysicsBaseComponentCreateInstance"), typeof(_PhysicsBaseComponentCreateInstance));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void PhysicsBaseComponentSetLinearVelocity(IntPtr component, Point3F velocity);
+            return _PhysicsBaseComponentCreateInstanceFunc();
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _PhysicsBaseComponentSetLinearVelocity(IntPtr component, Point3F velocity);
+         private static _PhysicsBaseComponentSetLinearVelocity _PhysicsBaseComponentSetLinearVelocityFunc;
+         internal static void PhysicsBaseComponentSetLinearVelocity(IntPtr component, Point3F velocity)
+         {
+            if (_PhysicsBaseComponentSetLinearVelocityFunc == null)
+            {
+               _PhysicsBaseComponentSetLinearVelocityFunc =
+                  (_PhysicsBaseComponentSetLinearVelocity)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "PhysicsBaseComponentSetLinearVelocity"), typeof(_PhysicsBaseComponentSetLinearVelocity));
+            }
+
+            _PhysicsBaseComponentSetLinearVelocityFunc(component, velocity);
+         }
       }
       
       #endregion

@@ -40,41 +40,185 @@ namespace Torque6.Engine.SimObjects.GuiControls
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern int GuiTabBookCtrlGetTabPosition(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate int _GuiTabBookCtrlGetTabPosition(IntPtr ctrl);
+         private static _GuiTabBookCtrlGetTabPosition _GuiTabBookCtrlGetTabPositionFunc;
+         internal static int GuiTabBookCtrlGetTabPosition(IntPtr ctrl)
+         {
+            if (_GuiTabBookCtrlGetTabPositionFunc == null)
+            {
+               _GuiTabBookCtrlGetTabPositionFunc =
+                  (_GuiTabBookCtrlGetTabPosition)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiTabBookCtrlGetTabPosition"), typeof(_GuiTabBookCtrlGetTabPosition));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiTabBookCtrlSetTabPosition(IntPtr ctrl, int tabPosition);
+            return _GuiTabBookCtrlGetTabPositionFunc(ctrl);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern int GuiTabBookCtrlGetTabHeight(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiTabBookCtrlSetTabPosition(IntPtr ctrl, int tabPosition);
+         private static _GuiTabBookCtrlSetTabPosition _GuiTabBookCtrlSetTabPositionFunc;
+         internal static void GuiTabBookCtrlSetTabPosition(IntPtr ctrl, int tabPosition)
+         {
+            if (_GuiTabBookCtrlSetTabPositionFunc == null)
+            {
+               _GuiTabBookCtrlSetTabPositionFunc =
+                  (_GuiTabBookCtrlSetTabPosition)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiTabBookCtrlSetTabPosition"), typeof(_GuiTabBookCtrlSetTabPosition));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiTabBookCtrlSetTabHeight(IntPtr ctrl, int height);
+            _GuiTabBookCtrlSetTabPositionFunc(ctrl, tabPosition);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern int GuiTabBookCtrlGetTabMargin(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate int _GuiTabBookCtrlGetTabHeight(IntPtr ctrl);
+         private static _GuiTabBookCtrlGetTabHeight _GuiTabBookCtrlGetTabHeightFunc;
+         internal static int GuiTabBookCtrlGetTabHeight(IntPtr ctrl)
+         {
+            if (_GuiTabBookCtrlGetTabHeightFunc == null)
+            {
+               _GuiTabBookCtrlGetTabHeightFunc =
+                  (_GuiTabBookCtrlGetTabHeight)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiTabBookCtrlGetTabHeight"), typeof(_GuiTabBookCtrlGetTabHeight));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiTabBookCtrlSetTabMargin(IntPtr ctrl, int margin);
+            return _GuiTabBookCtrlGetTabHeightFunc(ctrl);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern int GuiTabBookCtrlGetMinTabWidth(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiTabBookCtrlSetTabHeight(IntPtr ctrl, int height);
+         private static _GuiTabBookCtrlSetTabHeight _GuiTabBookCtrlSetTabHeightFunc;
+         internal static void GuiTabBookCtrlSetTabHeight(IntPtr ctrl, int height)
+         {
+            if (_GuiTabBookCtrlSetTabHeightFunc == null)
+            {
+               _GuiTabBookCtrlSetTabHeightFunc =
+                  (_GuiTabBookCtrlSetTabHeight)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiTabBookCtrlSetTabHeight"), typeof(_GuiTabBookCtrlSetTabHeight));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiTabBookCtrlSetMinTabWidth(IntPtr ctrl, int width);
+            _GuiTabBookCtrlSetTabHeightFunc(ctrl, height);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiTabBookCtrlCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate int _GuiTabBookCtrlGetTabMargin(IntPtr ctrl);
+         private static _GuiTabBookCtrlGetTabMargin _GuiTabBookCtrlGetTabMarginFunc;
+         internal static int GuiTabBookCtrlGetTabMargin(IntPtr ctrl)
+         {
+            if (_GuiTabBookCtrlGetTabMarginFunc == null)
+            {
+               _GuiTabBookCtrlGetTabMarginFunc =
+                  (_GuiTabBookCtrlGetTabMargin)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiTabBookCtrlGetTabMargin"), typeof(_GuiTabBookCtrlGetTabMargin));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiTabBookCtrlAddPage(IntPtr ctrl);
+            return _GuiTabBookCtrlGetTabMarginFunc(ctrl);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiTabBookCtrlSelectPage(IntPtr ctrl, int pageIndex);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiTabBookCtrlSetTabMargin(IntPtr ctrl, int margin);
+         private static _GuiTabBookCtrlSetTabMargin _GuiTabBookCtrlSetTabMarginFunc;
+         internal static void GuiTabBookCtrlSetTabMargin(IntPtr ctrl, int margin)
+         {
+            if (_GuiTabBookCtrlSetTabMarginFunc == null)
+            {
+               _GuiTabBookCtrlSetTabMarginFunc =
+                  (_GuiTabBookCtrlSetTabMargin)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiTabBookCtrlSetTabMargin"), typeof(_GuiTabBookCtrlSetTabMargin));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiTabBookCtrlSelectPageName(IntPtr ctrl, string pageName);
+            _GuiTabBookCtrlSetTabMarginFunc(ctrl, margin);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate int _GuiTabBookCtrlGetMinTabWidth(IntPtr ctrl);
+         private static _GuiTabBookCtrlGetMinTabWidth _GuiTabBookCtrlGetMinTabWidthFunc;
+         internal static int GuiTabBookCtrlGetMinTabWidth(IntPtr ctrl)
+         {
+            if (_GuiTabBookCtrlGetMinTabWidthFunc == null)
+            {
+               _GuiTabBookCtrlGetMinTabWidthFunc =
+                  (_GuiTabBookCtrlGetMinTabWidth)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiTabBookCtrlGetMinTabWidth"), typeof(_GuiTabBookCtrlGetMinTabWidth));
+            }
+
+            return _GuiTabBookCtrlGetMinTabWidthFunc(ctrl);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiTabBookCtrlSetMinTabWidth(IntPtr ctrl, int width);
+         private static _GuiTabBookCtrlSetMinTabWidth _GuiTabBookCtrlSetMinTabWidthFunc;
+         internal static void GuiTabBookCtrlSetMinTabWidth(IntPtr ctrl, int width)
+         {
+            if (_GuiTabBookCtrlSetMinTabWidthFunc == null)
+            {
+               _GuiTabBookCtrlSetMinTabWidthFunc =
+                  (_GuiTabBookCtrlSetMinTabWidth)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiTabBookCtrlSetMinTabWidth"), typeof(_GuiTabBookCtrlSetMinTabWidth));
+            }
+
+            _GuiTabBookCtrlSetMinTabWidthFunc(ctrl, width);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiTabBookCtrlCreateInstance();
+         private static _GuiTabBookCtrlCreateInstance _GuiTabBookCtrlCreateInstanceFunc;
+         internal static IntPtr GuiTabBookCtrlCreateInstance()
+         {
+            if (_GuiTabBookCtrlCreateInstanceFunc == null)
+            {
+               _GuiTabBookCtrlCreateInstanceFunc =
+                  (_GuiTabBookCtrlCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiTabBookCtrlCreateInstance"), typeof(_GuiTabBookCtrlCreateInstance));
+            }
+
+            return _GuiTabBookCtrlCreateInstanceFunc();
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiTabBookCtrlAddPage(IntPtr ctrl);
+         private static _GuiTabBookCtrlAddPage _GuiTabBookCtrlAddPageFunc;
+         internal static void GuiTabBookCtrlAddPage(IntPtr ctrl)
+         {
+            if (_GuiTabBookCtrlAddPageFunc == null)
+            {
+               _GuiTabBookCtrlAddPageFunc =
+                  (_GuiTabBookCtrlAddPage)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiTabBookCtrlAddPage"), typeof(_GuiTabBookCtrlAddPage));
+            }
+
+            _GuiTabBookCtrlAddPageFunc(ctrl);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiTabBookCtrlSelectPage(IntPtr ctrl, int pageIndex);
+         private static _GuiTabBookCtrlSelectPage _GuiTabBookCtrlSelectPageFunc;
+         internal static void GuiTabBookCtrlSelectPage(IntPtr ctrl, int pageIndex)
+         {
+            if (_GuiTabBookCtrlSelectPageFunc == null)
+            {
+               _GuiTabBookCtrlSelectPageFunc =
+                  (_GuiTabBookCtrlSelectPage)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiTabBookCtrlSelectPage"), typeof(_GuiTabBookCtrlSelectPage));
+            }
+
+            _GuiTabBookCtrlSelectPageFunc(ctrl, pageIndex);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiTabBookCtrlSelectPageName(IntPtr ctrl, string pageName);
+         private static _GuiTabBookCtrlSelectPageName _GuiTabBookCtrlSelectPageNameFunc;
+         internal static void GuiTabBookCtrlSelectPageName(IntPtr ctrl, string pageName)
+         {
+            if (_GuiTabBookCtrlSelectPageNameFunc == null)
+            {
+               _GuiTabBookCtrlSelectPageNameFunc =
+                  (_GuiTabBookCtrlSelectPageName)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiTabBookCtrlSelectPageName"), typeof(_GuiTabBookCtrlSelectPageName));
+            }
+
+            _GuiTabBookCtrlSelectPageNameFunc(ctrl, pageName);
+         }
       }
       
       #endregion

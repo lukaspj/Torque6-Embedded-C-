@@ -40,14 +40,50 @@ namespace Torque6.Engine.SimObjects
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr RemoteDebugger1CreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _RemoteDebugger1CreateInstance();
+         private static _RemoteDebugger1CreateInstance _RemoteDebugger1CreateInstanceFunc;
+         internal static IntPtr RemoteDebugger1CreateInstance()
+         {
+            if (_RemoteDebugger1CreateInstanceFunc == null)
+            {
+               _RemoteDebugger1CreateInstanceFunc =
+                  (_RemoteDebugger1CreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "RemoteDebugger1CreateInstance"), typeof(_RemoteDebugger1CreateInstance));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr RemoteDebugger1GetCodeFiles(IntPtr debugger1);
+            return _RemoteDebugger1CreateInstanceFunc();
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void RemoteDebugger1SetNextStatementBreak(IntPtr debugger1, bool enabled);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _RemoteDebugger1GetCodeFiles(IntPtr debugger1);
+         private static _RemoteDebugger1GetCodeFiles _RemoteDebugger1GetCodeFilesFunc;
+         internal static IntPtr RemoteDebugger1GetCodeFiles(IntPtr debugger1)
+         {
+            if (_RemoteDebugger1GetCodeFilesFunc == null)
+            {
+               _RemoteDebugger1GetCodeFilesFunc =
+                  (_RemoteDebugger1GetCodeFiles)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "RemoteDebugger1GetCodeFiles"), typeof(_RemoteDebugger1GetCodeFiles));
+            }
+
+            return _RemoteDebugger1GetCodeFilesFunc(debugger1);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _RemoteDebugger1SetNextStatementBreak(IntPtr debugger1, bool enabled);
+         private static _RemoteDebugger1SetNextStatementBreak _RemoteDebugger1SetNextStatementBreakFunc;
+         internal static void RemoteDebugger1SetNextStatementBreak(IntPtr debugger1, bool enabled)
+         {
+            if (_RemoteDebugger1SetNextStatementBreakFunc == null)
+            {
+               _RemoteDebugger1SetNextStatementBreakFunc =
+                  (_RemoteDebugger1SetNextStatementBreak)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "RemoteDebugger1SetNextStatementBreak"), typeof(_RemoteDebugger1SetNextStatementBreak));
+            }
+
+            _RemoteDebugger1SetNextStatementBreakFunc(debugger1, enabled);
+         }
       }
       
       #endregion

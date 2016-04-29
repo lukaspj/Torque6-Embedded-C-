@@ -40,14 +40,50 @@ namespace Torque6.Engine.SimObjects
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool SaveFileDialogGetOverwritePrompt(IntPtr saveFileDialog);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _SaveFileDialogGetOverwritePrompt(IntPtr saveFileDialog);
+         private static _SaveFileDialogGetOverwritePrompt _SaveFileDialogGetOverwritePromptFunc;
+         internal static bool SaveFileDialogGetOverwritePrompt(IntPtr saveFileDialog)
+         {
+            if (_SaveFileDialogGetOverwritePromptFunc == null)
+            {
+               _SaveFileDialogGetOverwritePromptFunc =
+                  (_SaveFileDialogGetOverwritePrompt)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "SaveFileDialogGetOverwritePrompt"), typeof(_SaveFileDialogGetOverwritePrompt));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void SaveFileDialogSetOverwritePrompt(IntPtr saveFileDialog, bool value);
+            return _SaveFileDialogGetOverwritePromptFunc(saveFileDialog);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr SaveFileDialogCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _SaveFileDialogSetOverwritePrompt(IntPtr saveFileDialog, bool value);
+         private static _SaveFileDialogSetOverwritePrompt _SaveFileDialogSetOverwritePromptFunc;
+         internal static void SaveFileDialogSetOverwritePrompt(IntPtr saveFileDialog, bool value)
+         {
+            if (_SaveFileDialogSetOverwritePromptFunc == null)
+            {
+               _SaveFileDialogSetOverwritePromptFunc =
+                  (_SaveFileDialogSetOverwritePrompt)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "SaveFileDialogSetOverwritePrompt"), typeof(_SaveFileDialogSetOverwritePrompt));
+            }
+
+            _SaveFileDialogSetOverwritePromptFunc(saveFileDialog, value);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _SaveFileDialogCreateInstance();
+         private static _SaveFileDialogCreateInstance _SaveFileDialogCreateInstanceFunc;
+         internal static IntPtr SaveFileDialogCreateInstance()
+         {
+            if (_SaveFileDialogCreateInstanceFunc == null)
+            {
+               _SaveFileDialogCreateInstanceFunc =
+                  (_SaveFileDialogCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "SaveFileDialogCreateInstance"), typeof(_SaveFileDialogCreateInstance));
+            }
+
+            return _SaveFileDialogCreateInstanceFunc();
+         }
       }
       
       #endregion

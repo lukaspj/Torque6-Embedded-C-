@@ -40,44 +40,200 @@ namespace Torque6.Engine.SimObjects.GuiControls
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiCurveCtrlGetStart(IntPtr ctrl, out Point2I outPos);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiCurveCtrlGetStart(IntPtr ctrl, out Point2I outPos);
+         private static _GuiCurveCtrlGetStart _GuiCurveCtrlGetStartFunc;
+         internal static void GuiCurveCtrlGetStart(IntPtr ctrl, out Point2I outPos)
+         {
+            if (_GuiCurveCtrlGetStartFunc == null)
+            {
+               _GuiCurveCtrlGetStartFunc =
+                  (_GuiCurveCtrlGetStart)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiCurveCtrlGetStart"), typeof(_GuiCurveCtrlGetStart));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiCurveCtrlSetStart(IntPtr ctrl, Point2I pos);
+            _GuiCurveCtrlGetStartFunc(ctrl, out outPos);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiCurveCtrlGetEnd(IntPtr ctrl, out Point2I outPos);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiCurveCtrlSetStart(IntPtr ctrl, Point2I pos);
+         private static _GuiCurveCtrlSetStart _GuiCurveCtrlSetStartFunc;
+         internal static void GuiCurveCtrlSetStart(IntPtr ctrl, Point2I pos)
+         {
+            if (_GuiCurveCtrlSetStartFunc == null)
+            {
+               _GuiCurveCtrlSetStartFunc =
+                  (_GuiCurveCtrlSetStart)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiCurveCtrlSetStart"), typeof(_GuiCurveCtrlSetStart));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiCurveCtrlSetEnd(IntPtr ctrl, Point2I pos);
+            _GuiCurveCtrlSetStartFunc(ctrl, pos);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiCurveCtrlGetControlA(IntPtr ctrl, out Point2I outPos);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiCurveCtrlGetEnd(IntPtr ctrl, out Point2I outPos);
+         private static _GuiCurveCtrlGetEnd _GuiCurveCtrlGetEndFunc;
+         internal static void GuiCurveCtrlGetEnd(IntPtr ctrl, out Point2I outPos)
+         {
+            if (_GuiCurveCtrlGetEndFunc == null)
+            {
+               _GuiCurveCtrlGetEndFunc =
+                  (_GuiCurveCtrlGetEnd)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiCurveCtrlGetEnd"), typeof(_GuiCurveCtrlGetEnd));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiCurveCtrlSetControlA(IntPtr ctrl, Point2I pos);
+            _GuiCurveCtrlGetEndFunc(ctrl, out outPos);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiCurveCtrlGetControlB(IntPtr ctrl, out Point2I outPos);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiCurveCtrlSetEnd(IntPtr ctrl, Point2I pos);
+         private static _GuiCurveCtrlSetEnd _GuiCurveCtrlSetEndFunc;
+         internal static void GuiCurveCtrlSetEnd(IntPtr ctrl, Point2I pos)
+         {
+            if (_GuiCurveCtrlSetEndFunc == null)
+            {
+               _GuiCurveCtrlSetEndFunc =
+                  (_GuiCurveCtrlSetEnd)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiCurveCtrlSetEnd"), typeof(_GuiCurveCtrlSetEnd));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiCurveCtrlSetControlB(IntPtr ctrl, Point2I pos);
+            _GuiCurveCtrlSetEndFunc(ctrl, pos);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiCurveCtrlGetColor(IntPtr ctrl, out Color outCol);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiCurveCtrlGetControlA(IntPtr ctrl, out Point2I outPos);
+         private static _GuiCurveCtrlGetControlA _GuiCurveCtrlGetControlAFunc;
+         internal static void GuiCurveCtrlGetControlA(IntPtr ctrl, out Point2I outPos)
+         {
+            if (_GuiCurveCtrlGetControlAFunc == null)
+            {
+               _GuiCurveCtrlGetControlAFunc =
+                  (_GuiCurveCtrlGetControlA)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiCurveCtrlGetControlA"), typeof(_GuiCurveCtrlGetControlA));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiCurveCtrlSetColor(IntPtr ctrl, Color color);
+            _GuiCurveCtrlGetControlAFunc(ctrl, out outPos);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern float GuiCurveCtrlGetThickness(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiCurveCtrlSetControlA(IntPtr ctrl, Point2I pos);
+         private static _GuiCurveCtrlSetControlA _GuiCurveCtrlSetControlAFunc;
+         internal static void GuiCurveCtrlSetControlA(IntPtr ctrl, Point2I pos)
+         {
+            if (_GuiCurveCtrlSetControlAFunc == null)
+            {
+               _GuiCurveCtrlSetControlAFunc =
+                  (_GuiCurveCtrlSetControlA)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiCurveCtrlSetControlA"), typeof(_GuiCurveCtrlSetControlA));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiCurveCtrlSetThickness(IntPtr ctrl, float thickness);
+            _GuiCurveCtrlSetControlAFunc(ctrl, pos);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiCurveCtrlCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiCurveCtrlGetControlB(IntPtr ctrl, out Point2I outPos);
+         private static _GuiCurveCtrlGetControlB _GuiCurveCtrlGetControlBFunc;
+         internal static void GuiCurveCtrlGetControlB(IntPtr ctrl, out Point2I outPos)
+         {
+            if (_GuiCurveCtrlGetControlBFunc == null)
+            {
+               _GuiCurveCtrlGetControlBFunc =
+                  (_GuiCurveCtrlGetControlB)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiCurveCtrlGetControlB"), typeof(_GuiCurveCtrlGetControlB));
+            }
+
+            _GuiCurveCtrlGetControlBFunc(ctrl, out outPos);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiCurveCtrlSetControlB(IntPtr ctrl, Point2I pos);
+         private static _GuiCurveCtrlSetControlB _GuiCurveCtrlSetControlBFunc;
+         internal static void GuiCurveCtrlSetControlB(IntPtr ctrl, Point2I pos)
+         {
+            if (_GuiCurveCtrlSetControlBFunc == null)
+            {
+               _GuiCurveCtrlSetControlBFunc =
+                  (_GuiCurveCtrlSetControlB)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiCurveCtrlSetControlB"), typeof(_GuiCurveCtrlSetControlB));
+            }
+
+            _GuiCurveCtrlSetControlBFunc(ctrl, pos);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiCurveCtrlGetColor(IntPtr ctrl, out Color outCol);
+         private static _GuiCurveCtrlGetColor _GuiCurveCtrlGetColorFunc;
+         internal static void GuiCurveCtrlGetColor(IntPtr ctrl, out Color outCol)
+         {
+            if (_GuiCurveCtrlGetColorFunc == null)
+            {
+               _GuiCurveCtrlGetColorFunc =
+                  (_GuiCurveCtrlGetColor)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiCurveCtrlGetColor"), typeof(_GuiCurveCtrlGetColor));
+            }
+
+            _GuiCurveCtrlGetColorFunc(ctrl, out outCol);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiCurveCtrlSetColor(IntPtr ctrl, Color color);
+         private static _GuiCurveCtrlSetColor _GuiCurveCtrlSetColorFunc;
+         internal static void GuiCurveCtrlSetColor(IntPtr ctrl, Color color)
+         {
+            if (_GuiCurveCtrlSetColorFunc == null)
+            {
+               _GuiCurveCtrlSetColorFunc =
+                  (_GuiCurveCtrlSetColor)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiCurveCtrlSetColor"), typeof(_GuiCurveCtrlSetColor));
+            }
+
+            _GuiCurveCtrlSetColorFunc(ctrl, color);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate float _GuiCurveCtrlGetThickness(IntPtr ctrl);
+         private static _GuiCurveCtrlGetThickness _GuiCurveCtrlGetThicknessFunc;
+         internal static float GuiCurveCtrlGetThickness(IntPtr ctrl)
+         {
+            if (_GuiCurveCtrlGetThicknessFunc == null)
+            {
+               _GuiCurveCtrlGetThicknessFunc =
+                  (_GuiCurveCtrlGetThickness)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiCurveCtrlGetThickness"), typeof(_GuiCurveCtrlGetThickness));
+            }
+
+            return _GuiCurveCtrlGetThicknessFunc(ctrl);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiCurveCtrlSetThickness(IntPtr ctrl, float thickness);
+         private static _GuiCurveCtrlSetThickness _GuiCurveCtrlSetThicknessFunc;
+         internal static void GuiCurveCtrlSetThickness(IntPtr ctrl, float thickness)
+         {
+            if (_GuiCurveCtrlSetThicknessFunc == null)
+            {
+               _GuiCurveCtrlSetThicknessFunc =
+                  (_GuiCurveCtrlSetThickness)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiCurveCtrlSetThickness"), typeof(_GuiCurveCtrlSetThickness));
+            }
+
+            _GuiCurveCtrlSetThicknessFunc(ctrl, thickness);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiCurveCtrlCreateInstance();
+         private static _GuiCurveCtrlCreateInstance _GuiCurveCtrlCreateInstanceFunc;
+         internal static IntPtr GuiCurveCtrlCreateInstance()
+         {
+            if (_GuiCurveCtrlCreateInstanceFunc == null)
+            {
+               _GuiCurveCtrlCreateInstanceFunc =
+                  (_GuiCurveCtrlCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiCurveCtrlCreateInstance"), typeof(_GuiCurveCtrlCreateInstance));
+            }
+
+            return _GuiCurveCtrlCreateInstanceFunc();
+         }
       }
       
       #endregion

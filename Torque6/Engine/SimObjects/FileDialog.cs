@@ -40,47 +40,215 @@ namespace Torque6.Engine.SimObjects
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr FileDialogGetDefaultPath(IntPtr fileDialog);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _FileDialogGetDefaultPath(IntPtr fileDialog);
+         private static _FileDialogGetDefaultPath _FileDialogGetDefaultPathFunc;
+         internal static IntPtr FileDialogGetDefaultPath(IntPtr fileDialog)
+         {
+            if (_FileDialogGetDefaultPathFunc == null)
+            {
+               _FileDialogGetDefaultPathFunc =
+                  (_FileDialogGetDefaultPath)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "FileDialogGetDefaultPath"), typeof(_FileDialogGetDefaultPath));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void FileDialogSetDefaultPath(IntPtr fileDialog, string value);
+            return _FileDialogGetDefaultPathFunc(fileDialog);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr FileDialogGetDefaultFile(IntPtr fileDialog);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _FileDialogSetDefaultPath(IntPtr fileDialog, string value);
+         private static _FileDialogSetDefaultPath _FileDialogSetDefaultPathFunc;
+         internal static void FileDialogSetDefaultPath(IntPtr fileDialog, string value)
+         {
+            if (_FileDialogSetDefaultPathFunc == null)
+            {
+               _FileDialogSetDefaultPathFunc =
+                  (_FileDialogSetDefaultPath)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "FileDialogSetDefaultPath"), typeof(_FileDialogSetDefaultPath));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void FileDialogSetDefaultFile(IntPtr fileDialog, string value);
+            _FileDialogSetDefaultPathFunc(fileDialog, value);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr FileDialogGetFileName(IntPtr fileDialog);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _FileDialogGetDefaultFile(IntPtr fileDialog);
+         private static _FileDialogGetDefaultFile _FileDialogGetDefaultFileFunc;
+         internal static IntPtr FileDialogGetDefaultFile(IntPtr fileDialog)
+         {
+            if (_FileDialogGetDefaultFileFunc == null)
+            {
+               _FileDialogGetDefaultFileFunc =
+                  (_FileDialogGetDefaultFile)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "FileDialogGetDefaultFile"), typeof(_FileDialogGetDefaultFile));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void FileDialogSetFileName(IntPtr fileDialog, string value);
+            return _FileDialogGetDefaultFileFunc(fileDialog);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr FileDialogGetFilters(IntPtr fileDialog);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _FileDialogSetDefaultFile(IntPtr fileDialog, string value);
+         private static _FileDialogSetDefaultFile _FileDialogSetDefaultFileFunc;
+         internal static void FileDialogSetDefaultFile(IntPtr fileDialog, string value)
+         {
+            if (_FileDialogSetDefaultFileFunc == null)
+            {
+               _FileDialogSetDefaultFileFunc =
+                  (_FileDialogSetDefaultFile)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "FileDialogSetDefaultFile"), typeof(_FileDialogSetDefaultFile));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void FileDialogSetFilters(IntPtr fileDialog, string value);
+            _FileDialogSetDefaultFileFunc(fileDialog, value);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr FileDialogGetTitle(IntPtr fileDialog);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _FileDialogGetFileName(IntPtr fileDialog);
+         private static _FileDialogGetFileName _FileDialogGetFileNameFunc;
+         internal static IntPtr FileDialogGetFileName(IntPtr fileDialog)
+         {
+            if (_FileDialogGetFileNameFunc == null)
+            {
+               _FileDialogGetFileNameFunc =
+                  (_FileDialogGetFileName)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "FileDialogGetFileName"), typeof(_FileDialogGetFileName));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void FileDialogSetTitle(IntPtr fileDialog, string value);
+            return _FileDialogGetFileNameFunc(fileDialog);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool FileDialogGetChangePath(IntPtr fileDialog);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _FileDialogSetFileName(IntPtr fileDialog, string value);
+         private static _FileDialogSetFileName _FileDialogSetFileNameFunc;
+         internal static void FileDialogSetFileName(IntPtr fileDialog, string value)
+         {
+            if (_FileDialogSetFileNameFunc == null)
+            {
+               _FileDialogSetFileNameFunc =
+                  (_FileDialogSetFileName)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "FileDialogSetFileName"), typeof(_FileDialogSetFileName));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void FileDialogSetChangePath(IntPtr fileDialog, bool value);
+            _FileDialogSetFileNameFunc(fileDialog, value);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr FileDialogCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _FileDialogGetFilters(IntPtr fileDialog);
+         private static _FileDialogGetFilters _FileDialogGetFiltersFunc;
+         internal static IntPtr FileDialogGetFilters(IntPtr fileDialog)
+         {
+            if (_FileDialogGetFiltersFunc == null)
+            {
+               _FileDialogGetFiltersFunc =
+                  (_FileDialogGetFilters)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "FileDialogGetFilters"), typeof(_FileDialogGetFilters));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool FileDialogExecute(IntPtr fileDialog);
+            return _FileDialogGetFiltersFunc(fileDialog);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _FileDialogSetFilters(IntPtr fileDialog, string value);
+         private static _FileDialogSetFilters _FileDialogSetFiltersFunc;
+         internal static void FileDialogSetFilters(IntPtr fileDialog, string value)
+         {
+            if (_FileDialogSetFiltersFunc == null)
+            {
+               _FileDialogSetFiltersFunc =
+                  (_FileDialogSetFilters)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "FileDialogSetFilters"), typeof(_FileDialogSetFilters));
+            }
+
+            _FileDialogSetFiltersFunc(fileDialog, value);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _FileDialogGetTitle(IntPtr fileDialog);
+         private static _FileDialogGetTitle _FileDialogGetTitleFunc;
+         internal static IntPtr FileDialogGetTitle(IntPtr fileDialog)
+         {
+            if (_FileDialogGetTitleFunc == null)
+            {
+               _FileDialogGetTitleFunc =
+                  (_FileDialogGetTitle)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "FileDialogGetTitle"), typeof(_FileDialogGetTitle));
+            }
+
+            return _FileDialogGetTitleFunc(fileDialog);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _FileDialogSetTitle(IntPtr fileDialog, string value);
+         private static _FileDialogSetTitle _FileDialogSetTitleFunc;
+         internal static void FileDialogSetTitle(IntPtr fileDialog, string value)
+         {
+            if (_FileDialogSetTitleFunc == null)
+            {
+               _FileDialogSetTitleFunc =
+                  (_FileDialogSetTitle)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "FileDialogSetTitle"), typeof(_FileDialogSetTitle));
+            }
+
+            _FileDialogSetTitleFunc(fileDialog, value);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _FileDialogGetChangePath(IntPtr fileDialog);
+         private static _FileDialogGetChangePath _FileDialogGetChangePathFunc;
+         internal static bool FileDialogGetChangePath(IntPtr fileDialog)
+         {
+            if (_FileDialogGetChangePathFunc == null)
+            {
+               _FileDialogGetChangePathFunc =
+                  (_FileDialogGetChangePath)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "FileDialogGetChangePath"), typeof(_FileDialogGetChangePath));
+            }
+
+            return _FileDialogGetChangePathFunc(fileDialog);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _FileDialogSetChangePath(IntPtr fileDialog, bool value);
+         private static _FileDialogSetChangePath _FileDialogSetChangePathFunc;
+         internal static void FileDialogSetChangePath(IntPtr fileDialog, bool value)
+         {
+            if (_FileDialogSetChangePathFunc == null)
+            {
+               _FileDialogSetChangePathFunc =
+                  (_FileDialogSetChangePath)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "FileDialogSetChangePath"), typeof(_FileDialogSetChangePath));
+            }
+
+            _FileDialogSetChangePathFunc(fileDialog, value);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _FileDialogCreateInstance();
+         private static _FileDialogCreateInstance _FileDialogCreateInstanceFunc;
+         internal static IntPtr FileDialogCreateInstance()
+         {
+            if (_FileDialogCreateInstanceFunc == null)
+            {
+               _FileDialogCreateInstanceFunc =
+                  (_FileDialogCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "FileDialogCreateInstance"), typeof(_FileDialogCreateInstance));
+            }
+
+            return _FileDialogCreateInstanceFunc();
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _FileDialogExecute(IntPtr fileDialog);
+         private static _FileDialogExecute _FileDialogExecuteFunc;
+         internal static bool FileDialogExecute(IntPtr fileDialog)
+         {
+            if (_FileDialogExecuteFunc == null)
+            {
+               _FileDialogExecuteFunc =
+                  (_FileDialogExecute)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "FileDialogExecute"), typeof(_FileDialogExecute));
+            }
+
+            return _FileDialogExecuteFunc(fileDialog);
+         }
       }
       
       #endregion

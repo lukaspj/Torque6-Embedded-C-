@@ -40,11 +40,35 @@ namespace Torque6.Engine.SimObjects.Scene
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr BaseComponentCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _BaseComponentCreateInstance();
+         private static _BaseComponentCreateInstance _BaseComponentCreateInstanceFunc;
+         internal static IntPtr BaseComponentCreateInstance()
+         {
+            if (_BaseComponentCreateInstanceFunc == null)
+            {
+               _BaseComponentCreateInstanceFunc =
+                  (_BaseComponentCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "BaseComponentCreateInstance"), typeof(_BaseComponentCreateInstance));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void BaseComponentSetUniformVec4(IntPtr baseComponent, string name, Point4F value);
+            return _BaseComponentCreateInstanceFunc();
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _BaseComponentSetUniformVec4(IntPtr baseComponent, string name, Point4F value);
+         private static _BaseComponentSetUniformVec4 _BaseComponentSetUniformVec4Func;
+         internal static void BaseComponentSetUniformVec4(IntPtr baseComponent, string name, Point4F value)
+         {
+            if (_BaseComponentSetUniformVec4Func == null)
+            {
+               _BaseComponentSetUniformVec4Func =
+                  (_BaseComponentSetUniformVec4)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "BaseComponentSetUniformVec4"), typeof(_BaseComponentSetUniformVec4));
+            }
+
+            _BaseComponentSetUniformVec4Func(baseComponent, name, value);
+         }
       }
       
       #endregion

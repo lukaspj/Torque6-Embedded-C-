@@ -40,14 +40,50 @@ namespace Torque6.Engine.SimObjects
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr OpenFolderDialogGetFileMustExist(IntPtr openFolderDialog);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _OpenFolderDialogGetFileMustExist(IntPtr openFolderDialog);
+         private static _OpenFolderDialogGetFileMustExist _OpenFolderDialogGetFileMustExistFunc;
+         internal static IntPtr OpenFolderDialogGetFileMustExist(IntPtr openFolderDialog)
+         {
+            if (_OpenFolderDialogGetFileMustExistFunc == null)
+            {
+               _OpenFolderDialogGetFileMustExistFunc =
+                  (_OpenFolderDialogGetFileMustExist)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "OpenFolderDialogGetFileMustExist"), typeof(_OpenFolderDialogGetFileMustExist));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void OpenFolderDialogSetFileMustExist(IntPtr openFolderDialog, string value);
+            return _OpenFolderDialogGetFileMustExistFunc(openFolderDialog);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr OpenFolderDialogCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _OpenFolderDialogSetFileMustExist(IntPtr openFolderDialog, string value);
+         private static _OpenFolderDialogSetFileMustExist _OpenFolderDialogSetFileMustExistFunc;
+         internal static void OpenFolderDialogSetFileMustExist(IntPtr openFolderDialog, string value)
+         {
+            if (_OpenFolderDialogSetFileMustExistFunc == null)
+            {
+               _OpenFolderDialogSetFileMustExistFunc =
+                  (_OpenFolderDialogSetFileMustExist)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "OpenFolderDialogSetFileMustExist"), typeof(_OpenFolderDialogSetFileMustExist));
+            }
+
+            _OpenFolderDialogSetFileMustExistFunc(openFolderDialog, value);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _OpenFolderDialogCreateInstance();
+         private static _OpenFolderDialogCreateInstance _OpenFolderDialogCreateInstanceFunc;
+         internal static IntPtr OpenFolderDialogCreateInstance()
+         {
+            if (_OpenFolderDialogCreateInstanceFunc == null)
+            {
+               _OpenFolderDialogCreateInstanceFunc =
+                  (_OpenFolderDialogCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "OpenFolderDialogCreateInstance"), typeof(_OpenFolderDialogCreateInstance));
+            }
+
+            return _OpenFolderDialogCreateInstanceFunc();
+         }
       }
       
       #endregion

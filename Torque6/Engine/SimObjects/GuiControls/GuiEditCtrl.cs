@@ -40,71 +40,335 @@ namespace Torque6.Engine.SimObjects.GuiControls
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiEditCtrlCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiEditCtrlCreateInstance();
+         private static _GuiEditCtrlCreateInstance _GuiEditCtrlCreateInstanceFunc;
+         internal static IntPtr GuiEditCtrlCreateInstance()
+         {
+            if (_GuiEditCtrlCreateInstanceFunc == null)
+            {
+               _GuiEditCtrlCreateInstanceFunc =
+                  (_GuiEditCtrlCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiEditCtrlCreateInstance"), typeof(_GuiEditCtrlCreateInstance));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiEditCtrlSetRoot(IntPtr ctrl, IntPtr root);
+            return _GuiEditCtrlCreateInstanceFunc();
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiEditCtrlAddNewCtrl(IntPtr ctrl, IntPtr root);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiEditCtrlSetRoot(IntPtr ctrl, IntPtr root);
+         private static _GuiEditCtrlSetRoot _GuiEditCtrlSetRootFunc;
+         internal static void GuiEditCtrlSetRoot(IntPtr ctrl, IntPtr root)
+         {
+            if (_GuiEditCtrlSetRootFunc == null)
+            {
+               _GuiEditCtrlSetRootFunc =
+                  (_GuiEditCtrlSetRoot)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiEditCtrlSetRoot"), typeof(_GuiEditCtrlSetRoot));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiEditCtrlAddSelection(IntPtr ctrl, int ctrlID);
+            _GuiEditCtrlSetRootFunc(ctrl, root);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiEditCtrlRemoveSelection(IntPtr ctrl, int ctrlID);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiEditCtrlAddNewCtrl(IntPtr ctrl, IntPtr root);
+         private static _GuiEditCtrlAddNewCtrl _GuiEditCtrlAddNewCtrlFunc;
+         internal static void GuiEditCtrlAddNewCtrl(IntPtr ctrl, IntPtr root)
+         {
+            if (_GuiEditCtrlAddNewCtrlFunc == null)
+            {
+               _GuiEditCtrlAddNewCtrlFunc =
+                  (_GuiEditCtrlAddNewCtrl)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiEditCtrlAddNewCtrl"), typeof(_GuiEditCtrlAddNewCtrl));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiEditCtrlClearSelection(IntPtr ctrl);
+            _GuiEditCtrlAddNewCtrlFunc(ctrl, root);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiEditCtrlSelect(IntPtr ctrl, IntPtr selCtrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiEditCtrlAddSelection(IntPtr ctrl, int ctrlID);
+         private static _GuiEditCtrlAddSelection _GuiEditCtrlAddSelectionFunc;
+         internal static void GuiEditCtrlAddSelection(IntPtr ctrl, int ctrlID)
+         {
+            if (_GuiEditCtrlAddSelectionFunc == null)
+            {
+               _GuiEditCtrlAddSelectionFunc =
+                  (_GuiEditCtrlAddSelection)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiEditCtrlAddSelection"), typeof(_GuiEditCtrlAddSelection));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiEditCtrlSetCurrentAddSet(IntPtr ctrl, IntPtr selCtrl);
+            _GuiEditCtrlAddSelectionFunc(ctrl, ctrlID);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiEditCtrlGetCurrentAddSet(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiEditCtrlRemoveSelection(IntPtr ctrl, int ctrlID);
+         private static _GuiEditCtrlRemoveSelection _GuiEditCtrlRemoveSelectionFunc;
+         internal static void GuiEditCtrlRemoveSelection(IntPtr ctrl, int ctrlID)
+         {
+            if (_GuiEditCtrlRemoveSelectionFunc == null)
+            {
+               _GuiEditCtrlRemoveSelectionFunc =
+                  (_GuiEditCtrlRemoveSelection)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiEditCtrlRemoveSelection"), typeof(_GuiEditCtrlRemoveSelection));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiEditCtrlToggle(IntPtr ctrl);
+            _GuiEditCtrlRemoveSelectionFunc(ctrl, ctrlID);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiEditCtrlJustify(IntPtr ctrl, int mode);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiEditCtrlClearSelection(IntPtr ctrl);
+         private static _GuiEditCtrlClearSelection _GuiEditCtrlClearSelectionFunc;
+         internal static void GuiEditCtrlClearSelection(IntPtr ctrl)
+         {
+            if (_GuiEditCtrlClearSelectionFunc == null)
+            {
+               _GuiEditCtrlClearSelectionFunc =
+                  (_GuiEditCtrlClearSelection)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiEditCtrlClearSelection"), typeof(_GuiEditCtrlClearSelection));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiEditCtrlBringToFront(IntPtr ctrl);
+            _GuiEditCtrlClearSelectionFunc(ctrl);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiEditCtrlPushToBack(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiEditCtrlSelect(IntPtr ctrl, IntPtr selCtrl);
+         private static _GuiEditCtrlSelect _GuiEditCtrlSelectFunc;
+         internal static void GuiEditCtrlSelect(IntPtr ctrl, IntPtr selCtrl)
+         {
+            if (_GuiEditCtrlSelectFunc == null)
+            {
+               _GuiEditCtrlSelectFunc =
+                  (_GuiEditCtrlSelect)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiEditCtrlSelect"), typeof(_GuiEditCtrlSelect));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiEditCtrlDeleteSelection(IntPtr ctrl);
+            _GuiEditCtrlSelectFunc(ctrl, selCtrl);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiEditCtrlMoveSelection(IntPtr ctrl, int deltaX, int deltaY);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiEditCtrlSetCurrentAddSet(IntPtr ctrl, IntPtr selCtrl);
+         private static _GuiEditCtrlSetCurrentAddSet _GuiEditCtrlSetCurrentAddSetFunc;
+         internal static void GuiEditCtrlSetCurrentAddSet(IntPtr ctrl, IntPtr selCtrl)
+         {
+            if (_GuiEditCtrlSetCurrentAddSetFunc == null)
+            {
+               _GuiEditCtrlSetCurrentAddSetFunc =
+                  (_GuiEditCtrlSetCurrentAddSet)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiEditCtrlSetCurrentAddSet"), typeof(_GuiEditCtrlSetCurrentAddSet));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiEditCtrlSaveSelection(IntPtr ctrl, string fileName);
+            _GuiEditCtrlSetCurrentAddSetFunc(ctrl, selCtrl);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiEditCtrlLoadSelection(IntPtr ctrl, string fileName);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiEditCtrlGetCurrentAddSet(IntPtr ctrl);
+         private static _GuiEditCtrlGetCurrentAddSet _GuiEditCtrlGetCurrentAddSetFunc;
+         internal static IntPtr GuiEditCtrlGetCurrentAddSet(IntPtr ctrl)
+         {
+            if (_GuiEditCtrlGetCurrentAddSetFunc == null)
+            {
+               _GuiEditCtrlGetCurrentAddSetFunc =
+                  (_GuiEditCtrlGetCurrentAddSet)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiEditCtrlGetCurrentAddSet"), typeof(_GuiEditCtrlGetCurrentAddSet));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiEditCtrlSelectAll(IntPtr ctrl);
+            return _GuiEditCtrlGetCurrentAddSetFunc(ctrl);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiEditCtrlGetSelected(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiEditCtrlToggle(IntPtr ctrl);
+         private static _GuiEditCtrlToggle _GuiEditCtrlToggleFunc;
+         internal static void GuiEditCtrlToggle(IntPtr ctrl)
+         {
+            if (_GuiEditCtrlToggleFunc == null)
+            {
+               _GuiEditCtrlToggleFunc =
+                  (_GuiEditCtrlToggle)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiEditCtrlToggle"), typeof(_GuiEditCtrlToggle));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiEditCtrlGetTrash(IntPtr ctrl);
+            _GuiEditCtrlToggleFunc(ctrl);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiEditCtrlGetUndoManager(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiEditCtrlJustify(IntPtr ctrl, int mode);
+         private static _GuiEditCtrlJustify _GuiEditCtrlJustifyFunc;
+         internal static void GuiEditCtrlJustify(IntPtr ctrl, int mode)
+         {
+            if (_GuiEditCtrlJustifyFunc == null)
+            {
+               _GuiEditCtrlJustifyFunc =
+                  (_GuiEditCtrlJustify)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiEditCtrlJustify"), typeof(_GuiEditCtrlJustify));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiEditCtrlSetSnapToGrid(IntPtr ctrl, uint gridSize);
+            _GuiEditCtrlJustifyFunc(ctrl, mode);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiEditCtrlBringToFront(IntPtr ctrl);
+         private static _GuiEditCtrlBringToFront _GuiEditCtrlBringToFrontFunc;
+         internal static void GuiEditCtrlBringToFront(IntPtr ctrl)
+         {
+            if (_GuiEditCtrlBringToFrontFunc == null)
+            {
+               _GuiEditCtrlBringToFrontFunc =
+                  (_GuiEditCtrlBringToFront)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiEditCtrlBringToFront"), typeof(_GuiEditCtrlBringToFront));
+            }
+
+            _GuiEditCtrlBringToFrontFunc(ctrl);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiEditCtrlPushToBack(IntPtr ctrl);
+         private static _GuiEditCtrlPushToBack _GuiEditCtrlPushToBackFunc;
+         internal static void GuiEditCtrlPushToBack(IntPtr ctrl)
+         {
+            if (_GuiEditCtrlPushToBackFunc == null)
+            {
+               _GuiEditCtrlPushToBackFunc =
+                  (_GuiEditCtrlPushToBack)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiEditCtrlPushToBack"), typeof(_GuiEditCtrlPushToBack));
+            }
+
+            _GuiEditCtrlPushToBackFunc(ctrl);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiEditCtrlDeleteSelection(IntPtr ctrl);
+         private static _GuiEditCtrlDeleteSelection _GuiEditCtrlDeleteSelectionFunc;
+         internal static void GuiEditCtrlDeleteSelection(IntPtr ctrl)
+         {
+            if (_GuiEditCtrlDeleteSelectionFunc == null)
+            {
+               _GuiEditCtrlDeleteSelectionFunc =
+                  (_GuiEditCtrlDeleteSelection)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiEditCtrlDeleteSelection"), typeof(_GuiEditCtrlDeleteSelection));
+            }
+
+            _GuiEditCtrlDeleteSelectionFunc(ctrl);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiEditCtrlMoveSelection(IntPtr ctrl, int deltaX, int deltaY);
+         private static _GuiEditCtrlMoveSelection _GuiEditCtrlMoveSelectionFunc;
+         internal static void GuiEditCtrlMoveSelection(IntPtr ctrl, int deltaX, int deltaY)
+         {
+            if (_GuiEditCtrlMoveSelectionFunc == null)
+            {
+               _GuiEditCtrlMoveSelectionFunc =
+                  (_GuiEditCtrlMoveSelection)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiEditCtrlMoveSelection"), typeof(_GuiEditCtrlMoveSelection));
+            }
+
+            _GuiEditCtrlMoveSelectionFunc(ctrl, deltaX, deltaY);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiEditCtrlSaveSelection(IntPtr ctrl, string fileName);
+         private static _GuiEditCtrlSaveSelection _GuiEditCtrlSaveSelectionFunc;
+         internal static void GuiEditCtrlSaveSelection(IntPtr ctrl, string fileName)
+         {
+            if (_GuiEditCtrlSaveSelectionFunc == null)
+            {
+               _GuiEditCtrlSaveSelectionFunc =
+                  (_GuiEditCtrlSaveSelection)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiEditCtrlSaveSelection"), typeof(_GuiEditCtrlSaveSelection));
+            }
+
+            _GuiEditCtrlSaveSelectionFunc(ctrl, fileName);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiEditCtrlLoadSelection(IntPtr ctrl, string fileName);
+         private static _GuiEditCtrlLoadSelection _GuiEditCtrlLoadSelectionFunc;
+         internal static void GuiEditCtrlLoadSelection(IntPtr ctrl, string fileName)
+         {
+            if (_GuiEditCtrlLoadSelectionFunc == null)
+            {
+               _GuiEditCtrlLoadSelectionFunc =
+                  (_GuiEditCtrlLoadSelection)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiEditCtrlLoadSelection"), typeof(_GuiEditCtrlLoadSelection));
+            }
+
+            _GuiEditCtrlLoadSelectionFunc(ctrl, fileName);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiEditCtrlSelectAll(IntPtr ctrl);
+         private static _GuiEditCtrlSelectAll _GuiEditCtrlSelectAllFunc;
+         internal static void GuiEditCtrlSelectAll(IntPtr ctrl)
+         {
+            if (_GuiEditCtrlSelectAllFunc == null)
+            {
+               _GuiEditCtrlSelectAllFunc =
+                  (_GuiEditCtrlSelectAll)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiEditCtrlSelectAll"), typeof(_GuiEditCtrlSelectAll));
+            }
+
+            _GuiEditCtrlSelectAllFunc(ctrl);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiEditCtrlGetSelected(IntPtr ctrl);
+         private static _GuiEditCtrlGetSelected _GuiEditCtrlGetSelectedFunc;
+         internal static IntPtr GuiEditCtrlGetSelected(IntPtr ctrl)
+         {
+            if (_GuiEditCtrlGetSelectedFunc == null)
+            {
+               _GuiEditCtrlGetSelectedFunc =
+                  (_GuiEditCtrlGetSelected)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiEditCtrlGetSelected"), typeof(_GuiEditCtrlGetSelected));
+            }
+
+            return _GuiEditCtrlGetSelectedFunc(ctrl);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiEditCtrlGetTrash(IntPtr ctrl);
+         private static _GuiEditCtrlGetTrash _GuiEditCtrlGetTrashFunc;
+         internal static IntPtr GuiEditCtrlGetTrash(IntPtr ctrl)
+         {
+            if (_GuiEditCtrlGetTrashFunc == null)
+            {
+               _GuiEditCtrlGetTrashFunc =
+                  (_GuiEditCtrlGetTrash)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiEditCtrlGetTrash"), typeof(_GuiEditCtrlGetTrash));
+            }
+
+            return _GuiEditCtrlGetTrashFunc(ctrl);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiEditCtrlGetUndoManager(IntPtr ctrl);
+         private static _GuiEditCtrlGetUndoManager _GuiEditCtrlGetUndoManagerFunc;
+         internal static IntPtr GuiEditCtrlGetUndoManager(IntPtr ctrl)
+         {
+            if (_GuiEditCtrlGetUndoManagerFunc == null)
+            {
+               _GuiEditCtrlGetUndoManagerFunc =
+                  (_GuiEditCtrlGetUndoManager)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiEditCtrlGetUndoManager"), typeof(_GuiEditCtrlGetUndoManager));
+            }
+
+            return _GuiEditCtrlGetUndoManagerFunc(ctrl);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiEditCtrlSetSnapToGrid(IntPtr ctrl, uint gridSize);
+         private static _GuiEditCtrlSetSnapToGrid _GuiEditCtrlSetSnapToGridFunc;
+         internal static void GuiEditCtrlSetSnapToGrid(IntPtr ctrl, uint gridSize)
+         {
+            if (_GuiEditCtrlSetSnapToGridFunc == null)
+            {
+               _GuiEditCtrlSetSnapToGridFunc =
+                  (_GuiEditCtrlSetSnapToGrid)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiEditCtrlSetSnapToGrid"), typeof(_GuiEditCtrlSetSnapToGrid));
+            }
+
+            _GuiEditCtrlSetSnapToGridFunc(ctrl, gridSize);
+         }
       }
       
       #endregion

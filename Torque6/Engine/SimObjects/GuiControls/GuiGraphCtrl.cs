@@ -40,26 +40,110 @@ namespace Torque6.Engine.SimObjects.GuiControls
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiGraphCtrlCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiGraphCtrlCreateInstance();
+         private static _GuiGraphCtrlCreateInstance _GuiGraphCtrlCreateInstanceFunc;
+         internal static IntPtr GuiGraphCtrlCreateInstance()
+         {
+            if (_GuiGraphCtrlCreateInstanceFunc == null)
+            {
+               _GuiGraphCtrlCreateInstanceFunc =
+                  (_GuiGraphCtrlCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiGraphCtrlCreateInstance"), typeof(_GuiGraphCtrlCreateInstance));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiGraphCtrlAddDatum(IntPtr ctrl, int plotID, float v);
+            return _GuiGraphCtrlCreateInstanceFunc();
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern float GuiGraphCtrlGetDatum(IntPtr ctrl, int plotID, int samples);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiGraphCtrlAddDatum(IntPtr ctrl, int plotID, float v);
+         private static _GuiGraphCtrlAddDatum _GuiGraphCtrlAddDatumFunc;
+         internal static void GuiGraphCtrlAddDatum(IntPtr ctrl, int plotID, float v)
+         {
+            if (_GuiGraphCtrlAddDatumFunc == null)
+            {
+               _GuiGraphCtrlAddDatumFunc =
+                  (_GuiGraphCtrlAddDatum)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiGraphCtrlAddDatum"), typeof(_GuiGraphCtrlAddDatum));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiGraphCtrlAddAutoPlot(IntPtr ctrl, int plotID, string variable, int update);
+            _GuiGraphCtrlAddDatumFunc(ctrl, plotID, v);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiGraphCtrlRemoveAutoPlot(IntPtr ctrl, int plotID);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate float _GuiGraphCtrlGetDatum(IntPtr ctrl, int plotID, int samples);
+         private static _GuiGraphCtrlGetDatum _GuiGraphCtrlGetDatumFunc;
+         internal static float GuiGraphCtrlGetDatum(IntPtr ctrl, int plotID, int samples)
+         {
+            if (_GuiGraphCtrlGetDatumFunc == null)
+            {
+               _GuiGraphCtrlGetDatumFunc =
+                  (_GuiGraphCtrlGetDatum)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiGraphCtrlGetDatum"), typeof(_GuiGraphCtrlGetDatum));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiGraphCtrlSetGraphType(IntPtr ctrl, int plotID, string graphType);
+            return _GuiGraphCtrlGetDatumFunc(ctrl, plotID, samples);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiGraphCtrlMatchScale(IntPtr ctrl, int argc, int[] argv);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiGraphCtrlAddAutoPlot(IntPtr ctrl, int plotID, string variable, int update);
+         private static _GuiGraphCtrlAddAutoPlot _GuiGraphCtrlAddAutoPlotFunc;
+         internal static void GuiGraphCtrlAddAutoPlot(IntPtr ctrl, int plotID, string variable, int update)
+         {
+            if (_GuiGraphCtrlAddAutoPlotFunc == null)
+            {
+               _GuiGraphCtrlAddAutoPlotFunc =
+                  (_GuiGraphCtrlAddAutoPlot)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiGraphCtrlAddAutoPlot"), typeof(_GuiGraphCtrlAddAutoPlot));
+            }
+
+            _GuiGraphCtrlAddAutoPlotFunc(ctrl, plotID, variable, update);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiGraphCtrlRemoveAutoPlot(IntPtr ctrl, int plotID);
+         private static _GuiGraphCtrlRemoveAutoPlot _GuiGraphCtrlRemoveAutoPlotFunc;
+         internal static void GuiGraphCtrlRemoveAutoPlot(IntPtr ctrl, int plotID)
+         {
+            if (_GuiGraphCtrlRemoveAutoPlotFunc == null)
+            {
+               _GuiGraphCtrlRemoveAutoPlotFunc =
+                  (_GuiGraphCtrlRemoveAutoPlot)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiGraphCtrlRemoveAutoPlot"), typeof(_GuiGraphCtrlRemoveAutoPlot));
+            }
+
+            _GuiGraphCtrlRemoveAutoPlotFunc(ctrl, plotID);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiGraphCtrlSetGraphType(IntPtr ctrl, int plotID, string graphType);
+         private static _GuiGraphCtrlSetGraphType _GuiGraphCtrlSetGraphTypeFunc;
+         internal static void GuiGraphCtrlSetGraphType(IntPtr ctrl, int plotID, string graphType)
+         {
+            if (_GuiGraphCtrlSetGraphTypeFunc == null)
+            {
+               _GuiGraphCtrlSetGraphTypeFunc =
+                  (_GuiGraphCtrlSetGraphType)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiGraphCtrlSetGraphType"), typeof(_GuiGraphCtrlSetGraphType));
+            }
+
+            _GuiGraphCtrlSetGraphTypeFunc(ctrl, plotID, graphType);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiGraphCtrlMatchScale(IntPtr ctrl, int argc, int[] argv);
+         private static _GuiGraphCtrlMatchScale _GuiGraphCtrlMatchScaleFunc;
+         internal static void GuiGraphCtrlMatchScale(IntPtr ctrl, int argc, int[] argv)
+         {
+            if (_GuiGraphCtrlMatchScaleFunc == null)
+            {
+               _GuiGraphCtrlMatchScaleFunc =
+                  (_GuiGraphCtrlMatchScale)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiGraphCtrlMatchScale"), typeof(_GuiGraphCtrlMatchScale));
+            }
+
+            _GuiGraphCtrlMatchScaleFunc(ctrl, argc, argv);
+         }
       }
       
       #endregion

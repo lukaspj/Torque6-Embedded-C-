@@ -40,20 +40,80 @@ namespace Torque6.Engine.SimObjects.Scene
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr MultiplyNodeGetInputASrc(IntPtr MultiplyNode);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _MultiplyNodeGetInputASrc(IntPtr MultiplyNode);
+         private static _MultiplyNodeGetInputASrc _MultiplyNodeGetInputASrcFunc;
+         internal static IntPtr MultiplyNodeGetInputASrc(IntPtr MultiplyNode)
+         {
+            if (_MultiplyNodeGetInputASrcFunc == null)
+            {
+               _MultiplyNodeGetInputASrcFunc =
+                  (_MultiplyNodeGetInputASrc)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "MultiplyNodeGetInputASrc"), typeof(_MultiplyNodeGetInputASrc));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void MultiplyNodeSetInputASrc(IntPtr MultiplyNode, string src);
+            return _MultiplyNodeGetInputASrcFunc(MultiplyNode);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr MultiplyNodeGetInputBSrc(IntPtr MultiplyNode);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _MultiplyNodeSetInputASrc(IntPtr MultiplyNode, string src);
+         private static _MultiplyNodeSetInputASrc _MultiplyNodeSetInputASrcFunc;
+         internal static void MultiplyNodeSetInputASrc(IntPtr MultiplyNode, string src)
+         {
+            if (_MultiplyNodeSetInputASrcFunc == null)
+            {
+               _MultiplyNodeSetInputASrcFunc =
+                  (_MultiplyNodeSetInputASrc)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "MultiplyNodeSetInputASrc"), typeof(_MultiplyNodeSetInputASrc));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void MultiplyNodeSetInputBSrc(IntPtr MultiplyNode, string src);
+            _MultiplyNodeSetInputASrcFunc(MultiplyNode, src);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr MultiplyNodeCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _MultiplyNodeGetInputBSrc(IntPtr MultiplyNode);
+         private static _MultiplyNodeGetInputBSrc _MultiplyNodeGetInputBSrcFunc;
+         internal static IntPtr MultiplyNodeGetInputBSrc(IntPtr MultiplyNode)
+         {
+            if (_MultiplyNodeGetInputBSrcFunc == null)
+            {
+               _MultiplyNodeGetInputBSrcFunc =
+                  (_MultiplyNodeGetInputBSrc)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "MultiplyNodeGetInputBSrc"), typeof(_MultiplyNodeGetInputBSrc));
+            }
+
+            return _MultiplyNodeGetInputBSrcFunc(MultiplyNode);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _MultiplyNodeSetInputBSrc(IntPtr MultiplyNode, string src);
+         private static _MultiplyNodeSetInputBSrc _MultiplyNodeSetInputBSrcFunc;
+         internal static void MultiplyNodeSetInputBSrc(IntPtr MultiplyNode, string src)
+         {
+            if (_MultiplyNodeSetInputBSrcFunc == null)
+            {
+               _MultiplyNodeSetInputBSrcFunc =
+                  (_MultiplyNodeSetInputBSrc)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "MultiplyNodeSetInputBSrc"), typeof(_MultiplyNodeSetInputBSrc));
+            }
+
+            _MultiplyNodeSetInputBSrcFunc(MultiplyNode, src);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _MultiplyNodeCreateInstance();
+         private static _MultiplyNodeCreateInstance _MultiplyNodeCreateInstanceFunc;
+         internal static IntPtr MultiplyNodeCreateInstance()
+         {
+            if (_MultiplyNodeCreateInstanceFunc == null)
+            {
+               _MultiplyNodeCreateInstanceFunc =
+                  (_MultiplyNodeCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "MultiplyNodeCreateInstance"), typeof(_MultiplyNodeCreateInstance));
+            }
+
+            return _MultiplyNodeCreateInstanceFunc();
+         }
       }
       
       #endregion

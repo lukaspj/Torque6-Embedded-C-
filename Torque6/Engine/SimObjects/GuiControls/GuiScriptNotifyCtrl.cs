@@ -40,50 +40,230 @@ namespace Torque6.Engine.SimObjects.GuiControls
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool GuiScriptNotifyCtrlGetOnChildAdded(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _GuiScriptNotifyCtrlGetOnChildAdded(IntPtr ctrl);
+         private static _GuiScriptNotifyCtrlGetOnChildAdded _GuiScriptNotifyCtrlGetOnChildAddedFunc;
+         internal static bool GuiScriptNotifyCtrlGetOnChildAdded(IntPtr ctrl)
+         {
+            if (_GuiScriptNotifyCtrlGetOnChildAddedFunc == null)
+            {
+               _GuiScriptNotifyCtrlGetOnChildAddedFunc =
+                  (_GuiScriptNotifyCtrlGetOnChildAdded)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiScriptNotifyCtrlGetOnChildAdded"), typeof(_GuiScriptNotifyCtrlGetOnChildAdded));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiScriptNotifyCtrlSetOnChildAdded(IntPtr ctrl, bool value);
+            return _GuiScriptNotifyCtrlGetOnChildAddedFunc(ctrl);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool GuiScriptNotifyCtrlGetOnChildRemoved(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiScriptNotifyCtrlSetOnChildAdded(IntPtr ctrl, bool value);
+         private static _GuiScriptNotifyCtrlSetOnChildAdded _GuiScriptNotifyCtrlSetOnChildAddedFunc;
+         internal static void GuiScriptNotifyCtrlSetOnChildAdded(IntPtr ctrl, bool value)
+         {
+            if (_GuiScriptNotifyCtrlSetOnChildAddedFunc == null)
+            {
+               _GuiScriptNotifyCtrlSetOnChildAddedFunc =
+                  (_GuiScriptNotifyCtrlSetOnChildAdded)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiScriptNotifyCtrlSetOnChildAdded"), typeof(_GuiScriptNotifyCtrlSetOnChildAdded));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiScriptNotifyCtrlSetOnChildRemoved(IntPtr ctrl, bool value);
+            _GuiScriptNotifyCtrlSetOnChildAddedFunc(ctrl, value);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool GuiScriptNotifyCtrlGetOnChildResized(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _GuiScriptNotifyCtrlGetOnChildRemoved(IntPtr ctrl);
+         private static _GuiScriptNotifyCtrlGetOnChildRemoved _GuiScriptNotifyCtrlGetOnChildRemovedFunc;
+         internal static bool GuiScriptNotifyCtrlGetOnChildRemoved(IntPtr ctrl)
+         {
+            if (_GuiScriptNotifyCtrlGetOnChildRemovedFunc == null)
+            {
+               _GuiScriptNotifyCtrlGetOnChildRemovedFunc =
+                  (_GuiScriptNotifyCtrlGetOnChildRemoved)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiScriptNotifyCtrlGetOnChildRemoved"), typeof(_GuiScriptNotifyCtrlGetOnChildRemoved));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiScriptNotifyCtrlSetOnChildResized(IntPtr ctrl, bool value);
+            return _GuiScriptNotifyCtrlGetOnChildRemovedFunc(ctrl);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool GuiScriptNotifyCtrlGetOnParentResized(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiScriptNotifyCtrlSetOnChildRemoved(IntPtr ctrl, bool value);
+         private static _GuiScriptNotifyCtrlSetOnChildRemoved _GuiScriptNotifyCtrlSetOnChildRemovedFunc;
+         internal static void GuiScriptNotifyCtrlSetOnChildRemoved(IntPtr ctrl, bool value)
+         {
+            if (_GuiScriptNotifyCtrlSetOnChildRemovedFunc == null)
+            {
+               _GuiScriptNotifyCtrlSetOnChildRemovedFunc =
+                  (_GuiScriptNotifyCtrlSetOnChildRemoved)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiScriptNotifyCtrlSetOnChildRemoved"), typeof(_GuiScriptNotifyCtrlSetOnChildRemoved));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiScriptNotifyCtrlSetOnParentResized(IntPtr ctrl, bool value);
+            _GuiScriptNotifyCtrlSetOnChildRemovedFunc(ctrl, value);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool GuiScriptNotifyCtrlGetOnResize(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _GuiScriptNotifyCtrlGetOnChildResized(IntPtr ctrl);
+         private static _GuiScriptNotifyCtrlGetOnChildResized _GuiScriptNotifyCtrlGetOnChildResizedFunc;
+         internal static bool GuiScriptNotifyCtrlGetOnChildResized(IntPtr ctrl)
+         {
+            if (_GuiScriptNotifyCtrlGetOnChildResizedFunc == null)
+            {
+               _GuiScriptNotifyCtrlGetOnChildResizedFunc =
+                  (_GuiScriptNotifyCtrlGetOnChildResized)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiScriptNotifyCtrlGetOnChildResized"), typeof(_GuiScriptNotifyCtrlGetOnChildResized));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiScriptNotifyCtrlSetOnResize(IntPtr ctrl, bool value);
+            return _GuiScriptNotifyCtrlGetOnChildResizedFunc(ctrl);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool GuiScriptNotifyCtrlGetOnLoseFirstResponder(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiScriptNotifyCtrlSetOnChildResized(IntPtr ctrl, bool value);
+         private static _GuiScriptNotifyCtrlSetOnChildResized _GuiScriptNotifyCtrlSetOnChildResizedFunc;
+         internal static void GuiScriptNotifyCtrlSetOnChildResized(IntPtr ctrl, bool value)
+         {
+            if (_GuiScriptNotifyCtrlSetOnChildResizedFunc == null)
+            {
+               _GuiScriptNotifyCtrlSetOnChildResizedFunc =
+                  (_GuiScriptNotifyCtrlSetOnChildResized)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiScriptNotifyCtrlSetOnChildResized"), typeof(_GuiScriptNotifyCtrlSetOnChildResized));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiScriptNotifyCtrlSetOnLoseFirstResponder(IntPtr ctrl, bool value);
+            _GuiScriptNotifyCtrlSetOnChildResizedFunc(ctrl, value);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool GuiScriptNotifyCtrlGetOnGainFirstResponder(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _GuiScriptNotifyCtrlGetOnParentResized(IntPtr ctrl);
+         private static _GuiScriptNotifyCtrlGetOnParentResized _GuiScriptNotifyCtrlGetOnParentResizedFunc;
+         internal static bool GuiScriptNotifyCtrlGetOnParentResized(IntPtr ctrl)
+         {
+            if (_GuiScriptNotifyCtrlGetOnParentResizedFunc == null)
+            {
+               _GuiScriptNotifyCtrlGetOnParentResizedFunc =
+                  (_GuiScriptNotifyCtrlGetOnParentResized)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiScriptNotifyCtrlGetOnParentResized"), typeof(_GuiScriptNotifyCtrlGetOnParentResized));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiScriptNotifyCtrlSetOnGainFirstResponder(IntPtr ctrl, bool value);
+            return _GuiScriptNotifyCtrlGetOnParentResizedFunc(ctrl);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiScriptNotifyCtrlCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiScriptNotifyCtrlSetOnParentResized(IntPtr ctrl, bool value);
+         private static _GuiScriptNotifyCtrlSetOnParentResized _GuiScriptNotifyCtrlSetOnParentResizedFunc;
+         internal static void GuiScriptNotifyCtrlSetOnParentResized(IntPtr ctrl, bool value)
+         {
+            if (_GuiScriptNotifyCtrlSetOnParentResizedFunc == null)
+            {
+               _GuiScriptNotifyCtrlSetOnParentResizedFunc =
+                  (_GuiScriptNotifyCtrlSetOnParentResized)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiScriptNotifyCtrlSetOnParentResized"), typeof(_GuiScriptNotifyCtrlSetOnParentResized));
+            }
+
+            _GuiScriptNotifyCtrlSetOnParentResizedFunc(ctrl, value);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _GuiScriptNotifyCtrlGetOnResize(IntPtr ctrl);
+         private static _GuiScriptNotifyCtrlGetOnResize _GuiScriptNotifyCtrlGetOnResizeFunc;
+         internal static bool GuiScriptNotifyCtrlGetOnResize(IntPtr ctrl)
+         {
+            if (_GuiScriptNotifyCtrlGetOnResizeFunc == null)
+            {
+               _GuiScriptNotifyCtrlGetOnResizeFunc =
+                  (_GuiScriptNotifyCtrlGetOnResize)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiScriptNotifyCtrlGetOnResize"), typeof(_GuiScriptNotifyCtrlGetOnResize));
+            }
+
+            return _GuiScriptNotifyCtrlGetOnResizeFunc(ctrl);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiScriptNotifyCtrlSetOnResize(IntPtr ctrl, bool value);
+         private static _GuiScriptNotifyCtrlSetOnResize _GuiScriptNotifyCtrlSetOnResizeFunc;
+         internal static void GuiScriptNotifyCtrlSetOnResize(IntPtr ctrl, bool value)
+         {
+            if (_GuiScriptNotifyCtrlSetOnResizeFunc == null)
+            {
+               _GuiScriptNotifyCtrlSetOnResizeFunc =
+                  (_GuiScriptNotifyCtrlSetOnResize)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiScriptNotifyCtrlSetOnResize"), typeof(_GuiScriptNotifyCtrlSetOnResize));
+            }
+
+            _GuiScriptNotifyCtrlSetOnResizeFunc(ctrl, value);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _GuiScriptNotifyCtrlGetOnLoseFirstResponder(IntPtr ctrl);
+         private static _GuiScriptNotifyCtrlGetOnLoseFirstResponder _GuiScriptNotifyCtrlGetOnLoseFirstResponderFunc;
+         internal static bool GuiScriptNotifyCtrlGetOnLoseFirstResponder(IntPtr ctrl)
+         {
+            if (_GuiScriptNotifyCtrlGetOnLoseFirstResponderFunc == null)
+            {
+               _GuiScriptNotifyCtrlGetOnLoseFirstResponderFunc =
+                  (_GuiScriptNotifyCtrlGetOnLoseFirstResponder)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiScriptNotifyCtrlGetOnLoseFirstResponder"), typeof(_GuiScriptNotifyCtrlGetOnLoseFirstResponder));
+            }
+
+            return _GuiScriptNotifyCtrlGetOnLoseFirstResponderFunc(ctrl);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiScriptNotifyCtrlSetOnLoseFirstResponder(IntPtr ctrl, bool value);
+         private static _GuiScriptNotifyCtrlSetOnLoseFirstResponder _GuiScriptNotifyCtrlSetOnLoseFirstResponderFunc;
+         internal static void GuiScriptNotifyCtrlSetOnLoseFirstResponder(IntPtr ctrl, bool value)
+         {
+            if (_GuiScriptNotifyCtrlSetOnLoseFirstResponderFunc == null)
+            {
+               _GuiScriptNotifyCtrlSetOnLoseFirstResponderFunc =
+                  (_GuiScriptNotifyCtrlSetOnLoseFirstResponder)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiScriptNotifyCtrlSetOnLoseFirstResponder"), typeof(_GuiScriptNotifyCtrlSetOnLoseFirstResponder));
+            }
+
+            _GuiScriptNotifyCtrlSetOnLoseFirstResponderFunc(ctrl, value);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _GuiScriptNotifyCtrlGetOnGainFirstResponder(IntPtr ctrl);
+         private static _GuiScriptNotifyCtrlGetOnGainFirstResponder _GuiScriptNotifyCtrlGetOnGainFirstResponderFunc;
+         internal static bool GuiScriptNotifyCtrlGetOnGainFirstResponder(IntPtr ctrl)
+         {
+            if (_GuiScriptNotifyCtrlGetOnGainFirstResponderFunc == null)
+            {
+               _GuiScriptNotifyCtrlGetOnGainFirstResponderFunc =
+                  (_GuiScriptNotifyCtrlGetOnGainFirstResponder)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiScriptNotifyCtrlGetOnGainFirstResponder"), typeof(_GuiScriptNotifyCtrlGetOnGainFirstResponder));
+            }
+
+            return _GuiScriptNotifyCtrlGetOnGainFirstResponderFunc(ctrl);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiScriptNotifyCtrlSetOnGainFirstResponder(IntPtr ctrl, bool value);
+         private static _GuiScriptNotifyCtrlSetOnGainFirstResponder _GuiScriptNotifyCtrlSetOnGainFirstResponderFunc;
+         internal static void GuiScriptNotifyCtrlSetOnGainFirstResponder(IntPtr ctrl, bool value)
+         {
+            if (_GuiScriptNotifyCtrlSetOnGainFirstResponderFunc == null)
+            {
+               _GuiScriptNotifyCtrlSetOnGainFirstResponderFunc =
+                  (_GuiScriptNotifyCtrlSetOnGainFirstResponder)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiScriptNotifyCtrlSetOnGainFirstResponder"), typeof(_GuiScriptNotifyCtrlSetOnGainFirstResponder));
+            }
+
+            _GuiScriptNotifyCtrlSetOnGainFirstResponderFunc(ctrl, value);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiScriptNotifyCtrlCreateInstance();
+         private static _GuiScriptNotifyCtrlCreateInstance _GuiScriptNotifyCtrlCreateInstanceFunc;
+         internal static IntPtr GuiScriptNotifyCtrlCreateInstance()
+         {
+            if (_GuiScriptNotifyCtrlCreateInstanceFunc == null)
+            {
+               _GuiScriptNotifyCtrlCreateInstanceFunc =
+                  (_GuiScriptNotifyCtrlCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiScriptNotifyCtrlCreateInstance"), typeof(_GuiScriptNotifyCtrlCreateInstance));
+            }
+
+            return _GuiScriptNotifyCtrlCreateInstanceFunc();
+         }
       }
       
       #endregion

@@ -40,38 +40,170 @@ namespace Torque6.Engine.SimObjects.GuiControls
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiSeparatorCtrlGetCaption(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiSeparatorCtrlGetCaption(IntPtr ctrl);
+         private static _GuiSeparatorCtrlGetCaption _GuiSeparatorCtrlGetCaptionFunc;
+         internal static IntPtr GuiSeparatorCtrlGetCaption(IntPtr ctrl)
+         {
+            if (_GuiSeparatorCtrlGetCaptionFunc == null)
+            {
+               _GuiSeparatorCtrlGetCaptionFunc =
+                  (_GuiSeparatorCtrlGetCaption)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiSeparatorCtrlGetCaption"), typeof(_GuiSeparatorCtrlGetCaption));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiSeparatorCtrlSetCaption(IntPtr ctrl, string caption);
+            return _GuiSeparatorCtrlGetCaptionFunc(ctrl);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern int GuiSeparatorCtrlGetType(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiSeparatorCtrlSetCaption(IntPtr ctrl, string caption);
+         private static _GuiSeparatorCtrlSetCaption _GuiSeparatorCtrlSetCaptionFunc;
+         internal static void GuiSeparatorCtrlSetCaption(IntPtr ctrl, string caption)
+         {
+            if (_GuiSeparatorCtrlSetCaptionFunc == null)
+            {
+               _GuiSeparatorCtrlSetCaptionFunc =
+                  (_GuiSeparatorCtrlSetCaption)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiSeparatorCtrlSetCaption"), typeof(_GuiSeparatorCtrlSetCaption));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiSeparatorCtrlSetType(IntPtr ctrl, int type);
+            _GuiSeparatorCtrlSetCaptionFunc(ctrl, caption);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern int GuiSeparatorCtrlGetBorderMargin(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate int _GuiSeparatorCtrlGetType(IntPtr ctrl);
+         private static _GuiSeparatorCtrlGetType _GuiSeparatorCtrlGetTypeFunc;
+         internal static int GuiSeparatorCtrlGetType(IntPtr ctrl)
+         {
+            if (_GuiSeparatorCtrlGetTypeFunc == null)
+            {
+               _GuiSeparatorCtrlGetTypeFunc =
+                  (_GuiSeparatorCtrlGetType)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiSeparatorCtrlGetType"), typeof(_GuiSeparatorCtrlGetType));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiSeparatorCtrlSetBorderMargin(IntPtr ctrl, int margin);
+            return _GuiSeparatorCtrlGetTypeFunc(ctrl);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool GuiSeparatorCtrlGetInvisible(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiSeparatorCtrlSetType(IntPtr ctrl, int type);
+         private static _GuiSeparatorCtrlSetType _GuiSeparatorCtrlSetTypeFunc;
+         internal static void GuiSeparatorCtrlSetType(IntPtr ctrl, int type)
+         {
+            if (_GuiSeparatorCtrlSetTypeFunc == null)
+            {
+               _GuiSeparatorCtrlSetTypeFunc =
+                  (_GuiSeparatorCtrlSetType)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiSeparatorCtrlSetType"), typeof(_GuiSeparatorCtrlSetType));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiSeparatorCtrlSetInvisible(IntPtr ctrl, bool invisible);
+            _GuiSeparatorCtrlSetTypeFunc(ctrl, type);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern int GuiSeparatorCtrlGetLeftMargin(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate int _GuiSeparatorCtrlGetBorderMargin(IntPtr ctrl);
+         private static _GuiSeparatorCtrlGetBorderMargin _GuiSeparatorCtrlGetBorderMarginFunc;
+         internal static int GuiSeparatorCtrlGetBorderMargin(IntPtr ctrl)
+         {
+            if (_GuiSeparatorCtrlGetBorderMarginFunc == null)
+            {
+               _GuiSeparatorCtrlGetBorderMarginFunc =
+                  (_GuiSeparatorCtrlGetBorderMargin)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiSeparatorCtrlGetBorderMargin"), typeof(_GuiSeparatorCtrlGetBorderMargin));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiSeparatorCtrlSetLeftMargin(IntPtr ctrl, int leftMargin);
+            return _GuiSeparatorCtrlGetBorderMarginFunc(ctrl);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiSeparatorCtrlCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiSeparatorCtrlSetBorderMargin(IntPtr ctrl, int margin);
+         private static _GuiSeparatorCtrlSetBorderMargin _GuiSeparatorCtrlSetBorderMarginFunc;
+         internal static void GuiSeparatorCtrlSetBorderMargin(IntPtr ctrl, int margin)
+         {
+            if (_GuiSeparatorCtrlSetBorderMarginFunc == null)
+            {
+               _GuiSeparatorCtrlSetBorderMarginFunc =
+                  (_GuiSeparatorCtrlSetBorderMargin)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiSeparatorCtrlSetBorderMargin"), typeof(_GuiSeparatorCtrlSetBorderMargin));
+            }
+
+            _GuiSeparatorCtrlSetBorderMarginFunc(ctrl, margin);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _GuiSeparatorCtrlGetInvisible(IntPtr ctrl);
+         private static _GuiSeparatorCtrlGetInvisible _GuiSeparatorCtrlGetInvisibleFunc;
+         internal static bool GuiSeparatorCtrlGetInvisible(IntPtr ctrl)
+         {
+            if (_GuiSeparatorCtrlGetInvisibleFunc == null)
+            {
+               _GuiSeparatorCtrlGetInvisibleFunc =
+                  (_GuiSeparatorCtrlGetInvisible)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiSeparatorCtrlGetInvisible"), typeof(_GuiSeparatorCtrlGetInvisible));
+            }
+
+            return _GuiSeparatorCtrlGetInvisibleFunc(ctrl);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiSeparatorCtrlSetInvisible(IntPtr ctrl, bool invisible);
+         private static _GuiSeparatorCtrlSetInvisible _GuiSeparatorCtrlSetInvisibleFunc;
+         internal static void GuiSeparatorCtrlSetInvisible(IntPtr ctrl, bool invisible)
+         {
+            if (_GuiSeparatorCtrlSetInvisibleFunc == null)
+            {
+               _GuiSeparatorCtrlSetInvisibleFunc =
+                  (_GuiSeparatorCtrlSetInvisible)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiSeparatorCtrlSetInvisible"), typeof(_GuiSeparatorCtrlSetInvisible));
+            }
+
+            _GuiSeparatorCtrlSetInvisibleFunc(ctrl, invisible);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate int _GuiSeparatorCtrlGetLeftMargin(IntPtr ctrl);
+         private static _GuiSeparatorCtrlGetLeftMargin _GuiSeparatorCtrlGetLeftMarginFunc;
+         internal static int GuiSeparatorCtrlGetLeftMargin(IntPtr ctrl)
+         {
+            if (_GuiSeparatorCtrlGetLeftMarginFunc == null)
+            {
+               _GuiSeparatorCtrlGetLeftMarginFunc =
+                  (_GuiSeparatorCtrlGetLeftMargin)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiSeparatorCtrlGetLeftMargin"), typeof(_GuiSeparatorCtrlGetLeftMargin));
+            }
+
+            return _GuiSeparatorCtrlGetLeftMarginFunc(ctrl);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiSeparatorCtrlSetLeftMargin(IntPtr ctrl, int leftMargin);
+         private static _GuiSeparatorCtrlSetLeftMargin _GuiSeparatorCtrlSetLeftMarginFunc;
+         internal static void GuiSeparatorCtrlSetLeftMargin(IntPtr ctrl, int leftMargin)
+         {
+            if (_GuiSeparatorCtrlSetLeftMarginFunc == null)
+            {
+               _GuiSeparatorCtrlSetLeftMarginFunc =
+                  (_GuiSeparatorCtrlSetLeftMargin)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiSeparatorCtrlSetLeftMargin"), typeof(_GuiSeparatorCtrlSetLeftMargin));
+            }
+
+            _GuiSeparatorCtrlSetLeftMarginFunc(ctrl, leftMargin);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiSeparatorCtrlCreateInstance();
+         private static _GuiSeparatorCtrlCreateInstance _GuiSeparatorCtrlCreateInstanceFunc;
+         internal static IntPtr GuiSeparatorCtrlCreateInstance()
+         {
+            if (_GuiSeparatorCtrlCreateInstanceFunc == null)
+            {
+               _GuiSeparatorCtrlCreateInstanceFunc =
+                  (_GuiSeparatorCtrlCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiSeparatorCtrlCreateInstance"), typeof(_GuiSeparatorCtrlCreateInstance));
+            }
+
+            return _GuiSeparatorCtrlCreateInstanceFunc();
+         }
       }
       
       #endregion

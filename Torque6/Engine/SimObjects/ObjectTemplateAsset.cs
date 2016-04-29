@@ -40,14 +40,50 @@ namespace Torque6.Engine.SimObjects
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr ObjectTemplateAssetGetTemplateFile(IntPtr ObjectTemplateAsset);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _ObjectTemplateAssetGetTemplateFile(IntPtr ObjectTemplateAsset);
+         private static _ObjectTemplateAssetGetTemplateFile _ObjectTemplateAssetGetTemplateFileFunc;
+         internal static IntPtr ObjectTemplateAssetGetTemplateFile(IntPtr ObjectTemplateAsset)
+         {
+            if (_ObjectTemplateAssetGetTemplateFileFunc == null)
+            {
+               _ObjectTemplateAssetGetTemplateFileFunc =
+                  (_ObjectTemplateAssetGetTemplateFile)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "ObjectTemplateAssetGetTemplateFile"), typeof(_ObjectTemplateAssetGetTemplateFile));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void ObjectTemplateAssetSetTemplateFile(IntPtr ObjectTemplateAsset, string file);
+            return _ObjectTemplateAssetGetTemplateFileFunc(ObjectTemplateAsset);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr ObjectTemplateAssetCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _ObjectTemplateAssetSetTemplateFile(IntPtr ObjectTemplateAsset, string file);
+         private static _ObjectTemplateAssetSetTemplateFile _ObjectTemplateAssetSetTemplateFileFunc;
+         internal static void ObjectTemplateAssetSetTemplateFile(IntPtr ObjectTemplateAsset, string file)
+         {
+            if (_ObjectTemplateAssetSetTemplateFileFunc == null)
+            {
+               _ObjectTemplateAssetSetTemplateFileFunc =
+                  (_ObjectTemplateAssetSetTemplateFile)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "ObjectTemplateAssetSetTemplateFile"), typeof(_ObjectTemplateAssetSetTemplateFile));
+            }
+
+            _ObjectTemplateAssetSetTemplateFileFunc(ObjectTemplateAsset, file);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _ObjectTemplateAssetCreateInstance();
+         private static _ObjectTemplateAssetCreateInstance _ObjectTemplateAssetCreateInstanceFunc;
+         internal static IntPtr ObjectTemplateAssetCreateInstance()
+         {
+            if (_ObjectTemplateAssetCreateInstanceFunc == null)
+            {
+               _ObjectTemplateAssetCreateInstanceFunc =
+                  (_ObjectTemplateAssetCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "ObjectTemplateAssetCreateInstance"), typeof(_ObjectTemplateAssetCreateInstance));
+            }
+
+            return _ObjectTemplateAssetCreateInstanceFunc();
+         }
       }
       
       #endregion

@@ -40,8 +40,20 @@ namespace Torque6.Engine.SimObjects
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr SimGroupCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _SimGroupCreateInstance();
+         private static _SimGroupCreateInstance _SimGroupCreateInstanceFunc;
+         internal static IntPtr SimGroupCreateInstance()
+         {
+            if (_SimGroupCreateInstanceFunc == null)
+            {
+               _SimGroupCreateInstanceFunc =
+                  (_SimGroupCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "SimGroupCreateInstance"), typeof(_SimGroupCreateInstance));
+            }
+
+            return _SimGroupCreateInstanceFunc();
+         }
       }
       
       #endregion

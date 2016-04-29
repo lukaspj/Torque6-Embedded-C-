@@ -40,56 +40,260 @@ namespace Torque6.Engine.SimObjects.GuiControls
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool GuiWindowCtrlGetResizeWidth(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _GuiWindowCtrlGetResizeWidth(IntPtr ctrl);
+         private static _GuiWindowCtrlGetResizeWidth _GuiWindowCtrlGetResizeWidthFunc;
+         internal static bool GuiWindowCtrlGetResizeWidth(IntPtr ctrl)
+         {
+            if (_GuiWindowCtrlGetResizeWidthFunc == null)
+            {
+               _GuiWindowCtrlGetResizeWidthFunc =
+                  (_GuiWindowCtrlGetResizeWidth)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiWindowCtrlGetResizeWidth"), typeof(_GuiWindowCtrlGetResizeWidth));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiWindowCtrlSetResizeWidth(IntPtr ctrl, bool enable);
+            return _GuiWindowCtrlGetResizeWidthFunc(ctrl);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool GuiWindowCtrlGetResizeHeight(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiWindowCtrlSetResizeWidth(IntPtr ctrl, bool enable);
+         private static _GuiWindowCtrlSetResizeWidth _GuiWindowCtrlSetResizeWidthFunc;
+         internal static void GuiWindowCtrlSetResizeWidth(IntPtr ctrl, bool enable)
+         {
+            if (_GuiWindowCtrlSetResizeWidthFunc == null)
+            {
+               _GuiWindowCtrlSetResizeWidthFunc =
+                  (_GuiWindowCtrlSetResizeWidth)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiWindowCtrlSetResizeWidth"), typeof(_GuiWindowCtrlSetResizeWidth));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiWindowCtrlSetResizeHeight(IntPtr ctrl, bool enable);
+            _GuiWindowCtrlSetResizeWidthFunc(ctrl, enable);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool GuiWindowCtrlGetCanMove(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _GuiWindowCtrlGetResizeHeight(IntPtr ctrl);
+         private static _GuiWindowCtrlGetResizeHeight _GuiWindowCtrlGetResizeHeightFunc;
+         internal static bool GuiWindowCtrlGetResizeHeight(IntPtr ctrl)
+         {
+            if (_GuiWindowCtrlGetResizeHeightFunc == null)
+            {
+               _GuiWindowCtrlGetResizeHeightFunc =
+                  (_GuiWindowCtrlGetResizeHeight)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiWindowCtrlGetResizeHeight"), typeof(_GuiWindowCtrlGetResizeHeight));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiWindowCtrlSetCanMove(IntPtr ctrl, bool enable);
+            return _GuiWindowCtrlGetResizeHeightFunc(ctrl);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool GuiWindowCtrlGetCanClose(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiWindowCtrlSetResizeHeight(IntPtr ctrl, bool enable);
+         private static _GuiWindowCtrlSetResizeHeight _GuiWindowCtrlSetResizeHeightFunc;
+         internal static void GuiWindowCtrlSetResizeHeight(IntPtr ctrl, bool enable)
+         {
+            if (_GuiWindowCtrlSetResizeHeightFunc == null)
+            {
+               _GuiWindowCtrlSetResizeHeightFunc =
+                  (_GuiWindowCtrlSetResizeHeight)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiWindowCtrlSetResizeHeight"), typeof(_GuiWindowCtrlSetResizeHeight));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiWindowCtrlSetCanClose(IntPtr ctrl, bool enable);
+            _GuiWindowCtrlSetResizeHeightFunc(ctrl, enable);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool GuiWindowCtrlGetCanMinimize(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _GuiWindowCtrlGetCanMove(IntPtr ctrl);
+         private static _GuiWindowCtrlGetCanMove _GuiWindowCtrlGetCanMoveFunc;
+         internal static bool GuiWindowCtrlGetCanMove(IntPtr ctrl)
+         {
+            if (_GuiWindowCtrlGetCanMoveFunc == null)
+            {
+               _GuiWindowCtrlGetCanMoveFunc =
+                  (_GuiWindowCtrlGetCanMove)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiWindowCtrlGetCanMove"), typeof(_GuiWindowCtrlGetCanMove));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiWindowCtrlSetCanMinimize(IntPtr ctrl, bool enable);
+            return _GuiWindowCtrlGetCanMoveFunc(ctrl);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool GuiWindowCtrlGetCanMaximize(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiWindowCtrlSetCanMove(IntPtr ctrl, bool enable);
+         private static _GuiWindowCtrlSetCanMove _GuiWindowCtrlSetCanMoveFunc;
+         internal static void GuiWindowCtrlSetCanMove(IntPtr ctrl, bool enable)
+         {
+            if (_GuiWindowCtrlSetCanMoveFunc == null)
+            {
+               _GuiWindowCtrlSetCanMoveFunc =
+                  (_GuiWindowCtrlSetCanMove)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiWindowCtrlSetCanMove"), typeof(_GuiWindowCtrlSetCanMove));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiWindowCtrlSetCanMaximize(IntPtr ctrl, bool enable);
+            _GuiWindowCtrlSetCanMoveFunc(ctrl, enable);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiWindowCtrlGetMinSize(IntPtr ctrl, out Point2I outSize);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _GuiWindowCtrlGetCanClose(IntPtr ctrl);
+         private static _GuiWindowCtrlGetCanClose _GuiWindowCtrlGetCanCloseFunc;
+         internal static bool GuiWindowCtrlGetCanClose(IntPtr ctrl)
+         {
+            if (_GuiWindowCtrlGetCanCloseFunc == null)
+            {
+               _GuiWindowCtrlGetCanCloseFunc =
+                  (_GuiWindowCtrlGetCanClose)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiWindowCtrlGetCanClose"), typeof(_GuiWindowCtrlGetCanClose));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiWindowCtrlSetMinSize(IntPtr ctrl, Point2I size);
+            return _GuiWindowCtrlGetCanCloseFunc(ctrl);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiWindowCtrlGetCloseCommand(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiWindowCtrlSetCanClose(IntPtr ctrl, bool enable);
+         private static _GuiWindowCtrlSetCanClose _GuiWindowCtrlSetCanCloseFunc;
+         internal static void GuiWindowCtrlSetCanClose(IntPtr ctrl, bool enable)
+         {
+            if (_GuiWindowCtrlSetCanCloseFunc == null)
+            {
+               _GuiWindowCtrlSetCanCloseFunc =
+                  (_GuiWindowCtrlSetCanClose)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiWindowCtrlSetCanClose"), typeof(_GuiWindowCtrlSetCanClose));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiWindowCtrlSetCloseCommand(IntPtr ctrl, string command);
+            _GuiWindowCtrlSetCanCloseFunc(ctrl, enable);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiWindowCtrlCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _GuiWindowCtrlGetCanMinimize(IntPtr ctrl);
+         private static _GuiWindowCtrlGetCanMinimize _GuiWindowCtrlGetCanMinimizeFunc;
+         internal static bool GuiWindowCtrlGetCanMinimize(IntPtr ctrl)
+         {
+            if (_GuiWindowCtrlGetCanMinimizeFunc == null)
+            {
+               _GuiWindowCtrlGetCanMinimizeFunc =
+                  (_GuiWindowCtrlGetCanMinimize)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiWindowCtrlGetCanMinimize"), typeof(_GuiWindowCtrlGetCanMinimize));
+            }
+
+            return _GuiWindowCtrlGetCanMinimizeFunc(ctrl);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiWindowCtrlSetCanMinimize(IntPtr ctrl, bool enable);
+         private static _GuiWindowCtrlSetCanMinimize _GuiWindowCtrlSetCanMinimizeFunc;
+         internal static void GuiWindowCtrlSetCanMinimize(IntPtr ctrl, bool enable)
+         {
+            if (_GuiWindowCtrlSetCanMinimizeFunc == null)
+            {
+               _GuiWindowCtrlSetCanMinimizeFunc =
+                  (_GuiWindowCtrlSetCanMinimize)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiWindowCtrlSetCanMinimize"), typeof(_GuiWindowCtrlSetCanMinimize));
+            }
+
+            _GuiWindowCtrlSetCanMinimizeFunc(ctrl, enable);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _GuiWindowCtrlGetCanMaximize(IntPtr ctrl);
+         private static _GuiWindowCtrlGetCanMaximize _GuiWindowCtrlGetCanMaximizeFunc;
+         internal static bool GuiWindowCtrlGetCanMaximize(IntPtr ctrl)
+         {
+            if (_GuiWindowCtrlGetCanMaximizeFunc == null)
+            {
+               _GuiWindowCtrlGetCanMaximizeFunc =
+                  (_GuiWindowCtrlGetCanMaximize)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiWindowCtrlGetCanMaximize"), typeof(_GuiWindowCtrlGetCanMaximize));
+            }
+
+            return _GuiWindowCtrlGetCanMaximizeFunc(ctrl);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiWindowCtrlSetCanMaximize(IntPtr ctrl, bool enable);
+         private static _GuiWindowCtrlSetCanMaximize _GuiWindowCtrlSetCanMaximizeFunc;
+         internal static void GuiWindowCtrlSetCanMaximize(IntPtr ctrl, bool enable)
+         {
+            if (_GuiWindowCtrlSetCanMaximizeFunc == null)
+            {
+               _GuiWindowCtrlSetCanMaximizeFunc =
+                  (_GuiWindowCtrlSetCanMaximize)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiWindowCtrlSetCanMaximize"), typeof(_GuiWindowCtrlSetCanMaximize));
+            }
+
+            _GuiWindowCtrlSetCanMaximizeFunc(ctrl, enable);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiWindowCtrlGetMinSize(IntPtr ctrl, out Point2I outSize);
+         private static _GuiWindowCtrlGetMinSize _GuiWindowCtrlGetMinSizeFunc;
+         internal static void GuiWindowCtrlGetMinSize(IntPtr ctrl, out Point2I outSize)
+         {
+            if (_GuiWindowCtrlGetMinSizeFunc == null)
+            {
+               _GuiWindowCtrlGetMinSizeFunc =
+                  (_GuiWindowCtrlGetMinSize)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiWindowCtrlGetMinSize"), typeof(_GuiWindowCtrlGetMinSize));
+            }
+
+            _GuiWindowCtrlGetMinSizeFunc(ctrl, out outSize);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiWindowCtrlSetMinSize(IntPtr ctrl, Point2I size);
+         private static _GuiWindowCtrlSetMinSize _GuiWindowCtrlSetMinSizeFunc;
+         internal static void GuiWindowCtrlSetMinSize(IntPtr ctrl, Point2I size)
+         {
+            if (_GuiWindowCtrlSetMinSizeFunc == null)
+            {
+               _GuiWindowCtrlSetMinSizeFunc =
+                  (_GuiWindowCtrlSetMinSize)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiWindowCtrlSetMinSize"), typeof(_GuiWindowCtrlSetMinSize));
+            }
+
+            _GuiWindowCtrlSetMinSizeFunc(ctrl, size);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiWindowCtrlGetCloseCommand(IntPtr ctrl);
+         private static _GuiWindowCtrlGetCloseCommand _GuiWindowCtrlGetCloseCommandFunc;
+         internal static IntPtr GuiWindowCtrlGetCloseCommand(IntPtr ctrl)
+         {
+            if (_GuiWindowCtrlGetCloseCommandFunc == null)
+            {
+               _GuiWindowCtrlGetCloseCommandFunc =
+                  (_GuiWindowCtrlGetCloseCommand)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiWindowCtrlGetCloseCommand"), typeof(_GuiWindowCtrlGetCloseCommand));
+            }
+
+            return _GuiWindowCtrlGetCloseCommandFunc(ctrl);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiWindowCtrlSetCloseCommand(IntPtr ctrl, string command);
+         private static _GuiWindowCtrlSetCloseCommand _GuiWindowCtrlSetCloseCommandFunc;
+         internal static void GuiWindowCtrlSetCloseCommand(IntPtr ctrl, string command)
+         {
+            if (_GuiWindowCtrlSetCloseCommandFunc == null)
+            {
+               _GuiWindowCtrlSetCloseCommandFunc =
+                  (_GuiWindowCtrlSetCloseCommand)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiWindowCtrlSetCloseCommand"), typeof(_GuiWindowCtrlSetCloseCommand));
+            }
+
+            _GuiWindowCtrlSetCloseCommandFunc(ctrl, command);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiWindowCtrlCreateInstance();
+         private static _GuiWindowCtrlCreateInstance _GuiWindowCtrlCreateInstanceFunc;
+         internal static IntPtr GuiWindowCtrlCreateInstance()
+         {
+            if (_GuiWindowCtrlCreateInstanceFunc == null)
+            {
+               _GuiWindowCtrlCreateInstanceFunc =
+                  (_GuiWindowCtrlCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiWindowCtrlCreateInstance"), typeof(_GuiWindowCtrlCreateInstance));
+            }
+
+            return _GuiWindowCtrlCreateInstanceFunc();
+         }
       }
       
       #endregion

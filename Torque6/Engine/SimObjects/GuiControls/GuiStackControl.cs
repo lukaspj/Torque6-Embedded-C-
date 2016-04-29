@@ -40,35 +40,155 @@ namespace Torque6.Engine.SimObjects.GuiControls
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern int GuiStackControlGetStackingType(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate int _GuiStackControlGetStackingType(IntPtr ctrl);
+         private static _GuiStackControlGetStackingType _GuiStackControlGetStackingTypeFunc;
+         internal static int GuiStackControlGetStackingType(IntPtr ctrl)
+         {
+            if (_GuiStackControlGetStackingTypeFunc == null)
+            {
+               _GuiStackControlGetStackingTypeFunc =
+                  (_GuiStackControlGetStackingType)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiStackControlGetStackingType"), typeof(_GuiStackControlGetStackingType));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiStackControlSetStackingType(IntPtr ctrl, int type);
+            return _GuiStackControlGetStackingTypeFunc(ctrl);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern int GuiStackControlGetHorizStacking(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiStackControlSetStackingType(IntPtr ctrl, int type);
+         private static _GuiStackControlSetStackingType _GuiStackControlSetStackingTypeFunc;
+         internal static void GuiStackControlSetStackingType(IntPtr ctrl, int type)
+         {
+            if (_GuiStackControlSetStackingTypeFunc == null)
+            {
+               _GuiStackControlSetStackingTypeFunc =
+                  (_GuiStackControlSetStackingType)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiStackControlSetStackingType"), typeof(_GuiStackControlSetStackingType));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiStackControlSetHorizStacking(IntPtr ctrl, int type);
+            _GuiStackControlSetStackingTypeFunc(ctrl, type);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern int GuiStackControlGetVertStacking(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate int _GuiStackControlGetHorizStacking(IntPtr ctrl);
+         private static _GuiStackControlGetHorizStacking _GuiStackControlGetHorizStackingFunc;
+         internal static int GuiStackControlGetHorizStacking(IntPtr ctrl)
+         {
+            if (_GuiStackControlGetHorizStackingFunc == null)
+            {
+               _GuiStackControlGetHorizStackingFunc =
+                  (_GuiStackControlGetHorizStacking)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiStackControlGetHorizStacking"), typeof(_GuiStackControlGetHorizStacking));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiStackControlSetVertStacking(IntPtr ctrl, int type);
+            return _GuiStackControlGetHorizStackingFunc(ctrl);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern int GuiStackControlGetPadding(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiStackControlSetHorizStacking(IntPtr ctrl, int type);
+         private static _GuiStackControlSetHorizStacking _GuiStackControlSetHorizStackingFunc;
+         internal static void GuiStackControlSetHorizStacking(IntPtr ctrl, int type)
+         {
+            if (_GuiStackControlSetHorizStackingFunc == null)
+            {
+               _GuiStackControlSetHorizStackingFunc =
+                  (_GuiStackControlSetHorizStacking)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiStackControlSetHorizStacking"), typeof(_GuiStackControlSetHorizStacking));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiStackControlSetPadding(IntPtr ctrl, int padding);
+            _GuiStackControlSetHorizStackingFunc(ctrl, type);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiStackControlCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate int _GuiStackControlGetVertStacking(IntPtr ctrl);
+         private static _GuiStackControlGetVertStacking _GuiStackControlGetVertStackingFunc;
+         internal static int GuiStackControlGetVertStacking(IntPtr ctrl)
+         {
+            if (_GuiStackControlGetVertStackingFunc == null)
+            {
+               _GuiStackControlGetVertStackingFunc =
+                  (_GuiStackControlGetVertStacking)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiStackControlGetVertStacking"), typeof(_GuiStackControlGetVertStacking));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiStackControlUpdateStack(IntPtr ctrl);
+            return _GuiStackControlGetVertStackingFunc(ctrl);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiStackControlSetVertStacking(IntPtr ctrl, int type);
+         private static _GuiStackControlSetVertStacking _GuiStackControlSetVertStackingFunc;
+         internal static void GuiStackControlSetVertStacking(IntPtr ctrl, int type)
+         {
+            if (_GuiStackControlSetVertStackingFunc == null)
+            {
+               _GuiStackControlSetVertStackingFunc =
+                  (_GuiStackControlSetVertStacking)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiStackControlSetVertStacking"), typeof(_GuiStackControlSetVertStacking));
+            }
+
+            _GuiStackControlSetVertStackingFunc(ctrl, type);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate int _GuiStackControlGetPadding(IntPtr ctrl);
+         private static _GuiStackControlGetPadding _GuiStackControlGetPaddingFunc;
+         internal static int GuiStackControlGetPadding(IntPtr ctrl)
+         {
+            if (_GuiStackControlGetPaddingFunc == null)
+            {
+               _GuiStackControlGetPaddingFunc =
+                  (_GuiStackControlGetPadding)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiStackControlGetPadding"), typeof(_GuiStackControlGetPadding));
+            }
+
+            return _GuiStackControlGetPaddingFunc(ctrl);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiStackControlSetPadding(IntPtr ctrl, int padding);
+         private static _GuiStackControlSetPadding _GuiStackControlSetPaddingFunc;
+         internal static void GuiStackControlSetPadding(IntPtr ctrl, int padding)
+         {
+            if (_GuiStackControlSetPaddingFunc == null)
+            {
+               _GuiStackControlSetPaddingFunc =
+                  (_GuiStackControlSetPadding)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiStackControlSetPadding"), typeof(_GuiStackControlSetPadding));
+            }
+
+            _GuiStackControlSetPaddingFunc(ctrl, padding);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiStackControlCreateInstance();
+         private static _GuiStackControlCreateInstance _GuiStackControlCreateInstanceFunc;
+         internal static IntPtr GuiStackControlCreateInstance()
+         {
+            if (_GuiStackControlCreateInstanceFunc == null)
+            {
+               _GuiStackControlCreateInstanceFunc =
+                  (_GuiStackControlCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiStackControlCreateInstance"), typeof(_GuiStackControlCreateInstance));
+            }
+
+            return _GuiStackControlCreateInstanceFunc();
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiStackControlUpdateStack(IntPtr ctrl);
+         private static _GuiStackControlUpdateStack _GuiStackControlUpdateStackFunc;
+         internal static void GuiStackControlUpdateStack(IntPtr ctrl)
+         {
+            if (_GuiStackControlUpdateStackFunc == null)
+            {
+               _GuiStackControlUpdateStackFunc =
+                  (_GuiStackControlUpdateStack)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiStackControlUpdateStack"), typeof(_GuiStackControlUpdateStack));
+            }
+
+            _GuiStackControlUpdateStackFunc(ctrl);
+         }
       }
       
       #endregion

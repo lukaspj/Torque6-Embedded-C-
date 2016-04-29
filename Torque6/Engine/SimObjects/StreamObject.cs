@@ -40,50 +40,230 @@ namespace Torque6.Engine.SimObjects
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr StreamObjectCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _StreamObjectCreateInstance();
+         private static _StreamObjectCreateInstance _StreamObjectCreateInstanceFunc;
+         internal static IntPtr StreamObjectCreateInstance()
+         {
+            if (_StreamObjectCreateInstanceFunc == null)
+            {
+               _StreamObjectCreateInstanceFunc =
+                  (_StreamObjectCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "StreamObjectCreateInstance"), typeof(_StreamObjectCreateInstance));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr StreamObjectGetStatus(IntPtr streamObj);
+            return _StreamObjectCreateInstanceFunc();
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool StreamObjectIsEOS(IntPtr streamObj);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _StreamObjectGetStatus(IntPtr streamObj);
+         private static _StreamObjectGetStatus _StreamObjectGetStatusFunc;
+         internal static IntPtr StreamObjectGetStatus(IntPtr streamObj)
+         {
+            if (_StreamObjectGetStatusFunc == null)
+            {
+               _StreamObjectGetStatusFunc =
+                  (_StreamObjectGetStatus)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "StreamObjectGetStatus"), typeof(_StreamObjectGetStatus));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool StreamObjectIsEOF(IntPtr streamObj);
+            return _StreamObjectGetStatusFunc(streamObj);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern int StreamObjectGetPosition(IntPtr streamObj);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _StreamObjectIsEOS(IntPtr streamObj);
+         private static _StreamObjectIsEOS _StreamObjectIsEOSFunc;
+         internal static bool StreamObjectIsEOS(IntPtr streamObj)
+         {
+            if (_StreamObjectIsEOSFunc == null)
+            {
+               _StreamObjectIsEOSFunc =
+                  (_StreamObjectIsEOS)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "StreamObjectIsEOS"), typeof(_StreamObjectIsEOS));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool StreamObjectSetPosition(IntPtr streamObj, int newPos);
+            return _StreamObjectIsEOSFunc(streamObj);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern int StreamObjectGetStreamSize(IntPtr streamObj);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _StreamObjectIsEOF(IntPtr streamObj);
+         private static _StreamObjectIsEOF _StreamObjectIsEOFFunc;
+         internal static bool StreamObjectIsEOF(IntPtr streamObj)
+         {
+            if (_StreamObjectIsEOFFunc == null)
+            {
+               _StreamObjectIsEOFFunc =
+                  (_StreamObjectIsEOF)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "StreamObjectIsEOF"), typeof(_StreamObjectIsEOF));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr StreamObjectReadLine(IntPtr streamObj);
+            return _StreamObjectIsEOFFunc(streamObj);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void StreamObjectWriteLine(IntPtr streamObj, string line);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate int _StreamObjectGetPosition(IntPtr streamObj);
+         private static _StreamObjectGetPosition _StreamObjectGetPositionFunc;
+         internal static int StreamObjectGetPosition(IntPtr streamObj)
+         {
+            if (_StreamObjectGetPositionFunc == null)
+            {
+               _StreamObjectGetPositionFunc =
+                  (_StreamObjectGetPosition)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "StreamObjectGetPosition"), typeof(_StreamObjectGetPosition));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr StreamObjectReadSTString(IntPtr streamObj, bool caseSensitive);
+            return _StreamObjectGetPositionFunc(streamObj);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr StreamObjectReadString(IntPtr streamObj);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _StreamObjectSetPosition(IntPtr streamObj, int newPos);
+         private static _StreamObjectSetPosition _StreamObjectSetPositionFunc;
+         internal static bool StreamObjectSetPosition(IntPtr streamObj, int newPos)
+         {
+            if (_StreamObjectSetPositionFunc == null)
+            {
+               _StreamObjectSetPositionFunc =
+                  (_StreamObjectSetPosition)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "StreamObjectSetPosition"), typeof(_StreamObjectSetPosition));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr StreamObjectReadLongString(IntPtr streamObj, int maxLength);
+            return _StreamObjectSetPositionFunc(streamObj, newPos);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void StreamObjectWriteLongString(IntPtr streamObj, int maxLength, string longString);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate int _StreamObjectGetStreamSize(IntPtr streamObj);
+         private static _StreamObjectGetStreamSize _StreamObjectGetStreamSizeFunc;
+         internal static int StreamObjectGetStreamSize(IntPtr streamObj)
+         {
+            if (_StreamObjectGetStreamSizeFunc == null)
+            {
+               _StreamObjectGetStreamSizeFunc =
+                  (_StreamObjectGetStreamSize)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "StreamObjectGetStreamSize"), typeof(_StreamObjectGetStreamSize));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void StreamObjectWriteString(IntPtr streamObj, string longString, int maxLength);
+            return _StreamObjectGetStreamSizeFunc(streamObj);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool StreamObjectCopyFrom(IntPtr streamObj, IntPtr other);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _StreamObjectReadLine(IntPtr streamObj);
+         private static _StreamObjectReadLine _StreamObjectReadLineFunc;
+         internal static IntPtr StreamObjectReadLine(IntPtr streamObj)
+         {
+            if (_StreamObjectReadLineFunc == null)
+            {
+               _StreamObjectReadLineFunc =
+                  (_StreamObjectReadLine)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "StreamObjectReadLine"), typeof(_StreamObjectReadLine));
+            }
+
+            return _StreamObjectReadLineFunc(streamObj);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _StreamObjectWriteLine(IntPtr streamObj, string line);
+         private static _StreamObjectWriteLine _StreamObjectWriteLineFunc;
+         internal static void StreamObjectWriteLine(IntPtr streamObj, string line)
+         {
+            if (_StreamObjectWriteLineFunc == null)
+            {
+               _StreamObjectWriteLineFunc =
+                  (_StreamObjectWriteLine)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "StreamObjectWriteLine"), typeof(_StreamObjectWriteLine));
+            }
+
+            _StreamObjectWriteLineFunc(streamObj, line);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _StreamObjectReadSTString(IntPtr streamObj, bool caseSensitive);
+         private static _StreamObjectReadSTString _StreamObjectReadSTStringFunc;
+         internal static IntPtr StreamObjectReadSTString(IntPtr streamObj, bool caseSensitive)
+         {
+            if (_StreamObjectReadSTStringFunc == null)
+            {
+               _StreamObjectReadSTStringFunc =
+                  (_StreamObjectReadSTString)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "StreamObjectReadSTString"), typeof(_StreamObjectReadSTString));
+            }
+
+            return _StreamObjectReadSTStringFunc(streamObj, caseSensitive);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _StreamObjectReadString(IntPtr streamObj);
+         private static _StreamObjectReadString _StreamObjectReadStringFunc;
+         internal static IntPtr StreamObjectReadString(IntPtr streamObj)
+         {
+            if (_StreamObjectReadStringFunc == null)
+            {
+               _StreamObjectReadStringFunc =
+                  (_StreamObjectReadString)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "StreamObjectReadString"), typeof(_StreamObjectReadString));
+            }
+
+            return _StreamObjectReadStringFunc(streamObj);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _StreamObjectReadLongString(IntPtr streamObj, int maxLength);
+         private static _StreamObjectReadLongString _StreamObjectReadLongStringFunc;
+         internal static IntPtr StreamObjectReadLongString(IntPtr streamObj, int maxLength)
+         {
+            if (_StreamObjectReadLongStringFunc == null)
+            {
+               _StreamObjectReadLongStringFunc =
+                  (_StreamObjectReadLongString)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "StreamObjectReadLongString"), typeof(_StreamObjectReadLongString));
+            }
+
+            return _StreamObjectReadLongStringFunc(streamObj, maxLength);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _StreamObjectWriteLongString(IntPtr streamObj, int maxLength, string longString);
+         private static _StreamObjectWriteLongString _StreamObjectWriteLongStringFunc;
+         internal static void StreamObjectWriteLongString(IntPtr streamObj, int maxLength, string longString)
+         {
+            if (_StreamObjectWriteLongStringFunc == null)
+            {
+               _StreamObjectWriteLongStringFunc =
+                  (_StreamObjectWriteLongString)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "StreamObjectWriteLongString"), typeof(_StreamObjectWriteLongString));
+            }
+
+            _StreamObjectWriteLongStringFunc(streamObj, maxLength, longString);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _StreamObjectWriteString(IntPtr streamObj, string longString, int maxLength);
+         private static _StreamObjectWriteString _StreamObjectWriteStringFunc;
+         internal static void StreamObjectWriteString(IntPtr streamObj, string longString, int maxLength)
+         {
+            if (_StreamObjectWriteStringFunc == null)
+            {
+               _StreamObjectWriteStringFunc =
+                  (_StreamObjectWriteString)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "StreamObjectWriteString"), typeof(_StreamObjectWriteString));
+            }
+
+            _StreamObjectWriteStringFunc(streamObj, longString, maxLength);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _StreamObjectCopyFrom(IntPtr streamObj, IntPtr other);
+         private static _StreamObjectCopyFrom _StreamObjectCopyFromFunc;
+         internal static bool StreamObjectCopyFrom(IntPtr streamObj, IntPtr other)
+         {
+            if (_StreamObjectCopyFromFunc == null)
+            {
+               _StreamObjectCopyFromFunc =
+                  (_StreamObjectCopyFrom)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "StreamObjectCopyFrom"), typeof(_StreamObjectCopyFrom));
+            }
+
+            return _StreamObjectCopyFromFunc(streamObj, other);
+         }
       }
       
       #endregion

@@ -40,44 +40,200 @@ namespace Torque6.Engine.SimObjects.Scene
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr BehaviorComponentCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _BehaviorComponentCreateInstance();
+         private static _BehaviorComponentCreateInstance _BehaviorComponentCreateInstanceFunc;
+         internal static IntPtr BehaviorComponentCreateInstance()
+         {
+            if (_BehaviorComponentCreateInstanceFunc == null)
+            {
+               _BehaviorComponentCreateInstanceFunc =
+                  (_BehaviorComponentCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "BehaviorComponentCreateInstance"), typeof(_BehaviorComponentCreateInstance));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool BehaviorComponentAddBehavior(IntPtr component, IntPtr inst);
+            return _BehaviorComponentCreateInstanceFunc();
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool BehaviorComponentRemoveBehavior(IntPtr component, IntPtr inst, bool deleteBehavior);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _BehaviorComponentAddBehavior(IntPtr component, IntPtr inst);
+         private static _BehaviorComponentAddBehavior _BehaviorComponentAddBehaviorFunc;
+         internal static bool BehaviorComponentAddBehavior(IntPtr component, IntPtr inst)
+         {
+            if (_BehaviorComponentAddBehaviorFunc == null)
+            {
+               _BehaviorComponentAddBehaviorFunc =
+                  (_BehaviorComponentAddBehavior)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "BehaviorComponentAddBehavior"), typeof(_BehaviorComponentAddBehavior));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void BehaviorComponentClearBehaviors(IntPtr component);
+            return _BehaviorComponentAddBehaviorFunc(component, inst);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern int BehaviorComponentGetBehaviorCount(IntPtr component);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _BehaviorComponentRemoveBehavior(IntPtr component, IntPtr inst, bool deleteBehavior);
+         private static _BehaviorComponentRemoveBehavior _BehaviorComponentRemoveBehaviorFunc;
+         internal static bool BehaviorComponentRemoveBehavior(IntPtr component, IntPtr inst, bool deleteBehavior)
+         {
+            if (_BehaviorComponentRemoveBehaviorFunc == null)
+            {
+               _BehaviorComponentRemoveBehaviorFunc =
+                  (_BehaviorComponentRemoveBehavior)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "BehaviorComponentRemoveBehavior"), typeof(_BehaviorComponentRemoveBehavior));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr BehaviorComponentGetBehavior(IntPtr component, string name);
+            return _BehaviorComponentRemoveBehaviorFunc(component, inst, deleteBehavior);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr BehaviorComponentGetBehaviorByIndex(IntPtr component, uint index);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _BehaviorComponentClearBehaviors(IntPtr component);
+         private static _BehaviorComponentClearBehaviors _BehaviorComponentClearBehaviorsFunc;
+         internal static void BehaviorComponentClearBehaviors(IntPtr component)
+         {
+            if (_BehaviorComponentClearBehaviorsFunc == null)
+            {
+               _BehaviorComponentClearBehaviorsFunc =
+                  (_BehaviorComponentClearBehaviors)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "BehaviorComponentClearBehaviors"), typeof(_BehaviorComponentClearBehaviors));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool BehaviorComponentReOrder(IntPtr component, IntPtr inst, uint index);
+            _BehaviorComponentClearBehaviorsFunc(component);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool BehaviorComponentConnect(IntPtr component, IntPtr outputBehavior, string outputName, IntPtr inputBehavior, string inputName);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate int _BehaviorComponentGetBehaviorCount(IntPtr component);
+         private static _BehaviorComponentGetBehaviorCount _BehaviorComponentGetBehaviorCountFunc;
+         internal static int BehaviorComponentGetBehaviorCount(IntPtr component)
+         {
+            if (_BehaviorComponentGetBehaviorCountFunc == null)
+            {
+               _BehaviorComponentGetBehaviorCountFunc =
+                  (_BehaviorComponentGetBehaviorCount)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "BehaviorComponentGetBehaviorCount"), typeof(_BehaviorComponentGetBehaviorCount));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool BehaviorComponentDisconnect(IntPtr component, IntPtr outputBehavior, string outputName, IntPtr inputBehavior, string inputName);
+            return _BehaviorComponentGetBehaviorCountFunc(component);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool BehaviorComponentRaise(IntPtr component, IntPtr outputBehavior, string outputName, uint timeDelta);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _BehaviorComponentGetBehavior(IntPtr component, string name);
+         private static _BehaviorComponentGetBehavior _BehaviorComponentGetBehaviorFunc;
+         internal static IntPtr BehaviorComponentGetBehavior(IntPtr component, string name)
+         {
+            if (_BehaviorComponentGetBehaviorFunc == null)
+            {
+               _BehaviorComponentGetBehaviorFunc =
+                  (_BehaviorComponentGetBehavior)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "BehaviorComponentGetBehavior"), typeof(_BehaviorComponentGetBehavior));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern uint BehaviorComponentGetBehaviorConnectionCount(IntPtr component, IntPtr outputBehavior, string outputName);
+            return _BehaviorComponentGetBehaviorFunc(component, name);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr BehaviorComponentGetBehaviorConnection(IntPtr component, IntPtr outputBehavior, string outputName, uint connectionIndex);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _BehaviorComponentGetBehaviorByIndex(IntPtr component, uint index);
+         private static _BehaviorComponentGetBehaviorByIndex _BehaviorComponentGetBehaviorByIndexFunc;
+         internal static IntPtr BehaviorComponentGetBehaviorByIndex(IntPtr component, uint index)
+         {
+            if (_BehaviorComponentGetBehaviorByIndexFunc == null)
+            {
+               _BehaviorComponentGetBehaviorByIndexFunc =
+                  (_BehaviorComponentGetBehaviorByIndex)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "BehaviorComponentGetBehaviorByIndex"), typeof(_BehaviorComponentGetBehaviorByIndex));
+            }
+
+            return _BehaviorComponentGetBehaviorByIndexFunc(component, index);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _BehaviorComponentReOrder(IntPtr component, IntPtr inst, uint index);
+         private static _BehaviorComponentReOrder _BehaviorComponentReOrderFunc;
+         internal static bool BehaviorComponentReOrder(IntPtr component, IntPtr inst, uint index)
+         {
+            if (_BehaviorComponentReOrderFunc == null)
+            {
+               _BehaviorComponentReOrderFunc =
+                  (_BehaviorComponentReOrder)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "BehaviorComponentReOrder"), typeof(_BehaviorComponentReOrder));
+            }
+
+            return _BehaviorComponentReOrderFunc(component, inst, index);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _BehaviorComponentConnect(IntPtr component, IntPtr outputBehavior, string outputName, IntPtr inputBehavior, string inputName);
+         private static _BehaviorComponentConnect _BehaviorComponentConnectFunc;
+         internal static bool BehaviorComponentConnect(IntPtr component, IntPtr outputBehavior, string outputName, IntPtr inputBehavior, string inputName)
+         {
+            if (_BehaviorComponentConnectFunc == null)
+            {
+               _BehaviorComponentConnectFunc =
+                  (_BehaviorComponentConnect)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "BehaviorComponentConnect"), typeof(_BehaviorComponentConnect));
+            }
+
+            return _BehaviorComponentConnectFunc(component, outputBehavior, outputName, inputBehavior, inputName);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _BehaviorComponentDisconnect(IntPtr component, IntPtr outputBehavior, string outputName, IntPtr inputBehavior, string inputName);
+         private static _BehaviorComponentDisconnect _BehaviorComponentDisconnectFunc;
+         internal static bool BehaviorComponentDisconnect(IntPtr component, IntPtr outputBehavior, string outputName, IntPtr inputBehavior, string inputName)
+         {
+            if (_BehaviorComponentDisconnectFunc == null)
+            {
+               _BehaviorComponentDisconnectFunc =
+                  (_BehaviorComponentDisconnect)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "BehaviorComponentDisconnect"), typeof(_BehaviorComponentDisconnect));
+            }
+
+            return _BehaviorComponentDisconnectFunc(component, outputBehavior, outputName, inputBehavior, inputName);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _BehaviorComponentRaise(IntPtr component, IntPtr outputBehavior, string outputName, uint timeDelta);
+         private static _BehaviorComponentRaise _BehaviorComponentRaiseFunc;
+         internal static bool BehaviorComponentRaise(IntPtr component, IntPtr outputBehavior, string outputName, uint timeDelta)
+         {
+            if (_BehaviorComponentRaiseFunc == null)
+            {
+               _BehaviorComponentRaiseFunc =
+                  (_BehaviorComponentRaise)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "BehaviorComponentRaise"), typeof(_BehaviorComponentRaise));
+            }
+
+            return _BehaviorComponentRaiseFunc(component, outputBehavior, outputName, timeDelta);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate uint _BehaviorComponentGetBehaviorConnectionCount(IntPtr component, IntPtr outputBehavior, string outputName);
+         private static _BehaviorComponentGetBehaviorConnectionCount _BehaviorComponentGetBehaviorConnectionCountFunc;
+         internal static uint BehaviorComponentGetBehaviorConnectionCount(IntPtr component, IntPtr outputBehavior, string outputName)
+         {
+            if (_BehaviorComponentGetBehaviorConnectionCountFunc == null)
+            {
+               _BehaviorComponentGetBehaviorConnectionCountFunc =
+                  (_BehaviorComponentGetBehaviorConnectionCount)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "BehaviorComponentGetBehaviorConnectionCount"), typeof(_BehaviorComponentGetBehaviorConnectionCount));
+            }
+
+            return _BehaviorComponentGetBehaviorConnectionCountFunc(component, outputBehavior, outputName);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _BehaviorComponentGetBehaviorConnection(IntPtr component, IntPtr outputBehavior, string outputName, uint connectionIndex);
+         private static _BehaviorComponentGetBehaviorConnection _BehaviorComponentGetBehaviorConnectionFunc;
+         internal static IntPtr BehaviorComponentGetBehaviorConnection(IntPtr component, IntPtr outputBehavior, string outputName, uint connectionIndex)
+         {
+            if (_BehaviorComponentGetBehaviorConnectionFunc == null)
+            {
+               _BehaviorComponentGetBehaviorConnectionFunc =
+                  (_BehaviorComponentGetBehaviorConnection)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "BehaviorComponentGetBehaviorConnection"), typeof(_BehaviorComponentGetBehaviorConnection));
+            }
+
+            return _BehaviorComponentGetBehaviorConnectionFunc(component, outputBehavior, outputName, connectionIndex);
+         }
       }
       
       #endregion

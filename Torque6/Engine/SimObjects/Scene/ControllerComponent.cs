@@ -40,17 +40,65 @@ namespace Torque6.Engine.SimObjects.Scene
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool ControllerComponentGetCaptureMouse(IntPtr controller);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _ControllerComponentGetCaptureMouse(IntPtr controller);
+         private static _ControllerComponentGetCaptureMouse _ControllerComponentGetCaptureMouseFunc;
+         internal static bool ControllerComponentGetCaptureMouse(IntPtr controller)
+         {
+            if (_ControllerComponentGetCaptureMouseFunc == null)
+            {
+               _ControllerComponentGetCaptureMouseFunc =
+                  (_ControllerComponentGetCaptureMouse)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "ControllerComponentGetCaptureMouse"), typeof(_ControllerComponentGetCaptureMouse));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void ControllerComponentSetCaptureMouse(IntPtr controller, bool capture);
+            return _ControllerComponentGetCaptureMouseFunc(controller);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr ControllerComponentCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _ControllerComponentSetCaptureMouse(IntPtr controller, bool capture);
+         private static _ControllerComponentSetCaptureMouse _ControllerComponentSetCaptureMouseFunc;
+         internal static void ControllerComponentSetCaptureMouse(IntPtr controller, bool capture)
+         {
+            if (_ControllerComponentSetCaptureMouseFunc == null)
+            {
+               _ControllerComponentSetCaptureMouseFunc =
+                  (_ControllerComponentSetCaptureMouse)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "ControllerComponentSetCaptureMouse"), typeof(_ControllerComponentSetCaptureMouse));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void ControllerComponentSetForwardVelocity(IntPtr controller, Point3F panVel);
+            _ControllerComponentSetCaptureMouseFunc(controller, capture);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _ControllerComponentCreateInstance();
+         private static _ControllerComponentCreateInstance _ControllerComponentCreateInstanceFunc;
+         internal static IntPtr ControllerComponentCreateInstance()
+         {
+            if (_ControllerComponentCreateInstanceFunc == null)
+            {
+               _ControllerComponentCreateInstanceFunc =
+                  (_ControllerComponentCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "ControllerComponentCreateInstance"), typeof(_ControllerComponentCreateInstance));
+            }
+
+            return _ControllerComponentCreateInstanceFunc();
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _ControllerComponentSetForwardVelocity(IntPtr controller, Point3F panVel);
+         private static _ControllerComponentSetForwardVelocity _ControllerComponentSetForwardVelocityFunc;
+         internal static void ControllerComponentSetForwardVelocity(IntPtr controller, Point3F panVel)
+         {
+            if (_ControllerComponentSetForwardVelocityFunc == null)
+            {
+               _ControllerComponentSetForwardVelocityFunc =
+                  (_ControllerComponentSetForwardVelocity)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "ControllerComponentSetForwardVelocity"), typeof(_ControllerComponentSetForwardVelocity));
+            }
+
+            _ControllerComponentSetForwardVelocityFunc(controller, panVel);
+         }
       }
       
       #endregion

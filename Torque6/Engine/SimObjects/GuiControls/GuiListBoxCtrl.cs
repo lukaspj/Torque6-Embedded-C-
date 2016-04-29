@@ -40,74 +40,350 @@ namespace Torque6.Engine.SimObjects.GuiControls
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool GuiListBoxCtrlGetAllowMultipleSelections(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _GuiListBoxCtrlGetAllowMultipleSelections(IntPtr ctrl);
+         private static _GuiListBoxCtrlGetAllowMultipleSelections _GuiListBoxCtrlGetAllowMultipleSelectionsFunc;
+         internal static bool GuiListBoxCtrlGetAllowMultipleSelections(IntPtr ctrl)
+         {
+            if (_GuiListBoxCtrlGetAllowMultipleSelectionsFunc == null)
+            {
+               _GuiListBoxCtrlGetAllowMultipleSelectionsFunc =
+                  (_GuiListBoxCtrlGetAllowMultipleSelections)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiListBoxCtrlGetAllowMultipleSelections"), typeof(_GuiListBoxCtrlGetAllowMultipleSelections));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiListBoxCtrlSetAllowMultipleSelections(IntPtr ctrl, bool allow);
+            return _GuiListBoxCtrlGetAllowMultipleSelectionsFunc(ctrl);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool GuiListBoxCtrlGetFitParentWidth(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiListBoxCtrlSetAllowMultipleSelections(IntPtr ctrl, bool allow);
+         private static _GuiListBoxCtrlSetAllowMultipleSelections _GuiListBoxCtrlSetAllowMultipleSelectionsFunc;
+         internal static void GuiListBoxCtrlSetAllowMultipleSelections(IntPtr ctrl, bool allow)
+         {
+            if (_GuiListBoxCtrlSetAllowMultipleSelectionsFunc == null)
+            {
+               _GuiListBoxCtrlSetAllowMultipleSelectionsFunc =
+                  (_GuiListBoxCtrlSetAllowMultipleSelections)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiListBoxCtrlSetAllowMultipleSelections"), typeof(_GuiListBoxCtrlSetAllowMultipleSelections));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiListBoxCtrlSetFitParentWidth(IntPtr ctrl, bool fit);
+            _GuiListBoxCtrlSetAllowMultipleSelectionsFunc(ctrl, allow);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiListBoxCtrlCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _GuiListBoxCtrlGetFitParentWidth(IntPtr ctrl);
+         private static _GuiListBoxCtrlGetFitParentWidth _GuiListBoxCtrlGetFitParentWidthFunc;
+         internal static bool GuiListBoxCtrlGetFitParentWidth(IntPtr ctrl)
+         {
+            if (_GuiListBoxCtrlGetFitParentWidthFunc == null)
+            {
+               _GuiListBoxCtrlGetFitParentWidthFunc =
+                  (_GuiListBoxCtrlGetFitParentWidth)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiListBoxCtrlGetFitParentWidth"), typeof(_GuiListBoxCtrlGetFitParentWidth));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiListBoxCtrlSetMultipleSelection(IntPtr ctrl, bool enable);
+            return _GuiListBoxCtrlGetFitParentWidthFunc(ctrl);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiListBoxCtrlClearItems(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiListBoxCtrlSetFitParentWidth(IntPtr ctrl, bool fit);
+         private static _GuiListBoxCtrlSetFitParentWidth _GuiListBoxCtrlSetFitParentWidthFunc;
+         internal static void GuiListBoxCtrlSetFitParentWidth(IntPtr ctrl, bool fit)
+         {
+            if (_GuiListBoxCtrlSetFitParentWidthFunc == null)
+            {
+               _GuiListBoxCtrlSetFitParentWidthFunc =
+                  (_GuiListBoxCtrlSetFitParentWidth)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiListBoxCtrlSetFitParentWidth"), typeof(_GuiListBoxCtrlSetFitParentWidth));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiListBoxCtrlClearSelection(IntPtr ctrl);
+            _GuiListBoxCtrlSetFitParentWidthFunc(ctrl, fit);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiListBoxCtrlSetSelected(IntPtr ctrl, int index, bool setting);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiListBoxCtrlCreateInstance();
+         private static _GuiListBoxCtrlCreateInstance _GuiListBoxCtrlCreateInstanceFunc;
+         internal static IntPtr GuiListBoxCtrlCreateInstance()
+         {
+            if (_GuiListBoxCtrlCreateInstanceFunc == null)
+            {
+               _GuiListBoxCtrlCreateInstanceFunc =
+                  (_GuiListBoxCtrlCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiListBoxCtrlCreateInstance"), typeof(_GuiListBoxCtrlCreateInstance));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern int GuiListBoxCtrlGetItemCount(IntPtr ctrl);
+            return _GuiListBoxCtrlCreateInstanceFunc();
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern int GuiListBoxCtrlGetSelCount(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiListBoxCtrlSetMultipleSelection(IntPtr ctrl, bool enable);
+         private static _GuiListBoxCtrlSetMultipleSelection _GuiListBoxCtrlSetMultipleSelectionFunc;
+         internal static void GuiListBoxCtrlSetMultipleSelection(IntPtr ctrl, bool enable)
+         {
+            if (_GuiListBoxCtrlSetMultipleSelectionFunc == null)
+            {
+               _GuiListBoxCtrlSetMultipleSelectionFunc =
+                  (_GuiListBoxCtrlSetMultipleSelection)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiListBoxCtrlSetMultipleSelection"), typeof(_GuiListBoxCtrlSetMultipleSelection));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern int GuiListBoxCtrlGetSelectedItem(IntPtr ctrl);
+            _GuiListBoxCtrlSetMultipleSelectionFunc(ctrl, enable);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern int[] GuiListBoxCtrlGetSelectedItems(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiListBoxCtrlClearItems(IntPtr ctrl);
+         private static _GuiListBoxCtrlClearItems _GuiListBoxCtrlClearItemsFunc;
+         internal static void GuiListBoxCtrlClearItems(IntPtr ctrl)
+         {
+            if (_GuiListBoxCtrlClearItemsFunc == null)
+            {
+               _GuiListBoxCtrlClearItemsFunc =
+                  (_GuiListBoxCtrlClearItems)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiListBoxCtrlClearItems"), typeof(_GuiListBoxCtrlClearItems));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern int GuiListBoxCtrlFindItemText(IntPtr ctrl, string itemText, bool caseSensitive);
+            _GuiListBoxCtrlClearItemsFunc(ctrl);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiListBoxCtrlSetCurSel(IntPtr ctrl, int index);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiListBoxCtrlClearSelection(IntPtr ctrl);
+         private static _GuiListBoxCtrlClearSelection _GuiListBoxCtrlClearSelectionFunc;
+         internal static void GuiListBoxCtrlClearSelection(IntPtr ctrl)
+         {
+            if (_GuiListBoxCtrlClearSelectionFunc == null)
+            {
+               _GuiListBoxCtrlClearSelectionFunc =
+                  (_GuiListBoxCtrlClearSelection)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiListBoxCtrlClearSelection"), typeof(_GuiListBoxCtrlClearSelection));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiListBoxCtrlSetCurSelRange(IntPtr ctrl, int start, int stop);
+            _GuiListBoxCtrlClearSelectionFunc(ctrl);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiListBoxCtrlAddItem(IntPtr ctrl, string text, Color color);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiListBoxCtrlSetSelected(IntPtr ctrl, int index, bool setting);
+         private static _GuiListBoxCtrlSetSelected _GuiListBoxCtrlSetSelectedFunc;
+         internal static void GuiListBoxCtrlSetSelected(IntPtr ctrl, int index, bool setting)
+         {
+            if (_GuiListBoxCtrlSetSelectedFunc == null)
+            {
+               _GuiListBoxCtrlSetSelectedFunc =
+                  (_GuiListBoxCtrlSetSelected)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiListBoxCtrlSetSelected"), typeof(_GuiListBoxCtrlSetSelected));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiListBoxCtrlSetItemColor(IntPtr ctrl, int index, Color color);
+            _GuiListBoxCtrlSetSelectedFunc(ctrl, index, setting);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiListBoxCtrlClearItemColor(IntPtr ctrl, int index);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate int _GuiListBoxCtrlGetItemCount(IntPtr ctrl);
+         private static _GuiListBoxCtrlGetItemCount _GuiListBoxCtrlGetItemCountFunc;
+         internal static int GuiListBoxCtrlGetItemCount(IntPtr ctrl)
+         {
+            if (_GuiListBoxCtrlGetItemCountFunc == null)
+            {
+               _GuiListBoxCtrlGetItemCountFunc =
+                  (_GuiListBoxCtrlGetItemCount)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiListBoxCtrlGetItemCount"), typeof(_GuiListBoxCtrlGetItemCount));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiListBoxCtrlInsertItem(IntPtr ctrl, string text, int index);
+            return _GuiListBoxCtrlGetItemCountFunc(ctrl);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiListBoxCtrlDeleteItem(IntPtr ctrl, int index);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate int _GuiListBoxCtrlGetSelCount(IntPtr ctrl);
+         private static _GuiListBoxCtrlGetSelCount _GuiListBoxCtrlGetSelCountFunc;
+         internal static int GuiListBoxCtrlGetSelCount(IntPtr ctrl)
+         {
+            if (_GuiListBoxCtrlGetSelCountFunc == null)
+            {
+               _GuiListBoxCtrlGetSelCountFunc =
+                  (_GuiListBoxCtrlGetSelCount)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiListBoxCtrlGetSelCount"), typeof(_GuiListBoxCtrlGetSelCount));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiListBoxCtrlSetItemtext(IntPtr ctrl, int index, string newText);
+            return _GuiListBoxCtrlGetSelCountFunc(ctrl);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiListBoxCtrlGetItemtext(IntPtr ctrl, int index);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate int _GuiListBoxCtrlGetSelectedItem(IntPtr ctrl);
+         private static _GuiListBoxCtrlGetSelectedItem _GuiListBoxCtrlGetSelectedItemFunc;
+         internal static int GuiListBoxCtrlGetSelectedItem(IntPtr ctrl)
+         {
+            if (_GuiListBoxCtrlGetSelectedItemFunc == null)
+            {
+               _GuiListBoxCtrlGetSelectedItemFunc =
+                  (_GuiListBoxCtrlGetSelectedItem)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiListBoxCtrlGetSelectedItem"), typeof(_GuiListBoxCtrlGetSelectedItem));
+            }
+
+            return _GuiListBoxCtrlGetSelectedItemFunc(ctrl);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate int[] _GuiListBoxCtrlGetSelectedItems(IntPtr ctrl);
+         private static _GuiListBoxCtrlGetSelectedItems _GuiListBoxCtrlGetSelectedItemsFunc;
+         internal static int[] GuiListBoxCtrlGetSelectedItems(IntPtr ctrl)
+         {
+            if (_GuiListBoxCtrlGetSelectedItemsFunc == null)
+            {
+               _GuiListBoxCtrlGetSelectedItemsFunc =
+                  (_GuiListBoxCtrlGetSelectedItems)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiListBoxCtrlGetSelectedItems"), typeof(_GuiListBoxCtrlGetSelectedItems));
+            }
+
+            return _GuiListBoxCtrlGetSelectedItemsFunc(ctrl);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate int _GuiListBoxCtrlFindItemText(IntPtr ctrl, string itemText, bool caseSensitive);
+         private static _GuiListBoxCtrlFindItemText _GuiListBoxCtrlFindItemTextFunc;
+         internal static int GuiListBoxCtrlFindItemText(IntPtr ctrl, string itemText, bool caseSensitive)
+         {
+            if (_GuiListBoxCtrlFindItemTextFunc == null)
+            {
+               _GuiListBoxCtrlFindItemTextFunc =
+                  (_GuiListBoxCtrlFindItemText)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiListBoxCtrlFindItemText"), typeof(_GuiListBoxCtrlFindItemText));
+            }
+
+            return _GuiListBoxCtrlFindItemTextFunc(ctrl, itemText, caseSensitive);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiListBoxCtrlSetCurSel(IntPtr ctrl, int index);
+         private static _GuiListBoxCtrlSetCurSel _GuiListBoxCtrlSetCurSelFunc;
+         internal static void GuiListBoxCtrlSetCurSel(IntPtr ctrl, int index)
+         {
+            if (_GuiListBoxCtrlSetCurSelFunc == null)
+            {
+               _GuiListBoxCtrlSetCurSelFunc =
+                  (_GuiListBoxCtrlSetCurSel)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiListBoxCtrlSetCurSel"), typeof(_GuiListBoxCtrlSetCurSel));
+            }
+
+            _GuiListBoxCtrlSetCurSelFunc(ctrl, index);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiListBoxCtrlSetCurSelRange(IntPtr ctrl, int start, int stop);
+         private static _GuiListBoxCtrlSetCurSelRange _GuiListBoxCtrlSetCurSelRangeFunc;
+         internal static void GuiListBoxCtrlSetCurSelRange(IntPtr ctrl, int start, int stop)
+         {
+            if (_GuiListBoxCtrlSetCurSelRangeFunc == null)
+            {
+               _GuiListBoxCtrlSetCurSelRangeFunc =
+                  (_GuiListBoxCtrlSetCurSelRange)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiListBoxCtrlSetCurSelRange"), typeof(_GuiListBoxCtrlSetCurSelRange));
+            }
+
+            _GuiListBoxCtrlSetCurSelRangeFunc(ctrl, start, stop);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiListBoxCtrlAddItem(IntPtr ctrl, string text, Color color);
+         private static _GuiListBoxCtrlAddItem _GuiListBoxCtrlAddItemFunc;
+         internal static void GuiListBoxCtrlAddItem(IntPtr ctrl, string text, Color color)
+         {
+            if (_GuiListBoxCtrlAddItemFunc == null)
+            {
+               _GuiListBoxCtrlAddItemFunc =
+                  (_GuiListBoxCtrlAddItem)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiListBoxCtrlAddItem"), typeof(_GuiListBoxCtrlAddItem));
+            }
+
+            _GuiListBoxCtrlAddItemFunc(ctrl, text, color);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiListBoxCtrlSetItemColor(IntPtr ctrl, int index, Color color);
+         private static _GuiListBoxCtrlSetItemColor _GuiListBoxCtrlSetItemColorFunc;
+         internal static void GuiListBoxCtrlSetItemColor(IntPtr ctrl, int index, Color color)
+         {
+            if (_GuiListBoxCtrlSetItemColorFunc == null)
+            {
+               _GuiListBoxCtrlSetItemColorFunc =
+                  (_GuiListBoxCtrlSetItemColor)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiListBoxCtrlSetItemColor"), typeof(_GuiListBoxCtrlSetItemColor));
+            }
+
+            _GuiListBoxCtrlSetItemColorFunc(ctrl, index, color);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiListBoxCtrlClearItemColor(IntPtr ctrl, int index);
+         private static _GuiListBoxCtrlClearItemColor _GuiListBoxCtrlClearItemColorFunc;
+         internal static void GuiListBoxCtrlClearItemColor(IntPtr ctrl, int index)
+         {
+            if (_GuiListBoxCtrlClearItemColorFunc == null)
+            {
+               _GuiListBoxCtrlClearItemColorFunc =
+                  (_GuiListBoxCtrlClearItemColor)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiListBoxCtrlClearItemColor"), typeof(_GuiListBoxCtrlClearItemColor));
+            }
+
+            _GuiListBoxCtrlClearItemColorFunc(ctrl, index);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiListBoxCtrlInsertItem(IntPtr ctrl, string text, int index);
+         private static _GuiListBoxCtrlInsertItem _GuiListBoxCtrlInsertItemFunc;
+         internal static void GuiListBoxCtrlInsertItem(IntPtr ctrl, string text, int index)
+         {
+            if (_GuiListBoxCtrlInsertItemFunc == null)
+            {
+               _GuiListBoxCtrlInsertItemFunc =
+                  (_GuiListBoxCtrlInsertItem)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiListBoxCtrlInsertItem"), typeof(_GuiListBoxCtrlInsertItem));
+            }
+
+            _GuiListBoxCtrlInsertItemFunc(ctrl, text, index);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiListBoxCtrlDeleteItem(IntPtr ctrl, int index);
+         private static _GuiListBoxCtrlDeleteItem _GuiListBoxCtrlDeleteItemFunc;
+         internal static void GuiListBoxCtrlDeleteItem(IntPtr ctrl, int index)
+         {
+            if (_GuiListBoxCtrlDeleteItemFunc == null)
+            {
+               _GuiListBoxCtrlDeleteItemFunc =
+                  (_GuiListBoxCtrlDeleteItem)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiListBoxCtrlDeleteItem"), typeof(_GuiListBoxCtrlDeleteItem));
+            }
+
+            _GuiListBoxCtrlDeleteItemFunc(ctrl, index);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiListBoxCtrlSetItemtext(IntPtr ctrl, int index, string newText);
+         private static _GuiListBoxCtrlSetItemtext _GuiListBoxCtrlSetItemtextFunc;
+         internal static void GuiListBoxCtrlSetItemtext(IntPtr ctrl, int index, string newText)
+         {
+            if (_GuiListBoxCtrlSetItemtextFunc == null)
+            {
+               _GuiListBoxCtrlSetItemtextFunc =
+                  (_GuiListBoxCtrlSetItemtext)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiListBoxCtrlSetItemtext"), typeof(_GuiListBoxCtrlSetItemtext));
+            }
+
+            _GuiListBoxCtrlSetItemtextFunc(ctrl, index, newText);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiListBoxCtrlGetItemtext(IntPtr ctrl, int index);
+         private static _GuiListBoxCtrlGetItemtext _GuiListBoxCtrlGetItemtextFunc;
+         internal static IntPtr GuiListBoxCtrlGetItemtext(IntPtr ctrl, int index)
+         {
+            if (_GuiListBoxCtrlGetItemtextFunc == null)
+            {
+               _GuiListBoxCtrlGetItemtextFunc =
+                  (_GuiListBoxCtrlGetItemtext)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiListBoxCtrlGetItemtext"), typeof(_GuiListBoxCtrlGetItemtext));
+            }
+
+            return _GuiListBoxCtrlGetItemtextFunc(ctrl, index);
+         }
       }
       
       #endregion

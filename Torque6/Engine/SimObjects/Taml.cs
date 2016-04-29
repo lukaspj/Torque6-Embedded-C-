@@ -40,68 +40,320 @@ namespace Torque6.Engine.SimObjects
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr TamlGetFormat(IntPtr tamlObj);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _TamlGetFormat(IntPtr tamlObj);
+         private static _TamlGetFormat _TamlGetFormatFunc;
+         internal static IntPtr TamlGetFormat(IntPtr tamlObj)
+         {
+            if (_TamlGetFormatFunc == null)
+            {
+               _TamlGetFormatFunc =
+                  (_TamlGetFormat)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "TamlGetFormat"), typeof(_TamlGetFormat));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void TamlSetFormat(IntPtr tamlObj, string value);
+            return _TamlGetFormatFunc(tamlObj);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool TamlGetJSONStrict(IntPtr tamlObj);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _TamlSetFormat(IntPtr tamlObj, string value);
+         private static _TamlSetFormat _TamlSetFormatFunc;
+         internal static void TamlSetFormat(IntPtr tamlObj, string value)
+         {
+            if (_TamlSetFormatFunc == null)
+            {
+               _TamlSetFormatFunc =
+                  (_TamlSetFormat)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "TamlSetFormat"), typeof(_TamlSetFormat));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void TamlSetJSONStrict(IntPtr tamlObj, bool value);
+            _TamlSetFormatFunc(tamlObj, value);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool TamlGetBinaryCompression(IntPtr tamlObj);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _TamlGetJSONStrict(IntPtr tamlObj);
+         private static _TamlGetJSONStrict _TamlGetJSONStrictFunc;
+         internal static bool TamlGetJSONStrict(IntPtr tamlObj)
+         {
+            if (_TamlGetJSONStrictFunc == null)
+            {
+               _TamlGetJSONStrictFunc =
+                  (_TamlGetJSONStrict)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "TamlGetJSONStrict"), typeof(_TamlGetJSONStrict));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void TamlSetBinaryCompression(IntPtr tamlObj, bool value);
+            return _TamlGetJSONStrictFunc(tamlObj);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool TamlGetWriteDefaults(IntPtr tamlObj);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _TamlSetJSONStrict(IntPtr tamlObj, bool value);
+         private static _TamlSetJSONStrict _TamlSetJSONStrictFunc;
+         internal static void TamlSetJSONStrict(IntPtr tamlObj, bool value)
+         {
+            if (_TamlSetJSONStrictFunc == null)
+            {
+               _TamlSetJSONStrictFunc =
+                  (_TamlSetJSONStrict)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "TamlSetJSONStrict"), typeof(_TamlSetJSONStrict));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void TamlSetWriteDefaults(IntPtr tamlObj, bool value);
+            _TamlSetJSONStrictFunc(tamlObj, value);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool TamlGetProgenitorUpdate(IntPtr tamlObj);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _TamlGetBinaryCompression(IntPtr tamlObj);
+         private static _TamlGetBinaryCompression _TamlGetBinaryCompressionFunc;
+         internal static bool TamlGetBinaryCompression(IntPtr tamlObj)
+         {
+            if (_TamlGetBinaryCompressionFunc == null)
+            {
+               _TamlGetBinaryCompressionFunc =
+                  (_TamlGetBinaryCompression)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "TamlGetBinaryCompression"), typeof(_TamlGetBinaryCompression));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void TamlSetProgenitorUpdate(IntPtr tamlObj, bool value);
+            return _TamlGetBinaryCompressionFunc(tamlObj);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool TamlGetAutoFormat(IntPtr tamlObj);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _TamlSetBinaryCompression(IntPtr tamlObj, bool value);
+         private static _TamlSetBinaryCompression _TamlSetBinaryCompressionFunc;
+         internal static void TamlSetBinaryCompression(IntPtr tamlObj, bool value)
+         {
+            if (_TamlSetBinaryCompressionFunc == null)
+            {
+               _TamlSetBinaryCompressionFunc =
+                  (_TamlSetBinaryCompression)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "TamlSetBinaryCompression"), typeof(_TamlSetBinaryCompression));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void TamlSetAutoFormat(IntPtr tamlObj, bool value);
+            _TamlSetBinaryCompressionFunc(tamlObj, value);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr TamlGetAutoFormatXmlExtension(IntPtr tamlObj);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _TamlGetWriteDefaults(IntPtr tamlObj);
+         private static _TamlGetWriteDefaults _TamlGetWriteDefaultsFunc;
+         internal static bool TamlGetWriteDefaults(IntPtr tamlObj)
+         {
+            if (_TamlGetWriteDefaultsFunc == null)
+            {
+               _TamlGetWriteDefaultsFunc =
+                  (_TamlGetWriteDefaults)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "TamlGetWriteDefaults"), typeof(_TamlGetWriteDefaults));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void TamlSetAutoFormatXmlExtension(IntPtr tamlObj, string value);
+            return _TamlGetWriteDefaultsFunc(tamlObj);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr TamlGetAutoFormatBinaryExtension(IntPtr tamlObj);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _TamlSetWriteDefaults(IntPtr tamlObj, bool value);
+         private static _TamlSetWriteDefaults _TamlSetWriteDefaultsFunc;
+         internal static void TamlSetWriteDefaults(IntPtr tamlObj, bool value)
+         {
+            if (_TamlSetWriteDefaultsFunc == null)
+            {
+               _TamlSetWriteDefaultsFunc =
+                  (_TamlSetWriteDefaults)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "TamlSetWriteDefaults"), typeof(_TamlSetWriteDefaults));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void TamlSetAutoFormatBinaryExtension(IntPtr tamlObj, string value);
+            _TamlSetWriteDefaultsFunc(tamlObj, value);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr TamlGetAutoFormatJSONExtension(IntPtr tamlObj);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _TamlGetProgenitorUpdate(IntPtr tamlObj);
+         private static _TamlGetProgenitorUpdate _TamlGetProgenitorUpdateFunc;
+         internal static bool TamlGetProgenitorUpdate(IntPtr tamlObj)
+         {
+            if (_TamlGetProgenitorUpdateFunc == null)
+            {
+               _TamlGetProgenitorUpdateFunc =
+                  (_TamlGetProgenitorUpdate)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "TamlGetProgenitorUpdate"), typeof(_TamlGetProgenitorUpdate));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void TamlSetAutoFormatJSONExtension(IntPtr tamlObj, string value);
+            return _TamlGetProgenitorUpdateFunc(tamlObj);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr TamlCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _TamlSetProgenitorUpdate(IntPtr tamlObj, bool value);
+         private static _TamlSetProgenitorUpdate _TamlSetProgenitorUpdateFunc;
+         internal static void TamlSetProgenitorUpdate(IntPtr tamlObj, bool value)
+         {
+            if (_TamlSetProgenitorUpdateFunc == null)
+            {
+               _TamlSetProgenitorUpdateFunc =
+                  (_TamlSetProgenitorUpdate)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "TamlSetProgenitorUpdate"), typeof(_TamlSetProgenitorUpdate));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool TamlWrite(IntPtr tamlObj, IntPtr simObj, string filename);
+            _TamlSetProgenitorUpdateFunc(tamlObj, value);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr TamlRead(IntPtr tamlObj, string filename);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _TamlGetAutoFormat(IntPtr tamlObj);
+         private static _TamlGetAutoFormat _TamlGetAutoFormatFunc;
+         internal static bool TamlGetAutoFormat(IntPtr tamlObj)
+         {
+            if (_TamlGetAutoFormatFunc == null)
+            {
+               _TamlGetAutoFormatFunc =
+                  (_TamlGetAutoFormat)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "TamlGetAutoFormat"), typeof(_TamlGetAutoFormat));
+            }
+
+            return _TamlGetAutoFormatFunc(tamlObj);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _TamlSetAutoFormat(IntPtr tamlObj, bool value);
+         private static _TamlSetAutoFormat _TamlSetAutoFormatFunc;
+         internal static void TamlSetAutoFormat(IntPtr tamlObj, bool value)
+         {
+            if (_TamlSetAutoFormatFunc == null)
+            {
+               _TamlSetAutoFormatFunc =
+                  (_TamlSetAutoFormat)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "TamlSetAutoFormat"), typeof(_TamlSetAutoFormat));
+            }
+
+            _TamlSetAutoFormatFunc(tamlObj, value);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _TamlGetAutoFormatXmlExtension(IntPtr tamlObj);
+         private static _TamlGetAutoFormatXmlExtension _TamlGetAutoFormatXmlExtensionFunc;
+         internal static IntPtr TamlGetAutoFormatXmlExtension(IntPtr tamlObj)
+         {
+            if (_TamlGetAutoFormatXmlExtensionFunc == null)
+            {
+               _TamlGetAutoFormatXmlExtensionFunc =
+                  (_TamlGetAutoFormatXmlExtension)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "TamlGetAutoFormatXmlExtension"), typeof(_TamlGetAutoFormatXmlExtension));
+            }
+
+            return _TamlGetAutoFormatXmlExtensionFunc(tamlObj);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _TamlSetAutoFormatXmlExtension(IntPtr tamlObj, string value);
+         private static _TamlSetAutoFormatXmlExtension _TamlSetAutoFormatXmlExtensionFunc;
+         internal static void TamlSetAutoFormatXmlExtension(IntPtr tamlObj, string value)
+         {
+            if (_TamlSetAutoFormatXmlExtensionFunc == null)
+            {
+               _TamlSetAutoFormatXmlExtensionFunc =
+                  (_TamlSetAutoFormatXmlExtension)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "TamlSetAutoFormatXmlExtension"), typeof(_TamlSetAutoFormatXmlExtension));
+            }
+
+            _TamlSetAutoFormatXmlExtensionFunc(tamlObj, value);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _TamlGetAutoFormatBinaryExtension(IntPtr tamlObj);
+         private static _TamlGetAutoFormatBinaryExtension _TamlGetAutoFormatBinaryExtensionFunc;
+         internal static IntPtr TamlGetAutoFormatBinaryExtension(IntPtr tamlObj)
+         {
+            if (_TamlGetAutoFormatBinaryExtensionFunc == null)
+            {
+               _TamlGetAutoFormatBinaryExtensionFunc =
+                  (_TamlGetAutoFormatBinaryExtension)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "TamlGetAutoFormatBinaryExtension"), typeof(_TamlGetAutoFormatBinaryExtension));
+            }
+
+            return _TamlGetAutoFormatBinaryExtensionFunc(tamlObj);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _TamlSetAutoFormatBinaryExtension(IntPtr tamlObj, string value);
+         private static _TamlSetAutoFormatBinaryExtension _TamlSetAutoFormatBinaryExtensionFunc;
+         internal static void TamlSetAutoFormatBinaryExtension(IntPtr tamlObj, string value)
+         {
+            if (_TamlSetAutoFormatBinaryExtensionFunc == null)
+            {
+               _TamlSetAutoFormatBinaryExtensionFunc =
+                  (_TamlSetAutoFormatBinaryExtension)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "TamlSetAutoFormatBinaryExtension"), typeof(_TamlSetAutoFormatBinaryExtension));
+            }
+
+            _TamlSetAutoFormatBinaryExtensionFunc(tamlObj, value);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _TamlGetAutoFormatJSONExtension(IntPtr tamlObj);
+         private static _TamlGetAutoFormatJSONExtension _TamlGetAutoFormatJSONExtensionFunc;
+         internal static IntPtr TamlGetAutoFormatJSONExtension(IntPtr tamlObj)
+         {
+            if (_TamlGetAutoFormatJSONExtensionFunc == null)
+            {
+               _TamlGetAutoFormatJSONExtensionFunc =
+                  (_TamlGetAutoFormatJSONExtension)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "TamlGetAutoFormatJSONExtension"), typeof(_TamlGetAutoFormatJSONExtension));
+            }
+
+            return _TamlGetAutoFormatJSONExtensionFunc(tamlObj);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _TamlSetAutoFormatJSONExtension(IntPtr tamlObj, string value);
+         private static _TamlSetAutoFormatJSONExtension _TamlSetAutoFormatJSONExtensionFunc;
+         internal static void TamlSetAutoFormatJSONExtension(IntPtr tamlObj, string value)
+         {
+            if (_TamlSetAutoFormatJSONExtensionFunc == null)
+            {
+               _TamlSetAutoFormatJSONExtensionFunc =
+                  (_TamlSetAutoFormatJSONExtension)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "TamlSetAutoFormatJSONExtension"), typeof(_TamlSetAutoFormatJSONExtension));
+            }
+
+            _TamlSetAutoFormatJSONExtensionFunc(tamlObj, value);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _TamlCreateInstance();
+         private static _TamlCreateInstance _TamlCreateInstanceFunc;
+         internal static IntPtr TamlCreateInstance()
+         {
+            if (_TamlCreateInstanceFunc == null)
+            {
+               _TamlCreateInstanceFunc =
+                  (_TamlCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "TamlCreateInstance"), typeof(_TamlCreateInstance));
+            }
+
+            return _TamlCreateInstanceFunc();
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _TamlWrite(IntPtr tamlObj, IntPtr simObj, string filename);
+         private static _TamlWrite _TamlWriteFunc;
+         internal static bool TamlWrite(IntPtr tamlObj, IntPtr simObj, string filename)
+         {
+            if (_TamlWriteFunc == null)
+            {
+               _TamlWriteFunc =
+                  (_TamlWrite)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "TamlWrite"), typeof(_TamlWrite));
+            }
+
+            return _TamlWriteFunc(tamlObj, simObj, filename);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _TamlRead(IntPtr tamlObj, string filename);
+         private static _TamlRead _TamlReadFunc;
+         internal static IntPtr TamlRead(IntPtr tamlObj, string filename)
+         {
+            if (_TamlReadFunc == null)
+            {
+               _TamlReadFunc =
+                  (_TamlRead)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "TamlRead"), typeof(_TamlRead));
+            }
+
+            return _TamlReadFunc(tamlObj, filename);
+         }
       }
       
       #endregion

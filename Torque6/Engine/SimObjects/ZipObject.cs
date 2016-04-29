@@ -40,38 +40,170 @@ namespace Torque6.Engine.SimObjects
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr ZipObjectCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _ZipObjectCreateInstance();
+         private static _ZipObjectCreateInstance _ZipObjectCreateInstanceFunc;
+         internal static IntPtr ZipObjectCreateInstance()
+         {
+            if (_ZipObjectCreateInstanceFunc == null)
+            {
+               _ZipObjectCreateInstanceFunc =
+                  (_ZipObjectCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "ZipObjectCreateInstance"), typeof(_ZipObjectCreateInstance));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool ZipObjectOpenArchive(IntPtr zipObj, string fileName, int mode);
+            return _ZipObjectCreateInstanceFunc();
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void ZipObjectCloseArchive(IntPtr zipObj);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _ZipObjectOpenArchive(IntPtr zipObj, string fileName, int mode);
+         private static _ZipObjectOpenArchive _ZipObjectOpenArchiveFunc;
+         internal static bool ZipObjectOpenArchive(IntPtr zipObj, string fileName, int mode)
+         {
+            if (_ZipObjectOpenArchiveFunc == null)
+            {
+               _ZipObjectOpenArchiveFunc =
+                  (_ZipObjectOpenArchive)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "ZipObjectOpenArchive"), typeof(_ZipObjectOpenArchive));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr ZipObjectOpenFileForRead(IntPtr zipObj, string fileName);
+            return _ZipObjectOpenArchiveFunc(zipObj, fileName, mode);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr ZipObjectOpenFileForWrite(IntPtr zipObj, string fileName);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _ZipObjectCloseArchive(IntPtr zipObj);
+         private static _ZipObjectCloseArchive _ZipObjectCloseArchiveFunc;
+         internal static void ZipObjectCloseArchive(IntPtr zipObj)
+         {
+            if (_ZipObjectCloseArchiveFunc == null)
+            {
+               _ZipObjectCloseArchiveFunc =
+                  (_ZipObjectCloseArchive)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "ZipObjectCloseArchive"), typeof(_ZipObjectCloseArchive));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void ZipObjectCloseFile(IntPtr zipObj, IntPtr stream);
+            _ZipObjectCloseArchiveFunc(zipObj);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool ZipObjectAddFile(IntPtr zipObj, string fileName, string pathInZip, bool replace);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _ZipObjectOpenFileForRead(IntPtr zipObj, string fileName);
+         private static _ZipObjectOpenFileForRead _ZipObjectOpenFileForReadFunc;
+         internal static IntPtr ZipObjectOpenFileForRead(IntPtr zipObj, string fileName)
+         {
+            if (_ZipObjectOpenFileForReadFunc == null)
+            {
+               _ZipObjectOpenFileForReadFunc =
+                  (_ZipObjectOpenFileForRead)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "ZipObjectOpenFileForRead"), typeof(_ZipObjectOpenFileForRead));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool ZipObjectExtractFile(IntPtr zipObj, string fileName, string pathInZip);
+            return _ZipObjectOpenFileForReadFunc(zipObj, fileName);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool ZipObjectDeleteFile(IntPtr zipObj, string pathInZip);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _ZipObjectOpenFileForWrite(IntPtr zipObj, string fileName);
+         private static _ZipObjectOpenFileForWrite _ZipObjectOpenFileForWriteFunc;
+         internal static IntPtr ZipObjectOpenFileForWrite(IntPtr zipObj, string fileName)
+         {
+            if (_ZipObjectOpenFileForWriteFunc == null)
+            {
+               _ZipObjectOpenFileForWriteFunc =
+                  (_ZipObjectOpenFileForWrite)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "ZipObjectOpenFileForWrite"), typeof(_ZipObjectOpenFileForWrite));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern int ZipObjectGetFileEntryCount(IntPtr zipObj);
+            return _ZipObjectOpenFileForWriteFunc(zipObj, fileName);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr ZipObjectGetFileEntry(IntPtr zipObj, int index);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _ZipObjectCloseFile(IntPtr zipObj, IntPtr stream);
+         private static _ZipObjectCloseFile _ZipObjectCloseFileFunc;
+         internal static void ZipObjectCloseFile(IntPtr zipObj, IntPtr stream)
+         {
+            if (_ZipObjectCloseFileFunc == null)
+            {
+               _ZipObjectCloseFileFunc =
+                  (_ZipObjectCloseFile)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "ZipObjectCloseFile"), typeof(_ZipObjectCloseFile));
+            }
+
+            _ZipObjectCloseFileFunc(zipObj, stream);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _ZipObjectAddFile(IntPtr zipObj, string fileName, string pathInZip, bool replace);
+         private static _ZipObjectAddFile _ZipObjectAddFileFunc;
+         internal static bool ZipObjectAddFile(IntPtr zipObj, string fileName, string pathInZip, bool replace)
+         {
+            if (_ZipObjectAddFileFunc == null)
+            {
+               _ZipObjectAddFileFunc =
+                  (_ZipObjectAddFile)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "ZipObjectAddFile"), typeof(_ZipObjectAddFile));
+            }
+
+            return _ZipObjectAddFileFunc(zipObj, fileName, pathInZip, replace);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _ZipObjectExtractFile(IntPtr zipObj, string fileName, string pathInZip);
+         private static _ZipObjectExtractFile _ZipObjectExtractFileFunc;
+         internal static bool ZipObjectExtractFile(IntPtr zipObj, string fileName, string pathInZip)
+         {
+            if (_ZipObjectExtractFileFunc == null)
+            {
+               _ZipObjectExtractFileFunc =
+                  (_ZipObjectExtractFile)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "ZipObjectExtractFile"), typeof(_ZipObjectExtractFile));
+            }
+
+            return _ZipObjectExtractFileFunc(zipObj, fileName, pathInZip);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _ZipObjectDeleteFile(IntPtr zipObj, string pathInZip);
+         private static _ZipObjectDeleteFile _ZipObjectDeleteFileFunc;
+         internal static bool ZipObjectDeleteFile(IntPtr zipObj, string pathInZip)
+         {
+            if (_ZipObjectDeleteFileFunc == null)
+            {
+               _ZipObjectDeleteFileFunc =
+                  (_ZipObjectDeleteFile)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "ZipObjectDeleteFile"), typeof(_ZipObjectDeleteFile));
+            }
+
+            return _ZipObjectDeleteFileFunc(zipObj, pathInZip);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate int _ZipObjectGetFileEntryCount(IntPtr zipObj);
+         private static _ZipObjectGetFileEntryCount _ZipObjectGetFileEntryCountFunc;
+         internal static int ZipObjectGetFileEntryCount(IntPtr zipObj)
+         {
+            if (_ZipObjectGetFileEntryCountFunc == null)
+            {
+               _ZipObjectGetFileEntryCountFunc =
+                  (_ZipObjectGetFileEntryCount)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "ZipObjectGetFileEntryCount"), typeof(_ZipObjectGetFileEntryCount));
+            }
+
+            return _ZipObjectGetFileEntryCountFunc(zipObj);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _ZipObjectGetFileEntry(IntPtr zipObj, int index);
+         private static _ZipObjectGetFileEntry _ZipObjectGetFileEntryFunc;
+         internal static IntPtr ZipObjectGetFileEntry(IntPtr zipObj, int index)
+         {
+            if (_ZipObjectGetFileEntryFunc == null)
+            {
+               _ZipObjectGetFileEntryFunc =
+                  (_ZipObjectGetFileEntry)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "ZipObjectGetFileEntry"), typeof(_ZipObjectGetFileEntry));
+            }
+
+            return _ZipObjectGetFileEntryFunc(zipObj, index);
+         }
       }
       
       #endregion

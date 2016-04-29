@@ -40,11 +40,35 @@ namespace Torque6.Engine.SimObjects
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr MaterialAssetGetTemplateFile(IntPtr materialAsset);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _MaterialAssetGetTemplateFile(IntPtr materialAsset);
+         private static _MaterialAssetGetTemplateFile _MaterialAssetGetTemplateFileFunc;
+         internal static IntPtr MaterialAssetGetTemplateFile(IntPtr materialAsset)
+         {
+            if (_MaterialAssetGetTemplateFileFunc == null)
+            {
+               _MaterialAssetGetTemplateFileFunc =
+                  (_MaterialAssetGetTemplateFile)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "MaterialAssetGetTemplateFile"), typeof(_MaterialAssetGetTemplateFile));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr MaterialAssetCreateInstance();
+            return _MaterialAssetGetTemplateFileFunc(materialAsset);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _MaterialAssetCreateInstance();
+         private static _MaterialAssetCreateInstance _MaterialAssetCreateInstanceFunc;
+         internal static IntPtr MaterialAssetCreateInstance()
+         {
+            if (_MaterialAssetCreateInstanceFunc == null)
+            {
+               _MaterialAssetCreateInstanceFunc =
+                  (_MaterialAssetCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "MaterialAssetCreateInstance"), typeof(_MaterialAssetCreateInstance));
+            }
+
+            return _MaterialAssetCreateInstanceFunc();
+         }
       }
       
       #endregion

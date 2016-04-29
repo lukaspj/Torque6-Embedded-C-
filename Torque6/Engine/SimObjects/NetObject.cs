@@ -40,20 +40,80 @@ namespace Torque6.Engine.SimObjects
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr NetObjectCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _NetObjectCreateInstance();
+         private static _NetObjectCreateInstance _NetObjectCreateInstanceFunc;
+         internal static IntPtr NetObjectCreateInstance()
+         {
+            if (_NetObjectCreateInstanceFunc == null)
+            {
+               _NetObjectCreateInstanceFunc =
+                  (_NetObjectCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "NetObjectCreateInstance"), typeof(_NetObjectCreateInstance));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void NetObjectScopeToClient(IntPtr netObj, IntPtr client);
+            return _NetObjectCreateInstanceFunc();
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void NetObjectClearScopeToClient(IntPtr netObj, IntPtr client);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _NetObjectScopeToClient(IntPtr netObj, IntPtr client);
+         private static _NetObjectScopeToClient _NetObjectScopeToClientFunc;
+         internal static void NetObjectScopeToClient(IntPtr netObj, IntPtr client)
+         {
+            if (_NetObjectScopeToClientFunc == null)
+            {
+               _NetObjectScopeToClientFunc =
+                  (_NetObjectScopeToClient)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "NetObjectScopeToClient"), typeof(_NetObjectScopeToClient));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void NetObjectSetScopeAlways(IntPtr netObj);
+            _NetObjectScopeToClientFunc(netObj, client);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern int NetObjectGetGhostID(IntPtr netObj);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _NetObjectClearScopeToClient(IntPtr netObj, IntPtr client);
+         private static _NetObjectClearScopeToClient _NetObjectClearScopeToClientFunc;
+         internal static void NetObjectClearScopeToClient(IntPtr netObj, IntPtr client)
+         {
+            if (_NetObjectClearScopeToClientFunc == null)
+            {
+               _NetObjectClearScopeToClientFunc =
+                  (_NetObjectClearScopeToClient)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "NetObjectClearScopeToClient"), typeof(_NetObjectClearScopeToClient));
+            }
+
+            _NetObjectClearScopeToClientFunc(netObj, client);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _NetObjectSetScopeAlways(IntPtr netObj);
+         private static _NetObjectSetScopeAlways _NetObjectSetScopeAlwaysFunc;
+         internal static void NetObjectSetScopeAlways(IntPtr netObj)
+         {
+            if (_NetObjectSetScopeAlwaysFunc == null)
+            {
+               _NetObjectSetScopeAlwaysFunc =
+                  (_NetObjectSetScopeAlways)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "NetObjectSetScopeAlways"), typeof(_NetObjectSetScopeAlways));
+            }
+
+            _NetObjectSetScopeAlwaysFunc(netObj);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate int _NetObjectGetGhostID(IntPtr netObj);
+         private static _NetObjectGetGhostID _NetObjectGetGhostIDFunc;
+         internal static int NetObjectGetGhostID(IntPtr netObj)
+         {
+            if (_NetObjectGetGhostIDFunc == null)
+            {
+               _NetObjectGetGhostIDFunc =
+                  (_NetObjectGetGhostID)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "NetObjectGetGhostID"), typeof(_NetObjectGetGhostID));
+            }
+
+            return _NetObjectGetGhostIDFunc(netObj);
+         }
       }
       
       #endregion

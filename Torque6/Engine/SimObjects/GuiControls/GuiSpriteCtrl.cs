@@ -40,50 +40,230 @@ namespace Torque6.Engine.SimObjects.GuiControls
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiSpriteCtrlGetImage(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiSpriteCtrlGetImage(IntPtr ctrl);
+         private static _GuiSpriteCtrlGetImage _GuiSpriteCtrlGetImageFunc;
+         internal static IntPtr GuiSpriteCtrlGetImage(IntPtr ctrl)
+         {
+            if (_GuiSpriteCtrlGetImageFunc == null)
+            {
+               _GuiSpriteCtrlGetImageFunc =
+                  (_GuiSpriteCtrlGetImage)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiSpriteCtrlGetImage"), typeof(_GuiSpriteCtrlGetImage));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiSpriteCtrlSetImage(IntPtr ctrl, string imageAssetId);
+            return _GuiSpriteCtrlGetImageFunc(ctrl);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern int GuiSpriteCtrlGetFrame(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiSpriteCtrlSetImage(IntPtr ctrl, string imageAssetId);
+         private static _GuiSpriteCtrlSetImage _GuiSpriteCtrlSetImageFunc;
+         internal static void GuiSpriteCtrlSetImage(IntPtr ctrl, string imageAssetId)
+         {
+            if (_GuiSpriteCtrlSetImageFunc == null)
+            {
+               _GuiSpriteCtrlSetImageFunc =
+                  (_GuiSpriteCtrlSetImage)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiSpriteCtrlSetImage"), typeof(_GuiSpriteCtrlSetImage));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiSpriteCtrlSetFrame(IntPtr ctrl, int frame);
+            _GuiSpriteCtrlSetImageFunc(ctrl, imageAssetId);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiSpriteCtrlGetNamedFrame(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate int _GuiSpriteCtrlGetFrame(IntPtr ctrl);
+         private static _GuiSpriteCtrlGetFrame _GuiSpriteCtrlGetFrameFunc;
+         internal static int GuiSpriteCtrlGetFrame(IntPtr ctrl)
+         {
+            if (_GuiSpriteCtrlGetFrameFunc == null)
+            {
+               _GuiSpriteCtrlGetFrameFunc =
+                  (_GuiSpriteCtrlGetFrame)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiSpriteCtrlGetFrame"), typeof(_GuiSpriteCtrlGetFrame));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiSpriteCtrlSetNamedFrame(IntPtr ctrl, string frame);
+            return _GuiSpriteCtrlGetFrameFunc(ctrl);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiSpriteCtrlGetAnimation(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiSpriteCtrlSetFrame(IntPtr ctrl, int frame);
+         private static _GuiSpriteCtrlSetFrame _GuiSpriteCtrlSetFrameFunc;
+         internal static void GuiSpriteCtrlSetFrame(IntPtr ctrl, int frame)
+         {
+            if (_GuiSpriteCtrlSetFrameFunc == null)
+            {
+               _GuiSpriteCtrlSetFrameFunc =
+                  (_GuiSpriteCtrlSetFrame)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiSpriteCtrlSetFrame"), typeof(_GuiSpriteCtrlSetFrame));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiSpriteCtrlSetAnimation(IntPtr ctrl, string animationAssetid);
+            _GuiSpriteCtrlSetFrameFunc(ctrl, frame);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiSpriteCtrlCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiSpriteCtrlGetNamedFrame(IntPtr ctrl);
+         private static _GuiSpriteCtrlGetNamedFrame _GuiSpriteCtrlGetNamedFrameFunc;
+         internal static IntPtr GuiSpriteCtrlGetNamedFrame(IntPtr ctrl)
+         {
+            if (_GuiSpriteCtrlGetNamedFrameFunc == null)
+            {
+               _GuiSpriteCtrlGetNamedFrameFunc =
+                  (_GuiSpriteCtrlGetNamedFrame)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiSpriteCtrlGetNamedFrame"), typeof(_GuiSpriteCtrlGetNamedFrame));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool GuiSpriteCtrlIsStaticFrameProvider(IntPtr ctrl);
+            return _GuiSpriteCtrlGetNamedFrameFunc(ctrl);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool GuiSpriteCtrlIsUsingNamedImageFrame(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiSpriteCtrlSetNamedFrame(IntPtr ctrl, string frame);
+         private static _GuiSpriteCtrlSetNamedFrame _GuiSpriteCtrlSetNamedFrameFunc;
+         internal static void GuiSpriteCtrlSetNamedFrame(IntPtr ctrl, string frame)
+         {
+            if (_GuiSpriteCtrlSetNamedFrameFunc == null)
+            {
+               _GuiSpriteCtrlSetNamedFrameFunc =
+                  (_GuiSpriteCtrlSetNamedFrame)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiSpriteCtrlSetNamedFrame"), typeof(_GuiSpriteCtrlSetNamedFrame));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool GuiSpriteCtrlSetImageFrame(IntPtr ctrl, int imageFrame);
+            _GuiSpriteCtrlSetNamedFrameFunc(ctrl, frame);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern int GuiSpriteCtrlGetImageFrame(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiSpriteCtrlGetAnimation(IntPtr ctrl);
+         private static _GuiSpriteCtrlGetAnimation _GuiSpriteCtrlGetAnimationFunc;
+         internal static IntPtr GuiSpriteCtrlGetAnimation(IntPtr ctrl)
+         {
+            if (_GuiSpriteCtrlGetAnimationFunc == null)
+            {
+               _GuiSpriteCtrlGetAnimationFunc =
+                  (_GuiSpriteCtrlGetAnimation)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiSpriteCtrlGetAnimation"), typeof(_GuiSpriteCtrlGetAnimation));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool GuiSpriteCtrlSetNamedImageFrame(IntPtr ctrl, string frame);
+            return _GuiSpriteCtrlGetAnimationFunc(ctrl);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiSpriteCtrlGetNamedImageFrame(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiSpriteCtrlSetAnimation(IntPtr ctrl, string animationAssetid);
+         private static _GuiSpriteCtrlSetAnimation _GuiSpriteCtrlSetAnimationFunc;
+         internal static void GuiSpriteCtrlSetAnimation(IntPtr ctrl, string animationAssetid)
+         {
+            if (_GuiSpriteCtrlSetAnimationFunc == null)
+            {
+               _GuiSpriteCtrlSetAnimationFunc =
+                  (_GuiSpriteCtrlSetAnimation)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiSpriteCtrlSetAnimation"), typeof(_GuiSpriteCtrlSetAnimation));
+            }
+
+            _GuiSpriteCtrlSetAnimationFunc(ctrl, animationAssetid);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiSpriteCtrlCreateInstance();
+         private static _GuiSpriteCtrlCreateInstance _GuiSpriteCtrlCreateInstanceFunc;
+         internal static IntPtr GuiSpriteCtrlCreateInstance()
+         {
+            if (_GuiSpriteCtrlCreateInstanceFunc == null)
+            {
+               _GuiSpriteCtrlCreateInstanceFunc =
+                  (_GuiSpriteCtrlCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiSpriteCtrlCreateInstance"), typeof(_GuiSpriteCtrlCreateInstance));
+            }
+
+            return _GuiSpriteCtrlCreateInstanceFunc();
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _GuiSpriteCtrlIsStaticFrameProvider(IntPtr ctrl);
+         private static _GuiSpriteCtrlIsStaticFrameProvider _GuiSpriteCtrlIsStaticFrameProviderFunc;
+         internal static bool GuiSpriteCtrlIsStaticFrameProvider(IntPtr ctrl)
+         {
+            if (_GuiSpriteCtrlIsStaticFrameProviderFunc == null)
+            {
+               _GuiSpriteCtrlIsStaticFrameProviderFunc =
+                  (_GuiSpriteCtrlIsStaticFrameProvider)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiSpriteCtrlIsStaticFrameProvider"), typeof(_GuiSpriteCtrlIsStaticFrameProvider));
+            }
+
+            return _GuiSpriteCtrlIsStaticFrameProviderFunc(ctrl);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _GuiSpriteCtrlIsUsingNamedImageFrame(IntPtr ctrl);
+         private static _GuiSpriteCtrlIsUsingNamedImageFrame _GuiSpriteCtrlIsUsingNamedImageFrameFunc;
+         internal static bool GuiSpriteCtrlIsUsingNamedImageFrame(IntPtr ctrl)
+         {
+            if (_GuiSpriteCtrlIsUsingNamedImageFrameFunc == null)
+            {
+               _GuiSpriteCtrlIsUsingNamedImageFrameFunc =
+                  (_GuiSpriteCtrlIsUsingNamedImageFrame)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiSpriteCtrlIsUsingNamedImageFrame"), typeof(_GuiSpriteCtrlIsUsingNamedImageFrame));
+            }
+
+            return _GuiSpriteCtrlIsUsingNamedImageFrameFunc(ctrl);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _GuiSpriteCtrlSetImageFrame(IntPtr ctrl, int imageFrame);
+         private static _GuiSpriteCtrlSetImageFrame _GuiSpriteCtrlSetImageFrameFunc;
+         internal static bool GuiSpriteCtrlSetImageFrame(IntPtr ctrl, int imageFrame)
+         {
+            if (_GuiSpriteCtrlSetImageFrameFunc == null)
+            {
+               _GuiSpriteCtrlSetImageFrameFunc =
+                  (_GuiSpriteCtrlSetImageFrame)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiSpriteCtrlSetImageFrame"), typeof(_GuiSpriteCtrlSetImageFrame));
+            }
+
+            return _GuiSpriteCtrlSetImageFrameFunc(ctrl, imageFrame);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate int _GuiSpriteCtrlGetImageFrame(IntPtr ctrl);
+         private static _GuiSpriteCtrlGetImageFrame _GuiSpriteCtrlGetImageFrameFunc;
+         internal static int GuiSpriteCtrlGetImageFrame(IntPtr ctrl)
+         {
+            if (_GuiSpriteCtrlGetImageFrameFunc == null)
+            {
+               _GuiSpriteCtrlGetImageFrameFunc =
+                  (_GuiSpriteCtrlGetImageFrame)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiSpriteCtrlGetImageFrame"), typeof(_GuiSpriteCtrlGetImageFrame));
+            }
+
+            return _GuiSpriteCtrlGetImageFrameFunc(ctrl);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _GuiSpriteCtrlSetNamedImageFrame(IntPtr ctrl, string frame);
+         private static _GuiSpriteCtrlSetNamedImageFrame _GuiSpriteCtrlSetNamedImageFrameFunc;
+         internal static bool GuiSpriteCtrlSetNamedImageFrame(IntPtr ctrl, string frame)
+         {
+            if (_GuiSpriteCtrlSetNamedImageFrameFunc == null)
+            {
+               _GuiSpriteCtrlSetNamedImageFrameFunc =
+                  (_GuiSpriteCtrlSetNamedImageFrame)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiSpriteCtrlSetNamedImageFrame"), typeof(_GuiSpriteCtrlSetNamedImageFrame));
+            }
+
+            return _GuiSpriteCtrlSetNamedImageFrameFunc(ctrl, frame);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiSpriteCtrlGetNamedImageFrame(IntPtr ctrl);
+         private static _GuiSpriteCtrlGetNamedImageFrame _GuiSpriteCtrlGetNamedImageFrameFunc;
+         internal static IntPtr GuiSpriteCtrlGetNamedImageFrame(IntPtr ctrl)
+         {
+            if (_GuiSpriteCtrlGetNamedImageFrameFunc == null)
+            {
+               _GuiSpriteCtrlGetNamedImageFrameFunc =
+                  (_GuiSpriteCtrlGetNamedImageFrame)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiSpriteCtrlGetNamedImageFrame"), typeof(_GuiSpriteCtrlGetNamedImageFrame));
+            }
+
+            return _GuiSpriteCtrlGetNamedImageFrameFunc(ctrl);
+         }
       }
       
       #endregion

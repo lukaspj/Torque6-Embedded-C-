@@ -1,5 +1,8 @@
 using System;
+using System.Linq;
 using System.Runtime.InteropServices;
+using Torque6.Engine.SimObjects;
+using Torque6.Engine.SimObjects.Scene;
 using Torque6.Engine.Namespaces;
 using Torque6.Utility;
 
@@ -37,44 +40,200 @@ namespace Torque6.Engine.SimObjects.GuiControls
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern int GuiMessageVectorCtrlGetLineSpacing(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate int _GuiMessageVectorCtrlGetLineSpacing(IntPtr ctrl);
+         private static _GuiMessageVectorCtrlGetLineSpacing _GuiMessageVectorCtrlGetLineSpacingFunc;
+         internal static int GuiMessageVectorCtrlGetLineSpacing(IntPtr ctrl)
+         {
+            if (_GuiMessageVectorCtrlGetLineSpacingFunc == null)
+            {
+               _GuiMessageVectorCtrlGetLineSpacingFunc =
+                  (_GuiMessageVectorCtrlGetLineSpacing)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiMessageVectorCtrlGetLineSpacing"), typeof(_GuiMessageVectorCtrlGetLineSpacing));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiMessageVectorCtrlSetLineSpacing(IntPtr ctrl, int spacing);
+            return _GuiMessageVectorCtrlGetLineSpacingFunc(ctrl);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern int GuiMessageVectorCtrlGetLineContinuedIndex(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiMessageVectorCtrlSetLineSpacing(IntPtr ctrl, int spacing);
+         private static _GuiMessageVectorCtrlSetLineSpacing _GuiMessageVectorCtrlSetLineSpacingFunc;
+         internal static void GuiMessageVectorCtrlSetLineSpacing(IntPtr ctrl, int spacing)
+         {
+            if (_GuiMessageVectorCtrlSetLineSpacingFunc == null)
+            {
+               _GuiMessageVectorCtrlSetLineSpacingFunc =
+                  (_GuiMessageVectorCtrlSetLineSpacing)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiMessageVectorCtrlSetLineSpacing"), typeof(_GuiMessageVectorCtrlSetLineSpacing));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiMessageVectorCtrlSetLineContinuedIndex(IntPtr ctrl, int index);
+            _GuiMessageVectorCtrlSetLineSpacingFunc(ctrl, spacing);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiMessageVectorCtrlGetAllowedMatches(IntPtr ctrl, int index);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate int _GuiMessageVectorCtrlGetLineContinuedIndex(IntPtr ctrl);
+         private static _GuiMessageVectorCtrlGetLineContinuedIndex _GuiMessageVectorCtrlGetLineContinuedIndexFunc;
+         internal static int GuiMessageVectorCtrlGetLineContinuedIndex(IntPtr ctrl)
+         {
+            if (_GuiMessageVectorCtrlGetLineContinuedIndexFunc == null)
+            {
+               _GuiMessageVectorCtrlGetLineContinuedIndexFunc =
+                  (_GuiMessageVectorCtrlGetLineContinuedIndex)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiMessageVectorCtrlGetLineContinuedIndex"), typeof(_GuiMessageVectorCtrlGetLineContinuedIndex));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiMessageVectorCtrlSetAllowedMatches(IntPtr ctrl, int index, string match);
+            return _GuiMessageVectorCtrlGetLineContinuedIndexFunc(ctrl);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiMessageVectorCtrlGetMatchColor(IntPtr ctrl, out Color outColor);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiMessageVectorCtrlSetLineContinuedIndex(IntPtr ctrl, int index);
+         private static _GuiMessageVectorCtrlSetLineContinuedIndex _GuiMessageVectorCtrlSetLineContinuedIndexFunc;
+         internal static void GuiMessageVectorCtrlSetLineContinuedIndex(IntPtr ctrl, int index)
+         {
+            if (_GuiMessageVectorCtrlSetLineContinuedIndexFunc == null)
+            {
+               _GuiMessageVectorCtrlSetLineContinuedIndexFunc =
+                  (_GuiMessageVectorCtrlSetLineContinuedIndex)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiMessageVectorCtrlSetLineContinuedIndex"), typeof(_GuiMessageVectorCtrlSetLineContinuedIndex));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiMessageVectorCtrlSetMatchColor(IntPtr ctrl, Color color);
+            _GuiMessageVectorCtrlSetLineContinuedIndexFunc(ctrl, index);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern int GuiMessageVectorCtrlGetMaxColorIndex(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiMessageVectorCtrlGetAllowedMatches(IntPtr ctrl, int index);
+         private static _GuiMessageVectorCtrlGetAllowedMatches _GuiMessageVectorCtrlGetAllowedMatchesFunc;
+         internal static IntPtr GuiMessageVectorCtrlGetAllowedMatches(IntPtr ctrl, int index)
+         {
+            if (_GuiMessageVectorCtrlGetAllowedMatchesFunc == null)
+            {
+               _GuiMessageVectorCtrlGetAllowedMatchesFunc =
+                  (_GuiMessageVectorCtrlGetAllowedMatches)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiMessageVectorCtrlGetAllowedMatches"), typeof(_GuiMessageVectorCtrlGetAllowedMatches));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiMessageVectorCtrlSetMaxColorIndex(IntPtr ctrl, int index);
+            return _GuiMessageVectorCtrlGetAllowedMatchesFunc(ctrl, index);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiMessageVectorCtrlCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiMessageVectorCtrlSetAllowedMatches(IntPtr ctrl, int index, string match);
+         private static _GuiMessageVectorCtrlSetAllowedMatches _GuiMessageVectorCtrlSetAllowedMatchesFunc;
+         internal static void GuiMessageVectorCtrlSetAllowedMatches(IntPtr ctrl, int index, string match)
+         {
+            if (_GuiMessageVectorCtrlSetAllowedMatchesFunc == null)
+            {
+               _GuiMessageVectorCtrlSetAllowedMatchesFunc =
+                  (_GuiMessageVectorCtrlSetAllowedMatches)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiMessageVectorCtrlSetAllowedMatches"), typeof(_GuiMessageVectorCtrlSetAllowedMatches));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool GuiMessageVectorCtrlAttach(IntPtr ctrl, IntPtr MV);
+            _GuiMessageVectorCtrlSetAllowedMatchesFunc(ctrl, index, match);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiMessageVectorCtrlDetach(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiMessageVectorCtrlGetMatchColor(IntPtr ctrl, out Color outColor);
+         private static _GuiMessageVectorCtrlGetMatchColor _GuiMessageVectorCtrlGetMatchColorFunc;
+         internal static void GuiMessageVectorCtrlGetMatchColor(IntPtr ctrl, out Color outColor)
+         {
+            if (_GuiMessageVectorCtrlGetMatchColorFunc == null)
+            {
+               _GuiMessageVectorCtrlGetMatchColorFunc =
+                  (_GuiMessageVectorCtrlGetMatchColor)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiMessageVectorCtrlGetMatchColor"), typeof(_GuiMessageVectorCtrlGetMatchColor));
+            }
+
+            _GuiMessageVectorCtrlGetMatchColorFunc(ctrl, out outColor);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiMessageVectorCtrlSetMatchColor(IntPtr ctrl, Color color);
+         private static _GuiMessageVectorCtrlSetMatchColor _GuiMessageVectorCtrlSetMatchColorFunc;
+         internal static void GuiMessageVectorCtrlSetMatchColor(IntPtr ctrl, Color color)
+         {
+            if (_GuiMessageVectorCtrlSetMatchColorFunc == null)
+            {
+               _GuiMessageVectorCtrlSetMatchColorFunc =
+                  (_GuiMessageVectorCtrlSetMatchColor)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiMessageVectorCtrlSetMatchColor"), typeof(_GuiMessageVectorCtrlSetMatchColor));
+            }
+
+            _GuiMessageVectorCtrlSetMatchColorFunc(ctrl, color);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate int _GuiMessageVectorCtrlGetMaxColorIndex(IntPtr ctrl);
+         private static _GuiMessageVectorCtrlGetMaxColorIndex _GuiMessageVectorCtrlGetMaxColorIndexFunc;
+         internal static int GuiMessageVectorCtrlGetMaxColorIndex(IntPtr ctrl)
+         {
+            if (_GuiMessageVectorCtrlGetMaxColorIndexFunc == null)
+            {
+               _GuiMessageVectorCtrlGetMaxColorIndexFunc =
+                  (_GuiMessageVectorCtrlGetMaxColorIndex)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiMessageVectorCtrlGetMaxColorIndex"), typeof(_GuiMessageVectorCtrlGetMaxColorIndex));
+            }
+
+            return _GuiMessageVectorCtrlGetMaxColorIndexFunc(ctrl);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiMessageVectorCtrlSetMaxColorIndex(IntPtr ctrl, int index);
+         private static _GuiMessageVectorCtrlSetMaxColorIndex _GuiMessageVectorCtrlSetMaxColorIndexFunc;
+         internal static void GuiMessageVectorCtrlSetMaxColorIndex(IntPtr ctrl, int index)
+         {
+            if (_GuiMessageVectorCtrlSetMaxColorIndexFunc == null)
+            {
+               _GuiMessageVectorCtrlSetMaxColorIndexFunc =
+                  (_GuiMessageVectorCtrlSetMaxColorIndex)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiMessageVectorCtrlSetMaxColorIndex"), typeof(_GuiMessageVectorCtrlSetMaxColorIndex));
+            }
+
+            _GuiMessageVectorCtrlSetMaxColorIndexFunc(ctrl, index);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiMessageVectorCtrlCreateInstance();
+         private static _GuiMessageVectorCtrlCreateInstance _GuiMessageVectorCtrlCreateInstanceFunc;
+         internal static IntPtr GuiMessageVectorCtrlCreateInstance()
+         {
+            if (_GuiMessageVectorCtrlCreateInstanceFunc == null)
+            {
+               _GuiMessageVectorCtrlCreateInstanceFunc =
+                  (_GuiMessageVectorCtrlCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiMessageVectorCtrlCreateInstance"), typeof(_GuiMessageVectorCtrlCreateInstance));
+            }
+
+            return _GuiMessageVectorCtrlCreateInstanceFunc();
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _GuiMessageVectorCtrlAttach(IntPtr ctrl, IntPtr MV);
+         private static _GuiMessageVectorCtrlAttach _GuiMessageVectorCtrlAttachFunc;
+         internal static bool GuiMessageVectorCtrlAttach(IntPtr ctrl, IntPtr MV)
+         {
+            if (_GuiMessageVectorCtrlAttachFunc == null)
+            {
+               _GuiMessageVectorCtrlAttachFunc =
+                  (_GuiMessageVectorCtrlAttach)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiMessageVectorCtrlAttach"), typeof(_GuiMessageVectorCtrlAttach));
+            }
+
+            return _GuiMessageVectorCtrlAttachFunc(ctrl, MV);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiMessageVectorCtrlDetach(IntPtr ctrl);
+         private static _GuiMessageVectorCtrlDetach _GuiMessageVectorCtrlDetachFunc;
+         internal static void GuiMessageVectorCtrlDetach(IntPtr ctrl)
+         {
+            if (_GuiMessageVectorCtrlDetachFunc == null)
+            {
+               _GuiMessageVectorCtrlDetachFunc =
+                  (_GuiMessageVectorCtrlDetach)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiMessageVectorCtrlDetach"), typeof(_GuiMessageVectorCtrlDetach));
+            }
+
+            _GuiMessageVectorCtrlDetachFunc(ctrl);
+         }
       }
       
       #endregion
@@ -108,14 +267,14 @@ namespace Torque6.Engine.SimObjects.GuiControls
          }
       }
 
-      public PrimitiveFieldVector<string> AllowedMatches
+      /*public PrimitiveFieldVector<string> AllowedMatches
       {
          get
          {
-            return new PrimitiveFieldVector<string>(this, 16, (ctrl, index) => Marshal.PtrToStringAnsi(InternalUnsafeMethods.GuiMessageVectorCtrlGetAllowedMatches(ctrl, index)),
+            return new PrimitiveFieldVector<string>(this, 16, InternalUnsafeMethods.GuiMessageVectorCtrlGetAllowedMatches,
                InternalUnsafeMethods.GuiMessageVectorCtrlSetAllowedMatches);
          }
-      }
+      }*/
       public Color MatchColor
       {
          get

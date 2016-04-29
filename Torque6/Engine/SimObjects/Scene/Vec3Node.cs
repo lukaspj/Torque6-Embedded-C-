@@ -40,20 +40,80 @@ namespace Torque6.Engine.SimObjects.Scene
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr Vec3NodeGetUniformName(IntPtr vec3Node);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _Vec3NodeGetUniformName(IntPtr vec3Node);
+         private static _Vec3NodeGetUniformName _Vec3NodeGetUniformNameFunc;
+         internal static IntPtr Vec3NodeGetUniformName(IntPtr vec3Node)
+         {
+            if (_Vec3NodeGetUniformNameFunc == null)
+            {
+               _Vec3NodeGetUniformNameFunc =
+                  (_Vec3NodeGetUniformName)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "Vec3NodeGetUniformName"), typeof(_Vec3NodeGetUniformName));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void Vec3NodeSetUniformName(IntPtr vec3Node, string name);
+            return _Vec3NodeGetUniformNameFunc(vec3Node);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void Vec3NodeGetValue(IntPtr vec3Node, out Point3F val);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _Vec3NodeSetUniformName(IntPtr vec3Node, string name);
+         private static _Vec3NodeSetUniformName _Vec3NodeSetUniformNameFunc;
+         internal static void Vec3NodeSetUniformName(IntPtr vec3Node, string name)
+         {
+            if (_Vec3NodeSetUniformNameFunc == null)
+            {
+               _Vec3NodeSetUniformNameFunc =
+                  (_Vec3NodeSetUniformName)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "Vec3NodeSetUniformName"), typeof(_Vec3NodeSetUniformName));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void Vec3NodeSetValue(IntPtr vec3Node, Point3F val);
+            _Vec3NodeSetUniformNameFunc(vec3Node, name);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr Vec3NodeCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _Vec3NodeGetValue(IntPtr vec3Node, out Point3F val);
+         private static _Vec3NodeGetValue _Vec3NodeGetValueFunc;
+         internal static void Vec3NodeGetValue(IntPtr vec3Node, out Point3F val)
+         {
+            if (_Vec3NodeGetValueFunc == null)
+            {
+               _Vec3NodeGetValueFunc =
+                  (_Vec3NodeGetValue)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "Vec3NodeGetValue"), typeof(_Vec3NodeGetValue));
+            }
+
+            _Vec3NodeGetValueFunc(vec3Node, out val);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _Vec3NodeSetValue(IntPtr vec3Node, Point3F val);
+         private static _Vec3NodeSetValue _Vec3NodeSetValueFunc;
+         internal static void Vec3NodeSetValue(IntPtr vec3Node, Point3F val)
+         {
+            if (_Vec3NodeSetValueFunc == null)
+            {
+               _Vec3NodeSetValueFunc =
+                  (_Vec3NodeSetValue)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "Vec3NodeSetValue"), typeof(_Vec3NodeSetValue));
+            }
+
+            _Vec3NodeSetValueFunc(vec3Node, val);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _Vec3NodeCreateInstance();
+         private static _Vec3NodeCreateInstance _Vec3NodeCreateInstanceFunc;
+         internal static IntPtr Vec3NodeCreateInstance()
+         {
+            if (_Vec3NodeCreateInstanceFunc == null)
+            {
+               _Vec3NodeCreateInstanceFunc =
+                  (_Vec3NodeCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "Vec3NodeCreateInstance"), typeof(_Vec3NodeCreateInstance));
+            }
+
+            return _Vec3NodeCreateInstanceFunc();
+         }
       }
       
       #endregion

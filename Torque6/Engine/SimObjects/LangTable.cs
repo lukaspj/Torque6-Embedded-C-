@@ -40,29 +40,125 @@ namespace Torque6.Engine.SimObjects
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr LangTableCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _LangTableCreateInstance();
+         private static _LangTableCreateInstance _LangTableCreateInstanceFunc;
+         internal static IntPtr LangTableCreateInstance()
+         {
+            if (_LangTableCreateInstanceFunc == null)
+            {
+               _LangTableCreateInstanceFunc =
+                  (_LangTableCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "LangTableCreateInstance"), typeof(_LangTableCreateInstance));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern int LangTableAddLanguage(IntPtr langTable, string filename, string languageName);
+            return _LangTableCreateInstanceFunc();
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr LangTableGetString(IntPtr langTable, int langString);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate int _LangTableAddLanguage(IntPtr langTable, string filename, string languageName);
+         private static _LangTableAddLanguage _LangTableAddLanguageFunc;
+         internal static int LangTableAddLanguage(IntPtr langTable, string filename, string languageName)
+         {
+            if (_LangTableAddLanguageFunc == null)
+            {
+               _LangTableAddLanguageFunc =
+                  (_LangTableAddLanguage)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "LangTableAddLanguage"), typeof(_LangTableAddLanguage));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void LangTableSetDefaultLanguage(IntPtr langTable, int language);
+            return _LangTableAddLanguageFunc(langTable, filename, languageName);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void LangTableSetCurrentLanguage(IntPtr langTable, int language);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _LangTableGetString(IntPtr langTable, int langString);
+         private static _LangTableGetString _LangTableGetStringFunc;
+         internal static IntPtr LangTableGetString(IntPtr langTable, int langString)
+         {
+            if (_LangTableGetStringFunc == null)
+            {
+               _LangTableGetStringFunc =
+                  (_LangTableGetString)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "LangTableGetString"), typeof(_LangTableGetString));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern int LangTableGetCurrentLanguage(IntPtr langTable);
+            return _LangTableGetStringFunc(langTable, langString);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr LangTableGetLangName(IntPtr langTable, int language);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _LangTableSetDefaultLanguage(IntPtr langTable, int language);
+         private static _LangTableSetDefaultLanguage _LangTableSetDefaultLanguageFunc;
+         internal static void LangTableSetDefaultLanguage(IntPtr langTable, int language)
+         {
+            if (_LangTableSetDefaultLanguageFunc == null)
+            {
+               _LangTableSetDefaultLanguageFunc =
+                  (_LangTableSetDefaultLanguage)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "LangTableSetDefaultLanguage"), typeof(_LangTableSetDefaultLanguage));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern int LangTableGetNumLang(IntPtr langTable);
+            _LangTableSetDefaultLanguageFunc(langTable, language);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _LangTableSetCurrentLanguage(IntPtr langTable, int language);
+         private static _LangTableSetCurrentLanguage _LangTableSetCurrentLanguageFunc;
+         internal static void LangTableSetCurrentLanguage(IntPtr langTable, int language)
+         {
+            if (_LangTableSetCurrentLanguageFunc == null)
+            {
+               _LangTableSetCurrentLanguageFunc =
+                  (_LangTableSetCurrentLanguage)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "LangTableSetCurrentLanguage"), typeof(_LangTableSetCurrentLanguage));
+            }
+
+            _LangTableSetCurrentLanguageFunc(langTable, language);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate int _LangTableGetCurrentLanguage(IntPtr langTable);
+         private static _LangTableGetCurrentLanguage _LangTableGetCurrentLanguageFunc;
+         internal static int LangTableGetCurrentLanguage(IntPtr langTable)
+         {
+            if (_LangTableGetCurrentLanguageFunc == null)
+            {
+               _LangTableGetCurrentLanguageFunc =
+                  (_LangTableGetCurrentLanguage)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "LangTableGetCurrentLanguage"), typeof(_LangTableGetCurrentLanguage));
+            }
+
+            return _LangTableGetCurrentLanguageFunc(langTable);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _LangTableGetLangName(IntPtr langTable, int language);
+         private static _LangTableGetLangName _LangTableGetLangNameFunc;
+         internal static IntPtr LangTableGetLangName(IntPtr langTable, int language)
+         {
+            if (_LangTableGetLangNameFunc == null)
+            {
+               _LangTableGetLangNameFunc =
+                  (_LangTableGetLangName)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "LangTableGetLangName"), typeof(_LangTableGetLangName));
+            }
+
+            return _LangTableGetLangNameFunc(langTable, language);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate int _LangTableGetNumLang(IntPtr langTable);
+         private static _LangTableGetNumLang _LangTableGetNumLangFunc;
+         internal static int LangTableGetNumLang(IntPtr langTable)
+         {
+            if (_LangTableGetNumLangFunc == null)
+            {
+               _LangTableGetNumLangFunc =
+                  (_LangTableGetNumLang)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "LangTableGetNumLang"), typeof(_LangTableGetNumLang));
+            }
+
+            return _LangTableGetNumLangFunc(langTable);
+         }
       }
       
       #endregion

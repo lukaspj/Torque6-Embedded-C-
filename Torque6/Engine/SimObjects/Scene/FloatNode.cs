@@ -40,20 +40,80 @@ namespace Torque6.Engine.SimObjects.Scene
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr FloatNodeGetUniformName(IntPtr floatNode);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _FloatNodeGetUniformName(IntPtr floatNode);
+         private static _FloatNodeGetUniformName _FloatNodeGetUniformNameFunc;
+         internal static IntPtr FloatNodeGetUniformName(IntPtr floatNode)
+         {
+            if (_FloatNodeGetUniformNameFunc == null)
+            {
+               _FloatNodeGetUniformNameFunc =
+                  (_FloatNodeGetUniformName)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "FloatNodeGetUniformName"), typeof(_FloatNodeGetUniformName));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void FloatNodeSetUniformName(IntPtr floatNode, string src);
+            return _FloatNodeGetUniformNameFunc(floatNode);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern float FloatNodeGetValue(IntPtr floatNode);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _FloatNodeSetUniformName(IntPtr floatNode, string src);
+         private static _FloatNodeSetUniformName _FloatNodeSetUniformNameFunc;
+         internal static void FloatNodeSetUniformName(IntPtr floatNode, string src)
+         {
+            if (_FloatNodeSetUniformNameFunc == null)
+            {
+               _FloatNodeSetUniformNameFunc =
+                  (_FloatNodeSetUniformName)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "FloatNodeSetUniformName"), typeof(_FloatNodeSetUniformName));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void FloatNodeSetValue(IntPtr floatNode, float val);
+            _FloatNodeSetUniformNameFunc(floatNode, src);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr FloatNodeCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate float _FloatNodeGetValue(IntPtr floatNode);
+         private static _FloatNodeGetValue _FloatNodeGetValueFunc;
+         internal static float FloatNodeGetValue(IntPtr floatNode)
+         {
+            if (_FloatNodeGetValueFunc == null)
+            {
+               _FloatNodeGetValueFunc =
+                  (_FloatNodeGetValue)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "FloatNodeGetValue"), typeof(_FloatNodeGetValue));
+            }
+
+            return _FloatNodeGetValueFunc(floatNode);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _FloatNodeSetValue(IntPtr floatNode, float val);
+         private static _FloatNodeSetValue _FloatNodeSetValueFunc;
+         internal static void FloatNodeSetValue(IntPtr floatNode, float val)
+         {
+            if (_FloatNodeSetValueFunc == null)
+            {
+               _FloatNodeSetValueFunc =
+                  (_FloatNodeSetValue)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "FloatNodeSetValue"), typeof(_FloatNodeSetValue));
+            }
+
+            _FloatNodeSetValueFunc(floatNode, val);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _FloatNodeCreateInstance();
+         private static _FloatNodeCreateInstance _FloatNodeCreateInstanceFunc;
+         internal static IntPtr FloatNodeCreateInstance()
+         {
+            if (_FloatNodeCreateInstanceFunc == null)
+            {
+               _FloatNodeCreateInstanceFunc =
+                  (_FloatNodeCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "FloatNodeCreateInstance"), typeof(_FloatNodeCreateInstance));
+            }
+
+            return _FloatNodeCreateInstanceFunc();
+         }
       }
       
       #endregion

@@ -40,26 +40,110 @@ namespace Torque6.Engine.SimObjects.GuiControls
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiTextEditSliderCtrlGetFormat(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiTextEditSliderCtrlGetFormat(IntPtr ctrl);
+         private static _GuiTextEditSliderCtrlGetFormat _GuiTextEditSliderCtrlGetFormatFunc;
+         internal static IntPtr GuiTextEditSliderCtrlGetFormat(IntPtr ctrl)
+         {
+            if (_GuiTextEditSliderCtrlGetFormatFunc == null)
+            {
+               _GuiTextEditSliderCtrlGetFormatFunc =
+                  (_GuiTextEditSliderCtrlGetFormat)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiTextEditSliderCtrlGetFormat"), typeof(_GuiTextEditSliderCtrlGetFormat));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiTextEditSliderCtrlSetFormat(IntPtr ctrl, string format);
+            return _GuiTextEditSliderCtrlGetFormatFunc(ctrl);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiTextEditSliderCtrlGetRange(IntPtr ctrl, out Point2F outRange);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiTextEditSliderCtrlSetFormat(IntPtr ctrl, string format);
+         private static _GuiTextEditSliderCtrlSetFormat _GuiTextEditSliderCtrlSetFormatFunc;
+         internal static void GuiTextEditSliderCtrlSetFormat(IntPtr ctrl, string format)
+         {
+            if (_GuiTextEditSliderCtrlSetFormatFunc == null)
+            {
+               _GuiTextEditSliderCtrlSetFormatFunc =
+                  (_GuiTextEditSliderCtrlSetFormat)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiTextEditSliderCtrlSetFormat"), typeof(_GuiTextEditSliderCtrlSetFormat));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiTextEditSliderCtrlSetRange(IntPtr ctrl, Point2F range);
+            _GuiTextEditSliderCtrlSetFormatFunc(ctrl, format);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern float GuiTextEditSliderCtrlGetIncrement(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiTextEditSliderCtrlGetRange(IntPtr ctrl, out Point2F outRange);
+         private static _GuiTextEditSliderCtrlGetRange _GuiTextEditSliderCtrlGetRangeFunc;
+         internal static void GuiTextEditSliderCtrlGetRange(IntPtr ctrl, out Point2F outRange)
+         {
+            if (_GuiTextEditSliderCtrlGetRangeFunc == null)
+            {
+               _GuiTextEditSliderCtrlGetRangeFunc =
+                  (_GuiTextEditSliderCtrlGetRange)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiTextEditSliderCtrlGetRange"), typeof(_GuiTextEditSliderCtrlGetRange));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiTextEditSliderCtrlSetIncrement(IntPtr ctrl, float incrementAmount);
+            _GuiTextEditSliderCtrlGetRangeFunc(ctrl, out outRange);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiTextEditSliderCtrlCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiTextEditSliderCtrlSetRange(IntPtr ctrl, Point2F range);
+         private static _GuiTextEditSliderCtrlSetRange _GuiTextEditSliderCtrlSetRangeFunc;
+         internal static void GuiTextEditSliderCtrlSetRange(IntPtr ctrl, Point2F range)
+         {
+            if (_GuiTextEditSliderCtrlSetRangeFunc == null)
+            {
+               _GuiTextEditSliderCtrlSetRangeFunc =
+                  (_GuiTextEditSliderCtrlSetRange)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiTextEditSliderCtrlSetRange"), typeof(_GuiTextEditSliderCtrlSetRange));
+            }
+
+            _GuiTextEditSliderCtrlSetRangeFunc(ctrl, range);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate float _GuiTextEditSliderCtrlGetIncrement(IntPtr ctrl);
+         private static _GuiTextEditSliderCtrlGetIncrement _GuiTextEditSliderCtrlGetIncrementFunc;
+         internal static float GuiTextEditSliderCtrlGetIncrement(IntPtr ctrl)
+         {
+            if (_GuiTextEditSliderCtrlGetIncrementFunc == null)
+            {
+               _GuiTextEditSliderCtrlGetIncrementFunc =
+                  (_GuiTextEditSliderCtrlGetIncrement)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiTextEditSliderCtrlGetIncrement"), typeof(_GuiTextEditSliderCtrlGetIncrement));
+            }
+
+            return _GuiTextEditSliderCtrlGetIncrementFunc(ctrl);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiTextEditSliderCtrlSetIncrement(IntPtr ctrl, float incrementAmount);
+         private static _GuiTextEditSliderCtrlSetIncrement _GuiTextEditSliderCtrlSetIncrementFunc;
+         internal static void GuiTextEditSliderCtrlSetIncrement(IntPtr ctrl, float incrementAmount)
+         {
+            if (_GuiTextEditSliderCtrlSetIncrementFunc == null)
+            {
+               _GuiTextEditSliderCtrlSetIncrementFunc =
+                  (_GuiTextEditSliderCtrlSetIncrement)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiTextEditSliderCtrlSetIncrement"), typeof(_GuiTextEditSliderCtrlSetIncrement));
+            }
+
+            _GuiTextEditSliderCtrlSetIncrementFunc(ctrl, incrementAmount);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiTextEditSliderCtrlCreateInstance();
+         private static _GuiTextEditSliderCtrlCreateInstance _GuiTextEditSliderCtrlCreateInstanceFunc;
+         internal static IntPtr GuiTextEditSliderCtrlCreateInstance()
+         {
+            if (_GuiTextEditSliderCtrlCreateInstanceFunc == null)
+            {
+               _GuiTextEditSliderCtrlCreateInstanceFunc =
+                  (_GuiTextEditSliderCtrlCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiTextEditSliderCtrlCreateInstance"), typeof(_GuiTextEditSliderCtrlCreateInstance));
+            }
+
+            return _GuiTextEditSliderCtrlCreateInstanceFunc();
+         }
       }
       
       #endregion

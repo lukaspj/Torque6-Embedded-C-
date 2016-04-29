@@ -40,104 +40,500 @@ namespace Torque6.Engine.SimObjects
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr SimXMLDocumentCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _SimXMLDocumentCreateInstance();
+         private static _SimXMLDocumentCreateInstance _SimXMLDocumentCreateInstanceFunc;
+         internal static IntPtr SimXMLDocumentCreateInstance()
+         {
+            if (_SimXMLDocumentCreateInstanceFunc == null)
+            {
+               _SimXMLDocumentCreateInstanceFunc =
+                  (_SimXMLDocumentCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "SimXMLDocumentCreateInstance"), typeof(_SimXMLDocumentCreateInstance));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void SimXMLDocumentReset(IntPtr xmlDocument);
+            return _SimXMLDocumentCreateInstanceFunc();
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool SimXMLDocumentLoadFile(IntPtr xmlDocument, string fileName);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _SimXMLDocumentReset(IntPtr xmlDocument);
+         private static _SimXMLDocumentReset _SimXMLDocumentResetFunc;
+         internal static void SimXMLDocumentReset(IntPtr xmlDocument)
+         {
+            if (_SimXMLDocumentResetFunc == null)
+            {
+               _SimXMLDocumentResetFunc =
+                  (_SimXMLDocumentReset)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "SimXMLDocumentReset"), typeof(_SimXMLDocumentReset));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool SimXMLDocumentSaveFile(IntPtr xmlDocument, string fileName);
+            _SimXMLDocumentResetFunc(xmlDocument);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool SimXMLDocumentParse(IntPtr xmlDocument, string textXML);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _SimXMLDocumentLoadFile(IntPtr xmlDocument, string fileName);
+         private static _SimXMLDocumentLoadFile _SimXMLDocumentLoadFileFunc;
+         internal static bool SimXMLDocumentLoadFile(IntPtr xmlDocument, string fileName)
+         {
+            if (_SimXMLDocumentLoadFileFunc == null)
+            {
+               _SimXMLDocumentLoadFileFunc =
+                  (_SimXMLDocumentLoadFile)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "SimXMLDocumentLoadFile"), typeof(_SimXMLDocumentLoadFile));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void SimXMLDocumentClear(IntPtr xmlDocument);
+            return _SimXMLDocumentLoadFileFunc(xmlDocument, fileName);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr SimXMLDocumentGetErrorDesc(IntPtr xmlDocument);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _SimXMLDocumentSaveFile(IntPtr xmlDocument, string fileName);
+         private static _SimXMLDocumentSaveFile _SimXMLDocumentSaveFileFunc;
+         internal static bool SimXMLDocumentSaveFile(IntPtr xmlDocument, string fileName)
+         {
+            if (_SimXMLDocumentSaveFileFunc == null)
+            {
+               _SimXMLDocumentSaveFileFunc =
+                  (_SimXMLDocumentSaveFile)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "SimXMLDocumentSaveFile"), typeof(_SimXMLDocumentSaveFile));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void SimXMLDocumentClearError(IntPtr xmlDocument);
+            return _SimXMLDocumentSaveFileFunc(xmlDocument, fileName);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool SimXMLDocumentPushFirstChildElement(IntPtr xmlDocument, string name);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _SimXMLDocumentParse(IntPtr xmlDocument, string textXML);
+         private static _SimXMLDocumentParse _SimXMLDocumentParseFunc;
+         internal static bool SimXMLDocumentParse(IntPtr xmlDocument, string textXML)
+         {
+            if (_SimXMLDocumentParseFunc == null)
+            {
+               _SimXMLDocumentParseFunc =
+                  (_SimXMLDocumentParse)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "SimXMLDocumentParse"), typeof(_SimXMLDocumentParse));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool SimXMLDocumentPushChildElement(IntPtr xmlDocument, int index);
+            return _SimXMLDocumentParseFunc(xmlDocument, textXML);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool SimXMLDocumentNextSiblingElement(IntPtr xmlDocument, string name);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _SimXMLDocumentClear(IntPtr xmlDocument);
+         private static _SimXMLDocumentClear _SimXMLDocumentClearFunc;
+         internal static void SimXMLDocumentClear(IntPtr xmlDocument)
+         {
+            if (_SimXMLDocumentClearFunc == null)
+            {
+               _SimXMLDocumentClearFunc =
+                  (_SimXMLDocumentClear)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "SimXMLDocumentClear"), typeof(_SimXMLDocumentClear));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr SimXMLDocumentElementValue(IntPtr xmlDocument);
+            _SimXMLDocumentClearFunc(xmlDocument);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void SimXMLDocumentPopElement(IntPtr xmlDocument);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _SimXMLDocumentGetErrorDesc(IntPtr xmlDocument);
+         private static _SimXMLDocumentGetErrorDesc _SimXMLDocumentGetErrorDescFunc;
+         internal static IntPtr SimXMLDocumentGetErrorDesc(IntPtr xmlDocument)
+         {
+            if (_SimXMLDocumentGetErrorDescFunc == null)
+            {
+               _SimXMLDocumentGetErrorDescFunc =
+                  (_SimXMLDocumentGetErrorDesc)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "SimXMLDocumentGetErrorDesc"), typeof(_SimXMLDocumentGetErrorDesc));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr SimXMLDocumentAttribute(IntPtr xmlDocument, string attribute);
+            return _SimXMLDocumentGetErrorDescFunc(xmlDocument);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern float SimXMLDocumentAttributeF32(IntPtr xmlDocument, string attribute);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _SimXMLDocumentClearError(IntPtr xmlDocument);
+         private static _SimXMLDocumentClearError _SimXMLDocumentClearErrorFunc;
+         internal static void SimXMLDocumentClearError(IntPtr xmlDocument)
+         {
+            if (_SimXMLDocumentClearErrorFunc == null)
+            {
+               _SimXMLDocumentClearErrorFunc =
+                  (_SimXMLDocumentClearError)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "SimXMLDocumentClearError"), typeof(_SimXMLDocumentClearError));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern int SimXMLDocumentAttributeS32(IntPtr xmlDocument, string attribute);
+            _SimXMLDocumentClearErrorFunc(xmlDocument);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool SimXMLDocumentAttributeExists(IntPtr xmlDocument, string attribute);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _SimXMLDocumentPushFirstChildElement(IntPtr xmlDocument, string name);
+         private static _SimXMLDocumentPushFirstChildElement _SimXMLDocumentPushFirstChildElementFunc;
+         internal static bool SimXMLDocumentPushFirstChildElement(IntPtr xmlDocument, string name)
+         {
+            if (_SimXMLDocumentPushFirstChildElementFunc == null)
+            {
+               _SimXMLDocumentPushFirstChildElementFunc =
+                  (_SimXMLDocumentPushFirstChildElement)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "SimXMLDocumentPushFirstChildElement"), typeof(_SimXMLDocumentPushFirstChildElement));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr SimXMLDocumentFirstAttribute(IntPtr xmlDocument);
+            return _SimXMLDocumentPushFirstChildElementFunc(xmlDocument, name);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr SimXMLDocumentLastAttribute(IntPtr xmlDocument);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _SimXMLDocumentPushChildElement(IntPtr xmlDocument, int index);
+         private static _SimXMLDocumentPushChildElement _SimXMLDocumentPushChildElementFunc;
+         internal static bool SimXMLDocumentPushChildElement(IntPtr xmlDocument, int index)
+         {
+            if (_SimXMLDocumentPushChildElementFunc == null)
+            {
+               _SimXMLDocumentPushChildElementFunc =
+                  (_SimXMLDocumentPushChildElement)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "SimXMLDocumentPushChildElement"), typeof(_SimXMLDocumentPushChildElement));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr SimXMLDocumentNextAttribute(IntPtr xmlDocument);
+            return _SimXMLDocumentPushChildElementFunc(xmlDocument, index);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr SimXMLDocumentPrevAttribute(IntPtr xmlDocument);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _SimXMLDocumentNextSiblingElement(IntPtr xmlDocument, string name);
+         private static _SimXMLDocumentNextSiblingElement _SimXMLDocumentNextSiblingElementFunc;
+         internal static bool SimXMLDocumentNextSiblingElement(IntPtr xmlDocument, string name)
+         {
+            if (_SimXMLDocumentNextSiblingElementFunc == null)
+            {
+               _SimXMLDocumentNextSiblingElementFunc =
+                  (_SimXMLDocumentNextSiblingElement)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "SimXMLDocumentNextSiblingElement"), typeof(_SimXMLDocumentNextSiblingElement));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void SimXMLDocumentSetAttribute(IntPtr xmlDocument, string attribute, string attributeValue);
+            return _SimXMLDocumentNextSiblingElementFunc(xmlDocument, name);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void SimXMLDocumentSetObjectAttributes(IntPtr xmlDocument, string attributeValue);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _SimXMLDocumentElementValue(IntPtr xmlDocument);
+         private static _SimXMLDocumentElementValue _SimXMLDocumentElementValueFunc;
+         internal static IntPtr SimXMLDocumentElementValue(IntPtr xmlDocument)
+         {
+            if (_SimXMLDocumentElementValueFunc == null)
+            {
+               _SimXMLDocumentElementValueFunc =
+                  (_SimXMLDocumentElementValue)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "SimXMLDocumentElementValue"), typeof(_SimXMLDocumentElementValue));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void SimXMLDocumentPushNewElement(IntPtr xmlDocument, string name);
+            return _SimXMLDocumentElementValueFunc(xmlDocument);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void SimXMLDocumentAddNewElement(IntPtr xmlDocument, string name);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _SimXMLDocumentPopElement(IntPtr xmlDocument);
+         private static _SimXMLDocumentPopElement _SimXMLDocumentPopElementFunc;
+         internal static void SimXMLDocumentPopElement(IntPtr xmlDocument)
+         {
+            if (_SimXMLDocumentPopElementFunc == null)
+            {
+               _SimXMLDocumentPopElementFunc =
+                  (_SimXMLDocumentPopElement)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "SimXMLDocumentPopElement"), typeof(_SimXMLDocumentPopElement));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void SimXMLDocumentAddHeader(IntPtr xmlDocument);
+            _SimXMLDocumentPopElementFunc(xmlDocument);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void SimXMLDocumentAddComment(IntPtr xmlDocument, string comment);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _SimXMLDocumentAttribute(IntPtr xmlDocument, string attribute);
+         private static _SimXMLDocumentAttribute _SimXMLDocumentAttributeFunc;
+         internal static IntPtr SimXMLDocumentAttribute(IntPtr xmlDocument, string attribute)
+         {
+            if (_SimXMLDocumentAttributeFunc == null)
+            {
+               _SimXMLDocumentAttributeFunc =
+                  (_SimXMLDocumentAttribute)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "SimXMLDocumentAttribute"), typeof(_SimXMLDocumentAttribute));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr SimXMLDocumentReadComment(IntPtr xmlDocument, int index);
+            return _SimXMLDocumentAttributeFunc(xmlDocument, attribute);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void SimXMLDocumentAddText(IntPtr xmlDocument, string text);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate float _SimXMLDocumentAttributeF32(IntPtr xmlDocument, string attribute);
+         private static _SimXMLDocumentAttributeF32 _SimXMLDocumentAttributeF32Func;
+         internal static float SimXMLDocumentAttributeF32(IntPtr xmlDocument, string attribute)
+         {
+            if (_SimXMLDocumentAttributeF32Func == null)
+            {
+               _SimXMLDocumentAttributeF32Func =
+                  (_SimXMLDocumentAttributeF32)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "SimXMLDocumentAttributeF32"), typeof(_SimXMLDocumentAttributeF32));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr SimXMLDocumentGetText(IntPtr xmlDocument);
+            return _SimXMLDocumentAttributeF32Func(xmlDocument, attribute);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void SimXMLDocumentRemoveText(IntPtr xmlDocument);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate int _SimXMLDocumentAttributeS32(IntPtr xmlDocument, string attribute);
+         private static _SimXMLDocumentAttributeS32 _SimXMLDocumentAttributeS32Func;
+         internal static int SimXMLDocumentAttributeS32(IntPtr xmlDocument, string attribute)
+         {
+            if (_SimXMLDocumentAttributeS32Func == null)
+            {
+               _SimXMLDocumentAttributeS32Func =
+                  (_SimXMLDocumentAttributeS32)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "SimXMLDocumentAttributeS32"), typeof(_SimXMLDocumentAttributeS32));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void SimXMLDocumentAddData(IntPtr xmlDocument, string text);
+            return _SimXMLDocumentAttributeS32Func(xmlDocument, attribute);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr SimXMLDocumentGetData(IntPtr xmlDocument);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _SimXMLDocumentAttributeExists(IntPtr xmlDocument, string attribute);
+         private static _SimXMLDocumentAttributeExists _SimXMLDocumentAttributeExistsFunc;
+         internal static bool SimXMLDocumentAttributeExists(IntPtr xmlDocument, string attribute)
+         {
+            if (_SimXMLDocumentAttributeExistsFunc == null)
+            {
+               _SimXMLDocumentAttributeExistsFunc =
+                  (_SimXMLDocumentAttributeExists)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "SimXMLDocumentAttributeExists"), typeof(_SimXMLDocumentAttributeExists));
+            }
+
+            return _SimXMLDocumentAttributeExistsFunc(xmlDocument, attribute);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _SimXMLDocumentFirstAttribute(IntPtr xmlDocument);
+         private static _SimXMLDocumentFirstAttribute _SimXMLDocumentFirstAttributeFunc;
+         internal static IntPtr SimXMLDocumentFirstAttribute(IntPtr xmlDocument)
+         {
+            if (_SimXMLDocumentFirstAttributeFunc == null)
+            {
+               _SimXMLDocumentFirstAttributeFunc =
+                  (_SimXMLDocumentFirstAttribute)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "SimXMLDocumentFirstAttribute"), typeof(_SimXMLDocumentFirstAttribute));
+            }
+
+            return _SimXMLDocumentFirstAttributeFunc(xmlDocument);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _SimXMLDocumentLastAttribute(IntPtr xmlDocument);
+         private static _SimXMLDocumentLastAttribute _SimXMLDocumentLastAttributeFunc;
+         internal static IntPtr SimXMLDocumentLastAttribute(IntPtr xmlDocument)
+         {
+            if (_SimXMLDocumentLastAttributeFunc == null)
+            {
+               _SimXMLDocumentLastAttributeFunc =
+                  (_SimXMLDocumentLastAttribute)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "SimXMLDocumentLastAttribute"), typeof(_SimXMLDocumentLastAttribute));
+            }
+
+            return _SimXMLDocumentLastAttributeFunc(xmlDocument);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _SimXMLDocumentNextAttribute(IntPtr xmlDocument);
+         private static _SimXMLDocumentNextAttribute _SimXMLDocumentNextAttributeFunc;
+         internal static IntPtr SimXMLDocumentNextAttribute(IntPtr xmlDocument)
+         {
+            if (_SimXMLDocumentNextAttributeFunc == null)
+            {
+               _SimXMLDocumentNextAttributeFunc =
+                  (_SimXMLDocumentNextAttribute)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "SimXMLDocumentNextAttribute"), typeof(_SimXMLDocumentNextAttribute));
+            }
+
+            return _SimXMLDocumentNextAttributeFunc(xmlDocument);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _SimXMLDocumentPrevAttribute(IntPtr xmlDocument);
+         private static _SimXMLDocumentPrevAttribute _SimXMLDocumentPrevAttributeFunc;
+         internal static IntPtr SimXMLDocumentPrevAttribute(IntPtr xmlDocument)
+         {
+            if (_SimXMLDocumentPrevAttributeFunc == null)
+            {
+               _SimXMLDocumentPrevAttributeFunc =
+                  (_SimXMLDocumentPrevAttribute)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "SimXMLDocumentPrevAttribute"), typeof(_SimXMLDocumentPrevAttribute));
+            }
+
+            return _SimXMLDocumentPrevAttributeFunc(xmlDocument);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _SimXMLDocumentSetAttribute(IntPtr xmlDocument, string attribute, string attributeValue);
+         private static _SimXMLDocumentSetAttribute _SimXMLDocumentSetAttributeFunc;
+         internal static void SimXMLDocumentSetAttribute(IntPtr xmlDocument, string attribute, string attributeValue)
+         {
+            if (_SimXMLDocumentSetAttributeFunc == null)
+            {
+               _SimXMLDocumentSetAttributeFunc =
+                  (_SimXMLDocumentSetAttribute)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "SimXMLDocumentSetAttribute"), typeof(_SimXMLDocumentSetAttribute));
+            }
+
+            _SimXMLDocumentSetAttributeFunc(xmlDocument, attribute, attributeValue);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _SimXMLDocumentSetObjectAttributes(IntPtr xmlDocument, string attributeValue);
+         private static _SimXMLDocumentSetObjectAttributes _SimXMLDocumentSetObjectAttributesFunc;
+         internal static void SimXMLDocumentSetObjectAttributes(IntPtr xmlDocument, string attributeValue)
+         {
+            if (_SimXMLDocumentSetObjectAttributesFunc == null)
+            {
+               _SimXMLDocumentSetObjectAttributesFunc =
+                  (_SimXMLDocumentSetObjectAttributes)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "SimXMLDocumentSetObjectAttributes"), typeof(_SimXMLDocumentSetObjectAttributes));
+            }
+
+            _SimXMLDocumentSetObjectAttributesFunc(xmlDocument, attributeValue);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _SimXMLDocumentPushNewElement(IntPtr xmlDocument, string name);
+         private static _SimXMLDocumentPushNewElement _SimXMLDocumentPushNewElementFunc;
+         internal static void SimXMLDocumentPushNewElement(IntPtr xmlDocument, string name)
+         {
+            if (_SimXMLDocumentPushNewElementFunc == null)
+            {
+               _SimXMLDocumentPushNewElementFunc =
+                  (_SimXMLDocumentPushNewElement)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "SimXMLDocumentPushNewElement"), typeof(_SimXMLDocumentPushNewElement));
+            }
+
+            _SimXMLDocumentPushNewElementFunc(xmlDocument, name);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _SimXMLDocumentAddNewElement(IntPtr xmlDocument, string name);
+         private static _SimXMLDocumentAddNewElement _SimXMLDocumentAddNewElementFunc;
+         internal static void SimXMLDocumentAddNewElement(IntPtr xmlDocument, string name)
+         {
+            if (_SimXMLDocumentAddNewElementFunc == null)
+            {
+               _SimXMLDocumentAddNewElementFunc =
+                  (_SimXMLDocumentAddNewElement)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "SimXMLDocumentAddNewElement"), typeof(_SimXMLDocumentAddNewElement));
+            }
+
+            _SimXMLDocumentAddNewElementFunc(xmlDocument, name);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _SimXMLDocumentAddHeader(IntPtr xmlDocument);
+         private static _SimXMLDocumentAddHeader _SimXMLDocumentAddHeaderFunc;
+         internal static void SimXMLDocumentAddHeader(IntPtr xmlDocument)
+         {
+            if (_SimXMLDocumentAddHeaderFunc == null)
+            {
+               _SimXMLDocumentAddHeaderFunc =
+                  (_SimXMLDocumentAddHeader)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "SimXMLDocumentAddHeader"), typeof(_SimXMLDocumentAddHeader));
+            }
+
+            _SimXMLDocumentAddHeaderFunc(xmlDocument);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _SimXMLDocumentAddComment(IntPtr xmlDocument, string comment);
+         private static _SimXMLDocumentAddComment _SimXMLDocumentAddCommentFunc;
+         internal static void SimXMLDocumentAddComment(IntPtr xmlDocument, string comment)
+         {
+            if (_SimXMLDocumentAddCommentFunc == null)
+            {
+               _SimXMLDocumentAddCommentFunc =
+                  (_SimXMLDocumentAddComment)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "SimXMLDocumentAddComment"), typeof(_SimXMLDocumentAddComment));
+            }
+
+            _SimXMLDocumentAddCommentFunc(xmlDocument, comment);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _SimXMLDocumentReadComment(IntPtr xmlDocument, int index);
+         private static _SimXMLDocumentReadComment _SimXMLDocumentReadCommentFunc;
+         internal static IntPtr SimXMLDocumentReadComment(IntPtr xmlDocument, int index)
+         {
+            if (_SimXMLDocumentReadCommentFunc == null)
+            {
+               _SimXMLDocumentReadCommentFunc =
+                  (_SimXMLDocumentReadComment)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "SimXMLDocumentReadComment"), typeof(_SimXMLDocumentReadComment));
+            }
+
+            return _SimXMLDocumentReadCommentFunc(xmlDocument, index);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _SimXMLDocumentAddText(IntPtr xmlDocument, string text);
+         private static _SimXMLDocumentAddText _SimXMLDocumentAddTextFunc;
+         internal static void SimXMLDocumentAddText(IntPtr xmlDocument, string text)
+         {
+            if (_SimXMLDocumentAddTextFunc == null)
+            {
+               _SimXMLDocumentAddTextFunc =
+                  (_SimXMLDocumentAddText)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "SimXMLDocumentAddText"), typeof(_SimXMLDocumentAddText));
+            }
+
+            _SimXMLDocumentAddTextFunc(xmlDocument, text);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _SimXMLDocumentGetText(IntPtr xmlDocument);
+         private static _SimXMLDocumentGetText _SimXMLDocumentGetTextFunc;
+         internal static IntPtr SimXMLDocumentGetText(IntPtr xmlDocument)
+         {
+            if (_SimXMLDocumentGetTextFunc == null)
+            {
+               _SimXMLDocumentGetTextFunc =
+                  (_SimXMLDocumentGetText)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "SimXMLDocumentGetText"), typeof(_SimXMLDocumentGetText));
+            }
+
+            return _SimXMLDocumentGetTextFunc(xmlDocument);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _SimXMLDocumentRemoveText(IntPtr xmlDocument);
+         private static _SimXMLDocumentRemoveText _SimXMLDocumentRemoveTextFunc;
+         internal static void SimXMLDocumentRemoveText(IntPtr xmlDocument)
+         {
+            if (_SimXMLDocumentRemoveTextFunc == null)
+            {
+               _SimXMLDocumentRemoveTextFunc =
+                  (_SimXMLDocumentRemoveText)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "SimXMLDocumentRemoveText"), typeof(_SimXMLDocumentRemoveText));
+            }
+
+            _SimXMLDocumentRemoveTextFunc(xmlDocument);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _SimXMLDocumentAddData(IntPtr xmlDocument, string text);
+         private static _SimXMLDocumentAddData _SimXMLDocumentAddDataFunc;
+         internal static void SimXMLDocumentAddData(IntPtr xmlDocument, string text)
+         {
+            if (_SimXMLDocumentAddDataFunc == null)
+            {
+               _SimXMLDocumentAddDataFunc =
+                  (_SimXMLDocumentAddData)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "SimXMLDocumentAddData"), typeof(_SimXMLDocumentAddData));
+            }
+
+            _SimXMLDocumentAddDataFunc(xmlDocument, text);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _SimXMLDocumentGetData(IntPtr xmlDocument);
+         private static _SimXMLDocumentGetData _SimXMLDocumentGetDataFunc;
+         internal static IntPtr SimXMLDocumentGetData(IntPtr xmlDocument)
+         {
+            if (_SimXMLDocumentGetDataFunc == null)
+            {
+               _SimXMLDocumentGetDataFunc =
+                  (_SimXMLDocumentGetData)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "SimXMLDocumentGetData"), typeof(_SimXMLDocumentGetData));
+            }
+
+            return _SimXMLDocumentGetDataFunc(xmlDocument);
+         }
       }
       
       #endregion

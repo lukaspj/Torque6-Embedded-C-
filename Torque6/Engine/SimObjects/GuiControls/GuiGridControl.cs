@@ -40,8 +40,20 @@ namespace Torque6.Engine.SimObjects.GuiControls
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiGridControlCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiGridControlCreateInstance();
+         private static _GuiGridControlCreateInstance _GuiGridControlCreateInstanceFunc;
+         internal static IntPtr GuiGridControlCreateInstance()
+         {
+            if (_GuiGridControlCreateInstanceFunc == null)
+            {
+               _GuiGridControlCreateInstanceFunc =
+                  (_GuiGridControlCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiGridControlCreateInstance"), typeof(_GuiGridControlCreateInstance));
+            }
+
+            return _GuiGridControlCreateInstanceFunc();
+         }
       }
       
       #endregion

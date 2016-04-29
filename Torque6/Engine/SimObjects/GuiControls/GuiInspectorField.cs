@@ -40,11 +40,35 @@ namespace Torque6.Engine.SimObjects.GuiControls
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiInspectorFieldCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiInspectorFieldCreateInstance();
+         private static _GuiInspectorFieldCreateInstance _GuiInspectorFieldCreateInstanceFunc;
+         internal static IntPtr GuiInspectorFieldCreateInstance()
+         {
+            if (_GuiInspectorFieldCreateInstanceFunc == null)
+            {
+               _GuiInspectorFieldCreateInstanceFunc =
+                  (_GuiInspectorFieldCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiInspectorFieldCreateInstance"), typeof(_GuiInspectorFieldCreateInstance));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiInspectorFieldApply(IntPtr field, string newValue);
+            return _GuiInspectorFieldCreateInstanceFunc();
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiInspectorFieldApply(IntPtr field, string newValue);
+         private static _GuiInspectorFieldApply _GuiInspectorFieldApplyFunc;
+         internal static void GuiInspectorFieldApply(IntPtr field, string newValue)
+         {
+            if (_GuiInspectorFieldApplyFunc == null)
+            {
+               _GuiInspectorFieldApplyFunc =
+                  (_GuiInspectorFieldApply)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiInspectorFieldApply"), typeof(_GuiInspectorFieldApply));
+            }
+
+            _GuiInspectorFieldApplyFunc(field, newValue);
+         }
       }
       
       #endregion

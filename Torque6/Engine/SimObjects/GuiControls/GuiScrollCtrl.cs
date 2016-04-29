@@ -40,62 +40,290 @@ namespace Torque6.Engine.SimObjects.GuiControls
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool GuiScrollCtrlGetWillFirstRespond(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _GuiScrollCtrlGetWillFirstRespond(IntPtr ctrl);
+         private static _GuiScrollCtrlGetWillFirstRespond _GuiScrollCtrlGetWillFirstRespondFunc;
+         internal static bool GuiScrollCtrlGetWillFirstRespond(IntPtr ctrl)
+         {
+            if (_GuiScrollCtrlGetWillFirstRespondFunc == null)
+            {
+               _GuiScrollCtrlGetWillFirstRespondFunc =
+                  (_GuiScrollCtrlGetWillFirstRespond)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiScrollCtrlGetWillFirstRespond"), typeof(_GuiScrollCtrlGetWillFirstRespond));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiScrollCtrlSetWillFirstRespond(IntPtr ctrl, bool enable);
+            return _GuiScrollCtrlGetWillFirstRespondFunc(ctrl);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern int GuiScrollCtrlGetHScrollBar(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiScrollCtrlSetWillFirstRespond(IntPtr ctrl, bool enable);
+         private static _GuiScrollCtrlSetWillFirstRespond _GuiScrollCtrlSetWillFirstRespondFunc;
+         internal static void GuiScrollCtrlSetWillFirstRespond(IntPtr ctrl, bool enable)
+         {
+            if (_GuiScrollCtrlSetWillFirstRespondFunc == null)
+            {
+               _GuiScrollCtrlSetWillFirstRespondFunc =
+                  (_GuiScrollCtrlSetWillFirstRespond)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiScrollCtrlSetWillFirstRespond"), typeof(_GuiScrollCtrlSetWillFirstRespond));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiScrollCtrlSetHScrollBar(IntPtr ctrl, int forceHScrollbar);
+            _GuiScrollCtrlSetWillFirstRespondFunc(ctrl, enable);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern int GuiScrollCtrlGetVScrollBar(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate int _GuiScrollCtrlGetHScrollBar(IntPtr ctrl);
+         private static _GuiScrollCtrlGetHScrollBar _GuiScrollCtrlGetHScrollBarFunc;
+         internal static int GuiScrollCtrlGetHScrollBar(IntPtr ctrl)
+         {
+            if (_GuiScrollCtrlGetHScrollBarFunc == null)
+            {
+               _GuiScrollCtrlGetHScrollBarFunc =
+                  (_GuiScrollCtrlGetHScrollBar)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiScrollCtrlGetHScrollBar"), typeof(_GuiScrollCtrlGetHScrollBar));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiScrollCtrlSetVScrollBar(IntPtr ctrl, int forceVScrollbar);
+            return _GuiScrollCtrlGetHScrollBarFunc(ctrl);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool GuiScrollCtrlGetConstantThumbHeight(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiScrollCtrlSetHScrollBar(IntPtr ctrl, int forceHScrollbar);
+         private static _GuiScrollCtrlSetHScrollBar _GuiScrollCtrlSetHScrollBarFunc;
+         internal static void GuiScrollCtrlSetHScrollBar(IntPtr ctrl, int forceHScrollbar)
+         {
+            if (_GuiScrollCtrlSetHScrollBarFunc == null)
+            {
+               _GuiScrollCtrlSetHScrollBarFunc =
+                  (_GuiScrollCtrlSetHScrollBar)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiScrollCtrlSetHScrollBar"), typeof(_GuiScrollCtrlSetHScrollBar));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiScrollCtrlSetConstantThumbHeight(IntPtr ctrl, bool useConstantThumbHeight);
+            _GuiScrollCtrlSetHScrollBarFunc(ctrl, forceHScrollbar);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiScrollCtrlGetChildMargin(IntPtr ctrl, out Point2I outMargin);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate int _GuiScrollCtrlGetVScrollBar(IntPtr ctrl);
+         private static _GuiScrollCtrlGetVScrollBar _GuiScrollCtrlGetVScrollBarFunc;
+         internal static int GuiScrollCtrlGetVScrollBar(IntPtr ctrl)
+         {
+            if (_GuiScrollCtrlGetVScrollBarFunc == null)
+            {
+               _GuiScrollCtrlGetVScrollBarFunc =
+                  (_GuiScrollCtrlGetVScrollBar)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiScrollCtrlGetVScrollBar"), typeof(_GuiScrollCtrlGetVScrollBar));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiScrollCtrlSetChildMargin(IntPtr ctrl, Point2I margin);
+            return _GuiScrollCtrlGetVScrollBarFunc(ctrl);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiScrollCtrlCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiScrollCtrlSetVScrollBar(IntPtr ctrl, int forceVScrollbar);
+         private static _GuiScrollCtrlSetVScrollBar _GuiScrollCtrlSetVScrollBarFunc;
+         internal static void GuiScrollCtrlSetVScrollBar(IntPtr ctrl, int forceVScrollbar)
+         {
+            if (_GuiScrollCtrlSetVScrollBarFunc == null)
+            {
+               _GuiScrollCtrlSetVScrollBarFunc =
+                  (_GuiScrollCtrlSetVScrollBar)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiScrollCtrlSetVScrollBar"), typeof(_GuiScrollCtrlSetVScrollBar));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiScrollCtrlScrollToTop(IntPtr ctrl);
+            _GuiScrollCtrlSetVScrollBarFunc(ctrl, forceVScrollbar);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiScrollCtrlScrollToBottom(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _GuiScrollCtrlGetConstantThumbHeight(IntPtr ctrl);
+         private static _GuiScrollCtrlGetConstantThumbHeight _GuiScrollCtrlGetConstantThumbHeightFunc;
+         internal static bool GuiScrollCtrlGetConstantThumbHeight(IntPtr ctrl)
+         {
+            if (_GuiScrollCtrlGetConstantThumbHeightFunc == null)
+            {
+               _GuiScrollCtrlGetConstantThumbHeightFunc =
+                  (_GuiScrollCtrlGetConstantThumbHeight)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiScrollCtrlGetConstantThumbHeight"), typeof(_GuiScrollCtrlGetConstantThumbHeight));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiScrollCtrlSetScrollPosition(IntPtr ctrl, Point2I pos);
+            return _GuiScrollCtrlGetConstantThumbHeightFunc(ctrl);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern int GuiScrollCtrlGetScrollPositionX(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiScrollCtrlSetConstantThumbHeight(IntPtr ctrl, bool useConstantThumbHeight);
+         private static _GuiScrollCtrlSetConstantThumbHeight _GuiScrollCtrlSetConstantThumbHeightFunc;
+         internal static void GuiScrollCtrlSetConstantThumbHeight(IntPtr ctrl, bool useConstantThumbHeight)
+         {
+            if (_GuiScrollCtrlSetConstantThumbHeightFunc == null)
+            {
+               _GuiScrollCtrlSetConstantThumbHeightFunc =
+                  (_GuiScrollCtrlSetConstantThumbHeight)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiScrollCtrlSetConstantThumbHeight"), typeof(_GuiScrollCtrlSetConstantThumbHeight));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern int GuiScrollCtrlGetScrollPositionY(IntPtr ctrl);
+            _GuiScrollCtrlSetConstantThumbHeightFunc(ctrl, useConstantThumbHeight);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiScrollCtrlComputeSizes(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiScrollCtrlGetChildMargin(IntPtr ctrl, out Point2I outMargin);
+         private static _GuiScrollCtrlGetChildMargin _GuiScrollCtrlGetChildMarginFunc;
+         internal static void GuiScrollCtrlGetChildMargin(IntPtr ctrl, out Point2I outMargin)
+         {
+            if (_GuiScrollCtrlGetChildMarginFunc == null)
+            {
+               _GuiScrollCtrlGetChildMarginFunc =
+                  (_GuiScrollCtrlGetChildMargin)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiScrollCtrlGetChildMargin"), typeof(_GuiScrollCtrlGetChildMargin));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool GuiScrollCtrlGetUseScrollEvents(IntPtr ctrl);
+            _GuiScrollCtrlGetChildMarginFunc(ctrl, out outMargin);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiScrollCtrlSetUseScrollEvents(IntPtr ctrl, bool useScrollEvents);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiScrollCtrlSetChildMargin(IntPtr ctrl, Point2I margin);
+         private static _GuiScrollCtrlSetChildMargin _GuiScrollCtrlSetChildMarginFunc;
+         internal static void GuiScrollCtrlSetChildMargin(IntPtr ctrl, Point2I margin)
+         {
+            if (_GuiScrollCtrlSetChildMarginFunc == null)
+            {
+               _GuiScrollCtrlSetChildMarginFunc =
+                  (_GuiScrollCtrlSetChildMargin)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiScrollCtrlSetChildMargin"), typeof(_GuiScrollCtrlSetChildMargin));
+            }
+
+            _GuiScrollCtrlSetChildMarginFunc(ctrl, margin);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiScrollCtrlCreateInstance();
+         private static _GuiScrollCtrlCreateInstance _GuiScrollCtrlCreateInstanceFunc;
+         internal static IntPtr GuiScrollCtrlCreateInstance()
+         {
+            if (_GuiScrollCtrlCreateInstanceFunc == null)
+            {
+               _GuiScrollCtrlCreateInstanceFunc =
+                  (_GuiScrollCtrlCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiScrollCtrlCreateInstance"), typeof(_GuiScrollCtrlCreateInstance));
+            }
+
+            return _GuiScrollCtrlCreateInstanceFunc();
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiScrollCtrlScrollToTop(IntPtr ctrl);
+         private static _GuiScrollCtrlScrollToTop _GuiScrollCtrlScrollToTopFunc;
+         internal static void GuiScrollCtrlScrollToTop(IntPtr ctrl)
+         {
+            if (_GuiScrollCtrlScrollToTopFunc == null)
+            {
+               _GuiScrollCtrlScrollToTopFunc =
+                  (_GuiScrollCtrlScrollToTop)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiScrollCtrlScrollToTop"), typeof(_GuiScrollCtrlScrollToTop));
+            }
+
+            _GuiScrollCtrlScrollToTopFunc(ctrl);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiScrollCtrlScrollToBottom(IntPtr ctrl);
+         private static _GuiScrollCtrlScrollToBottom _GuiScrollCtrlScrollToBottomFunc;
+         internal static void GuiScrollCtrlScrollToBottom(IntPtr ctrl)
+         {
+            if (_GuiScrollCtrlScrollToBottomFunc == null)
+            {
+               _GuiScrollCtrlScrollToBottomFunc =
+                  (_GuiScrollCtrlScrollToBottom)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiScrollCtrlScrollToBottom"), typeof(_GuiScrollCtrlScrollToBottom));
+            }
+
+            _GuiScrollCtrlScrollToBottomFunc(ctrl);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiScrollCtrlSetScrollPosition(IntPtr ctrl, Point2I pos);
+         private static _GuiScrollCtrlSetScrollPosition _GuiScrollCtrlSetScrollPositionFunc;
+         internal static void GuiScrollCtrlSetScrollPosition(IntPtr ctrl, Point2I pos)
+         {
+            if (_GuiScrollCtrlSetScrollPositionFunc == null)
+            {
+               _GuiScrollCtrlSetScrollPositionFunc =
+                  (_GuiScrollCtrlSetScrollPosition)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiScrollCtrlSetScrollPosition"), typeof(_GuiScrollCtrlSetScrollPosition));
+            }
+
+            _GuiScrollCtrlSetScrollPositionFunc(ctrl, pos);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate int _GuiScrollCtrlGetScrollPositionX(IntPtr ctrl);
+         private static _GuiScrollCtrlGetScrollPositionX _GuiScrollCtrlGetScrollPositionXFunc;
+         internal static int GuiScrollCtrlGetScrollPositionX(IntPtr ctrl)
+         {
+            if (_GuiScrollCtrlGetScrollPositionXFunc == null)
+            {
+               _GuiScrollCtrlGetScrollPositionXFunc =
+                  (_GuiScrollCtrlGetScrollPositionX)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiScrollCtrlGetScrollPositionX"), typeof(_GuiScrollCtrlGetScrollPositionX));
+            }
+
+            return _GuiScrollCtrlGetScrollPositionXFunc(ctrl);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate int _GuiScrollCtrlGetScrollPositionY(IntPtr ctrl);
+         private static _GuiScrollCtrlGetScrollPositionY _GuiScrollCtrlGetScrollPositionYFunc;
+         internal static int GuiScrollCtrlGetScrollPositionY(IntPtr ctrl)
+         {
+            if (_GuiScrollCtrlGetScrollPositionYFunc == null)
+            {
+               _GuiScrollCtrlGetScrollPositionYFunc =
+                  (_GuiScrollCtrlGetScrollPositionY)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiScrollCtrlGetScrollPositionY"), typeof(_GuiScrollCtrlGetScrollPositionY));
+            }
+
+            return _GuiScrollCtrlGetScrollPositionYFunc(ctrl);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiScrollCtrlComputeSizes(IntPtr ctrl);
+         private static _GuiScrollCtrlComputeSizes _GuiScrollCtrlComputeSizesFunc;
+         internal static void GuiScrollCtrlComputeSizes(IntPtr ctrl)
+         {
+            if (_GuiScrollCtrlComputeSizesFunc == null)
+            {
+               _GuiScrollCtrlComputeSizesFunc =
+                  (_GuiScrollCtrlComputeSizes)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiScrollCtrlComputeSizes"), typeof(_GuiScrollCtrlComputeSizes));
+            }
+
+            _GuiScrollCtrlComputeSizesFunc(ctrl);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _GuiScrollCtrlGetUseScrollEvents(IntPtr ctrl);
+         private static _GuiScrollCtrlGetUseScrollEvents _GuiScrollCtrlGetUseScrollEventsFunc;
+         internal static bool GuiScrollCtrlGetUseScrollEvents(IntPtr ctrl)
+         {
+            if (_GuiScrollCtrlGetUseScrollEventsFunc == null)
+            {
+               _GuiScrollCtrlGetUseScrollEventsFunc =
+                  (_GuiScrollCtrlGetUseScrollEvents)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiScrollCtrlGetUseScrollEvents"), typeof(_GuiScrollCtrlGetUseScrollEvents));
+            }
+
+            return _GuiScrollCtrlGetUseScrollEventsFunc(ctrl);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiScrollCtrlSetUseScrollEvents(IntPtr ctrl, bool useScrollEvents);
+         private static _GuiScrollCtrlSetUseScrollEvents _GuiScrollCtrlSetUseScrollEventsFunc;
+         internal static void GuiScrollCtrlSetUseScrollEvents(IntPtr ctrl, bool useScrollEvents)
+         {
+            if (_GuiScrollCtrlSetUseScrollEventsFunc == null)
+            {
+               _GuiScrollCtrlSetUseScrollEventsFunc =
+                  (_GuiScrollCtrlSetUseScrollEvents)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiScrollCtrlSetUseScrollEvents"), typeof(_GuiScrollCtrlSetUseScrollEvents));
+            }
+
+            _GuiScrollCtrlSetUseScrollEventsFunc(ctrl, useScrollEvents);
+         }
       }
       
       #endregion

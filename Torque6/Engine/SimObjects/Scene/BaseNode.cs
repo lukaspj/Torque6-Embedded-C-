@@ -40,14 +40,50 @@ namespace Torque6.Engine.SimObjects.Scene
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void BaseNodeGetPosition(IntPtr materialAsset, out Point2I pos);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _BaseNodeGetPosition(IntPtr materialAsset, out Point2I pos);
+         private static _BaseNodeGetPosition _BaseNodeGetPositionFunc;
+         internal static void BaseNodeGetPosition(IntPtr materialAsset, out Point2I pos)
+         {
+            if (_BaseNodeGetPositionFunc == null)
+            {
+               _BaseNodeGetPositionFunc =
+                  (_BaseNodeGetPosition)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "BaseNodeGetPosition"), typeof(_BaseNodeGetPosition));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void BaseNodeSetPosition(IntPtr materialAsset, Point2I pos);
+            _BaseNodeGetPositionFunc(materialAsset, out pos);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr BaseNodeCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _BaseNodeSetPosition(IntPtr materialAsset, Point2I pos);
+         private static _BaseNodeSetPosition _BaseNodeSetPositionFunc;
+         internal static void BaseNodeSetPosition(IntPtr materialAsset, Point2I pos)
+         {
+            if (_BaseNodeSetPositionFunc == null)
+            {
+               _BaseNodeSetPositionFunc =
+                  (_BaseNodeSetPosition)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "BaseNodeSetPosition"), typeof(_BaseNodeSetPosition));
+            }
+
+            _BaseNodeSetPositionFunc(materialAsset, pos);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _BaseNodeCreateInstance();
+         private static _BaseNodeCreateInstance _BaseNodeCreateInstanceFunc;
+         internal static IntPtr BaseNodeCreateInstance()
+         {
+            if (_BaseNodeCreateInstanceFunc == null)
+            {
+               _BaseNodeCreateInstanceFunc =
+                  (_BaseNodeCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "BaseNodeCreateInstance"), typeof(_BaseNodeCreateInstance));
+            }
+
+            return _BaseNodeCreateInstanceFunc();
+         }
       }
       
       #endregion

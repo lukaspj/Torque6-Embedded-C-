@@ -40,17 +40,65 @@ namespace Torque6.Engine.SimObjects
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr PNGImageCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _PNGImageCreateInstance();
+         private static _PNGImageCreateInstance _PNGImageCreateInstanceFunc;
+         internal static IntPtr PNGImageCreateInstance()
+         {
+            if (_PNGImageCreateInstanceFunc == null)
+            {
+               _PNGImageCreateInstanceFunc =
+                  (_PNGImageCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "PNGImageCreateInstance"), typeof(_PNGImageCreateInstance));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool PNGImageCreateBaseImage(IntPtr image, int width, int height, int imageType);
+            return _PNGImageCreateInstanceFunc();
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool PNGImageMergeOn(IntPtr image, int width, int height, string imageFile);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _PNGImageCreateBaseImage(IntPtr image, int width, int height, int imageType);
+         private static _PNGImageCreateBaseImage _PNGImageCreateBaseImageFunc;
+         internal static bool PNGImageCreateBaseImage(IntPtr image, int width, int height, int imageType)
+         {
+            if (_PNGImageCreateBaseImageFunc == null)
+            {
+               _PNGImageCreateBaseImageFunc =
+                  (_PNGImageCreateBaseImage)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "PNGImageCreateBaseImage"), typeof(_PNGImageCreateBaseImage));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool PNGImageSaveImage(IntPtr image, string fileName);
+            return _PNGImageCreateBaseImageFunc(image, width, height, imageType);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _PNGImageMergeOn(IntPtr image, int width, int height, string imageFile);
+         private static _PNGImageMergeOn _PNGImageMergeOnFunc;
+         internal static bool PNGImageMergeOn(IntPtr image, int width, int height, string imageFile)
+         {
+            if (_PNGImageMergeOnFunc == null)
+            {
+               _PNGImageMergeOnFunc =
+                  (_PNGImageMergeOn)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "PNGImageMergeOn"), typeof(_PNGImageMergeOn));
+            }
+
+            return _PNGImageMergeOnFunc(image, width, height, imageFile);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _PNGImageSaveImage(IntPtr image, string fileName);
+         private static _PNGImageSaveImage _PNGImageSaveImageFunc;
+         internal static bool PNGImageSaveImage(IntPtr image, string fileName)
+         {
+            if (_PNGImageSaveImageFunc == null)
+            {
+               _PNGImageSaveImageFunc =
+                  (_PNGImageSaveImage)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "PNGImageSaveImage"), typeof(_PNGImageSaveImage));
+            }
+
+            return _PNGImageSaveImageFunc(image, fileName);
+         }
       }
       
       #endregion

@@ -40,47 +40,215 @@ namespace Torque6.Engine.SimObjects
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr ActionMapCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _ActionMapCreateInstance();
+         private static _ActionMapCreateInstance _ActionMapCreateInstanceFunc;
+         internal static IntPtr ActionMapCreateInstance()
+         {
+            if (_ActionMapCreateInstanceFunc == null)
+            {
+               _ActionMapCreateInstanceFunc =
+                  (_ActionMapCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "ActionMapCreateInstance"), typeof(_ActionMapCreateInstance));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void ActionMapBind(IntPtr map, int argc, string[] argv);
+            return _ActionMapCreateInstanceFunc();
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void ActionMapBindObj(IntPtr map, int argc, string[] argv, IntPtr obj);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _ActionMapBind(IntPtr map, int argc, string[] argv);
+         private static _ActionMapBind _ActionMapBindFunc;
+         internal static void ActionMapBind(IntPtr map, int argc, string[] argv)
+         {
+            if (_ActionMapBindFunc == null)
+            {
+               _ActionMapBindFunc =
+                  (_ActionMapBind)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "ActionMapBind"), typeof(_ActionMapBind));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void ActionMapBindCmd(IntPtr map, string device, string action, string makeCmd, string breakCmd);
+            _ActionMapBindFunc(map, argc, argv);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void ActionMapUnbind(IntPtr map, string device, string action);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _ActionMapBindObj(IntPtr map, int argc, string[] argv, IntPtr obj);
+         private static _ActionMapBindObj _ActionMapBindObjFunc;
+         internal static void ActionMapBindObj(IntPtr map, int argc, string[] argv, IntPtr obj)
+         {
+            if (_ActionMapBindObjFunc == null)
+            {
+               _ActionMapBindObjFunc =
+                  (_ActionMapBindObj)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "ActionMapBindObj"), typeof(_ActionMapBindObj));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void ActionMapUnbindObj(IntPtr map, string device, string action, IntPtr obj);
+            _ActionMapBindObjFunc(map, argc, argv, obj);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void ActionMapSave(IntPtr map, string fileName, bool append);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _ActionMapBindCmd(IntPtr map, string device, string action, string makeCmd, string breakCmd);
+         private static _ActionMapBindCmd _ActionMapBindCmdFunc;
+         internal static void ActionMapBindCmd(IntPtr map, string device, string action, string makeCmd, string breakCmd)
+         {
+            if (_ActionMapBindCmdFunc == null)
+            {
+               _ActionMapBindCmdFunc =
+                  (_ActionMapBindCmd)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "ActionMapBindCmd"), typeof(_ActionMapBindCmd));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void ActionMapPush(IntPtr map);
+            _ActionMapBindCmdFunc(map, device, action, makeCmd, breakCmd);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void ActionMapPop(IntPtr map);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _ActionMapUnbind(IntPtr map, string device, string action);
+         private static _ActionMapUnbind _ActionMapUnbindFunc;
+         internal static void ActionMapUnbind(IntPtr map, string device, string action)
+         {
+            if (_ActionMapUnbindFunc == null)
+            {
+               _ActionMapUnbindFunc =
+                  (_ActionMapUnbind)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "ActionMapUnbind"), typeof(_ActionMapUnbind));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr ActionMapGetBinding(IntPtr map, string command);
+            _ActionMapUnbindFunc(map, device, action);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr ActionMapGetCommand(IntPtr map, string device, string action);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _ActionMapUnbindObj(IntPtr map, string device, string action, IntPtr obj);
+         private static _ActionMapUnbindObj _ActionMapUnbindObjFunc;
+         internal static void ActionMapUnbindObj(IntPtr map, string device, string action, IntPtr obj)
+         {
+            if (_ActionMapUnbindObjFunc == null)
+            {
+               _ActionMapUnbindObjFunc =
+                  (_ActionMapUnbindObj)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "ActionMapUnbindObj"), typeof(_ActionMapUnbindObj));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool ActionMapIsInverted(IntPtr map, string device, string action);
+            _ActionMapUnbindObjFunc(map, device, action, obj);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern float ActionMapGetScale(IntPtr map, string device, string action);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _ActionMapSave(IntPtr map, string fileName, bool append);
+         private static _ActionMapSave _ActionMapSaveFunc;
+         internal static void ActionMapSave(IntPtr map, string fileName, bool append)
+         {
+            if (_ActionMapSaveFunc == null)
+            {
+               _ActionMapSaveFunc =
+                  (_ActionMapSave)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "ActionMapSave"), typeof(_ActionMapSave));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr ActionMapGetDeadZone(IntPtr map, string device, string action);
+            _ActionMapSaveFunc(map, fileName, append);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _ActionMapPush(IntPtr map);
+         private static _ActionMapPush _ActionMapPushFunc;
+         internal static void ActionMapPush(IntPtr map)
+         {
+            if (_ActionMapPushFunc == null)
+            {
+               _ActionMapPushFunc =
+                  (_ActionMapPush)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "ActionMapPush"), typeof(_ActionMapPush));
+            }
+
+            _ActionMapPushFunc(map);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _ActionMapPop(IntPtr map);
+         private static _ActionMapPop _ActionMapPopFunc;
+         internal static void ActionMapPop(IntPtr map)
+         {
+            if (_ActionMapPopFunc == null)
+            {
+               _ActionMapPopFunc =
+                  (_ActionMapPop)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "ActionMapPop"), typeof(_ActionMapPop));
+            }
+
+            _ActionMapPopFunc(map);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _ActionMapGetBinding(IntPtr map, string command);
+         private static _ActionMapGetBinding _ActionMapGetBindingFunc;
+         internal static IntPtr ActionMapGetBinding(IntPtr map, string command)
+         {
+            if (_ActionMapGetBindingFunc == null)
+            {
+               _ActionMapGetBindingFunc =
+                  (_ActionMapGetBinding)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "ActionMapGetBinding"), typeof(_ActionMapGetBinding));
+            }
+
+            return _ActionMapGetBindingFunc(map, command);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _ActionMapGetCommand(IntPtr map, string device, string action);
+         private static _ActionMapGetCommand _ActionMapGetCommandFunc;
+         internal static IntPtr ActionMapGetCommand(IntPtr map, string device, string action)
+         {
+            if (_ActionMapGetCommandFunc == null)
+            {
+               _ActionMapGetCommandFunc =
+                  (_ActionMapGetCommand)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "ActionMapGetCommand"), typeof(_ActionMapGetCommand));
+            }
+
+            return _ActionMapGetCommandFunc(map, device, action);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _ActionMapIsInverted(IntPtr map, string device, string action);
+         private static _ActionMapIsInverted _ActionMapIsInvertedFunc;
+         internal static bool ActionMapIsInverted(IntPtr map, string device, string action)
+         {
+            if (_ActionMapIsInvertedFunc == null)
+            {
+               _ActionMapIsInvertedFunc =
+                  (_ActionMapIsInverted)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "ActionMapIsInverted"), typeof(_ActionMapIsInverted));
+            }
+
+            return _ActionMapIsInvertedFunc(map, device, action);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate float _ActionMapGetScale(IntPtr map, string device, string action);
+         private static _ActionMapGetScale _ActionMapGetScaleFunc;
+         internal static float ActionMapGetScale(IntPtr map, string device, string action)
+         {
+            if (_ActionMapGetScaleFunc == null)
+            {
+               _ActionMapGetScaleFunc =
+                  (_ActionMapGetScale)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "ActionMapGetScale"), typeof(_ActionMapGetScale));
+            }
+
+            return _ActionMapGetScaleFunc(map, device, action);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _ActionMapGetDeadZone(IntPtr map, string device, string action);
+         private static _ActionMapGetDeadZone _ActionMapGetDeadZoneFunc;
+         internal static IntPtr ActionMapGetDeadZone(IntPtr map, string device, string action)
+         {
+            if (_ActionMapGetDeadZoneFunc == null)
+            {
+               _ActionMapGetDeadZoneFunc =
+                  (_ActionMapGetDeadZone)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "ActionMapGetDeadZone"), typeof(_ActionMapGetDeadZone));
+            }
+
+            return _ActionMapGetDeadZoneFunc(map, device, action);
+         }
       }
       
       #endregion

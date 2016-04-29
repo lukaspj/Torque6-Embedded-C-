@@ -40,35 +40,155 @@ namespace Torque6.Engine.SimObjects
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr FileObjectCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _FileObjectCreateInstance();
+         private static _FileObjectCreateInstance _FileObjectCreateInstanceFunc;
+         internal static IntPtr FileObjectCreateInstance()
+         {
+            if (_FileObjectCreateInstanceFunc == null)
+            {
+               _FileObjectCreateInstanceFunc =
+                  (_FileObjectCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "FileObjectCreateInstance"), typeof(_FileObjectCreateInstance));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool FileObjectOpenForRead(IntPtr fileObj, string filename);
+            return _FileObjectCreateInstanceFunc();
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool FileObjectOpenForWrite(IntPtr fileObj, string filename);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _FileObjectOpenForRead(IntPtr fileObj, string filename);
+         private static _FileObjectOpenForRead _FileObjectOpenForReadFunc;
+         internal static bool FileObjectOpenForRead(IntPtr fileObj, string filename)
+         {
+            if (_FileObjectOpenForReadFunc == null)
+            {
+               _FileObjectOpenForReadFunc =
+                  (_FileObjectOpenForRead)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "FileObjectOpenForRead"), typeof(_FileObjectOpenForRead));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool FileObjectOpenForAppend(IntPtr fileObj, string filename);
+            return _FileObjectOpenForReadFunc(fileObj, filename);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool FileObjectIsEOF(IntPtr fileObj);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _FileObjectOpenForWrite(IntPtr fileObj, string filename);
+         private static _FileObjectOpenForWrite _FileObjectOpenForWriteFunc;
+         internal static bool FileObjectOpenForWrite(IntPtr fileObj, string filename)
+         {
+            if (_FileObjectOpenForWriteFunc == null)
+            {
+               _FileObjectOpenForWriteFunc =
+                  (_FileObjectOpenForWrite)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "FileObjectOpenForWrite"), typeof(_FileObjectOpenForWrite));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr FileObjectReadLine(IntPtr fileObj);
+            return _FileObjectOpenForWriteFunc(fileObj, filename);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr FileObjectPeekLine(IntPtr fileObj);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _FileObjectOpenForAppend(IntPtr fileObj, string filename);
+         private static _FileObjectOpenForAppend _FileObjectOpenForAppendFunc;
+         internal static bool FileObjectOpenForAppend(IntPtr fileObj, string filename)
+         {
+            if (_FileObjectOpenForAppendFunc == null)
+            {
+               _FileObjectOpenForAppendFunc =
+                  (_FileObjectOpenForAppend)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "FileObjectOpenForAppend"), typeof(_FileObjectOpenForAppend));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void FileObjectWriteLine(IntPtr fileObj, string text);
+            return _FileObjectOpenForAppendFunc(fileObj, filename);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void FileObjectClose(IntPtr fileObj);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _FileObjectIsEOF(IntPtr fileObj);
+         private static _FileObjectIsEOF _FileObjectIsEOFFunc;
+         internal static bool FileObjectIsEOF(IntPtr fileObj)
+         {
+            if (_FileObjectIsEOFFunc == null)
+            {
+               _FileObjectIsEOFFunc =
+                  (_FileObjectIsEOF)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "FileObjectIsEOF"), typeof(_FileObjectIsEOF));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void FileObjectWriteObject(IntPtr fileObj, IntPtr simObj, string text);
+            return _FileObjectIsEOFFunc(fileObj);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _FileObjectReadLine(IntPtr fileObj);
+         private static _FileObjectReadLine _FileObjectReadLineFunc;
+         internal static IntPtr FileObjectReadLine(IntPtr fileObj)
+         {
+            if (_FileObjectReadLineFunc == null)
+            {
+               _FileObjectReadLineFunc =
+                  (_FileObjectReadLine)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "FileObjectReadLine"), typeof(_FileObjectReadLine));
+            }
+
+            return _FileObjectReadLineFunc(fileObj);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _FileObjectPeekLine(IntPtr fileObj);
+         private static _FileObjectPeekLine _FileObjectPeekLineFunc;
+         internal static IntPtr FileObjectPeekLine(IntPtr fileObj)
+         {
+            if (_FileObjectPeekLineFunc == null)
+            {
+               _FileObjectPeekLineFunc =
+                  (_FileObjectPeekLine)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "FileObjectPeekLine"), typeof(_FileObjectPeekLine));
+            }
+
+            return _FileObjectPeekLineFunc(fileObj);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _FileObjectWriteLine(IntPtr fileObj, string text);
+         private static _FileObjectWriteLine _FileObjectWriteLineFunc;
+         internal static void FileObjectWriteLine(IntPtr fileObj, string text)
+         {
+            if (_FileObjectWriteLineFunc == null)
+            {
+               _FileObjectWriteLineFunc =
+                  (_FileObjectWriteLine)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "FileObjectWriteLine"), typeof(_FileObjectWriteLine));
+            }
+
+            _FileObjectWriteLineFunc(fileObj, text);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _FileObjectClose(IntPtr fileObj);
+         private static _FileObjectClose _FileObjectCloseFunc;
+         internal static void FileObjectClose(IntPtr fileObj)
+         {
+            if (_FileObjectCloseFunc == null)
+            {
+               _FileObjectCloseFunc =
+                  (_FileObjectClose)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "FileObjectClose"), typeof(_FileObjectClose));
+            }
+
+            _FileObjectCloseFunc(fileObj);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _FileObjectWriteObject(IntPtr fileObj, IntPtr simObj, string text);
+         private static _FileObjectWriteObject _FileObjectWriteObjectFunc;
+         internal static void FileObjectWriteObject(IntPtr fileObj, IntPtr simObj, string text)
+         {
+            if (_FileObjectWriteObjectFunc == null)
+            {
+               _FileObjectWriteObjectFunc =
+                  (_FileObjectWriteObject)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "FileObjectWriteObject"), typeof(_FileObjectWriteObject));
+            }
+
+            _FileObjectWriteObjectFunc(fileObj, simObj, text);
+         }
       }
       
       #endregion

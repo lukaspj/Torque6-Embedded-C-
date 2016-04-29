@@ -13,11 +13,35 @@ namespace Torque6.Engine.Namespaces
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void Input_DeactivateDirectInput();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _Input_DeactivateDirectInput();
+         private static _Input_DeactivateDirectInput _Input_DeactivateDirectInputFunc;
+         internal static void Input_DeactivateDirectInput()
+         {
+            if (_Input_DeactivateDirectInputFunc == null)
+            {
+               _Input_DeactivateDirectInputFunc =
+                  (_Input_DeactivateDirectInput)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "Input_DeactivateDirectInput"), typeof(_Input_DeactivateDirectInput));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void Input_ActivateDirectInput();
+            _Input_DeactivateDirectInputFunc();
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _Input_ActivateDirectInput();
+         private static _Input_ActivateDirectInput _Input_ActivateDirectInputFunc;
+         internal static void Input_ActivateDirectInput()
+         {
+            if (_Input_ActivateDirectInputFunc == null)
+            {
+               _Input_ActivateDirectInputFunc =
+                  (_Input_ActivateDirectInput)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "Input_ActivateDirectInput"), typeof(_Input_ActivateDirectInput));
+            }
+
+            _Input_ActivateDirectInputFunc();
+         }
       }
 
       #endregion

@@ -40,20 +40,80 @@ namespace Torque6.Engine.SimObjects.Scene
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr SceneObjectGetTemplate(IntPtr SceneObject);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _SceneObjectGetTemplate(IntPtr SceneObject);
+         private static _SceneObjectGetTemplate _SceneObjectGetTemplateFunc;
+         internal static IntPtr SceneObjectGetTemplate(IntPtr SceneObject)
+         {
+            if (_SceneObjectGetTemplateFunc == null)
+            {
+               _SceneObjectGetTemplateFunc =
+                  (_SceneObjectGetTemplate)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "SceneObjectGetTemplate"), typeof(_SceneObjectGetTemplate));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void SceneObjectSetTemplate(IntPtr SceneObject, string templatePath);
+            return _SceneObjectGetTemplateFunc(SceneObject);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr SceneObjectCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _SceneObjectSetTemplate(IntPtr SceneObject, string templatePath);
+         private static _SceneObjectSetTemplate _SceneObjectSetTemplateFunc;
+         internal static void SceneObjectSetTemplate(IntPtr SceneObject, string templatePath)
+         {
+            if (_SceneObjectSetTemplateFunc == null)
+            {
+               _SceneObjectSetTemplateFunc =
+                  (_SceneObjectSetTemplate)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "SceneObjectSetTemplate"), typeof(_SceneObjectSetTemplate));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr SceneObjectFindComponent(IntPtr SceneObject, string name);
+            _SceneObjectSetTemplateFunc(SceneObject, templatePath);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr SceneObjectFindComponentByType(IntPtr SceneObject, string name);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _SceneObjectCreateInstance();
+         private static _SceneObjectCreateInstance _SceneObjectCreateInstanceFunc;
+         internal static IntPtr SceneObjectCreateInstance()
+         {
+            if (_SceneObjectCreateInstanceFunc == null)
+            {
+               _SceneObjectCreateInstanceFunc =
+                  (_SceneObjectCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "SceneObjectCreateInstance"), typeof(_SceneObjectCreateInstance));
+            }
+
+            return _SceneObjectCreateInstanceFunc();
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _SceneObjectFindComponent(IntPtr SceneObject, string name);
+         private static _SceneObjectFindComponent _SceneObjectFindComponentFunc;
+         internal static IntPtr SceneObjectFindComponent(IntPtr SceneObject, string name)
+         {
+            if (_SceneObjectFindComponentFunc == null)
+            {
+               _SceneObjectFindComponentFunc =
+                  (_SceneObjectFindComponent)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "SceneObjectFindComponent"), typeof(_SceneObjectFindComponent));
+            }
+
+            return _SceneObjectFindComponentFunc(SceneObject, name);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _SceneObjectFindComponentByType(IntPtr SceneObject, string name);
+         private static _SceneObjectFindComponentByType _SceneObjectFindComponentByTypeFunc;
+         internal static IntPtr SceneObjectFindComponentByType(IntPtr SceneObject, string name)
+         {
+            if (_SceneObjectFindComponentByTypeFunc == null)
+            {
+               _SceneObjectFindComponentByTypeFunc =
+                  (_SceneObjectFindComponentByType)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "SceneObjectFindComponentByType"), typeof(_SceneObjectFindComponentByType));
+            }
+
+            return _SceneObjectFindComponentByTypeFunc(SceneObject, name);
+         }
       }
       
       #endregion

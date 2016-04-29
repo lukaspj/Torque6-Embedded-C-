@@ -40,11 +40,35 @@ namespace Torque6.Engine.SimObjects.GuiControls
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiTickCtrlCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiTickCtrlCreateInstance();
+         private static _GuiTickCtrlCreateInstance _GuiTickCtrlCreateInstanceFunc;
+         internal static IntPtr GuiTickCtrlCreateInstance()
+         {
+            if (_GuiTickCtrlCreateInstanceFunc == null)
+            {
+               _GuiTickCtrlCreateInstanceFunc =
+                  (_GuiTickCtrlCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiTickCtrlCreateInstance"), typeof(_GuiTickCtrlCreateInstance));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiTickCtrlSetProcessTicks(IntPtr ctrl, bool tick);
+            return _GuiTickCtrlCreateInstanceFunc();
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiTickCtrlSetProcessTicks(IntPtr ctrl, bool tick);
+         private static _GuiTickCtrlSetProcessTicks _GuiTickCtrlSetProcessTicksFunc;
+         internal static void GuiTickCtrlSetProcessTicks(IntPtr ctrl, bool tick)
+         {
+            if (_GuiTickCtrlSetProcessTicksFunc == null)
+            {
+               _GuiTickCtrlSetProcessTicksFunc =
+                  (_GuiTickCtrlSetProcessTicks)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiTickCtrlSetProcessTicks"), typeof(_GuiTickCtrlSetProcessTicks));
+            }
+
+            _GuiTickCtrlSetProcessTicksFunc(ctrl, tick);
+         }
       }
       
       #endregion

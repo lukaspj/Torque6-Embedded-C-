@@ -40,14 +40,50 @@ namespace Torque6.Engine.SimObjects.GuiControls
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool GuiMouseEventCtrlGetLockMouse(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _GuiMouseEventCtrlGetLockMouse(IntPtr ctrl);
+         private static _GuiMouseEventCtrlGetLockMouse _GuiMouseEventCtrlGetLockMouseFunc;
+         internal static bool GuiMouseEventCtrlGetLockMouse(IntPtr ctrl)
+         {
+            if (_GuiMouseEventCtrlGetLockMouseFunc == null)
+            {
+               _GuiMouseEventCtrlGetLockMouseFunc =
+                  (_GuiMouseEventCtrlGetLockMouse)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiMouseEventCtrlGetLockMouse"), typeof(_GuiMouseEventCtrlGetLockMouse));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiMouseEventCtrlSetLockMouse(IntPtr ctrl, bool enableLock);
+            return _GuiMouseEventCtrlGetLockMouseFunc(ctrl);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiMouseEventCtrlCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiMouseEventCtrlSetLockMouse(IntPtr ctrl, bool enableLock);
+         private static _GuiMouseEventCtrlSetLockMouse _GuiMouseEventCtrlSetLockMouseFunc;
+         internal static void GuiMouseEventCtrlSetLockMouse(IntPtr ctrl, bool enableLock)
+         {
+            if (_GuiMouseEventCtrlSetLockMouseFunc == null)
+            {
+               _GuiMouseEventCtrlSetLockMouseFunc =
+                  (_GuiMouseEventCtrlSetLockMouse)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiMouseEventCtrlSetLockMouse"), typeof(_GuiMouseEventCtrlSetLockMouse));
+            }
+
+            _GuiMouseEventCtrlSetLockMouseFunc(ctrl, enableLock);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiMouseEventCtrlCreateInstance();
+         private static _GuiMouseEventCtrlCreateInstance _GuiMouseEventCtrlCreateInstanceFunc;
+         internal static IntPtr GuiMouseEventCtrlCreateInstance()
+         {
+            if (_GuiMouseEventCtrlCreateInstanceFunc == null)
+            {
+               _GuiMouseEventCtrlCreateInstanceFunc =
+                  (_GuiMouseEventCtrlCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiMouseEventCtrlCreateInstance"), typeof(_GuiMouseEventCtrlCreateInstance));
+            }
+
+            return _GuiMouseEventCtrlCreateInstanceFunc();
+         }
       }
       
       #endregion

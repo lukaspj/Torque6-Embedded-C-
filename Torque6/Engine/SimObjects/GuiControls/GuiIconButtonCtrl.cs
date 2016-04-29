@@ -40,47 +40,215 @@ namespace Torque6.Engine.SimObjects.GuiControls
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiIconButtonCtrlGetButtonMargin(IntPtr ctrl, out Point2I outMargin);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiIconButtonCtrlGetButtonMargin(IntPtr ctrl, out Point2I outMargin);
+         private static _GuiIconButtonCtrlGetButtonMargin _GuiIconButtonCtrlGetButtonMarginFunc;
+         internal static void GuiIconButtonCtrlGetButtonMargin(IntPtr ctrl, out Point2I outMargin)
+         {
+            if (_GuiIconButtonCtrlGetButtonMarginFunc == null)
+            {
+               _GuiIconButtonCtrlGetButtonMarginFunc =
+                  (_GuiIconButtonCtrlGetButtonMargin)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiIconButtonCtrlGetButtonMargin"), typeof(_GuiIconButtonCtrlGetButtonMargin));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiIconButtonCtrlSetButtonMargin(IntPtr ctrl, Point2I margin);
+            _GuiIconButtonCtrlGetButtonMarginFunc(ctrl, out outMargin);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiIconButtonCtrlGetIconBitmap(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiIconButtonCtrlSetButtonMargin(IntPtr ctrl, Point2I margin);
+         private static _GuiIconButtonCtrlSetButtonMargin _GuiIconButtonCtrlSetButtonMarginFunc;
+         internal static void GuiIconButtonCtrlSetButtonMargin(IntPtr ctrl, Point2I margin)
+         {
+            if (_GuiIconButtonCtrlSetButtonMarginFunc == null)
+            {
+               _GuiIconButtonCtrlSetButtonMarginFunc =
+                  (_GuiIconButtonCtrlSetButtonMargin)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiIconButtonCtrlSetButtonMargin"), typeof(_GuiIconButtonCtrlSetButtonMargin));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiIconButtonCtrlSetIconBitmap(IntPtr ctrl, string bitmap);
+            _GuiIconButtonCtrlSetButtonMarginFunc(ctrl, margin);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern int GuiIconButtonCtrlGetIconLocation(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiIconButtonCtrlGetIconBitmap(IntPtr ctrl);
+         private static _GuiIconButtonCtrlGetIconBitmap _GuiIconButtonCtrlGetIconBitmapFunc;
+         internal static IntPtr GuiIconButtonCtrlGetIconBitmap(IntPtr ctrl)
+         {
+            if (_GuiIconButtonCtrlGetIconBitmapFunc == null)
+            {
+               _GuiIconButtonCtrlGetIconBitmapFunc =
+                  (_GuiIconButtonCtrlGetIconBitmap)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiIconButtonCtrlGetIconBitmap"), typeof(_GuiIconButtonCtrlGetIconBitmap));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiIconButtonCtrlSetIconLocation(IntPtr ctrl, int location);
+            return _GuiIconButtonCtrlGetIconBitmapFunc(ctrl);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool GuiIconButtonCtrlGetSizeIconToButton(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiIconButtonCtrlSetIconBitmap(IntPtr ctrl, string bitmap);
+         private static _GuiIconButtonCtrlSetIconBitmap _GuiIconButtonCtrlSetIconBitmapFunc;
+         internal static void GuiIconButtonCtrlSetIconBitmap(IntPtr ctrl, string bitmap)
+         {
+            if (_GuiIconButtonCtrlSetIconBitmapFunc == null)
+            {
+               _GuiIconButtonCtrlSetIconBitmapFunc =
+                  (_GuiIconButtonCtrlSetIconBitmap)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiIconButtonCtrlSetIconBitmap"), typeof(_GuiIconButtonCtrlSetIconBitmap));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiIconButtonCtrlSetSizeIconToButton(IntPtr ctrl, bool sizeIconToButton);
+            _GuiIconButtonCtrlSetIconBitmapFunc(ctrl, bitmap);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern int GuiIconButtonCtrlGetTextLocation(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate int _GuiIconButtonCtrlGetIconLocation(IntPtr ctrl);
+         private static _GuiIconButtonCtrlGetIconLocation _GuiIconButtonCtrlGetIconLocationFunc;
+         internal static int GuiIconButtonCtrlGetIconLocation(IntPtr ctrl)
+         {
+            if (_GuiIconButtonCtrlGetIconLocationFunc == null)
+            {
+               _GuiIconButtonCtrlGetIconLocationFunc =
+                  (_GuiIconButtonCtrlGetIconLocation)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiIconButtonCtrlGetIconLocation"), typeof(_GuiIconButtonCtrlGetIconLocation));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiIconButtonCtrlSetTextLocation(IntPtr ctrl, int location);
+            return _GuiIconButtonCtrlGetIconLocationFunc(ctrl);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern int GuiIconButtonCtrlGetTextMargin(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiIconButtonCtrlSetIconLocation(IntPtr ctrl, int location);
+         private static _GuiIconButtonCtrlSetIconLocation _GuiIconButtonCtrlSetIconLocationFunc;
+         internal static void GuiIconButtonCtrlSetIconLocation(IntPtr ctrl, int location)
+         {
+            if (_GuiIconButtonCtrlSetIconLocationFunc == null)
+            {
+               _GuiIconButtonCtrlSetIconLocationFunc =
+                  (_GuiIconButtonCtrlSetIconLocation)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiIconButtonCtrlSetIconLocation"), typeof(_GuiIconButtonCtrlSetIconLocation));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiIconButtonCtrlSetTextMargin(IntPtr ctrl, int margin);
+            _GuiIconButtonCtrlSetIconLocationFunc(ctrl, location);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiIconButtonCtrlCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _GuiIconButtonCtrlGetSizeIconToButton(IntPtr ctrl);
+         private static _GuiIconButtonCtrlGetSizeIconToButton _GuiIconButtonCtrlGetSizeIconToButtonFunc;
+         internal static bool GuiIconButtonCtrlGetSizeIconToButton(IntPtr ctrl)
+         {
+            if (_GuiIconButtonCtrlGetSizeIconToButtonFunc == null)
+            {
+               _GuiIconButtonCtrlGetSizeIconToButtonFunc =
+                  (_GuiIconButtonCtrlGetSizeIconToButton)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiIconButtonCtrlGetSizeIconToButton"), typeof(_GuiIconButtonCtrlGetSizeIconToButton));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiIconButtonCtrlSetBitmap(IntPtr ctrl, string filePath);
+            return _GuiIconButtonCtrlGetSizeIconToButtonFunc(ctrl);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiIconButtonCtrlSetSizeIconToButton(IntPtr ctrl, bool sizeIconToButton);
+         private static _GuiIconButtonCtrlSetSizeIconToButton _GuiIconButtonCtrlSetSizeIconToButtonFunc;
+         internal static void GuiIconButtonCtrlSetSizeIconToButton(IntPtr ctrl, bool sizeIconToButton)
+         {
+            if (_GuiIconButtonCtrlSetSizeIconToButtonFunc == null)
+            {
+               _GuiIconButtonCtrlSetSizeIconToButtonFunc =
+                  (_GuiIconButtonCtrlSetSizeIconToButton)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiIconButtonCtrlSetSizeIconToButton"), typeof(_GuiIconButtonCtrlSetSizeIconToButton));
+            }
+
+            _GuiIconButtonCtrlSetSizeIconToButtonFunc(ctrl, sizeIconToButton);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate int _GuiIconButtonCtrlGetTextLocation(IntPtr ctrl);
+         private static _GuiIconButtonCtrlGetTextLocation _GuiIconButtonCtrlGetTextLocationFunc;
+         internal static int GuiIconButtonCtrlGetTextLocation(IntPtr ctrl)
+         {
+            if (_GuiIconButtonCtrlGetTextLocationFunc == null)
+            {
+               _GuiIconButtonCtrlGetTextLocationFunc =
+                  (_GuiIconButtonCtrlGetTextLocation)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiIconButtonCtrlGetTextLocation"), typeof(_GuiIconButtonCtrlGetTextLocation));
+            }
+
+            return _GuiIconButtonCtrlGetTextLocationFunc(ctrl);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiIconButtonCtrlSetTextLocation(IntPtr ctrl, int location);
+         private static _GuiIconButtonCtrlSetTextLocation _GuiIconButtonCtrlSetTextLocationFunc;
+         internal static void GuiIconButtonCtrlSetTextLocation(IntPtr ctrl, int location)
+         {
+            if (_GuiIconButtonCtrlSetTextLocationFunc == null)
+            {
+               _GuiIconButtonCtrlSetTextLocationFunc =
+                  (_GuiIconButtonCtrlSetTextLocation)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiIconButtonCtrlSetTextLocation"), typeof(_GuiIconButtonCtrlSetTextLocation));
+            }
+
+            _GuiIconButtonCtrlSetTextLocationFunc(ctrl, location);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate int _GuiIconButtonCtrlGetTextMargin(IntPtr ctrl);
+         private static _GuiIconButtonCtrlGetTextMargin _GuiIconButtonCtrlGetTextMarginFunc;
+         internal static int GuiIconButtonCtrlGetTextMargin(IntPtr ctrl)
+         {
+            if (_GuiIconButtonCtrlGetTextMarginFunc == null)
+            {
+               _GuiIconButtonCtrlGetTextMarginFunc =
+                  (_GuiIconButtonCtrlGetTextMargin)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiIconButtonCtrlGetTextMargin"), typeof(_GuiIconButtonCtrlGetTextMargin));
+            }
+
+            return _GuiIconButtonCtrlGetTextMarginFunc(ctrl);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiIconButtonCtrlSetTextMargin(IntPtr ctrl, int margin);
+         private static _GuiIconButtonCtrlSetTextMargin _GuiIconButtonCtrlSetTextMarginFunc;
+         internal static void GuiIconButtonCtrlSetTextMargin(IntPtr ctrl, int margin)
+         {
+            if (_GuiIconButtonCtrlSetTextMarginFunc == null)
+            {
+               _GuiIconButtonCtrlSetTextMarginFunc =
+                  (_GuiIconButtonCtrlSetTextMargin)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiIconButtonCtrlSetTextMargin"), typeof(_GuiIconButtonCtrlSetTextMargin));
+            }
+
+            _GuiIconButtonCtrlSetTextMarginFunc(ctrl, margin);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiIconButtonCtrlCreateInstance();
+         private static _GuiIconButtonCtrlCreateInstance _GuiIconButtonCtrlCreateInstanceFunc;
+         internal static IntPtr GuiIconButtonCtrlCreateInstance()
+         {
+            if (_GuiIconButtonCtrlCreateInstanceFunc == null)
+            {
+               _GuiIconButtonCtrlCreateInstanceFunc =
+                  (_GuiIconButtonCtrlCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiIconButtonCtrlCreateInstance"), typeof(_GuiIconButtonCtrlCreateInstance));
+            }
+
+            return _GuiIconButtonCtrlCreateInstanceFunc();
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiIconButtonCtrlSetBitmap(IntPtr ctrl, string filePath);
+         private static _GuiIconButtonCtrlSetBitmap _GuiIconButtonCtrlSetBitmapFunc;
+         internal static void GuiIconButtonCtrlSetBitmap(IntPtr ctrl, string filePath)
+         {
+            if (_GuiIconButtonCtrlSetBitmapFunc == null)
+            {
+               _GuiIconButtonCtrlSetBitmapFunc =
+                  (_GuiIconButtonCtrlSetBitmap)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiIconButtonCtrlSetBitmap"), typeof(_GuiIconButtonCtrlSetBitmap));
+            }
+
+            _GuiIconButtonCtrlSetBitmapFunc(ctrl, filePath);
+         }
       }
       
       #endregion

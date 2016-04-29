@@ -40,14 +40,50 @@ namespace Torque6.Engine.SimObjects
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr MeshAssetGetMeshFile(IntPtr meshAsset);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _MeshAssetGetMeshFile(IntPtr meshAsset);
+         private static _MeshAssetGetMeshFile _MeshAssetGetMeshFileFunc;
+         internal static IntPtr MeshAssetGetMeshFile(IntPtr meshAsset)
+         {
+            if (_MeshAssetGetMeshFileFunc == null)
+            {
+               _MeshAssetGetMeshFileFunc =
+                  (_MeshAssetGetMeshFile)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "MeshAssetGetMeshFile"), typeof(_MeshAssetGetMeshFile));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void MeshAssetSetMeshFile(IntPtr meshAsset, string val);
+            return _MeshAssetGetMeshFileFunc(meshAsset);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr MeshAssetCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _MeshAssetSetMeshFile(IntPtr meshAsset, string val);
+         private static _MeshAssetSetMeshFile _MeshAssetSetMeshFileFunc;
+         internal static void MeshAssetSetMeshFile(IntPtr meshAsset, string val)
+         {
+            if (_MeshAssetSetMeshFileFunc == null)
+            {
+               _MeshAssetSetMeshFileFunc =
+                  (_MeshAssetSetMeshFile)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "MeshAssetSetMeshFile"), typeof(_MeshAssetSetMeshFile));
+            }
+
+            _MeshAssetSetMeshFileFunc(meshAsset, val);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _MeshAssetCreateInstance();
+         private static _MeshAssetCreateInstance _MeshAssetCreateInstanceFunc;
+         internal static IntPtr MeshAssetCreateInstance()
+         {
+            if (_MeshAssetCreateInstanceFunc == null)
+            {
+               _MeshAssetCreateInstanceFunc =
+                  (_MeshAssetCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "MeshAssetCreateInstance"), typeof(_MeshAssetCreateInstance));
+            }
+
+            return _MeshAssetCreateInstanceFunc();
+         }
       }
       
       #endregion

@@ -40,17 +40,65 @@ namespace Torque6.Engine.SimObjects.GuiControls
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool GuiDragAndDropControlGetDeleteOnMouseUp(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _GuiDragAndDropControlGetDeleteOnMouseUp(IntPtr ctrl);
+         private static _GuiDragAndDropControlGetDeleteOnMouseUp _GuiDragAndDropControlGetDeleteOnMouseUpFunc;
+         internal static bool GuiDragAndDropControlGetDeleteOnMouseUp(IntPtr ctrl)
+         {
+            if (_GuiDragAndDropControlGetDeleteOnMouseUpFunc == null)
+            {
+               _GuiDragAndDropControlGetDeleteOnMouseUpFunc =
+                  (_GuiDragAndDropControlGetDeleteOnMouseUp)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiDragAndDropControlGetDeleteOnMouseUp"), typeof(_GuiDragAndDropControlGetDeleteOnMouseUp));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiDragAndDropControlSetDeleteOnMouseUp(IntPtr ctrl, bool deleteOnMouseUp);
+            return _GuiDragAndDropControlGetDeleteOnMouseUpFunc(ctrl);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiDragAndDropControlCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiDragAndDropControlSetDeleteOnMouseUp(IntPtr ctrl, bool deleteOnMouseUp);
+         private static _GuiDragAndDropControlSetDeleteOnMouseUp _GuiDragAndDropControlSetDeleteOnMouseUpFunc;
+         internal static void GuiDragAndDropControlSetDeleteOnMouseUp(IntPtr ctrl, bool deleteOnMouseUp)
+         {
+            if (_GuiDragAndDropControlSetDeleteOnMouseUpFunc == null)
+            {
+               _GuiDragAndDropControlSetDeleteOnMouseUpFunc =
+                  (_GuiDragAndDropControlSetDeleteOnMouseUp)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiDragAndDropControlSetDeleteOnMouseUp"), typeof(_GuiDragAndDropControlSetDeleteOnMouseUp));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiDragAndDropControlStartDragging(IntPtr ctrl, Point2I offset);
+            _GuiDragAndDropControlSetDeleteOnMouseUpFunc(ctrl, deleteOnMouseUp);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiDragAndDropControlCreateInstance();
+         private static _GuiDragAndDropControlCreateInstance _GuiDragAndDropControlCreateInstanceFunc;
+         internal static IntPtr GuiDragAndDropControlCreateInstance()
+         {
+            if (_GuiDragAndDropControlCreateInstanceFunc == null)
+            {
+               _GuiDragAndDropControlCreateInstanceFunc =
+                  (_GuiDragAndDropControlCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiDragAndDropControlCreateInstance"), typeof(_GuiDragAndDropControlCreateInstance));
+            }
+
+            return _GuiDragAndDropControlCreateInstanceFunc();
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiDragAndDropControlStartDragging(IntPtr ctrl, Point2I offset);
+         private static _GuiDragAndDropControlStartDragging _GuiDragAndDropControlStartDraggingFunc;
+         internal static void GuiDragAndDropControlStartDragging(IntPtr ctrl, Point2I offset)
+         {
+            if (_GuiDragAndDropControlStartDraggingFunc == null)
+            {
+               _GuiDragAndDropControlStartDraggingFunc =
+                  (_GuiDragAndDropControlStartDragging)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiDragAndDropControlStartDragging"), typeof(_GuiDragAndDropControlStartDragging));
+            }
+
+            _GuiDragAndDropControlStartDraggingFunc(ctrl, offset);
+         }
       }
       
       #endregion

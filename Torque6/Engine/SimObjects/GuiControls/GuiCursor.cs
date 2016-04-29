@@ -40,26 +40,110 @@ namespace Torque6.Engine.SimObjects.GuiControls
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiCursorGetHotSpot(IntPtr guiCursor, out Point2I outPoint);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiCursorGetHotSpot(IntPtr guiCursor, out Point2I outPoint);
+         private static _GuiCursorGetHotSpot _GuiCursorGetHotSpotFunc;
+         internal static void GuiCursorGetHotSpot(IntPtr guiCursor, out Point2I outPoint)
+         {
+            if (_GuiCursorGetHotSpotFunc == null)
+            {
+               _GuiCursorGetHotSpotFunc =
+                  (_GuiCursorGetHotSpot)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiCursorGetHotSpot"), typeof(_GuiCursorGetHotSpot));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiCursorSetHotSpot(IntPtr guiCursor, Point2I value);
+            _GuiCursorGetHotSpotFunc(guiCursor, out outPoint);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiCursorGetRenderOffset(IntPtr guiCursor, out Point2F outPoint);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiCursorSetHotSpot(IntPtr guiCursor, Point2I value);
+         private static _GuiCursorSetHotSpot _GuiCursorSetHotSpotFunc;
+         internal static void GuiCursorSetHotSpot(IntPtr guiCursor, Point2I value)
+         {
+            if (_GuiCursorSetHotSpotFunc == null)
+            {
+               _GuiCursorSetHotSpotFunc =
+                  (_GuiCursorSetHotSpot)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiCursorSetHotSpot"), typeof(_GuiCursorSetHotSpot));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiCursorSetRenderOffset(IntPtr guiCursor, Point2F value);
+            _GuiCursorSetHotSpotFunc(guiCursor, value);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiCursorGetBitmapName(IntPtr guiCursor);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiCursorGetRenderOffset(IntPtr guiCursor, out Point2F outPoint);
+         private static _GuiCursorGetRenderOffset _GuiCursorGetRenderOffsetFunc;
+         internal static void GuiCursorGetRenderOffset(IntPtr guiCursor, out Point2F outPoint)
+         {
+            if (_GuiCursorGetRenderOffsetFunc == null)
+            {
+               _GuiCursorGetRenderOffsetFunc =
+                  (_GuiCursorGetRenderOffset)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiCursorGetRenderOffset"), typeof(_GuiCursorGetRenderOffset));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiCursorSetBitmapName(IntPtr guiCursor, string value);
+            _GuiCursorGetRenderOffsetFunc(guiCursor, out outPoint);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiCursorCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiCursorSetRenderOffset(IntPtr guiCursor, Point2F value);
+         private static _GuiCursorSetRenderOffset _GuiCursorSetRenderOffsetFunc;
+         internal static void GuiCursorSetRenderOffset(IntPtr guiCursor, Point2F value)
+         {
+            if (_GuiCursorSetRenderOffsetFunc == null)
+            {
+               _GuiCursorSetRenderOffsetFunc =
+                  (_GuiCursorSetRenderOffset)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiCursorSetRenderOffset"), typeof(_GuiCursorSetRenderOffset));
+            }
+
+            _GuiCursorSetRenderOffsetFunc(guiCursor, value);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiCursorGetBitmapName(IntPtr guiCursor);
+         private static _GuiCursorGetBitmapName _GuiCursorGetBitmapNameFunc;
+         internal static IntPtr GuiCursorGetBitmapName(IntPtr guiCursor)
+         {
+            if (_GuiCursorGetBitmapNameFunc == null)
+            {
+               _GuiCursorGetBitmapNameFunc =
+                  (_GuiCursorGetBitmapName)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiCursorGetBitmapName"), typeof(_GuiCursorGetBitmapName));
+            }
+
+            return _GuiCursorGetBitmapNameFunc(guiCursor);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiCursorSetBitmapName(IntPtr guiCursor, string value);
+         private static _GuiCursorSetBitmapName _GuiCursorSetBitmapNameFunc;
+         internal static void GuiCursorSetBitmapName(IntPtr guiCursor, string value)
+         {
+            if (_GuiCursorSetBitmapNameFunc == null)
+            {
+               _GuiCursorSetBitmapNameFunc =
+                  (_GuiCursorSetBitmapName)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiCursorSetBitmapName"), typeof(_GuiCursorSetBitmapName));
+            }
+
+            _GuiCursorSetBitmapNameFunc(guiCursor, value);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiCursorCreateInstance();
+         private static _GuiCursorCreateInstance _GuiCursorCreateInstanceFunc;
+         internal static IntPtr GuiCursorCreateInstance()
+         {
+            if (_GuiCursorCreateInstanceFunc == null)
+            {
+               _GuiCursorCreateInstanceFunc =
+                  (_GuiCursorCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiCursorCreateInstance"), typeof(_GuiCursorCreateInstance));
+            }
+
+            return _GuiCursorCreateInstanceFunc();
+         }
       }
       
       #endregion

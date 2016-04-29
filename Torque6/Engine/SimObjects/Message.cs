@@ -40,17 +40,65 @@ namespace Torque6.Engine.SimObjects
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr MessageCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _MessageCreateInstance();
+         private static _MessageCreateInstance _MessageCreateInstanceFunc;
+         internal static IntPtr MessageCreateInstance()
+         {
+            if (_MessageCreateInstanceFunc == null)
+            {
+               _MessageCreateInstanceFunc =
+                  (_MessageCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "MessageCreateInstance"), typeof(_MessageCreateInstance));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr MessageGetType(IntPtr message);
+            return _MessageCreateInstanceFunc();
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void MessageAddReference(IntPtr message);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _MessageGetType(IntPtr message);
+         private static _MessageGetType _MessageGetTypeFunc;
+         internal static IntPtr MessageGetType(IntPtr message)
+         {
+            if (_MessageGetTypeFunc == null)
+            {
+               _MessageGetTypeFunc =
+                  (_MessageGetType)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "MessageGetType"), typeof(_MessageGetType));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void MessageFreeReference(IntPtr message);
+            return _MessageGetTypeFunc(message);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _MessageAddReference(IntPtr message);
+         private static _MessageAddReference _MessageAddReferenceFunc;
+         internal static void MessageAddReference(IntPtr message)
+         {
+            if (_MessageAddReferenceFunc == null)
+            {
+               _MessageAddReferenceFunc =
+                  (_MessageAddReference)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "MessageAddReference"), typeof(_MessageAddReference));
+            }
+
+            _MessageAddReferenceFunc(message);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _MessageFreeReference(IntPtr message);
+         private static _MessageFreeReference _MessageFreeReferenceFunc;
+         internal static void MessageFreeReference(IntPtr message)
+         {
+            if (_MessageFreeReferenceFunc == null)
+            {
+               _MessageFreeReferenceFunc =
+                  (_MessageFreeReference)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "MessageFreeReference"), typeof(_MessageFreeReference));
+            }
+
+            _MessageFreeReferenceFunc(message);
+         }
       }
       
       #endregion

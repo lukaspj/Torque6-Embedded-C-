@@ -40,14 +40,50 @@ namespace Torque6.Engine.SimObjects
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr PluginAssetGetPluginFile(IntPtr pluginAsset);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _PluginAssetGetPluginFile(IntPtr pluginAsset);
+         private static _PluginAssetGetPluginFile _PluginAssetGetPluginFileFunc;
+         internal static IntPtr PluginAssetGetPluginFile(IntPtr pluginAsset)
+         {
+            if (_PluginAssetGetPluginFileFunc == null)
+            {
+               _PluginAssetGetPluginFileFunc =
+                  (_PluginAssetGetPluginFile)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "PluginAssetGetPluginFile"), typeof(_PluginAssetGetPluginFile));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void PluginAssetSetPluginFile(IntPtr pluginAsset, string val);
+            return _PluginAssetGetPluginFileFunc(pluginAsset);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr PluginAssetCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _PluginAssetSetPluginFile(IntPtr pluginAsset, string val);
+         private static _PluginAssetSetPluginFile _PluginAssetSetPluginFileFunc;
+         internal static void PluginAssetSetPluginFile(IntPtr pluginAsset, string val)
+         {
+            if (_PluginAssetSetPluginFileFunc == null)
+            {
+               _PluginAssetSetPluginFileFunc =
+                  (_PluginAssetSetPluginFile)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "PluginAssetSetPluginFile"), typeof(_PluginAssetSetPluginFile));
+            }
+
+            _PluginAssetSetPluginFileFunc(pluginAsset, val);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _PluginAssetCreateInstance();
+         private static _PluginAssetCreateInstance _PluginAssetCreateInstanceFunc;
+         internal static IntPtr PluginAssetCreateInstance()
+         {
+            if (_PluginAssetCreateInstanceFunc == null)
+            {
+               _PluginAssetCreateInstanceFunc =
+                  (_PluginAssetCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "PluginAssetCreateInstance"), typeof(_PluginAssetCreateInstance));
+            }
+
+            return _PluginAssetCreateInstanceFunc();
+         }
       }
       
       #endregion

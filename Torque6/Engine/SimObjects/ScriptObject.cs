@@ -40,8 +40,20 @@ namespace Torque6.Engine.SimObjects
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr ScriptObjectCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _ScriptObjectCreateInstance();
+         private static _ScriptObjectCreateInstance _ScriptObjectCreateInstanceFunc;
+         internal static IntPtr ScriptObjectCreateInstance()
+         {
+            if (_ScriptObjectCreateInstanceFunc == null)
+            {
+               _ScriptObjectCreateInstanceFunc =
+                  (_ScriptObjectCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "ScriptObjectCreateInstance"), typeof(_ScriptObjectCreateInstance));
+            }
+
+            return _ScriptObjectCreateInstanceFunc();
+         }
       }
       
       #endregion

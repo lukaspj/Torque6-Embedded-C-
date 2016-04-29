@@ -40,56 +40,260 @@ namespace Torque6.Engine.SimObjects.GuiControls
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiRolloutCtrlGetCaption(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiRolloutCtrlGetCaption(IntPtr ctrl);
+         private static _GuiRolloutCtrlGetCaption _GuiRolloutCtrlGetCaptionFunc;
+         internal static IntPtr GuiRolloutCtrlGetCaption(IntPtr ctrl)
+         {
+            if (_GuiRolloutCtrlGetCaptionFunc == null)
+            {
+               _GuiRolloutCtrlGetCaptionFunc =
+                  (_GuiRolloutCtrlGetCaption)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiRolloutCtrlGetCaption"), typeof(_GuiRolloutCtrlGetCaption));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiRolloutCtrlSetCaption(IntPtr ctrl, string caption);
+            return _GuiRolloutCtrlGetCaptionFunc(ctrl);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiRolloutCtrlGetMargin(IntPtr ctrl, out Point2I outMargin);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiRolloutCtrlSetCaption(IntPtr ctrl, string caption);
+         private static _GuiRolloutCtrlSetCaption _GuiRolloutCtrlSetCaptionFunc;
+         internal static void GuiRolloutCtrlSetCaption(IntPtr ctrl, string caption)
+         {
+            if (_GuiRolloutCtrlSetCaptionFunc == null)
+            {
+               _GuiRolloutCtrlSetCaptionFunc =
+                  (_GuiRolloutCtrlSetCaption)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiRolloutCtrlSetCaption"), typeof(_GuiRolloutCtrlSetCaption));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiRolloutCtrlSetMargin(IntPtr ctrl, Point2I margin);
+            _GuiRolloutCtrlSetCaptionFunc(ctrl, caption);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern int GuiRolloutCtrlGetDefaultHeight(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiRolloutCtrlGetMargin(IntPtr ctrl, out Point2I outMargin);
+         private static _GuiRolloutCtrlGetMargin _GuiRolloutCtrlGetMarginFunc;
+         internal static void GuiRolloutCtrlGetMargin(IntPtr ctrl, out Point2I outMargin)
+         {
+            if (_GuiRolloutCtrlGetMarginFunc == null)
+            {
+               _GuiRolloutCtrlGetMarginFunc =
+                  (_GuiRolloutCtrlGetMargin)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiRolloutCtrlGetMargin"), typeof(_GuiRolloutCtrlGetMargin));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiRolloutCtrlSetDefaultHeight(IntPtr ctrl, int height);
+            _GuiRolloutCtrlGetMarginFunc(ctrl, out outMargin);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool GuiRolloutCtrlGetCollapsed(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiRolloutCtrlSetMargin(IntPtr ctrl, Point2I margin);
+         private static _GuiRolloutCtrlSetMargin _GuiRolloutCtrlSetMarginFunc;
+         internal static void GuiRolloutCtrlSetMargin(IntPtr ctrl, Point2I margin)
+         {
+            if (_GuiRolloutCtrlSetMarginFunc == null)
+            {
+               _GuiRolloutCtrlSetMarginFunc =
+                  (_GuiRolloutCtrlSetMargin)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiRolloutCtrlSetMargin"), typeof(_GuiRolloutCtrlSetMargin));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiRolloutCtrlSetCollapsed(IntPtr ctrl, bool enable);
+            _GuiRolloutCtrlSetMarginFunc(ctrl, margin);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool GuiRolloutCtrlGetClickCollapse(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate int _GuiRolloutCtrlGetDefaultHeight(IntPtr ctrl);
+         private static _GuiRolloutCtrlGetDefaultHeight _GuiRolloutCtrlGetDefaultHeightFunc;
+         internal static int GuiRolloutCtrlGetDefaultHeight(IntPtr ctrl)
+         {
+            if (_GuiRolloutCtrlGetDefaultHeightFunc == null)
+            {
+               _GuiRolloutCtrlGetDefaultHeightFunc =
+                  (_GuiRolloutCtrlGetDefaultHeight)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiRolloutCtrlGetDefaultHeight"), typeof(_GuiRolloutCtrlGetDefaultHeight));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiRolloutCtrlSetClickCollapse(IntPtr ctrl, bool enable);
+            return _GuiRolloutCtrlGetDefaultHeightFunc(ctrl);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiRolloutCtrlCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiRolloutCtrlSetDefaultHeight(IntPtr ctrl, int height);
+         private static _GuiRolloutCtrlSetDefaultHeight _GuiRolloutCtrlSetDefaultHeightFunc;
+         internal static void GuiRolloutCtrlSetDefaultHeight(IntPtr ctrl, int height)
+         {
+            if (_GuiRolloutCtrlSetDefaultHeightFunc == null)
+            {
+               _GuiRolloutCtrlSetDefaultHeightFunc =
+                  (_GuiRolloutCtrlSetDefaultHeight)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiRolloutCtrlSetDefaultHeight"), typeof(_GuiRolloutCtrlSetDefaultHeight));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool GuiRolloutCtrlIsExpanded(IntPtr ctrl);
+            _GuiRolloutCtrlSetDefaultHeightFunc(ctrl, height);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiRolloutCtrlCollapse(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _GuiRolloutCtrlGetCollapsed(IntPtr ctrl);
+         private static _GuiRolloutCtrlGetCollapsed _GuiRolloutCtrlGetCollapsedFunc;
+         internal static bool GuiRolloutCtrlGetCollapsed(IntPtr ctrl)
+         {
+            if (_GuiRolloutCtrlGetCollapsedFunc == null)
+            {
+               _GuiRolloutCtrlGetCollapsedFunc =
+                  (_GuiRolloutCtrlGetCollapsed)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiRolloutCtrlGetCollapsed"), typeof(_GuiRolloutCtrlGetCollapsed));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiRolloutCtrlExpand(IntPtr ctrl);
+            return _GuiRolloutCtrlGetCollapsedFunc(ctrl);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiRolloutCtrlInstantCollapse(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiRolloutCtrlSetCollapsed(IntPtr ctrl, bool enable);
+         private static _GuiRolloutCtrlSetCollapsed _GuiRolloutCtrlSetCollapsedFunc;
+         internal static void GuiRolloutCtrlSetCollapsed(IntPtr ctrl, bool enable)
+         {
+            if (_GuiRolloutCtrlSetCollapsedFunc == null)
+            {
+               _GuiRolloutCtrlSetCollapsedFunc =
+                  (_GuiRolloutCtrlSetCollapsed)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiRolloutCtrlSetCollapsed"), typeof(_GuiRolloutCtrlSetCollapsed));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiRolloutCtrlInstantExpand(IntPtr ctrl);
+            _GuiRolloutCtrlSetCollapsedFunc(ctrl, enable);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiRolloutCtrlSizeToContents(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _GuiRolloutCtrlGetClickCollapse(IntPtr ctrl);
+         private static _GuiRolloutCtrlGetClickCollapse _GuiRolloutCtrlGetClickCollapseFunc;
+         internal static bool GuiRolloutCtrlGetClickCollapse(IntPtr ctrl)
+         {
+            if (_GuiRolloutCtrlGetClickCollapseFunc == null)
+            {
+               _GuiRolloutCtrlGetClickCollapseFunc =
+                  (_GuiRolloutCtrlGetClickCollapse)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiRolloutCtrlGetClickCollapse"), typeof(_GuiRolloutCtrlGetClickCollapse));
+            }
+
+            return _GuiRolloutCtrlGetClickCollapseFunc(ctrl);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiRolloutCtrlSetClickCollapse(IntPtr ctrl, bool enable);
+         private static _GuiRolloutCtrlSetClickCollapse _GuiRolloutCtrlSetClickCollapseFunc;
+         internal static void GuiRolloutCtrlSetClickCollapse(IntPtr ctrl, bool enable)
+         {
+            if (_GuiRolloutCtrlSetClickCollapseFunc == null)
+            {
+               _GuiRolloutCtrlSetClickCollapseFunc =
+                  (_GuiRolloutCtrlSetClickCollapse)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiRolloutCtrlSetClickCollapse"), typeof(_GuiRolloutCtrlSetClickCollapse));
+            }
+
+            _GuiRolloutCtrlSetClickCollapseFunc(ctrl, enable);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiRolloutCtrlCreateInstance();
+         private static _GuiRolloutCtrlCreateInstance _GuiRolloutCtrlCreateInstanceFunc;
+         internal static IntPtr GuiRolloutCtrlCreateInstance()
+         {
+            if (_GuiRolloutCtrlCreateInstanceFunc == null)
+            {
+               _GuiRolloutCtrlCreateInstanceFunc =
+                  (_GuiRolloutCtrlCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiRolloutCtrlCreateInstance"), typeof(_GuiRolloutCtrlCreateInstance));
+            }
+
+            return _GuiRolloutCtrlCreateInstanceFunc();
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _GuiRolloutCtrlIsExpanded(IntPtr ctrl);
+         private static _GuiRolloutCtrlIsExpanded _GuiRolloutCtrlIsExpandedFunc;
+         internal static bool GuiRolloutCtrlIsExpanded(IntPtr ctrl)
+         {
+            if (_GuiRolloutCtrlIsExpandedFunc == null)
+            {
+               _GuiRolloutCtrlIsExpandedFunc =
+                  (_GuiRolloutCtrlIsExpanded)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiRolloutCtrlIsExpanded"), typeof(_GuiRolloutCtrlIsExpanded));
+            }
+
+            return _GuiRolloutCtrlIsExpandedFunc(ctrl);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiRolloutCtrlCollapse(IntPtr ctrl);
+         private static _GuiRolloutCtrlCollapse _GuiRolloutCtrlCollapseFunc;
+         internal static void GuiRolloutCtrlCollapse(IntPtr ctrl)
+         {
+            if (_GuiRolloutCtrlCollapseFunc == null)
+            {
+               _GuiRolloutCtrlCollapseFunc =
+                  (_GuiRolloutCtrlCollapse)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiRolloutCtrlCollapse"), typeof(_GuiRolloutCtrlCollapse));
+            }
+
+            _GuiRolloutCtrlCollapseFunc(ctrl);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiRolloutCtrlExpand(IntPtr ctrl);
+         private static _GuiRolloutCtrlExpand _GuiRolloutCtrlExpandFunc;
+         internal static void GuiRolloutCtrlExpand(IntPtr ctrl)
+         {
+            if (_GuiRolloutCtrlExpandFunc == null)
+            {
+               _GuiRolloutCtrlExpandFunc =
+                  (_GuiRolloutCtrlExpand)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiRolloutCtrlExpand"), typeof(_GuiRolloutCtrlExpand));
+            }
+
+            _GuiRolloutCtrlExpandFunc(ctrl);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiRolloutCtrlInstantCollapse(IntPtr ctrl);
+         private static _GuiRolloutCtrlInstantCollapse _GuiRolloutCtrlInstantCollapseFunc;
+         internal static void GuiRolloutCtrlInstantCollapse(IntPtr ctrl)
+         {
+            if (_GuiRolloutCtrlInstantCollapseFunc == null)
+            {
+               _GuiRolloutCtrlInstantCollapseFunc =
+                  (_GuiRolloutCtrlInstantCollapse)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiRolloutCtrlInstantCollapse"), typeof(_GuiRolloutCtrlInstantCollapse));
+            }
+
+            _GuiRolloutCtrlInstantCollapseFunc(ctrl);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiRolloutCtrlInstantExpand(IntPtr ctrl);
+         private static _GuiRolloutCtrlInstantExpand _GuiRolloutCtrlInstantExpandFunc;
+         internal static void GuiRolloutCtrlInstantExpand(IntPtr ctrl)
+         {
+            if (_GuiRolloutCtrlInstantExpandFunc == null)
+            {
+               _GuiRolloutCtrlInstantExpandFunc =
+                  (_GuiRolloutCtrlInstantExpand)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiRolloutCtrlInstantExpand"), typeof(_GuiRolloutCtrlInstantExpand));
+            }
+
+            _GuiRolloutCtrlInstantExpandFunc(ctrl);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiRolloutCtrlSizeToContents(IntPtr ctrl);
+         private static _GuiRolloutCtrlSizeToContents _GuiRolloutCtrlSizeToContentsFunc;
+         internal static void GuiRolloutCtrlSizeToContents(IntPtr ctrl)
+         {
+            if (_GuiRolloutCtrlSizeToContentsFunc == null)
+            {
+               _GuiRolloutCtrlSizeToContentsFunc =
+                  (_GuiRolloutCtrlSizeToContents)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiRolloutCtrlSizeToContents"), typeof(_GuiRolloutCtrlSizeToContents));
+            }
+
+            _GuiRolloutCtrlSizeToContentsFunc(ctrl);
+         }
       }
       
       #endregion

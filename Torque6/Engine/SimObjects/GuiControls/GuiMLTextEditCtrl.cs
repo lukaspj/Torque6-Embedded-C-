@@ -40,14 +40,50 @@ namespace Torque6.Engine.SimObjects.GuiControls
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiMLTextEditCtrlGetEscapeCommand(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiMLTextEditCtrlGetEscapeCommand(IntPtr ctrl);
+         private static _GuiMLTextEditCtrlGetEscapeCommand _GuiMLTextEditCtrlGetEscapeCommandFunc;
+         internal static IntPtr GuiMLTextEditCtrlGetEscapeCommand(IntPtr ctrl)
+         {
+            if (_GuiMLTextEditCtrlGetEscapeCommandFunc == null)
+            {
+               _GuiMLTextEditCtrlGetEscapeCommandFunc =
+                  (_GuiMLTextEditCtrlGetEscapeCommand)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiMLTextEditCtrlGetEscapeCommand"), typeof(_GuiMLTextEditCtrlGetEscapeCommand));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiMLTextEditCtrlSetEscapeCommand(IntPtr ctrl, string command);
+            return _GuiMLTextEditCtrlGetEscapeCommandFunc(ctrl);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiMLTextEditCtrlCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiMLTextEditCtrlSetEscapeCommand(IntPtr ctrl, string command);
+         private static _GuiMLTextEditCtrlSetEscapeCommand _GuiMLTextEditCtrlSetEscapeCommandFunc;
+         internal static void GuiMLTextEditCtrlSetEscapeCommand(IntPtr ctrl, string command)
+         {
+            if (_GuiMLTextEditCtrlSetEscapeCommandFunc == null)
+            {
+               _GuiMLTextEditCtrlSetEscapeCommandFunc =
+                  (_GuiMLTextEditCtrlSetEscapeCommand)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiMLTextEditCtrlSetEscapeCommand"), typeof(_GuiMLTextEditCtrlSetEscapeCommand));
+            }
+
+            _GuiMLTextEditCtrlSetEscapeCommandFunc(ctrl, command);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiMLTextEditCtrlCreateInstance();
+         private static _GuiMLTextEditCtrlCreateInstance _GuiMLTextEditCtrlCreateInstanceFunc;
+         internal static IntPtr GuiMLTextEditCtrlCreateInstance()
+         {
+            if (_GuiMLTextEditCtrlCreateInstanceFunc == null)
+            {
+               _GuiMLTextEditCtrlCreateInstanceFunc =
+                  (_GuiMLTextEditCtrlCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiMLTextEditCtrlCreateInstance"), typeof(_GuiMLTextEditCtrlCreateInstance));
+            }
+
+            return _GuiMLTextEditCtrlCreateInstanceFunc();
+         }
       }
       
       #endregion

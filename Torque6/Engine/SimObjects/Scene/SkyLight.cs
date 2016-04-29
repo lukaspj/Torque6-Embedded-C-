@@ -40,8 +40,20 @@ namespace Torque6.Engine.SimObjects.Scene
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr SkyLightCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _SkyLightCreateInstance();
+         private static _SkyLightCreateInstance _SkyLightCreateInstanceFunc;
+         internal static IntPtr SkyLightCreateInstance()
+         {
+            if (_SkyLightCreateInstanceFunc == null)
+            {
+               _SkyLightCreateInstanceFunc =
+                  (_SkyLightCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "SkyLightCreateInstance"), typeof(_SkyLightCreateInstance));
+            }
+
+            return _SkyLightCreateInstanceFunc();
+         }
       }
       
       #endregion

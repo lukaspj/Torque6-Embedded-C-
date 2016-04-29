@@ -40,14 +40,50 @@ namespace Torque6.Engine.SimObjects.GuiControls
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiInspectorDynamicGroupCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiInspectorDynamicGroupCreateInstance();
+         private static _GuiInspectorDynamicGroupCreateInstance _GuiInspectorDynamicGroupCreateInstanceFunc;
+         internal static IntPtr GuiInspectorDynamicGroupCreateInstance()
+         {
+            if (_GuiInspectorDynamicGroupCreateInstanceFunc == null)
+            {
+               _GuiInspectorDynamicGroupCreateInstanceFunc =
+                  (_GuiInspectorDynamicGroupCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiInspectorDynamicGroupCreateInstance"), typeof(_GuiInspectorDynamicGroupCreateInstance));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiInspectorDynamicGroupAddDynamicField(IntPtr group);
+            return _GuiInspectorDynamicGroupCreateInstanceFunc();
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiInspectorDynamicGroupInspectGroup(IntPtr group);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiInspectorDynamicGroupAddDynamicField(IntPtr group);
+         private static _GuiInspectorDynamicGroupAddDynamicField _GuiInspectorDynamicGroupAddDynamicFieldFunc;
+         internal static void GuiInspectorDynamicGroupAddDynamicField(IntPtr group)
+         {
+            if (_GuiInspectorDynamicGroupAddDynamicFieldFunc == null)
+            {
+               _GuiInspectorDynamicGroupAddDynamicFieldFunc =
+                  (_GuiInspectorDynamicGroupAddDynamicField)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiInspectorDynamicGroupAddDynamicField"), typeof(_GuiInspectorDynamicGroupAddDynamicField));
+            }
+
+            _GuiInspectorDynamicGroupAddDynamicFieldFunc(group);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiInspectorDynamicGroupInspectGroup(IntPtr group);
+         private static _GuiInspectorDynamicGroupInspectGroup _GuiInspectorDynamicGroupInspectGroupFunc;
+         internal static void GuiInspectorDynamicGroupInspectGroup(IntPtr group)
+         {
+            if (_GuiInspectorDynamicGroupInspectGroupFunc == null)
+            {
+               _GuiInspectorDynamicGroupInspectGroupFunc =
+                  (_GuiInspectorDynamicGroupInspectGroup)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiInspectorDynamicGroupInspectGroup"), typeof(_GuiInspectorDynamicGroupInspectGroup));
+            }
+
+            _GuiInspectorDynamicGroupInspectGroupFunc(group);
+         }
       }
       
       #endregion

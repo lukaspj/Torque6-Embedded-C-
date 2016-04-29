@@ -40,62 +40,290 @@ namespace Torque6.Engine.SimObjects.GuiControls
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiPopUpMenuCtrlCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiPopUpMenuCtrlCreateInstance();
+         private static _GuiPopUpMenuCtrlCreateInstance _GuiPopUpMenuCtrlCreateInstanceFunc;
+         internal static IntPtr GuiPopUpMenuCtrlCreateInstance()
+         {
+            if (_GuiPopUpMenuCtrlCreateInstanceFunc == null)
+            {
+               _GuiPopUpMenuCtrlCreateInstanceFunc =
+                  (_GuiPopUpMenuCtrlCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiPopUpMenuCtrlCreateInstance"), typeof(_GuiPopUpMenuCtrlCreateInstance));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiPopUpMenuCtrlAdd(IntPtr ctrl, string entryText, int entryID, int entryScheme);
+            return _GuiPopUpMenuCtrlCreateInstanceFunc();
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiPopUpMenuCtrlAddScheme(IntPtr ctrl, int entryScheme, Color fontColor, Color fontColorHL, Color fontColorSEL);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiPopUpMenuCtrlAdd(IntPtr ctrl, string entryText, int entryID, int entryScheme);
+         private static _GuiPopUpMenuCtrlAdd _GuiPopUpMenuCtrlAddFunc;
+         internal static void GuiPopUpMenuCtrlAdd(IntPtr ctrl, string entryText, int entryID, int entryScheme)
+         {
+            if (_GuiPopUpMenuCtrlAddFunc == null)
+            {
+               _GuiPopUpMenuCtrlAddFunc =
+                  (_GuiPopUpMenuCtrlAdd)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiPopUpMenuCtrlAdd"), typeof(_GuiPopUpMenuCtrlAdd));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiPopUpMenuCtrlSetText(IntPtr ctrl, string text);
+            _GuiPopUpMenuCtrlAddFunc(ctrl, entryText, entryID, entryScheme);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiPopUpMenuCtrlGetText(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiPopUpMenuCtrlAddScheme(IntPtr ctrl, int entryScheme, Color fontColor, Color fontColorHL, Color fontColorSEL);
+         private static _GuiPopUpMenuCtrlAddScheme _GuiPopUpMenuCtrlAddSchemeFunc;
+         internal static void GuiPopUpMenuCtrlAddScheme(IntPtr ctrl, int entryScheme, Color fontColor, Color fontColorHL, Color fontColorSEL)
+         {
+            if (_GuiPopUpMenuCtrlAddSchemeFunc == null)
+            {
+               _GuiPopUpMenuCtrlAddSchemeFunc =
+                  (_GuiPopUpMenuCtrlAddScheme)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiPopUpMenuCtrlAddScheme"), typeof(_GuiPopUpMenuCtrlAddScheme));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiPopUpMenuCtrlClear(IntPtr ctrl);
+            _GuiPopUpMenuCtrlAddSchemeFunc(ctrl, entryScheme, fontColor, fontColorHL, fontColorSEL);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiPopUpMenuCtrlSort(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiPopUpMenuCtrlSetText(IntPtr ctrl, string text);
+         private static _GuiPopUpMenuCtrlSetText _GuiPopUpMenuCtrlSetTextFunc;
+         internal static void GuiPopUpMenuCtrlSetText(IntPtr ctrl, string text)
+         {
+            if (_GuiPopUpMenuCtrlSetTextFunc == null)
+            {
+               _GuiPopUpMenuCtrlSetTextFunc =
+                  (_GuiPopUpMenuCtrlSetText)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiPopUpMenuCtrlSetText"), typeof(_GuiPopUpMenuCtrlSetText));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiPopUpMenuCtrlSortID(IntPtr ctrl);
+            _GuiPopUpMenuCtrlSetTextFunc(ctrl, text);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiPopUpMenuCtrlForceOnAction(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiPopUpMenuCtrlGetText(IntPtr ctrl);
+         private static _GuiPopUpMenuCtrlGetText _GuiPopUpMenuCtrlGetTextFunc;
+         internal static IntPtr GuiPopUpMenuCtrlGetText(IntPtr ctrl)
+         {
+            if (_GuiPopUpMenuCtrlGetTextFunc == null)
+            {
+               _GuiPopUpMenuCtrlGetTextFunc =
+                  (_GuiPopUpMenuCtrlGetText)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiPopUpMenuCtrlGetText"), typeof(_GuiPopUpMenuCtrlGetText));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiPopUpMenuCtrlClosePopUp(IntPtr ctrl);
+            return _GuiPopUpMenuCtrlGetTextFunc(ctrl);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern int GuiPopUpMenuCtrlGetSelected(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiPopUpMenuCtrlClear(IntPtr ctrl);
+         private static _GuiPopUpMenuCtrlClear _GuiPopUpMenuCtrlClearFunc;
+         internal static void GuiPopUpMenuCtrlClear(IntPtr ctrl)
+         {
+            if (_GuiPopUpMenuCtrlClearFunc == null)
+            {
+               _GuiPopUpMenuCtrlClearFunc =
+                  (_GuiPopUpMenuCtrlClear)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiPopUpMenuCtrlClear"), typeof(_GuiPopUpMenuCtrlClear));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiPopUpMenuCtrlSetSelected(IntPtr ctrl, int id, bool scriptCallback);
+            _GuiPopUpMenuCtrlClearFunc(ctrl);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiPopUpMenuCtrlSetFirstSelected(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiPopUpMenuCtrlSort(IntPtr ctrl);
+         private static _GuiPopUpMenuCtrlSort _GuiPopUpMenuCtrlSortFunc;
+         internal static void GuiPopUpMenuCtrlSort(IntPtr ctrl)
+         {
+            if (_GuiPopUpMenuCtrlSortFunc == null)
+            {
+               _GuiPopUpMenuCtrlSortFunc =
+                  (_GuiPopUpMenuCtrlSort)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiPopUpMenuCtrlSort"), typeof(_GuiPopUpMenuCtrlSort));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiPopUpMenuCtrlSetNoneSelected(IntPtr ctrl);
+            _GuiPopUpMenuCtrlSortFunc(ctrl);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiPopUpMenuCtrlGetTextById(IntPtr ctrl, int ID);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiPopUpMenuCtrlSortID(IntPtr ctrl);
+         private static _GuiPopUpMenuCtrlSortID _GuiPopUpMenuCtrlSortIDFunc;
+         internal static void GuiPopUpMenuCtrlSortID(IntPtr ctrl)
+         {
+            if (_GuiPopUpMenuCtrlSortIDFunc == null)
+            {
+               _GuiPopUpMenuCtrlSortIDFunc =
+                  (_GuiPopUpMenuCtrlSortID)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiPopUpMenuCtrlSortID"), typeof(_GuiPopUpMenuCtrlSortID));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiPopUpMenuCtrlSetEnumContent(IntPtr ctrl, string contentClass, string contentEnum);
+            _GuiPopUpMenuCtrlSortIDFunc(ctrl);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern int GuiPopUpMenuCtrlFindText(IntPtr ctrl, string text);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiPopUpMenuCtrlForceOnAction(IntPtr ctrl);
+         private static _GuiPopUpMenuCtrlForceOnAction _GuiPopUpMenuCtrlForceOnActionFunc;
+         internal static void GuiPopUpMenuCtrlForceOnAction(IntPtr ctrl)
+         {
+            if (_GuiPopUpMenuCtrlForceOnActionFunc == null)
+            {
+               _GuiPopUpMenuCtrlForceOnActionFunc =
+                  (_GuiPopUpMenuCtrlForceOnAction)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiPopUpMenuCtrlForceOnAction"), typeof(_GuiPopUpMenuCtrlForceOnAction));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern int GuiPopUpMenuCtrlSize(IntPtr ctrl);
+            _GuiPopUpMenuCtrlForceOnActionFunc(ctrl);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiPopUpMenuCtrlReplaceText(IntPtr ctrl, bool enable);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiPopUpMenuCtrlClosePopUp(IntPtr ctrl);
+         private static _GuiPopUpMenuCtrlClosePopUp _GuiPopUpMenuCtrlClosePopUpFunc;
+         internal static void GuiPopUpMenuCtrlClosePopUp(IntPtr ctrl)
+         {
+            if (_GuiPopUpMenuCtrlClosePopUpFunc == null)
+            {
+               _GuiPopUpMenuCtrlClosePopUpFunc =
+                  (_GuiPopUpMenuCtrlClosePopUp)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiPopUpMenuCtrlClosePopUp"), typeof(_GuiPopUpMenuCtrlClosePopUp));
+            }
+
+            _GuiPopUpMenuCtrlClosePopUpFunc(ctrl);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate int _GuiPopUpMenuCtrlGetSelected(IntPtr ctrl);
+         private static _GuiPopUpMenuCtrlGetSelected _GuiPopUpMenuCtrlGetSelectedFunc;
+         internal static int GuiPopUpMenuCtrlGetSelected(IntPtr ctrl)
+         {
+            if (_GuiPopUpMenuCtrlGetSelectedFunc == null)
+            {
+               _GuiPopUpMenuCtrlGetSelectedFunc =
+                  (_GuiPopUpMenuCtrlGetSelected)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiPopUpMenuCtrlGetSelected"), typeof(_GuiPopUpMenuCtrlGetSelected));
+            }
+
+            return _GuiPopUpMenuCtrlGetSelectedFunc(ctrl);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiPopUpMenuCtrlSetSelected(IntPtr ctrl, int id, bool scriptCallback);
+         private static _GuiPopUpMenuCtrlSetSelected _GuiPopUpMenuCtrlSetSelectedFunc;
+         internal static void GuiPopUpMenuCtrlSetSelected(IntPtr ctrl, int id, bool scriptCallback)
+         {
+            if (_GuiPopUpMenuCtrlSetSelectedFunc == null)
+            {
+               _GuiPopUpMenuCtrlSetSelectedFunc =
+                  (_GuiPopUpMenuCtrlSetSelected)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiPopUpMenuCtrlSetSelected"), typeof(_GuiPopUpMenuCtrlSetSelected));
+            }
+
+            _GuiPopUpMenuCtrlSetSelectedFunc(ctrl, id, scriptCallback);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiPopUpMenuCtrlSetFirstSelected(IntPtr ctrl);
+         private static _GuiPopUpMenuCtrlSetFirstSelected _GuiPopUpMenuCtrlSetFirstSelectedFunc;
+         internal static void GuiPopUpMenuCtrlSetFirstSelected(IntPtr ctrl)
+         {
+            if (_GuiPopUpMenuCtrlSetFirstSelectedFunc == null)
+            {
+               _GuiPopUpMenuCtrlSetFirstSelectedFunc =
+                  (_GuiPopUpMenuCtrlSetFirstSelected)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiPopUpMenuCtrlSetFirstSelected"), typeof(_GuiPopUpMenuCtrlSetFirstSelected));
+            }
+
+            _GuiPopUpMenuCtrlSetFirstSelectedFunc(ctrl);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiPopUpMenuCtrlSetNoneSelected(IntPtr ctrl);
+         private static _GuiPopUpMenuCtrlSetNoneSelected _GuiPopUpMenuCtrlSetNoneSelectedFunc;
+         internal static void GuiPopUpMenuCtrlSetNoneSelected(IntPtr ctrl)
+         {
+            if (_GuiPopUpMenuCtrlSetNoneSelectedFunc == null)
+            {
+               _GuiPopUpMenuCtrlSetNoneSelectedFunc =
+                  (_GuiPopUpMenuCtrlSetNoneSelected)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiPopUpMenuCtrlSetNoneSelected"), typeof(_GuiPopUpMenuCtrlSetNoneSelected));
+            }
+
+            _GuiPopUpMenuCtrlSetNoneSelectedFunc(ctrl);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiPopUpMenuCtrlGetTextById(IntPtr ctrl, int ID);
+         private static _GuiPopUpMenuCtrlGetTextById _GuiPopUpMenuCtrlGetTextByIdFunc;
+         internal static IntPtr GuiPopUpMenuCtrlGetTextById(IntPtr ctrl, int ID)
+         {
+            if (_GuiPopUpMenuCtrlGetTextByIdFunc == null)
+            {
+               _GuiPopUpMenuCtrlGetTextByIdFunc =
+                  (_GuiPopUpMenuCtrlGetTextById)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiPopUpMenuCtrlGetTextById"), typeof(_GuiPopUpMenuCtrlGetTextById));
+            }
+
+            return _GuiPopUpMenuCtrlGetTextByIdFunc(ctrl, ID);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiPopUpMenuCtrlSetEnumContent(IntPtr ctrl, string contentClass, string contentEnum);
+         private static _GuiPopUpMenuCtrlSetEnumContent _GuiPopUpMenuCtrlSetEnumContentFunc;
+         internal static void GuiPopUpMenuCtrlSetEnumContent(IntPtr ctrl, string contentClass, string contentEnum)
+         {
+            if (_GuiPopUpMenuCtrlSetEnumContentFunc == null)
+            {
+               _GuiPopUpMenuCtrlSetEnumContentFunc =
+                  (_GuiPopUpMenuCtrlSetEnumContent)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiPopUpMenuCtrlSetEnumContent"), typeof(_GuiPopUpMenuCtrlSetEnumContent));
+            }
+
+            _GuiPopUpMenuCtrlSetEnumContentFunc(ctrl, contentClass, contentEnum);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate int _GuiPopUpMenuCtrlFindText(IntPtr ctrl, string text);
+         private static _GuiPopUpMenuCtrlFindText _GuiPopUpMenuCtrlFindTextFunc;
+         internal static int GuiPopUpMenuCtrlFindText(IntPtr ctrl, string text)
+         {
+            if (_GuiPopUpMenuCtrlFindTextFunc == null)
+            {
+               _GuiPopUpMenuCtrlFindTextFunc =
+                  (_GuiPopUpMenuCtrlFindText)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiPopUpMenuCtrlFindText"), typeof(_GuiPopUpMenuCtrlFindText));
+            }
+
+            return _GuiPopUpMenuCtrlFindTextFunc(ctrl, text);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate int _GuiPopUpMenuCtrlSize(IntPtr ctrl);
+         private static _GuiPopUpMenuCtrlSize _GuiPopUpMenuCtrlSizeFunc;
+         internal static int GuiPopUpMenuCtrlSize(IntPtr ctrl)
+         {
+            if (_GuiPopUpMenuCtrlSizeFunc == null)
+            {
+               _GuiPopUpMenuCtrlSizeFunc =
+                  (_GuiPopUpMenuCtrlSize)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiPopUpMenuCtrlSize"), typeof(_GuiPopUpMenuCtrlSize));
+            }
+
+            return _GuiPopUpMenuCtrlSizeFunc(ctrl);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiPopUpMenuCtrlReplaceText(IntPtr ctrl, bool enable);
+         private static _GuiPopUpMenuCtrlReplaceText _GuiPopUpMenuCtrlReplaceTextFunc;
+         internal static void GuiPopUpMenuCtrlReplaceText(IntPtr ctrl, bool enable)
+         {
+            if (_GuiPopUpMenuCtrlReplaceTextFunc == null)
+            {
+               _GuiPopUpMenuCtrlReplaceTextFunc =
+                  (_GuiPopUpMenuCtrlReplaceText)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiPopUpMenuCtrlReplaceText"), typeof(_GuiPopUpMenuCtrlReplaceText));
+            }
+
+            _GuiPopUpMenuCtrlReplaceTextFunc(ctrl, enable);
+         }
       }
       
       #endregion

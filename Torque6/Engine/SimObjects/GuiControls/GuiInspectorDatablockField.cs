@@ -40,8 +40,20 @@ namespace Torque6.Engine.SimObjects.GuiControls
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiInspectorDatablockFieldCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiInspectorDatablockFieldCreateInstance();
+         private static _GuiInspectorDatablockFieldCreateInstance _GuiInspectorDatablockFieldCreateInstanceFunc;
+         internal static IntPtr GuiInspectorDatablockFieldCreateInstance()
+         {
+            if (_GuiInspectorDatablockFieldCreateInstanceFunc == null)
+            {
+               _GuiInspectorDatablockFieldCreateInstanceFunc =
+                  (_GuiInspectorDatablockFieldCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiInspectorDatablockFieldCreateInstance"), typeof(_GuiInspectorDatablockFieldCreateInstance));
+            }
+
+            return _GuiInspectorDatablockFieldCreateInstanceFunc();
+         }
       }
       
       #endregion

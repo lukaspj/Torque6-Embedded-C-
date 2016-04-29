@@ -40,11 +40,35 @@ namespace Torque6.Engine.SimObjects.Scene
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr DynamicConsoleMethodComponentCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _DynamicConsoleMethodComponentCreateInstance();
+         private static _DynamicConsoleMethodComponentCreateInstance _DynamicConsoleMethodComponentCreateInstanceFunc;
+         internal static IntPtr DynamicConsoleMethodComponentCreateInstance()
+         {
+            if (_DynamicConsoleMethodComponentCreateInstanceFunc == null)
+            {
+               _DynamicConsoleMethodComponentCreateInstanceFunc =
+                  (_DynamicConsoleMethodComponentCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "DynamicConsoleMethodComponentCreateInstance"), typeof(_DynamicConsoleMethodComponentCreateInstance));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr DynamicConsoleMethodComponentCallOnBehaviors(IntPtr component, string methodName, int argc, string[] argv);
+            return _DynamicConsoleMethodComponentCreateInstanceFunc();
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _DynamicConsoleMethodComponentCallOnBehaviors(IntPtr component, string methodName, int argc, string[] argv);
+         private static _DynamicConsoleMethodComponentCallOnBehaviors _DynamicConsoleMethodComponentCallOnBehaviorsFunc;
+         internal static IntPtr DynamicConsoleMethodComponentCallOnBehaviors(IntPtr component, string methodName, int argc, string[] argv)
+         {
+            if (_DynamicConsoleMethodComponentCallOnBehaviorsFunc == null)
+            {
+               _DynamicConsoleMethodComponentCallOnBehaviorsFunc =
+                  (_DynamicConsoleMethodComponentCallOnBehaviors)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "DynamicConsoleMethodComponentCallOnBehaviors"), typeof(_DynamicConsoleMethodComponentCallOnBehaviors));
+            }
+
+            return _DynamicConsoleMethodComponentCallOnBehaviorsFunc(component, methodName, argc, argv);
+         }
       }
       
       #endregion

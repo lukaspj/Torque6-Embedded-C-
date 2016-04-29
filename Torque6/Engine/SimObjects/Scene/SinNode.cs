@@ -40,14 +40,50 @@ namespace Torque6.Engine.SimObjects.Scene
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr SinNodeGetXSrc(IntPtr sinNode);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _SinNodeGetXSrc(IntPtr sinNode);
+         private static _SinNodeGetXSrc _SinNodeGetXSrcFunc;
+         internal static IntPtr SinNodeGetXSrc(IntPtr sinNode)
+         {
+            if (_SinNodeGetXSrcFunc == null)
+            {
+               _SinNodeGetXSrcFunc =
+                  (_SinNodeGetXSrc)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "SinNodeGetXSrc"), typeof(_SinNodeGetXSrc));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void SinNodeSetXSrc(IntPtr sinNode, string src);
+            return _SinNodeGetXSrcFunc(sinNode);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr SinNodeCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _SinNodeSetXSrc(IntPtr sinNode, string src);
+         private static _SinNodeSetXSrc _SinNodeSetXSrcFunc;
+         internal static void SinNodeSetXSrc(IntPtr sinNode, string src)
+         {
+            if (_SinNodeSetXSrcFunc == null)
+            {
+               _SinNodeSetXSrcFunc =
+                  (_SinNodeSetXSrc)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "SinNodeSetXSrc"), typeof(_SinNodeSetXSrc));
+            }
+
+            _SinNodeSetXSrcFunc(sinNode, src);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _SinNodeCreateInstance();
+         private static _SinNodeCreateInstance _SinNodeCreateInstanceFunc;
+         internal static IntPtr SinNodeCreateInstance()
+         {
+            if (_SinNodeCreateInstanceFunc == null)
+            {
+               _SinNodeCreateInstanceFunc =
+                  (_SinNodeCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "SinNodeCreateInstance"), typeof(_SinNodeCreateInstance));
+            }
+
+            return _SinNodeCreateInstanceFunc();
+         }
       }
       
       #endregion

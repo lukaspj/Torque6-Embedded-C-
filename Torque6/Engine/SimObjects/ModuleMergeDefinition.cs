@@ -40,14 +40,50 @@ namespace Torque6.Engine.SimObjects
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr ModuleMergeDefinitionGetMergePath(IntPtr mergeDefinition);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _ModuleMergeDefinitionGetMergePath(IntPtr mergeDefinition);
+         private static _ModuleMergeDefinitionGetMergePath _ModuleMergeDefinitionGetMergePathFunc;
+         internal static IntPtr ModuleMergeDefinitionGetMergePath(IntPtr mergeDefinition)
+         {
+            if (_ModuleMergeDefinitionGetMergePathFunc == null)
+            {
+               _ModuleMergeDefinitionGetMergePathFunc =
+                  (_ModuleMergeDefinitionGetMergePath)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "ModuleMergeDefinitionGetMergePath"), typeof(_ModuleMergeDefinitionGetMergePath));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void ModuleMergeDefinitionSetMergePath(IntPtr mergeDefinition, string value);
+            return _ModuleMergeDefinitionGetMergePathFunc(mergeDefinition);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr ModuleMergeDefinitionCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _ModuleMergeDefinitionSetMergePath(IntPtr mergeDefinition, string value);
+         private static _ModuleMergeDefinitionSetMergePath _ModuleMergeDefinitionSetMergePathFunc;
+         internal static void ModuleMergeDefinitionSetMergePath(IntPtr mergeDefinition, string value)
+         {
+            if (_ModuleMergeDefinitionSetMergePathFunc == null)
+            {
+               _ModuleMergeDefinitionSetMergePathFunc =
+                  (_ModuleMergeDefinitionSetMergePath)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "ModuleMergeDefinitionSetMergePath"), typeof(_ModuleMergeDefinitionSetMergePath));
+            }
+
+            _ModuleMergeDefinitionSetMergePathFunc(mergeDefinition, value);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _ModuleMergeDefinitionCreateInstance();
+         private static _ModuleMergeDefinitionCreateInstance _ModuleMergeDefinitionCreateInstanceFunc;
+         internal static IntPtr ModuleMergeDefinitionCreateInstance()
+         {
+            if (_ModuleMergeDefinitionCreateInstanceFunc == null)
+            {
+               _ModuleMergeDefinitionCreateInstanceFunc =
+                  (_ModuleMergeDefinitionCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "ModuleMergeDefinitionCreateInstance"), typeof(_ModuleMergeDefinitionCreateInstance));
+            }
+
+            return _ModuleMergeDefinitionCreateInstanceFunc();
+         }
       }
       
       #endregion

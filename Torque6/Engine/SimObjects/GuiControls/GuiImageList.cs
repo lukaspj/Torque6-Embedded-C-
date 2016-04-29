@@ -40,26 +40,110 @@ namespace Torque6.Engine.SimObjects.GuiControls
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiImageListCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiImageListCreateInstance();
+         private static _GuiImageListCreateInstance _GuiImageListCreateInstanceFunc;
+         internal static IntPtr GuiImageListCreateInstance()
+         {
+            if (_GuiImageListCreateInstanceFunc == null)
+            {
+               _GuiImageListCreateInstanceFunc =
+                  (_GuiImageListCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiImageListCreateInstance"), typeof(_GuiImageListCreateInstance));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiImageListGetImage(IntPtr list, int index);
+            return _GuiImageListCreateInstanceFunc();
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool GuiImageListClear(IntPtr list);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiImageListGetImage(IntPtr list, int index);
+         private static _GuiImageListGetImage _GuiImageListGetImageFunc;
+         internal static IntPtr GuiImageListGetImage(IntPtr list, int index)
+         {
+            if (_GuiImageListGetImageFunc == null)
+            {
+               _GuiImageListGetImageFunc =
+                  (_GuiImageListGetImage)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiImageListGetImage"), typeof(_GuiImageListGetImage));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern int GuiImageListCount(IntPtr list);
+            return _GuiImageListGetImageFunc(list, index);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool GuiImageListRemove(IntPtr list, int index);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _GuiImageListClear(IntPtr list);
+         private static _GuiImageListClear _GuiImageListClearFunc;
+         internal static bool GuiImageListClear(IntPtr list)
+         {
+            if (_GuiImageListClearFunc == null)
+            {
+               _GuiImageListClearFunc =
+                  (_GuiImageListClear)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiImageListClear"), typeof(_GuiImageListClear));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern int GuiImageListGetIndex(IntPtr list, string path);
+            return _GuiImageListClearFunc(list);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern int GuiImageListInsert(IntPtr list, string path);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate int _GuiImageListCount(IntPtr list);
+         private static _GuiImageListCount _GuiImageListCountFunc;
+         internal static int GuiImageListCount(IntPtr list)
+         {
+            if (_GuiImageListCountFunc == null)
+            {
+               _GuiImageListCountFunc =
+                  (_GuiImageListCount)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiImageListCount"), typeof(_GuiImageListCount));
+            }
+
+            return _GuiImageListCountFunc(list);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _GuiImageListRemove(IntPtr list, int index);
+         private static _GuiImageListRemove _GuiImageListRemoveFunc;
+         internal static bool GuiImageListRemove(IntPtr list, int index)
+         {
+            if (_GuiImageListRemoveFunc == null)
+            {
+               _GuiImageListRemoveFunc =
+                  (_GuiImageListRemove)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiImageListRemove"), typeof(_GuiImageListRemove));
+            }
+
+            return _GuiImageListRemoveFunc(list, index);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate int _GuiImageListGetIndex(IntPtr list, string path);
+         private static _GuiImageListGetIndex _GuiImageListGetIndexFunc;
+         internal static int GuiImageListGetIndex(IntPtr list, string path)
+         {
+            if (_GuiImageListGetIndexFunc == null)
+            {
+               _GuiImageListGetIndexFunc =
+                  (_GuiImageListGetIndex)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiImageListGetIndex"), typeof(_GuiImageListGetIndex));
+            }
+
+            return _GuiImageListGetIndexFunc(list, path);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate int _GuiImageListInsert(IntPtr list, string path);
+         private static _GuiImageListInsert _GuiImageListInsertFunc;
+         internal static int GuiImageListInsert(IntPtr list, string path)
+         {
+            if (_GuiImageListInsertFunc == null)
+            {
+               _GuiImageListInsertFunc =
+                  (_GuiImageListInsert)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiImageListInsert"), typeof(_GuiImageListInsert));
+            }
+
+            return _GuiImageListInsertFunc(list, path);
+         }
       }
       
       #endregion

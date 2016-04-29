@@ -40,14 +40,50 @@ namespace Torque6.Engine.SimObjects.GuiControls
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiConsoleTextCtrlGetExpression(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiConsoleTextCtrlGetExpression(IntPtr ctrl);
+         private static _GuiConsoleTextCtrlGetExpression _GuiConsoleTextCtrlGetExpressionFunc;
+         internal static IntPtr GuiConsoleTextCtrlGetExpression(IntPtr ctrl)
+         {
+            if (_GuiConsoleTextCtrlGetExpressionFunc == null)
+            {
+               _GuiConsoleTextCtrlGetExpressionFunc =
+                  (_GuiConsoleTextCtrlGetExpression)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiConsoleTextCtrlGetExpression"), typeof(_GuiConsoleTextCtrlGetExpression));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiConsoleTextCtrlSetExpression(IntPtr ctrl, string expr);
+            return _GuiConsoleTextCtrlGetExpressionFunc(ctrl);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiConsoleTextCtrlCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiConsoleTextCtrlSetExpression(IntPtr ctrl, string expr);
+         private static _GuiConsoleTextCtrlSetExpression _GuiConsoleTextCtrlSetExpressionFunc;
+         internal static void GuiConsoleTextCtrlSetExpression(IntPtr ctrl, string expr)
+         {
+            if (_GuiConsoleTextCtrlSetExpressionFunc == null)
+            {
+               _GuiConsoleTextCtrlSetExpressionFunc =
+                  (_GuiConsoleTextCtrlSetExpression)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiConsoleTextCtrlSetExpression"), typeof(_GuiConsoleTextCtrlSetExpression));
+            }
+
+            _GuiConsoleTextCtrlSetExpressionFunc(ctrl, expr);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiConsoleTextCtrlCreateInstance();
+         private static _GuiConsoleTextCtrlCreateInstance _GuiConsoleTextCtrlCreateInstanceFunc;
+         internal static IntPtr GuiConsoleTextCtrlCreateInstance()
+         {
+            if (_GuiConsoleTextCtrlCreateInstanceFunc == null)
+            {
+               _GuiConsoleTextCtrlCreateInstanceFunc =
+                  (_GuiConsoleTextCtrlCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiConsoleTextCtrlCreateInstance"), typeof(_GuiConsoleTextCtrlCreateInstance));
+            }
+
+            return _GuiConsoleTextCtrlCreateInstanceFunc();
+         }
       }
       
       #endregion

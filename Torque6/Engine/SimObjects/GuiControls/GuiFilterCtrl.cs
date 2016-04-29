@@ -40,23 +40,95 @@ namespace Torque6.Engine.SimObjects.GuiControls
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern int GuiFilterCtrlGetControlPoints(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate int _GuiFilterCtrlGetControlPoints(IntPtr ctrl);
+         private static _GuiFilterCtrlGetControlPoints _GuiFilterCtrlGetControlPointsFunc;
+         internal static int GuiFilterCtrlGetControlPoints(IntPtr ctrl)
+         {
+            if (_GuiFilterCtrlGetControlPointsFunc == null)
+            {
+               _GuiFilterCtrlGetControlPointsFunc =
+                  (_GuiFilterCtrlGetControlPoints)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiFilterCtrlGetControlPoints"), typeof(_GuiFilterCtrlGetControlPoints));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiFilterCtrlSetControlPoints(IntPtr ctrl, int points);
+            return _GuiFilterCtrlGetControlPointsFunc(ctrl);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiFilterCtrlCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiFilterCtrlSetControlPoints(IntPtr ctrl, int points);
+         private static _GuiFilterCtrlSetControlPoints _GuiFilterCtrlSetControlPointsFunc;
+         internal static void GuiFilterCtrlSetControlPoints(IntPtr ctrl, int points)
+         {
+            if (_GuiFilterCtrlSetControlPointsFunc == null)
+            {
+               _GuiFilterCtrlSetControlPointsFunc =
+                  (_GuiFilterCtrlSetControlPoints)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiFilterCtrlSetControlPoints"), typeof(_GuiFilterCtrlSetControlPoints));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiFilterCtrlGetValue(IntPtr ctrl);
+            _GuiFilterCtrlSetControlPointsFunc(ctrl, points);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiFilterCtrlSetValue(IntPtr ctrl, int argc, string[] argv);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiFilterCtrlCreateInstance();
+         private static _GuiFilterCtrlCreateInstance _GuiFilterCtrlCreateInstanceFunc;
+         internal static IntPtr GuiFilterCtrlCreateInstance()
+         {
+            if (_GuiFilterCtrlCreateInstanceFunc == null)
+            {
+               _GuiFilterCtrlCreateInstanceFunc =
+                  (_GuiFilterCtrlCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiFilterCtrlCreateInstance"), typeof(_GuiFilterCtrlCreateInstance));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiFilterCtrlIdentity(IntPtr ctrl);
+            return _GuiFilterCtrlCreateInstanceFunc();
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiFilterCtrlGetValue(IntPtr ctrl);
+         private static _GuiFilterCtrlGetValue _GuiFilterCtrlGetValueFunc;
+         internal static IntPtr GuiFilterCtrlGetValue(IntPtr ctrl)
+         {
+            if (_GuiFilterCtrlGetValueFunc == null)
+            {
+               _GuiFilterCtrlGetValueFunc =
+                  (_GuiFilterCtrlGetValue)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiFilterCtrlGetValue"), typeof(_GuiFilterCtrlGetValue));
+            }
+
+            return _GuiFilterCtrlGetValueFunc(ctrl);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiFilterCtrlSetValue(IntPtr ctrl, int argc, string[] argv);
+         private static _GuiFilterCtrlSetValue _GuiFilterCtrlSetValueFunc;
+         internal static void GuiFilterCtrlSetValue(IntPtr ctrl, int argc, string[] argv)
+         {
+            if (_GuiFilterCtrlSetValueFunc == null)
+            {
+               _GuiFilterCtrlSetValueFunc =
+                  (_GuiFilterCtrlSetValue)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiFilterCtrlSetValue"), typeof(_GuiFilterCtrlSetValue));
+            }
+
+            _GuiFilterCtrlSetValueFunc(ctrl, argc, argv);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiFilterCtrlIdentity(IntPtr ctrl);
+         private static _GuiFilterCtrlIdentity _GuiFilterCtrlIdentityFunc;
+         internal static void GuiFilterCtrlIdentity(IntPtr ctrl)
+         {
+            if (_GuiFilterCtrlIdentityFunc == null)
+            {
+               _GuiFilterCtrlIdentityFunc =
+                  (_GuiFilterCtrlIdentity)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiFilterCtrlIdentity"), typeof(_GuiFilterCtrlIdentity));
+            }
+
+            _GuiFilterCtrlIdentityFunc(ctrl);
+         }
       }
       
       #endregion

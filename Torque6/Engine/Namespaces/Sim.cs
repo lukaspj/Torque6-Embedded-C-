@@ -18,20 +18,80 @@ namespace Torque6.Engine.Namespaces
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr Sim_FindObjectById(uint id);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _Sim_FindObjectById(uint id);
+         private static _Sim_FindObjectById _Sim_FindObjectByIdFunc;
+         internal static IntPtr Sim_FindObjectById(uint id)
+         {
+            if (_Sim_FindObjectByIdFunc == null)
+            {
+               _Sim_FindObjectByIdFunc =
+                  (_Sim_FindObjectById)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "Sim_FindObjectById"), typeof(_Sim_FindObjectById));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr Sim_FindObjectWrapperById(uint id);
+            return _Sim_FindObjectByIdFunc(id);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr Sim_FindObjectByName(string name);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _Sim_FindObjectWrapperById(uint id);
+         private static _Sim_FindObjectWrapperById _Sim_FindObjectWrapperByIdFunc;
+         internal static IntPtr Sim_FindObjectWrapperById(uint id)
+         {
+            if (_Sim_FindObjectWrapperByIdFunc == null)
+            {
+               _Sim_FindObjectWrapperByIdFunc =
+                  (_Sim_FindObjectWrapperById)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "Sim_FindObjectWrapperById"), typeof(_Sim_FindObjectWrapperById));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr Sim_FindObjectWrapperByName(string name);
+            return _Sim_FindObjectWrapperByIdFunc(id);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr Sim_WrapObject(IntPtr obj);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _Sim_FindObjectByName(string name);
+         private static _Sim_FindObjectByName _Sim_FindObjectByNameFunc;
+         internal static IntPtr Sim_FindObjectByName(string name)
+         {
+            if (_Sim_FindObjectByNameFunc == null)
+            {
+               _Sim_FindObjectByNameFunc =
+                  (_Sim_FindObjectByName)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "Sim_FindObjectByName"), typeof(_Sim_FindObjectByName));
+            }
+
+            return _Sim_FindObjectByNameFunc(name);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _Sim_FindObjectWrapperByName(string name);
+         private static _Sim_FindObjectWrapperByName _Sim_FindObjectWrapperByNameFunc;
+         internal static IntPtr Sim_FindObjectWrapperByName(string name)
+         {
+            if (_Sim_FindObjectWrapperByNameFunc == null)
+            {
+               _Sim_FindObjectWrapperByNameFunc =
+                  (_Sim_FindObjectWrapperByName)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "Sim_FindObjectWrapperByName"), typeof(_Sim_FindObjectWrapperByName));
+            }
+
+            return _Sim_FindObjectWrapperByNameFunc(name);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _Sim_WrapObject(IntPtr obj);
+         private static _Sim_WrapObject _Sim_WrapObjectFunc;
+         internal static IntPtr Sim_WrapObject(IntPtr obj)
+         {
+            if (_Sim_WrapObjectFunc == null)
+            {
+               _Sim_WrapObjectFunc =
+                  (_Sim_WrapObject)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "Sim_WrapObject"), typeof(_Sim_WrapObject));
+            }
+
+            return _Sim_WrapObjectFunc(obj);
+         }
       }
 
       #endregion

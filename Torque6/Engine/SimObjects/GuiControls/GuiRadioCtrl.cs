@@ -40,8 +40,20 @@ namespace Torque6.Engine.SimObjects.GuiControls
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiRadioCtrlCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiRadioCtrlCreateInstance();
+         private static _GuiRadioCtrlCreateInstance _GuiRadioCtrlCreateInstanceFunc;
+         internal static IntPtr GuiRadioCtrlCreateInstance()
+         {
+            if (_GuiRadioCtrlCreateInstanceFunc == null)
+            {
+               _GuiRadioCtrlCreateInstanceFunc =
+                  (_GuiRadioCtrlCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiRadioCtrlCreateInstance"), typeof(_GuiRadioCtrlCreateInstance));
+            }
+
+            return _GuiRadioCtrlCreateInstanceFunc();
+         }
       }
       
       #endregion

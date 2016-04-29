@@ -40,8 +40,20 @@ namespace Torque6.Engine.SimObjects.Scene
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr CameraComponentCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _CameraComponentCreateInstance();
+         private static _CameraComponentCreateInstance _CameraComponentCreateInstanceFunc;
+         internal static IntPtr CameraComponentCreateInstance()
+         {
+            if (_CameraComponentCreateInstanceFunc == null)
+            {
+               _CameraComponentCreateInstanceFunc =
+                  (_CameraComponentCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "CameraComponentCreateInstance"), typeof(_CameraComponentCreateInstance));
+            }
+
+            return _CameraComponentCreateInstanceFunc();
+         }
       }
       
       #endregion

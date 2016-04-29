@@ -40,38 +40,170 @@ namespace Torque6.Engine.SimObjects.Scene
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr OpaqueNodeGetColorSrc(IntPtr opaqueNode);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _OpaqueNodeGetColorSrc(IntPtr opaqueNode);
+         private static _OpaqueNodeGetColorSrc _OpaqueNodeGetColorSrcFunc;
+         internal static IntPtr OpaqueNodeGetColorSrc(IntPtr opaqueNode)
+         {
+            if (_OpaqueNodeGetColorSrcFunc == null)
+            {
+               _OpaqueNodeGetColorSrcFunc =
+                  (_OpaqueNodeGetColorSrc)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "OpaqueNodeGetColorSrc"), typeof(_OpaqueNodeGetColorSrc));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void OpaqueNodeSetColorSrc(IntPtr opaqueNode, string src);
+            return _OpaqueNodeGetColorSrcFunc(opaqueNode);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr OpaqueNodeGetNormalSrc(IntPtr opaqueNode);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _OpaqueNodeSetColorSrc(IntPtr opaqueNode, string src);
+         private static _OpaqueNodeSetColorSrc _OpaqueNodeSetColorSrcFunc;
+         internal static void OpaqueNodeSetColorSrc(IntPtr opaqueNode, string src)
+         {
+            if (_OpaqueNodeSetColorSrcFunc == null)
+            {
+               _OpaqueNodeSetColorSrcFunc =
+                  (_OpaqueNodeSetColorSrc)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "OpaqueNodeSetColorSrc"), typeof(_OpaqueNodeSetColorSrc));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void OpaqueNodeSetNormalSrc(IntPtr opaqueNode, string src);
+            _OpaqueNodeSetColorSrcFunc(opaqueNode, src);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr OpaqueNodeGetMetallicSrc(IntPtr opaqueNode);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _OpaqueNodeGetNormalSrc(IntPtr opaqueNode);
+         private static _OpaqueNodeGetNormalSrc _OpaqueNodeGetNormalSrcFunc;
+         internal static IntPtr OpaqueNodeGetNormalSrc(IntPtr opaqueNode)
+         {
+            if (_OpaqueNodeGetNormalSrcFunc == null)
+            {
+               _OpaqueNodeGetNormalSrcFunc =
+                  (_OpaqueNodeGetNormalSrc)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "OpaqueNodeGetNormalSrc"), typeof(_OpaqueNodeGetNormalSrc));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void OpaqueNodeSetMetallicSrc(IntPtr opaqueNode, string src);
+            return _OpaqueNodeGetNormalSrcFunc(opaqueNode);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr OpaqueNodeGetRoughnessSrc(IntPtr opaqueNode);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _OpaqueNodeSetNormalSrc(IntPtr opaqueNode, string src);
+         private static _OpaqueNodeSetNormalSrc _OpaqueNodeSetNormalSrcFunc;
+         internal static void OpaqueNodeSetNormalSrc(IntPtr opaqueNode, string src)
+         {
+            if (_OpaqueNodeSetNormalSrcFunc == null)
+            {
+               _OpaqueNodeSetNormalSrcFunc =
+                  (_OpaqueNodeSetNormalSrc)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "OpaqueNodeSetNormalSrc"), typeof(_OpaqueNodeSetNormalSrc));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void OpaqueNodeSetRoughnessSrc(IntPtr opaqueNode, string src);
+            _OpaqueNodeSetNormalSrcFunc(opaqueNode, src);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr OpaqueNodeGetWorldPosOffsetSrc(IntPtr opaqueNode);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _OpaqueNodeGetMetallicSrc(IntPtr opaqueNode);
+         private static _OpaqueNodeGetMetallicSrc _OpaqueNodeGetMetallicSrcFunc;
+         internal static IntPtr OpaqueNodeGetMetallicSrc(IntPtr opaqueNode)
+         {
+            if (_OpaqueNodeGetMetallicSrcFunc == null)
+            {
+               _OpaqueNodeGetMetallicSrcFunc =
+                  (_OpaqueNodeGetMetallicSrc)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "OpaqueNodeGetMetallicSrc"), typeof(_OpaqueNodeGetMetallicSrc));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void OpaqueNodeSetWorldPosOffsetSrc(IntPtr opaqueNode, string src);
+            return _OpaqueNodeGetMetallicSrcFunc(opaqueNode);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr OpaqueNodeCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _OpaqueNodeSetMetallicSrc(IntPtr opaqueNode, string src);
+         private static _OpaqueNodeSetMetallicSrc _OpaqueNodeSetMetallicSrcFunc;
+         internal static void OpaqueNodeSetMetallicSrc(IntPtr opaqueNode, string src)
+         {
+            if (_OpaqueNodeSetMetallicSrcFunc == null)
+            {
+               _OpaqueNodeSetMetallicSrcFunc =
+                  (_OpaqueNodeSetMetallicSrc)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "OpaqueNodeSetMetallicSrc"), typeof(_OpaqueNodeSetMetallicSrc));
+            }
+
+            _OpaqueNodeSetMetallicSrcFunc(opaqueNode, src);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _OpaqueNodeGetRoughnessSrc(IntPtr opaqueNode);
+         private static _OpaqueNodeGetRoughnessSrc _OpaqueNodeGetRoughnessSrcFunc;
+         internal static IntPtr OpaqueNodeGetRoughnessSrc(IntPtr opaqueNode)
+         {
+            if (_OpaqueNodeGetRoughnessSrcFunc == null)
+            {
+               _OpaqueNodeGetRoughnessSrcFunc =
+                  (_OpaqueNodeGetRoughnessSrc)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "OpaqueNodeGetRoughnessSrc"), typeof(_OpaqueNodeGetRoughnessSrc));
+            }
+
+            return _OpaqueNodeGetRoughnessSrcFunc(opaqueNode);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _OpaqueNodeSetRoughnessSrc(IntPtr opaqueNode, string src);
+         private static _OpaqueNodeSetRoughnessSrc _OpaqueNodeSetRoughnessSrcFunc;
+         internal static void OpaqueNodeSetRoughnessSrc(IntPtr opaqueNode, string src)
+         {
+            if (_OpaqueNodeSetRoughnessSrcFunc == null)
+            {
+               _OpaqueNodeSetRoughnessSrcFunc =
+                  (_OpaqueNodeSetRoughnessSrc)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "OpaqueNodeSetRoughnessSrc"), typeof(_OpaqueNodeSetRoughnessSrc));
+            }
+
+            _OpaqueNodeSetRoughnessSrcFunc(opaqueNode, src);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _OpaqueNodeGetWorldPosOffsetSrc(IntPtr opaqueNode);
+         private static _OpaqueNodeGetWorldPosOffsetSrc _OpaqueNodeGetWorldPosOffsetSrcFunc;
+         internal static IntPtr OpaqueNodeGetWorldPosOffsetSrc(IntPtr opaqueNode)
+         {
+            if (_OpaqueNodeGetWorldPosOffsetSrcFunc == null)
+            {
+               _OpaqueNodeGetWorldPosOffsetSrcFunc =
+                  (_OpaqueNodeGetWorldPosOffsetSrc)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "OpaqueNodeGetWorldPosOffsetSrc"), typeof(_OpaqueNodeGetWorldPosOffsetSrc));
+            }
+
+            return _OpaqueNodeGetWorldPosOffsetSrcFunc(opaqueNode);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _OpaqueNodeSetWorldPosOffsetSrc(IntPtr opaqueNode, string src);
+         private static _OpaqueNodeSetWorldPosOffsetSrc _OpaqueNodeSetWorldPosOffsetSrcFunc;
+         internal static void OpaqueNodeSetWorldPosOffsetSrc(IntPtr opaqueNode, string src)
+         {
+            if (_OpaqueNodeSetWorldPosOffsetSrcFunc == null)
+            {
+               _OpaqueNodeSetWorldPosOffsetSrcFunc =
+                  (_OpaqueNodeSetWorldPosOffsetSrc)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "OpaqueNodeSetWorldPosOffsetSrc"), typeof(_OpaqueNodeSetWorldPosOffsetSrc));
+            }
+
+            _OpaqueNodeSetWorldPosOffsetSrcFunc(opaqueNode, src);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _OpaqueNodeCreateInstance();
+         private static _OpaqueNodeCreateInstance _OpaqueNodeCreateInstanceFunc;
+         internal static IntPtr OpaqueNodeCreateInstance()
+         {
+            if (_OpaqueNodeCreateInstanceFunc == null)
+            {
+               _OpaqueNodeCreateInstanceFunc =
+                  (_OpaqueNodeCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "OpaqueNodeCreateInstance"), typeof(_OpaqueNodeCreateInstance));
+            }
+
+            return _OpaqueNodeCreateInstanceFunc();
+         }
       }
       
       #endregion

@@ -40,8 +40,20 @@ namespace Torque6.Engine.SimObjects.GuiControls
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiProgressCtrlCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiProgressCtrlCreateInstance();
+         private static _GuiProgressCtrlCreateInstance _GuiProgressCtrlCreateInstanceFunc;
+         internal static IntPtr GuiProgressCtrlCreateInstance()
+         {
+            if (_GuiProgressCtrlCreateInstanceFunc == null)
+            {
+               _GuiProgressCtrlCreateInstanceFunc =
+                  (_GuiProgressCtrlCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiProgressCtrlCreateInstance"), typeof(_GuiProgressCtrlCreateInstance));
+            }
+
+            return _GuiProgressCtrlCreateInstanceFunc();
+         }
       }
       
       #endregion

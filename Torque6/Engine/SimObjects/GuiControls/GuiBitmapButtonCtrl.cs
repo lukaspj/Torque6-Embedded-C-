@@ -40,44 +40,200 @@ namespace Torque6.Engine.SimObjects.GuiControls
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool GuiBitmapButtonCtrlGetIsLegacyVersion(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _GuiBitmapButtonCtrlGetIsLegacyVersion(IntPtr ctrl);
+         private static _GuiBitmapButtonCtrlGetIsLegacyVersion _GuiBitmapButtonCtrlGetIsLegacyVersionFunc;
+         internal static bool GuiBitmapButtonCtrlGetIsLegacyVersion(IntPtr ctrl)
+         {
+            if (_GuiBitmapButtonCtrlGetIsLegacyVersionFunc == null)
+            {
+               _GuiBitmapButtonCtrlGetIsLegacyVersionFunc =
+                  (_GuiBitmapButtonCtrlGetIsLegacyVersion)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiBitmapButtonCtrlGetIsLegacyVersion"), typeof(_GuiBitmapButtonCtrlGetIsLegacyVersion));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiBitmapButtonCtrlSetIsLegacyVersion(IntPtr ctrl, bool isLegacy);
+            return _GuiBitmapButtonCtrlGetIsLegacyVersionFunc(ctrl);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiBitmapButtonCtrlGetBitmap(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiBitmapButtonCtrlSetIsLegacyVersion(IntPtr ctrl, bool isLegacy);
+         private static _GuiBitmapButtonCtrlSetIsLegacyVersion _GuiBitmapButtonCtrlSetIsLegacyVersionFunc;
+         internal static void GuiBitmapButtonCtrlSetIsLegacyVersion(IntPtr ctrl, bool isLegacy)
+         {
+            if (_GuiBitmapButtonCtrlSetIsLegacyVersionFunc == null)
+            {
+               _GuiBitmapButtonCtrlSetIsLegacyVersionFunc =
+                  (_GuiBitmapButtonCtrlSetIsLegacyVersion)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiBitmapButtonCtrlSetIsLegacyVersion"), typeof(_GuiBitmapButtonCtrlSetIsLegacyVersion));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiBitmapButtonCtrlSetBitmap(IntPtr ctrl, string bitmap);
+            _GuiBitmapButtonCtrlSetIsLegacyVersionFunc(ctrl, isLegacy);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiBitmapButtonCtrlGetBitmapNormal(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiBitmapButtonCtrlGetBitmap(IntPtr ctrl);
+         private static _GuiBitmapButtonCtrlGetBitmap _GuiBitmapButtonCtrlGetBitmapFunc;
+         internal static IntPtr GuiBitmapButtonCtrlGetBitmap(IntPtr ctrl)
+         {
+            if (_GuiBitmapButtonCtrlGetBitmapFunc == null)
+            {
+               _GuiBitmapButtonCtrlGetBitmapFunc =
+                  (_GuiBitmapButtonCtrlGetBitmap)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiBitmapButtonCtrlGetBitmap"), typeof(_GuiBitmapButtonCtrlGetBitmap));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiBitmapButtonCtrlSetBitmapNormal(IntPtr ctrl, string bitmap);
+            return _GuiBitmapButtonCtrlGetBitmapFunc(ctrl);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiBitmapButtonCtrlGetBitmapHilight(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiBitmapButtonCtrlSetBitmap(IntPtr ctrl, string bitmap);
+         private static _GuiBitmapButtonCtrlSetBitmap _GuiBitmapButtonCtrlSetBitmapFunc;
+         internal static void GuiBitmapButtonCtrlSetBitmap(IntPtr ctrl, string bitmap)
+         {
+            if (_GuiBitmapButtonCtrlSetBitmapFunc == null)
+            {
+               _GuiBitmapButtonCtrlSetBitmapFunc =
+                  (_GuiBitmapButtonCtrlSetBitmap)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiBitmapButtonCtrlSetBitmap"), typeof(_GuiBitmapButtonCtrlSetBitmap));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiBitmapButtonCtrlSetBitmapHilight(IntPtr ctrl, string bitmap);
+            _GuiBitmapButtonCtrlSetBitmapFunc(ctrl, bitmap);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiBitmapButtonCtrlGetBitmapDepressed(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiBitmapButtonCtrlGetBitmapNormal(IntPtr ctrl);
+         private static _GuiBitmapButtonCtrlGetBitmapNormal _GuiBitmapButtonCtrlGetBitmapNormalFunc;
+         internal static IntPtr GuiBitmapButtonCtrlGetBitmapNormal(IntPtr ctrl)
+         {
+            if (_GuiBitmapButtonCtrlGetBitmapNormalFunc == null)
+            {
+               _GuiBitmapButtonCtrlGetBitmapNormalFunc =
+                  (_GuiBitmapButtonCtrlGetBitmapNormal)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiBitmapButtonCtrlGetBitmapNormal"), typeof(_GuiBitmapButtonCtrlGetBitmapNormal));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiBitmapButtonCtrlSetBitmapDepressed(IntPtr ctrl, string bitmap);
+            return _GuiBitmapButtonCtrlGetBitmapNormalFunc(ctrl);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiBitmapButtonCtrlGetBitmapInactive(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiBitmapButtonCtrlSetBitmapNormal(IntPtr ctrl, string bitmap);
+         private static _GuiBitmapButtonCtrlSetBitmapNormal _GuiBitmapButtonCtrlSetBitmapNormalFunc;
+         internal static void GuiBitmapButtonCtrlSetBitmapNormal(IntPtr ctrl, string bitmap)
+         {
+            if (_GuiBitmapButtonCtrlSetBitmapNormalFunc == null)
+            {
+               _GuiBitmapButtonCtrlSetBitmapNormalFunc =
+                  (_GuiBitmapButtonCtrlSetBitmapNormal)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiBitmapButtonCtrlSetBitmapNormal"), typeof(_GuiBitmapButtonCtrlSetBitmapNormal));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiBitmapButtonCtrlSetBitmapInactive(IntPtr ctrl, string bitmap);
+            _GuiBitmapButtonCtrlSetBitmapNormalFunc(ctrl, bitmap);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiBitmapButtonCtrlCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiBitmapButtonCtrlGetBitmapHilight(IntPtr ctrl);
+         private static _GuiBitmapButtonCtrlGetBitmapHilight _GuiBitmapButtonCtrlGetBitmapHilightFunc;
+         internal static IntPtr GuiBitmapButtonCtrlGetBitmapHilight(IntPtr ctrl)
+         {
+            if (_GuiBitmapButtonCtrlGetBitmapHilightFunc == null)
+            {
+               _GuiBitmapButtonCtrlGetBitmapHilightFunc =
+                  (_GuiBitmapButtonCtrlGetBitmapHilight)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiBitmapButtonCtrlGetBitmapHilight"), typeof(_GuiBitmapButtonCtrlGetBitmapHilight));
+            }
+
+            return _GuiBitmapButtonCtrlGetBitmapHilightFunc(ctrl);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiBitmapButtonCtrlSetBitmapHilight(IntPtr ctrl, string bitmap);
+         private static _GuiBitmapButtonCtrlSetBitmapHilight _GuiBitmapButtonCtrlSetBitmapHilightFunc;
+         internal static void GuiBitmapButtonCtrlSetBitmapHilight(IntPtr ctrl, string bitmap)
+         {
+            if (_GuiBitmapButtonCtrlSetBitmapHilightFunc == null)
+            {
+               _GuiBitmapButtonCtrlSetBitmapHilightFunc =
+                  (_GuiBitmapButtonCtrlSetBitmapHilight)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiBitmapButtonCtrlSetBitmapHilight"), typeof(_GuiBitmapButtonCtrlSetBitmapHilight));
+            }
+
+            _GuiBitmapButtonCtrlSetBitmapHilightFunc(ctrl, bitmap);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiBitmapButtonCtrlGetBitmapDepressed(IntPtr ctrl);
+         private static _GuiBitmapButtonCtrlGetBitmapDepressed _GuiBitmapButtonCtrlGetBitmapDepressedFunc;
+         internal static IntPtr GuiBitmapButtonCtrlGetBitmapDepressed(IntPtr ctrl)
+         {
+            if (_GuiBitmapButtonCtrlGetBitmapDepressedFunc == null)
+            {
+               _GuiBitmapButtonCtrlGetBitmapDepressedFunc =
+                  (_GuiBitmapButtonCtrlGetBitmapDepressed)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiBitmapButtonCtrlGetBitmapDepressed"), typeof(_GuiBitmapButtonCtrlGetBitmapDepressed));
+            }
+
+            return _GuiBitmapButtonCtrlGetBitmapDepressedFunc(ctrl);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiBitmapButtonCtrlSetBitmapDepressed(IntPtr ctrl, string bitmap);
+         private static _GuiBitmapButtonCtrlSetBitmapDepressed _GuiBitmapButtonCtrlSetBitmapDepressedFunc;
+         internal static void GuiBitmapButtonCtrlSetBitmapDepressed(IntPtr ctrl, string bitmap)
+         {
+            if (_GuiBitmapButtonCtrlSetBitmapDepressedFunc == null)
+            {
+               _GuiBitmapButtonCtrlSetBitmapDepressedFunc =
+                  (_GuiBitmapButtonCtrlSetBitmapDepressed)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiBitmapButtonCtrlSetBitmapDepressed"), typeof(_GuiBitmapButtonCtrlSetBitmapDepressed));
+            }
+
+            _GuiBitmapButtonCtrlSetBitmapDepressedFunc(ctrl, bitmap);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiBitmapButtonCtrlGetBitmapInactive(IntPtr ctrl);
+         private static _GuiBitmapButtonCtrlGetBitmapInactive _GuiBitmapButtonCtrlGetBitmapInactiveFunc;
+         internal static IntPtr GuiBitmapButtonCtrlGetBitmapInactive(IntPtr ctrl)
+         {
+            if (_GuiBitmapButtonCtrlGetBitmapInactiveFunc == null)
+            {
+               _GuiBitmapButtonCtrlGetBitmapInactiveFunc =
+                  (_GuiBitmapButtonCtrlGetBitmapInactive)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiBitmapButtonCtrlGetBitmapInactive"), typeof(_GuiBitmapButtonCtrlGetBitmapInactive));
+            }
+
+            return _GuiBitmapButtonCtrlGetBitmapInactiveFunc(ctrl);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiBitmapButtonCtrlSetBitmapInactive(IntPtr ctrl, string bitmap);
+         private static _GuiBitmapButtonCtrlSetBitmapInactive _GuiBitmapButtonCtrlSetBitmapInactiveFunc;
+         internal static void GuiBitmapButtonCtrlSetBitmapInactive(IntPtr ctrl, string bitmap)
+         {
+            if (_GuiBitmapButtonCtrlSetBitmapInactiveFunc == null)
+            {
+               _GuiBitmapButtonCtrlSetBitmapInactiveFunc =
+                  (_GuiBitmapButtonCtrlSetBitmapInactive)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiBitmapButtonCtrlSetBitmapInactive"), typeof(_GuiBitmapButtonCtrlSetBitmapInactive));
+            }
+
+            _GuiBitmapButtonCtrlSetBitmapInactiveFunc(ctrl, bitmap);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiBitmapButtonCtrlCreateInstance();
+         private static _GuiBitmapButtonCtrlCreateInstance _GuiBitmapButtonCtrlCreateInstanceFunc;
+         internal static IntPtr GuiBitmapButtonCtrlCreateInstance()
+         {
+            if (_GuiBitmapButtonCtrlCreateInstanceFunc == null)
+            {
+               _GuiBitmapButtonCtrlCreateInstanceFunc =
+                  (_GuiBitmapButtonCtrlCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiBitmapButtonCtrlCreateInstance"), typeof(_GuiBitmapButtonCtrlCreateInstance));
+            }
+
+            return _GuiBitmapButtonCtrlCreateInstanceFunc();
+         }
       }
       
       #endregion

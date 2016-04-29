@@ -40,17 +40,65 @@ namespace Torque6.Engine.SimObjects
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr UndoActionGetActionName(IntPtr undoAction);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _UndoActionGetActionName(IntPtr undoAction);
+         private static _UndoActionGetActionName _UndoActionGetActionNameFunc;
+         internal static IntPtr UndoActionGetActionName(IntPtr undoAction)
+         {
+            if (_UndoActionGetActionNameFunc == null)
+            {
+               _UndoActionGetActionNameFunc =
+                  (_UndoActionGetActionName)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "UndoActionGetActionName"), typeof(_UndoActionGetActionName));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void UndoActionSetActionName(IntPtr undoAction, string value);
+            return _UndoActionGetActionNameFunc(undoAction);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr UndoActionCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _UndoActionSetActionName(IntPtr undoAction, string value);
+         private static _UndoActionSetActionName _UndoActionSetActionNameFunc;
+         internal static void UndoActionSetActionName(IntPtr undoAction, string value)
+         {
+            if (_UndoActionSetActionNameFunc == null)
+            {
+               _UndoActionSetActionNameFunc =
+                  (_UndoActionSetActionName)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "UndoActionSetActionName"), typeof(_UndoActionSetActionName));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void UndoActionAddToManager(IntPtr undoAction, IntPtr undoManager);
+            _UndoActionSetActionNameFunc(undoAction, value);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _UndoActionCreateInstance();
+         private static _UndoActionCreateInstance _UndoActionCreateInstanceFunc;
+         internal static IntPtr UndoActionCreateInstance()
+         {
+            if (_UndoActionCreateInstanceFunc == null)
+            {
+               _UndoActionCreateInstanceFunc =
+                  (_UndoActionCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "UndoActionCreateInstance"), typeof(_UndoActionCreateInstance));
+            }
+
+            return _UndoActionCreateInstanceFunc();
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _UndoActionAddToManager(IntPtr undoAction, IntPtr undoManager);
+         private static _UndoActionAddToManager _UndoActionAddToManagerFunc;
+         internal static void UndoActionAddToManager(IntPtr undoAction, IntPtr undoManager)
+         {
+            if (_UndoActionAddToManagerFunc == null)
+            {
+               _UndoActionAddToManagerFunc =
+                  (_UndoActionAddToManager)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "UndoActionAddToManager"), typeof(_UndoActionAddToManager));
+            }
+
+            _UndoActionAddToManagerFunc(undoAction, undoManager);
+         }
       }
       
       #endregion

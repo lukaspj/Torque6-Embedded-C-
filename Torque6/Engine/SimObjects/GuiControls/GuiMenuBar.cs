@@ -40,74 +40,350 @@ namespace Torque6.Engine.SimObjects.GuiControls
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern int GuiMenuBarGetPadding(IntPtr menuBar);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate int _GuiMenuBarGetPadding(IntPtr menuBar);
+         private static _GuiMenuBarGetPadding _GuiMenuBarGetPaddingFunc;
+         internal static int GuiMenuBarGetPadding(IntPtr menuBar)
+         {
+            if (_GuiMenuBarGetPaddingFunc == null)
+            {
+               _GuiMenuBarGetPaddingFunc =
+                  (_GuiMenuBarGetPadding)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiMenuBarGetPadding"), typeof(_GuiMenuBarGetPadding));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiMenuBarSetPadding(IntPtr menuBar, int padding);
+            return _GuiMenuBarGetPaddingFunc(menuBar);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiMenuBarCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiMenuBarSetPadding(IntPtr menuBar, int padding);
+         private static _GuiMenuBarSetPadding _GuiMenuBarSetPaddingFunc;
+         internal static void GuiMenuBarSetPadding(IntPtr menuBar, int padding)
+         {
+            if (_GuiMenuBarSetPaddingFunc == null)
+            {
+               _GuiMenuBarSetPaddingFunc =
+                  (_GuiMenuBarSetPadding)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiMenuBarSetPadding"), typeof(_GuiMenuBarSetPadding));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiMenuBarClearMenus(IntPtr menuBar);
+            _GuiMenuBarSetPaddingFunc(menuBar, padding);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiMenuBarSetMenuMargins(IntPtr menuBar, int horizontalMargin, int verticalMargin, int bitmapToTextSpacing);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiMenuBarCreateInstance();
+         private static _GuiMenuBarCreateInstance _GuiMenuBarCreateInstanceFunc;
+         internal static IntPtr GuiMenuBarCreateInstance()
+         {
+            if (_GuiMenuBarCreateInstanceFunc == null)
+            {
+               _GuiMenuBarCreateInstanceFunc =
+                  (_GuiMenuBarCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiMenuBarCreateInstance"), typeof(_GuiMenuBarCreateInstance));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiMenuBarAddMenu(IntPtr menuBar, string menuName, int menuID);
+            return _GuiMenuBarCreateInstanceFunc();
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiMenuBarAddMenuItem(IntPtr menuBar, string menuName, string menuItemName, int menuItemID, string accelerator, int checkGroup);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiMenuBarClearMenus(IntPtr menuBar);
+         private static _GuiMenuBarClearMenus _GuiMenuBarClearMenusFunc;
+         internal static void GuiMenuBarClearMenus(IntPtr menuBar)
+         {
+            if (_GuiMenuBarClearMenusFunc == null)
+            {
+               _GuiMenuBarClearMenusFunc =
+                  (_GuiMenuBarClearMenus)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiMenuBarClearMenus"), typeof(_GuiMenuBarClearMenus));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiMenuBarSetMenuItemEnable(IntPtr menuBar, string menuName, string menuItemName, bool enabled);
+            _GuiMenuBarClearMenusFunc(menuBar);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiMenuBarSetCheckmarkBitmapIndex(IntPtr menuBar, int bitmapIndex);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiMenuBarSetMenuMargins(IntPtr menuBar, int horizontalMargin, int verticalMargin, int bitmapToTextSpacing);
+         private static _GuiMenuBarSetMenuMargins _GuiMenuBarSetMenuMarginsFunc;
+         internal static void GuiMenuBarSetMenuMargins(IntPtr menuBar, int horizontalMargin, int verticalMargin, int bitmapToTextSpacing)
+         {
+            if (_GuiMenuBarSetMenuMarginsFunc == null)
+            {
+               _GuiMenuBarSetMenuMarginsFunc =
+                  (_GuiMenuBarSetMenuMargins)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiMenuBarSetMenuMargins"), typeof(_GuiMenuBarSetMenuMargins));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiMenuBarSetMenuItemChecked(IntPtr menuBar, string menuName, string menuItemName, bool check);
+            _GuiMenuBarSetMenuMarginsFunc(menuBar, horizontalMargin, verticalMargin, bitmapToTextSpacing);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiMenuBarSetMenuText(IntPtr menuBar, string menuName, string newMenuText);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiMenuBarAddMenu(IntPtr menuBar, string menuName, int menuID);
+         private static _GuiMenuBarAddMenu _GuiMenuBarAddMenuFunc;
+         internal static void GuiMenuBarAddMenu(IntPtr menuBar, string menuName, int menuID)
+         {
+            if (_GuiMenuBarAddMenuFunc == null)
+            {
+               _GuiMenuBarAddMenuFunc =
+                  (_GuiMenuBarAddMenu)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiMenuBarAddMenu"), typeof(_GuiMenuBarAddMenu));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiMenuBarSetMenuBitmapIndex(IntPtr menuBar, string menuName, int bitmapIndex, bool bitmapOnly, bool drawBorder);
+            _GuiMenuBarAddMenuFunc(menuBar, menuName, menuID);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiMenuBarSetMenuVisible(IntPtr menuBar, string menuName, bool visible);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiMenuBarAddMenuItem(IntPtr menuBar, string menuName, string menuItemName, int menuItemID, string accelerator, int checkGroup);
+         private static _GuiMenuBarAddMenuItem _GuiMenuBarAddMenuItemFunc;
+         internal static void GuiMenuBarAddMenuItem(IntPtr menuBar, string menuName, string menuItemName, int menuItemID, string accelerator, int checkGroup)
+         {
+            if (_GuiMenuBarAddMenuItemFunc == null)
+            {
+               _GuiMenuBarAddMenuItemFunc =
+                  (_GuiMenuBarAddMenuItem)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiMenuBarAddMenuItem"), typeof(_GuiMenuBarAddMenuItem));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiMenuBarSetMenuItemText(IntPtr menuBar, string menuName, string menuItemName, string newMenuItemText);
+            _GuiMenuBarAddMenuItemFunc(menuBar, menuName, menuItemName, menuItemID, accelerator, checkGroup);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiMenuBarSetMenuItemVisible(IntPtr menuBar, string menuName, string menuItemName, bool visible);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiMenuBarSetMenuItemEnable(IntPtr menuBar, string menuName, string menuItemName, bool enabled);
+         private static _GuiMenuBarSetMenuItemEnable _GuiMenuBarSetMenuItemEnableFunc;
+         internal static void GuiMenuBarSetMenuItemEnable(IntPtr menuBar, string menuName, string menuItemName, bool enabled)
+         {
+            if (_GuiMenuBarSetMenuItemEnableFunc == null)
+            {
+               _GuiMenuBarSetMenuItemEnableFunc =
+                  (_GuiMenuBarSetMenuItemEnable)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiMenuBarSetMenuItemEnable"), typeof(_GuiMenuBarSetMenuItemEnable));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiMenuBarSetMenuItemBitmap(IntPtr menuBar, string menuName, string menuItemName, int bitmapIndex);
+            _GuiMenuBarSetMenuItemEnableFunc(menuBar, menuName, menuItemName, enabled);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiMenuBarRemoveMenuItem(IntPtr menuBar, string menuName, string menuItemName);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiMenuBarSetCheckmarkBitmapIndex(IntPtr menuBar, int bitmapIndex);
+         private static _GuiMenuBarSetCheckmarkBitmapIndex _GuiMenuBarSetCheckmarkBitmapIndexFunc;
+         internal static void GuiMenuBarSetCheckmarkBitmapIndex(IntPtr menuBar, int bitmapIndex)
+         {
+            if (_GuiMenuBarSetCheckmarkBitmapIndexFunc == null)
+            {
+               _GuiMenuBarSetCheckmarkBitmapIndexFunc =
+                  (_GuiMenuBarSetCheckmarkBitmapIndex)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiMenuBarSetCheckmarkBitmapIndex"), typeof(_GuiMenuBarSetCheckmarkBitmapIndex));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiMenuBarClearMenuItems(IntPtr menuBar, string menuName);
+            _GuiMenuBarSetCheckmarkBitmapIndexFunc(menuBar, bitmapIndex);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiMenuBarRemoveMenu(IntPtr menuBar, string menuName);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiMenuBarSetMenuItemChecked(IntPtr menuBar, string menuName, string menuItemName, bool check);
+         private static _GuiMenuBarSetMenuItemChecked _GuiMenuBarSetMenuItemCheckedFunc;
+         internal static void GuiMenuBarSetMenuItemChecked(IntPtr menuBar, string menuName, string menuItemName, bool check)
+         {
+            if (_GuiMenuBarSetMenuItemCheckedFunc == null)
+            {
+               _GuiMenuBarSetMenuItemCheckedFunc =
+                  (_GuiMenuBarSetMenuItemChecked)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiMenuBarSetMenuItemChecked"), typeof(_GuiMenuBarSetMenuItemChecked));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiMenuBarSetMenuItemSubmenuState(IntPtr menuBar, string menuName, string menuItemName, bool inSubmenu);
+            _GuiMenuBarSetMenuItemCheckedFunc(menuBar, menuName, menuItemName, check);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiMenuBarAddSubmenuItem(IntPtr menuBar, string menuName, string menuItemName, string submenuItemText, int submenuItemId, string accelerator, int checkGroup);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiMenuBarSetMenuText(IntPtr menuBar, string menuName, string newMenuText);
+         private static _GuiMenuBarSetMenuText _GuiMenuBarSetMenuTextFunc;
+         internal static void GuiMenuBarSetMenuText(IntPtr menuBar, string menuName, string newMenuText)
+         {
+            if (_GuiMenuBarSetMenuTextFunc == null)
+            {
+               _GuiMenuBarSetMenuTextFunc =
+                  (_GuiMenuBarSetMenuText)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiMenuBarSetMenuText"), typeof(_GuiMenuBarSetMenuText));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiMenuBarClearSubmenuItems(IntPtr menuBar, string menuName, string menuItemName);
+            _GuiMenuBarSetMenuTextFunc(menuBar, menuName, newMenuText);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiMenuBarSetSubmenuItemChecked(IntPtr menuBar, string menuName, string menuItemName, string submenuItemText, bool check);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiMenuBarSetMenuBitmapIndex(IntPtr menuBar, string menuName, int bitmapIndex, bool bitmapOnly, bool drawBorder);
+         private static _GuiMenuBarSetMenuBitmapIndex _GuiMenuBarSetMenuBitmapIndexFunc;
+         internal static void GuiMenuBarSetMenuBitmapIndex(IntPtr menuBar, string menuName, int bitmapIndex, bool bitmapOnly, bool drawBorder)
+         {
+            if (_GuiMenuBarSetMenuBitmapIndexFunc == null)
+            {
+               _GuiMenuBarSetMenuBitmapIndexFunc =
+                  (_GuiMenuBarSetMenuBitmapIndex)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiMenuBarSetMenuBitmapIndex"), typeof(_GuiMenuBarSetMenuBitmapIndex));
+            }
+
+            _GuiMenuBarSetMenuBitmapIndexFunc(menuBar, menuName, bitmapIndex, bitmapOnly, drawBorder);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiMenuBarSetMenuVisible(IntPtr menuBar, string menuName, bool visible);
+         private static _GuiMenuBarSetMenuVisible _GuiMenuBarSetMenuVisibleFunc;
+         internal static void GuiMenuBarSetMenuVisible(IntPtr menuBar, string menuName, bool visible)
+         {
+            if (_GuiMenuBarSetMenuVisibleFunc == null)
+            {
+               _GuiMenuBarSetMenuVisibleFunc =
+                  (_GuiMenuBarSetMenuVisible)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiMenuBarSetMenuVisible"), typeof(_GuiMenuBarSetMenuVisible));
+            }
+
+            _GuiMenuBarSetMenuVisibleFunc(menuBar, menuName, visible);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiMenuBarSetMenuItemText(IntPtr menuBar, string menuName, string menuItemName, string newMenuItemText);
+         private static _GuiMenuBarSetMenuItemText _GuiMenuBarSetMenuItemTextFunc;
+         internal static void GuiMenuBarSetMenuItemText(IntPtr menuBar, string menuName, string menuItemName, string newMenuItemText)
+         {
+            if (_GuiMenuBarSetMenuItemTextFunc == null)
+            {
+               _GuiMenuBarSetMenuItemTextFunc =
+                  (_GuiMenuBarSetMenuItemText)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiMenuBarSetMenuItemText"), typeof(_GuiMenuBarSetMenuItemText));
+            }
+
+            _GuiMenuBarSetMenuItemTextFunc(menuBar, menuName, menuItemName, newMenuItemText);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiMenuBarSetMenuItemVisible(IntPtr menuBar, string menuName, string menuItemName, bool visible);
+         private static _GuiMenuBarSetMenuItemVisible _GuiMenuBarSetMenuItemVisibleFunc;
+         internal static void GuiMenuBarSetMenuItemVisible(IntPtr menuBar, string menuName, string menuItemName, bool visible)
+         {
+            if (_GuiMenuBarSetMenuItemVisibleFunc == null)
+            {
+               _GuiMenuBarSetMenuItemVisibleFunc =
+                  (_GuiMenuBarSetMenuItemVisible)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiMenuBarSetMenuItemVisible"), typeof(_GuiMenuBarSetMenuItemVisible));
+            }
+
+            _GuiMenuBarSetMenuItemVisibleFunc(menuBar, menuName, menuItemName, visible);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiMenuBarSetMenuItemBitmap(IntPtr menuBar, string menuName, string menuItemName, int bitmapIndex);
+         private static _GuiMenuBarSetMenuItemBitmap _GuiMenuBarSetMenuItemBitmapFunc;
+         internal static void GuiMenuBarSetMenuItemBitmap(IntPtr menuBar, string menuName, string menuItemName, int bitmapIndex)
+         {
+            if (_GuiMenuBarSetMenuItemBitmapFunc == null)
+            {
+               _GuiMenuBarSetMenuItemBitmapFunc =
+                  (_GuiMenuBarSetMenuItemBitmap)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiMenuBarSetMenuItemBitmap"), typeof(_GuiMenuBarSetMenuItemBitmap));
+            }
+
+            _GuiMenuBarSetMenuItemBitmapFunc(menuBar, menuName, menuItemName, bitmapIndex);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiMenuBarRemoveMenuItem(IntPtr menuBar, string menuName, string menuItemName);
+         private static _GuiMenuBarRemoveMenuItem _GuiMenuBarRemoveMenuItemFunc;
+         internal static void GuiMenuBarRemoveMenuItem(IntPtr menuBar, string menuName, string menuItemName)
+         {
+            if (_GuiMenuBarRemoveMenuItemFunc == null)
+            {
+               _GuiMenuBarRemoveMenuItemFunc =
+                  (_GuiMenuBarRemoveMenuItem)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiMenuBarRemoveMenuItem"), typeof(_GuiMenuBarRemoveMenuItem));
+            }
+
+            _GuiMenuBarRemoveMenuItemFunc(menuBar, menuName, menuItemName);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiMenuBarClearMenuItems(IntPtr menuBar, string menuName);
+         private static _GuiMenuBarClearMenuItems _GuiMenuBarClearMenuItemsFunc;
+         internal static void GuiMenuBarClearMenuItems(IntPtr menuBar, string menuName)
+         {
+            if (_GuiMenuBarClearMenuItemsFunc == null)
+            {
+               _GuiMenuBarClearMenuItemsFunc =
+                  (_GuiMenuBarClearMenuItems)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiMenuBarClearMenuItems"), typeof(_GuiMenuBarClearMenuItems));
+            }
+
+            _GuiMenuBarClearMenuItemsFunc(menuBar, menuName);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiMenuBarRemoveMenu(IntPtr menuBar, string menuName);
+         private static _GuiMenuBarRemoveMenu _GuiMenuBarRemoveMenuFunc;
+         internal static void GuiMenuBarRemoveMenu(IntPtr menuBar, string menuName)
+         {
+            if (_GuiMenuBarRemoveMenuFunc == null)
+            {
+               _GuiMenuBarRemoveMenuFunc =
+                  (_GuiMenuBarRemoveMenu)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiMenuBarRemoveMenu"), typeof(_GuiMenuBarRemoveMenu));
+            }
+
+            _GuiMenuBarRemoveMenuFunc(menuBar, menuName);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiMenuBarSetMenuItemSubmenuState(IntPtr menuBar, string menuName, string menuItemName, bool inSubmenu);
+         private static _GuiMenuBarSetMenuItemSubmenuState _GuiMenuBarSetMenuItemSubmenuStateFunc;
+         internal static void GuiMenuBarSetMenuItemSubmenuState(IntPtr menuBar, string menuName, string menuItemName, bool inSubmenu)
+         {
+            if (_GuiMenuBarSetMenuItemSubmenuStateFunc == null)
+            {
+               _GuiMenuBarSetMenuItemSubmenuStateFunc =
+                  (_GuiMenuBarSetMenuItemSubmenuState)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiMenuBarSetMenuItemSubmenuState"), typeof(_GuiMenuBarSetMenuItemSubmenuState));
+            }
+
+            _GuiMenuBarSetMenuItemSubmenuStateFunc(menuBar, menuName, menuItemName, inSubmenu);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiMenuBarAddSubmenuItem(IntPtr menuBar, string menuName, string menuItemName, string submenuItemText, int submenuItemId, string accelerator, int checkGroup);
+         private static _GuiMenuBarAddSubmenuItem _GuiMenuBarAddSubmenuItemFunc;
+         internal static void GuiMenuBarAddSubmenuItem(IntPtr menuBar, string menuName, string menuItemName, string submenuItemText, int submenuItemId, string accelerator, int checkGroup)
+         {
+            if (_GuiMenuBarAddSubmenuItemFunc == null)
+            {
+               _GuiMenuBarAddSubmenuItemFunc =
+                  (_GuiMenuBarAddSubmenuItem)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiMenuBarAddSubmenuItem"), typeof(_GuiMenuBarAddSubmenuItem));
+            }
+
+            _GuiMenuBarAddSubmenuItemFunc(menuBar, menuName, menuItemName, submenuItemText, submenuItemId, accelerator, checkGroup);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiMenuBarClearSubmenuItems(IntPtr menuBar, string menuName, string menuItemName);
+         private static _GuiMenuBarClearSubmenuItems _GuiMenuBarClearSubmenuItemsFunc;
+         internal static void GuiMenuBarClearSubmenuItems(IntPtr menuBar, string menuName, string menuItemName)
+         {
+            if (_GuiMenuBarClearSubmenuItemsFunc == null)
+            {
+               _GuiMenuBarClearSubmenuItemsFunc =
+                  (_GuiMenuBarClearSubmenuItems)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiMenuBarClearSubmenuItems"), typeof(_GuiMenuBarClearSubmenuItems));
+            }
+
+            _GuiMenuBarClearSubmenuItemsFunc(menuBar, menuName, menuItemName);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiMenuBarSetSubmenuItemChecked(IntPtr menuBar, string menuName, string menuItemName, string submenuItemText, bool check);
+         private static _GuiMenuBarSetSubmenuItemChecked _GuiMenuBarSetSubmenuItemCheckedFunc;
+         internal static void GuiMenuBarSetSubmenuItemChecked(IntPtr menuBar, string menuName, string menuItemName, string submenuItemText, bool check)
+         {
+            if (_GuiMenuBarSetSubmenuItemCheckedFunc == null)
+            {
+               _GuiMenuBarSetSubmenuItemCheckedFunc =
+                  (_GuiMenuBarSetSubmenuItemChecked)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiMenuBarSetSubmenuItemChecked"), typeof(_GuiMenuBarSetSubmenuItemChecked));
+            }
+
+            _GuiMenuBarSetSubmenuItemCheckedFunc(menuBar, menuName, menuItemName, submenuItemText, check);
+         }
       }
       
       #endregion

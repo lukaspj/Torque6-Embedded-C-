@@ -40,11 +40,35 @@ namespace Torque6.Engine.SimObjects.GuiControls
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiInspectorDynamicFieldCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiInspectorDynamicFieldCreateInstance();
+         private static _GuiInspectorDynamicFieldCreateInstance _GuiInspectorDynamicFieldCreateInstanceFunc;
+         internal static IntPtr GuiInspectorDynamicFieldCreateInstance()
+         {
+            if (_GuiInspectorDynamicFieldCreateInstanceFunc == null)
+            {
+               _GuiInspectorDynamicFieldCreateInstanceFunc =
+                  (_GuiInspectorDynamicFieldCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiInspectorDynamicFieldCreateInstance"), typeof(_GuiInspectorDynamicFieldCreateInstance));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiInspectorDynamicFieldRenameField(IntPtr field, string newName);
+            return _GuiInspectorDynamicFieldCreateInstanceFunc();
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiInspectorDynamicFieldRenameField(IntPtr field, string newName);
+         private static _GuiInspectorDynamicFieldRenameField _GuiInspectorDynamicFieldRenameFieldFunc;
+         internal static void GuiInspectorDynamicFieldRenameField(IntPtr field, string newName)
+         {
+            if (_GuiInspectorDynamicFieldRenameFieldFunc == null)
+            {
+               _GuiInspectorDynamicFieldRenameFieldFunc =
+                  (_GuiInspectorDynamicFieldRenameField)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiInspectorDynamicFieldRenameField"), typeof(_GuiInspectorDynamicFieldRenameField));
+            }
+
+            _GuiInspectorDynamicFieldRenameFieldFunc(field, newName);
+         }
       }
       
       #endregion

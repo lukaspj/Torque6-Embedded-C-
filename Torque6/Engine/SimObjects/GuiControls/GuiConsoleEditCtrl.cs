@@ -40,14 +40,50 @@ namespace Torque6.Engine.SimObjects.GuiControls
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool GuiConsoleEditCtrlGetUseSiblingScroller(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _GuiConsoleEditCtrlGetUseSiblingScroller(IntPtr ctrl);
+         private static _GuiConsoleEditCtrlGetUseSiblingScroller _GuiConsoleEditCtrlGetUseSiblingScrollerFunc;
+         internal static bool GuiConsoleEditCtrlGetUseSiblingScroller(IntPtr ctrl)
+         {
+            if (_GuiConsoleEditCtrlGetUseSiblingScrollerFunc == null)
+            {
+               _GuiConsoleEditCtrlGetUseSiblingScrollerFunc =
+                  (_GuiConsoleEditCtrlGetUseSiblingScroller)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiConsoleEditCtrlGetUseSiblingScroller"), typeof(_GuiConsoleEditCtrlGetUseSiblingScroller));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiConsoleEditCtrlSetUseSiblingScroller(IntPtr ctrl, bool use);
+            return _GuiConsoleEditCtrlGetUseSiblingScrollerFunc(ctrl);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiConsoleEditCtrlCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiConsoleEditCtrlSetUseSiblingScroller(IntPtr ctrl, bool use);
+         private static _GuiConsoleEditCtrlSetUseSiblingScroller _GuiConsoleEditCtrlSetUseSiblingScrollerFunc;
+         internal static void GuiConsoleEditCtrlSetUseSiblingScroller(IntPtr ctrl, bool use)
+         {
+            if (_GuiConsoleEditCtrlSetUseSiblingScrollerFunc == null)
+            {
+               _GuiConsoleEditCtrlSetUseSiblingScrollerFunc =
+                  (_GuiConsoleEditCtrlSetUseSiblingScroller)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiConsoleEditCtrlSetUseSiblingScroller"), typeof(_GuiConsoleEditCtrlSetUseSiblingScroller));
+            }
+
+            _GuiConsoleEditCtrlSetUseSiblingScrollerFunc(ctrl, use);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiConsoleEditCtrlCreateInstance();
+         private static _GuiConsoleEditCtrlCreateInstance _GuiConsoleEditCtrlCreateInstanceFunc;
+         internal static IntPtr GuiConsoleEditCtrlCreateInstance()
+         {
+            if (_GuiConsoleEditCtrlCreateInstanceFunc == null)
+            {
+               _GuiConsoleEditCtrlCreateInstanceFunc =
+                  (_GuiConsoleEditCtrlCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiConsoleEditCtrlCreateInstance"), typeof(_GuiConsoleEditCtrlCreateInstance));
+            }
+
+            return _GuiConsoleEditCtrlCreateInstanceFunc();
+         }
       }
       
       #endregion

@@ -40,56 +40,260 @@ namespace Torque6.Engine.SimObjects.GuiControls
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiColorPickerCtrlGetBaseColor(IntPtr ctrl, out Color outColor);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiColorPickerCtrlGetBaseColor(IntPtr ctrl, out Color outColor);
+         private static _GuiColorPickerCtrlGetBaseColor _GuiColorPickerCtrlGetBaseColorFunc;
+         internal static void GuiColorPickerCtrlGetBaseColor(IntPtr ctrl, out Color outColor)
+         {
+            if (_GuiColorPickerCtrlGetBaseColorFunc == null)
+            {
+               _GuiColorPickerCtrlGetBaseColorFunc =
+                  (_GuiColorPickerCtrlGetBaseColor)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiColorPickerCtrlGetBaseColor"), typeof(_GuiColorPickerCtrlGetBaseColor));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiColorPickerCtrlSetBaseColor(IntPtr ctrl, Color color);
+            _GuiColorPickerCtrlGetBaseColorFunc(ctrl, out outColor);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiColorPickerCtrlGetPickColor(IntPtr ctrl, out Color outColor);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiColorPickerCtrlSetBaseColor(IntPtr ctrl, Color color);
+         private static _GuiColorPickerCtrlSetBaseColor _GuiColorPickerCtrlSetBaseColorFunc;
+         internal static void GuiColorPickerCtrlSetBaseColor(IntPtr ctrl, Color color)
+         {
+            if (_GuiColorPickerCtrlSetBaseColorFunc == null)
+            {
+               _GuiColorPickerCtrlSetBaseColorFunc =
+                  (_GuiColorPickerCtrlSetBaseColor)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiColorPickerCtrlSetBaseColor"), typeof(_GuiColorPickerCtrlSetBaseColor));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiColorPickerCtrlSetPickColor(IntPtr ctrl, Color color);
+            _GuiColorPickerCtrlSetBaseColorFunc(ctrl, color);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern int GuiColorPickerCtrlGetSelectorGap(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiColorPickerCtrlGetPickColor(IntPtr ctrl, out Color outColor);
+         private static _GuiColorPickerCtrlGetPickColor _GuiColorPickerCtrlGetPickColorFunc;
+         internal static void GuiColorPickerCtrlGetPickColor(IntPtr ctrl, out Color outColor)
+         {
+            if (_GuiColorPickerCtrlGetPickColorFunc == null)
+            {
+               _GuiColorPickerCtrlGetPickColorFunc =
+                  (_GuiColorPickerCtrlGetPickColor)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiColorPickerCtrlGetPickColor"), typeof(_GuiColorPickerCtrlGetPickColor));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiColorPickerCtrlSetSelectorGap(IntPtr ctrl, int gap);
+            _GuiColorPickerCtrlGetPickColorFunc(ctrl, out outColor);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern int GuiColorPickerCtrlGetDisplayMode(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiColorPickerCtrlSetPickColor(IntPtr ctrl, Color color);
+         private static _GuiColorPickerCtrlSetPickColor _GuiColorPickerCtrlSetPickColorFunc;
+         internal static void GuiColorPickerCtrlSetPickColor(IntPtr ctrl, Color color)
+         {
+            if (_GuiColorPickerCtrlSetPickColorFunc == null)
+            {
+               _GuiColorPickerCtrlSetPickColorFunc =
+                  (_GuiColorPickerCtrlSetPickColor)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiColorPickerCtrlSetPickColor"), typeof(_GuiColorPickerCtrlSetPickColor));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiColorPickerCtrlSetDisplayMode(IntPtr ctrl, int mode);
+            _GuiColorPickerCtrlSetPickColorFunc(ctrl, color);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool GuiColorPickerCtrlGetActionOnMove(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate int _GuiColorPickerCtrlGetSelectorGap(IntPtr ctrl);
+         private static _GuiColorPickerCtrlGetSelectorGap _GuiColorPickerCtrlGetSelectorGapFunc;
+         internal static int GuiColorPickerCtrlGetSelectorGap(IntPtr ctrl)
+         {
+            if (_GuiColorPickerCtrlGetSelectorGapFunc == null)
+            {
+               _GuiColorPickerCtrlGetSelectorGapFunc =
+                  (_GuiColorPickerCtrlGetSelectorGap)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiColorPickerCtrlGetSelectorGap"), typeof(_GuiColorPickerCtrlGetSelectorGap));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiColorPickerCtrlSetActionOnMove(IntPtr ctrl, bool actionOnMove);
+            return _GuiColorPickerCtrlGetSelectorGapFunc(ctrl);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool GuiColorPickerCtrlGetShowSelector(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiColorPickerCtrlSetSelectorGap(IntPtr ctrl, int gap);
+         private static _GuiColorPickerCtrlSetSelectorGap _GuiColorPickerCtrlSetSelectorGapFunc;
+         internal static void GuiColorPickerCtrlSetSelectorGap(IntPtr ctrl, int gap)
+         {
+            if (_GuiColorPickerCtrlSetSelectorGapFunc == null)
+            {
+               _GuiColorPickerCtrlSetSelectorGapFunc =
+                  (_GuiColorPickerCtrlSetSelectorGap)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiColorPickerCtrlSetSelectorGap"), typeof(_GuiColorPickerCtrlSetSelectorGap));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiColorPickerCtrlSetShowSelector(IntPtr ctrl, bool showSelector);
+            _GuiColorPickerCtrlSetSelectorGapFunc(ctrl, gap);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiColorPickerCtrlCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate int _GuiColorPickerCtrlGetDisplayMode(IntPtr ctrl);
+         private static _GuiColorPickerCtrlGetDisplayMode _GuiColorPickerCtrlGetDisplayModeFunc;
+         internal static int GuiColorPickerCtrlGetDisplayMode(IntPtr ctrl)
+         {
+            if (_GuiColorPickerCtrlGetDisplayModeFunc == null)
+            {
+               _GuiColorPickerCtrlGetDisplayModeFunc =
+                  (_GuiColorPickerCtrlGetDisplayMode)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiColorPickerCtrlGetDisplayMode"), typeof(_GuiColorPickerCtrlGetDisplayMode));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiColorPickerCtrlGetSelectorPos(IntPtr ctrl, Point2I outPos);
+            return _GuiColorPickerCtrlGetDisplayModeFunc(ctrl);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiColorPickerCtrlGetSelectorPosForColor(IntPtr ctrl, Color col, Point2I outPos);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiColorPickerCtrlSetDisplayMode(IntPtr ctrl, int mode);
+         private static _GuiColorPickerCtrlSetDisplayMode _GuiColorPickerCtrlSetDisplayModeFunc;
+         internal static void GuiColorPickerCtrlSetDisplayMode(IntPtr ctrl, int mode)
+         {
+            if (_GuiColorPickerCtrlSetDisplayModeFunc == null)
+            {
+               _GuiColorPickerCtrlSetDisplayModeFunc =
+                  (_GuiColorPickerCtrlSetDisplayMode)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiColorPickerCtrlSetDisplayMode"), typeof(_GuiColorPickerCtrlSetDisplayMode));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiColorPickerCtrlSetSelectorPos(IntPtr ctrl, Point2I pos);
+            _GuiColorPickerCtrlSetDisplayModeFunc(ctrl, mode);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiColorPickerCtrlUpdateColor(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _GuiColorPickerCtrlGetActionOnMove(IntPtr ctrl);
+         private static _GuiColorPickerCtrlGetActionOnMove _GuiColorPickerCtrlGetActionOnMoveFunc;
+         internal static bool GuiColorPickerCtrlGetActionOnMove(IntPtr ctrl)
+         {
+            if (_GuiColorPickerCtrlGetActionOnMoveFunc == null)
+            {
+               _GuiColorPickerCtrlGetActionOnMoveFunc =
+                  (_GuiColorPickerCtrlGetActionOnMove)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiColorPickerCtrlGetActionOnMove"), typeof(_GuiColorPickerCtrlGetActionOnMove));
+            }
+
+            return _GuiColorPickerCtrlGetActionOnMoveFunc(ctrl);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiColorPickerCtrlSetActionOnMove(IntPtr ctrl, bool actionOnMove);
+         private static _GuiColorPickerCtrlSetActionOnMove _GuiColorPickerCtrlSetActionOnMoveFunc;
+         internal static void GuiColorPickerCtrlSetActionOnMove(IntPtr ctrl, bool actionOnMove)
+         {
+            if (_GuiColorPickerCtrlSetActionOnMoveFunc == null)
+            {
+               _GuiColorPickerCtrlSetActionOnMoveFunc =
+                  (_GuiColorPickerCtrlSetActionOnMove)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiColorPickerCtrlSetActionOnMove"), typeof(_GuiColorPickerCtrlSetActionOnMove));
+            }
+
+            _GuiColorPickerCtrlSetActionOnMoveFunc(ctrl, actionOnMove);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _GuiColorPickerCtrlGetShowSelector(IntPtr ctrl);
+         private static _GuiColorPickerCtrlGetShowSelector _GuiColorPickerCtrlGetShowSelectorFunc;
+         internal static bool GuiColorPickerCtrlGetShowSelector(IntPtr ctrl)
+         {
+            if (_GuiColorPickerCtrlGetShowSelectorFunc == null)
+            {
+               _GuiColorPickerCtrlGetShowSelectorFunc =
+                  (_GuiColorPickerCtrlGetShowSelector)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiColorPickerCtrlGetShowSelector"), typeof(_GuiColorPickerCtrlGetShowSelector));
+            }
+
+            return _GuiColorPickerCtrlGetShowSelectorFunc(ctrl);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiColorPickerCtrlSetShowSelector(IntPtr ctrl, bool showSelector);
+         private static _GuiColorPickerCtrlSetShowSelector _GuiColorPickerCtrlSetShowSelectorFunc;
+         internal static void GuiColorPickerCtrlSetShowSelector(IntPtr ctrl, bool showSelector)
+         {
+            if (_GuiColorPickerCtrlSetShowSelectorFunc == null)
+            {
+               _GuiColorPickerCtrlSetShowSelectorFunc =
+                  (_GuiColorPickerCtrlSetShowSelector)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiColorPickerCtrlSetShowSelector"), typeof(_GuiColorPickerCtrlSetShowSelector));
+            }
+
+            _GuiColorPickerCtrlSetShowSelectorFunc(ctrl, showSelector);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiColorPickerCtrlCreateInstance();
+         private static _GuiColorPickerCtrlCreateInstance _GuiColorPickerCtrlCreateInstanceFunc;
+         internal static IntPtr GuiColorPickerCtrlCreateInstance()
+         {
+            if (_GuiColorPickerCtrlCreateInstanceFunc == null)
+            {
+               _GuiColorPickerCtrlCreateInstanceFunc =
+                  (_GuiColorPickerCtrlCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiColorPickerCtrlCreateInstance"), typeof(_GuiColorPickerCtrlCreateInstance));
+            }
+
+            return _GuiColorPickerCtrlCreateInstanceFunc();
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiColorPickerCtrlGetSelectorPos(IntPtr ctrl, Point2I outPos);
+         private static _GuiColorPickerCtrlGetSelectorPos _GuiColorPickerCtrlGetSelectorPosFunc;
+         internal static void GuiColorPickerCtrlGetSelectorPos(IntPtr ctrl, Point2I outPos)
+         {
+            if (_GuiColorPickerCtrlGetSelectorPosFunc == null)
+            {
+               _GuiColorPickerCtrlGetSelectorPosFunc =
+                  (_GuiColorPickerCtrlGetSelectorPos)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiColorPickerCtrlGetSelectorPos"), typeof(_GuiColorPickerCtrlGetSelectorPos));
+            }
+
+            _GuiColorPickerCtrlGetSelectorPosFunc(ctrl, outPos);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiColorPickerCtrlGetSelectorPosForColor(IntPtr ctrl, Color col, Point2I outPos);
+         private static _GuiColorPickerCtrlGetSelectorPosForColor _GuiColorPickerCtrlGetSelectorPosForColorFunc;
+         internal static void GuiColorPickerCtrlGetSelectorPosForColor(IntPtr ctrl, Color col, Point2I outPos)
+         {
+            if (_GuiColorPickerCtrlGetSelectorPosForColorFunc == null)
+            {
+               _GuiColorPickerCtrlGetSelectorPosForColorFunc =
+                  (_GuiColorPickerCtrlGetSelectorPosForColor)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiColorPickerCtrlGetSelectorPosForColor"), typeof(_GuiColorPickerCtrlGetSelectorPosForColor));
+            }
+
+            _GuiColorPickerCtrlGetSelectorPosForColorFunc(ctrl, col, outPos);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiColorPickerCtrlSetSelectorPos(IntPtr ctrl, Point2I pos);
+         private static _GuiColorPickerCtrlSetSelectorPos _GuiColorPickerCtrlSetSelectorPosFunc;
+         internal static void GuiColorPickerCtrlSetSelectorPos(IntPtr ctrl, Point2I pos)
+         {
+            if (_GuiColorPickerCtrlSetSelectorPosFunc == null)
+            {
+               _GuiColorPickerCtrlSetSelectorPosFunc =
+                  (_GuiColorPickerCtrlSetSelectorPos)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiColorPickerCtrlSetSelectorPos"), typeof(_GuiColorPickerCtrlSetSelectorPos));
+            }
+
+            _GuiColorPickerCtrlSetSelectorPosFunc(ctrl, pos);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiColorPickerCtrlUpdateColor(IntPtr ctrl);
+         private static _GuiColorPickerCtrlUpdateColor _GuiColorPickerCtrlUpdateColorFunc;
+         internal static void GuiColorPickerCtrlUpdateColor(IntPtr ctrl)
+         {
+            if (_GuiColorPickerCtrlUpdateColorFunc == null)
+            {
+               _GuiColorPickerCtrlUpdateColorFunc =
+                  (_GuiColorPickerCtrlUpdateColor)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiColorPickerCtrlUpdateColor"), typeof(_GuiColorPickerCtrlUpdateColor));
+            }
+
+            _GuiColorPickerCtrlUpdateColorFunc(ctrl);
+         }
       }
       
       #endregion

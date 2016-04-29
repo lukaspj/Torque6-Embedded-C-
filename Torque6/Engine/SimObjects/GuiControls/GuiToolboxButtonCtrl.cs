@@ -40,26 +40,110 @@ namespace Torque6.Engine.SimObjects.GuiControls
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiToolboxButtonCtrlGetNormalBitmap(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiToolboxButtonCtrlGetNormalBitmap(IntPtr ctrl);
+         private static _GuiToolboxButtonCtrlGetNormalBitmap _GuiToolboxButtonCtrlGetNormalBitmapFunc;
+         internal static IntPtr GuiToolboxButtonCtrlGetNormalBitmap(IntPtr ctrl)
+         {
+            if (_GuiToolboxButtonCtrlGetNormalBitmapFunc == null)
+            {
+               _GuiToolboxButtonCtrlGetNormalBitmapFunc =
+                  (_GuiToolboxButtonCtrlGetNormalBitmap)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiToolboxButtonCtrlGetNormalBitmap"), typeof(_GuiToolboxButtonCtrlGetNormalBitmap));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiToolboxButtonCtrlSetNormalBitmap(IntPtr ctrl, string bitmap);
+            return _GuiToolboxButtonCtrlGetNormalBitmapFunc(ctrl);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiToolboxButtonCtrlGetLoweredBitmap(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiToolboxButtonCtrlSetNormalBitmap(IntPtr ctrl, string bitmap);
+         private static _GuiToolboxButtonCtrlSetNormalBitmap _GuiToolboxButtonCtrlSetNormalBitmapFunc;
+         internal static void GuiToolboxButtonCtrlSetNormalBitmap(IntPtr ctrl, string bitmap)
+         {
+            if (_GuiToolboxButtonCtrlSetNormalBitmapFunc == null)
+            {
+               _GuiToolboxButtonCtrlSetNormalBitmapFunc =
+                  (_GuiToolboxButtonCtrlSetNormalBitmap)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiToolboxButtonCtrlSetNormalBitmap"), typeof(_GuiToolboxButtonCtrlSetNormalBitmap));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiToolboxButtonCtrlSetLoweredBitmap(IntPtr ctrl, string bitmap);
+            _GuiToolboxButtonCtrlSetNormalBitmapFunc(ctrl, bitmap);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiToolboxButtonCtrlGetHoverBitmap(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiToolboxButtonCtrlGetLoweredBitmap(IntPtr ctrl);
+         private static _GuiToolboxButtonCtrlGetLoweredBitmap _GuiToolboxButtonCtrlGetLoweredBitmapFunc;
+         internal static IntPtr GuiToolboxButtonCtrlGetLoweredBitmap(IntPtr ctrl)
+         {
+            if (_GuiToolboxButtonCtrlGetLoweredBitmapFunc == null)
+            {
+               _GuiToolboxButtonCtrlGetLoweredBitmapFunc =
+                  (_GuiToolboxButtonCtrlGetLoweredBitmap)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiToolboxButtonCtrlGetLoweredBitmap"), typeof(_GuiToolboxButtonCtrlGetLoweredBitmap));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiToolboxButtonCtrlSetHoverBitmap(IntPtr ctrl, string bitmap);
+            return _GuiToolboxButtonCtrlGetLoweredBitmapFunc(ctrl);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiToolboxButtonCtrlCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiToolboxButtonCtrlSetLoweredBitmap(IntPtr ctrl, string bitmap);
+         private static _GuiToolboxButtonCtrlSetLoweredBitmap _GuiToolboxButtonCtrlSetLoweredBitmapFunc;
+         internal static void GuiToolboxButtonCtrlSetLoweredBitmap(IntPtr ctrl, string bitmap)
+         {
+            if (_GuiToolboxButtonCtrlSetLoweredBitmapFunc == null)
+            {
+               _GuiToolboxButtonCtrlSetLoweredBitmapFunc =
+                  (_GuiToolboxButtonCtrlSetLoweredBitmap)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiToolboxButtonCtrlSetLoweredBitmap"), typeof(_GuiToolboxButtonCtrlSetLoweredBitmap));
+            }
+
+            _GuiToolboxButtonCtrlSetLoweredBitmapFunc(ctrl, bitmap);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiToolboxButtonCtrlGetHoverBitmap(IntPtr ctrl);
+         private static _GuiToolboxButtonCtrlGetHoverBitmap _GuiToolboxButtonCtrlGetHoverBitmapFunc;
+         internal static IntPtr GuiToolboxButtonCtrlGetHoverBitmap(IntPtr ctrl)
+         {
+            if (_GuiToolboxButtonCtrlGetHoverBitmapFunc == null)
+            {
+               _GuiToolboxButtonCtrlGetHoverBitmapFunc =
+                  (_GuiToolboxButtonCtrlGetHoverBitmap)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiToolboxButtonCtrlGetHoverBitmap"), typeof(_GuiToolboxButtonCtrlGetHoverBitmap));
+            }
+
+            return _GuiToolboxButtonCtrlGetHoverBitmapFunc(ctrl);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiToolboxButtonCtrlSetHoverBitmap(IntPtr ctrl, string bitmap);
+         private static _GuiToolboxButtonCtrlSetHoverBitmap _GuiToolboxButtonCtrlSetHoverBitmapFunc;
+         internal static void GuiToolboxButtonCtrlSetHoverBitmap(IntPtr ctrl, string bitmap)
+         {
+            if (_GuiToolboxButtonCtrlSetHoverBitmapFunc == null)
+            {
+               _GuiToolboxButtonCtrlSetHoverBitmapFunc =
+                  (_GuiToolboxButtonCtrlSetHoverBitmap)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiToolboxButtonCtrlSetHoverBitmap"), typeof(_GuiToolboxButtonCtrlSetHoverBitmap));
+            }
+
+            _GuiToolboxButtonCtrlSetHoverBitmapFunc(ctrl, bitmap);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiToolboxButtonCtrlCreateInstance();
+         private static _GuiToolboxButtonCtrlCreateInstance _GuiToolboxButtonCtrlCreateInstanceFunc;
+         internal static IntPtr GuiToolboxButtonCtrlCreateInstance()
+         {
+            if (_GuiToolboxButtonCtrlCreateInstanceFunc == null)
+            {
+               _GuiToolboxButtonCtrlCreateInstanceFunc =
+                  (_GuiToolboxButtonCtrlCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiToolboxButtonCtrlCreateInstance"), typeof(_GuiToolboxButtonCtrlCreateInstance));
+            }
+
+            return _GuiToolboxButtonCtrlCreateInstanceFunc();
+         }
       }
       
       #endregion

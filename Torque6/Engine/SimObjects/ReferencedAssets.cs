@@ -40,26 +40,110 @@ namespace Torque6.Engine.SimObjects
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr ReferencedAssetsGetPath(IntPtr assets);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _ReferencedAssetsGetPath(IntPtr assets);
+         private static _ReferencedAssetsGetPath _ReferencedAssetsGetPathFunc;
+         internal static IntPtr ReferencedAssetsGetPath(IntPtr assets)
+         {
+            if (_ReferencedAssetsGetPathFunc == null)
+            {
+               _ReferencedAssetsGetPathFunc =
+                  (_ReferencedAssetsGetPath)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "ReferencedAssetsGetPath"), typeof(_ReferencedAssetsGetPath));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void ReferencedAssetsSetPath(IntPtr assets, string path);
+            return _ReferencedAssetsGetPathFunc(assets);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr ReferencedAssetsGetExtension(IntPtr assets);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _ReferencedAssetsSetPath(IntPtr assets, string path);
+         private static _ReferencedAssetsSetPath _ReferencedAssetsSetPathFunc;
+         internal static void ReferencedAssetsSetPath(IntPtr assets, string path)
+         {
+            if (_ReferencedAssetsSetPathFunc == null)
+            {
+               _ReferencedAssetsSetPathFunc =
+                  (_ReferencedAssetsSetPath)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "ReferencedAssetsSetPath"), typeof(_ReferencedAssetsSetPath));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void ReferencedAssetsSetExtension(IntPtr assets, string path);
+            _ReferencedAssetsSetPathFunc(assets, path);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool ReferencedAssetsGetRecurse(IntPtr assets);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _ReferencedAssetsGetExtension(IntPtr assets);
+         private static _ReferencedAssetsGetExtension _ReferencedAssetsGetExtensionFunc;
+         internal static IntPtr ReferencedAssetsGetExtension(IntPtr assets)
+         {
+            if (_ReferencedAssetsGetExtensionFunc == null)
+            {
+               _ReferencedAssetsGetExtensionFunc =
+                  (_ReferencedAssetsGetExtension)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "ReferencedAssetsGetExtension"), typeof(_ReferencedAssetsGetExtension));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void ReferencedAssetsSetRecurse(IntPtr assets, bool value);
+            return _ReferencedAssetsGetExtensionFunc(assets);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr ReferencedAssetsCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _ReferencedAssetsSetExtension(IntPtr assets, string path);
+         private static _ReferencedAssetsSetExtension _ReferencedAssetsSetExtensionFunc;
+         internal static void ReferencedAssetsSetExtension(IntPtr assets, string path)
+         {
+            if (_ReferencedAssetsSetExtensionFunc == null)
+            {
+               _ReferencedAssetsSetExtensionFunc =
+                  (_ReferencedAssetsSetExtension)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "ReferencedAssetsSetExtension"), typeof(_ReferencedAssetsSetExtension));
+            }
+
+            _ReferencedAssetsSetExtensionFunc(assets, path);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _ReferencedAssetsGetRecurse(IntPtr assets);
+         private static _ReferencedAssetsGetRecurse _ReferencedAssetsGetRecurseFunc;
+         internal static bool ReferencedAssetsGetRecurse(IntPtr assets)
+         {
+            if (_ReferencedAssetsGetRecurseFunc == null)
+            {
+               _ReferencedAssetsGetRecurseFunc =
+                  (_ReferencedAssetsGetRecurse)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "ReferencedAssetsGetRecurse"), typeof(_ReferencedAssetsGetRecurse));
+            }
+
+            return _ReferencedAssetsGetRecurseFunc(assets);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _ReferencedAssetsSetRecurse(IntPtr assets, bool value);
+         private static _ReferencedAssetsSetRecurse _ReferencedAssetsSetRecurseFunc;
+         internal static void ReferencedAssetsSetRecurse(IntPtr assets, bool value)
+         {
+            if (_ReferencedAssetsSetRecurseFunc == null)
+            {
+               _ReferencedAssetsSetRecurseFunc =
+                  (_ReferencedAssetsSetRecurse)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "ReferencedAssetsSetRecurse"), typeof(_ReferencedAssetsSetRecurse));
+            }
+
+            _ReferencedAssetsSetRecurseFunc(assets, value);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _ReferencedAssetsCreateInstance();
+         private static _ReferencedAssetsCreateInstance _ReferencedAssetsCreateInstanceFunc;
+         internal static IntPtr ReferencedAssetsCreateInstance()
+         {
+            if (_ReferencedAssetsCreateInstanceFunc == null)
+            {
+               _ReferencedAssetsCreateInstanceFunc =
+                  (_ReferencedAssetsCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "ReferencedAssetsCreateInstance"), typeof(_ReferencedAssetsCreateInstance));
+            }
+
+            return _ReferencedAssetsCreateInstanceFunc();
+         }
       }
       
       #endregion

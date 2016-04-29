@@ -40,47 +40,215 @@ namespace Torque6.Engine.SimObjects.GuiControls
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiButtonBaseCtrlGetText(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiButtonBaseCtrlGetText(IntPtr ctrl);
+         private static _GuiButtonBaseCtrlGetText _GuiButtonBaseCtrlGetTextFunc;
+         internal static IntPtr GuiButtonBaseCtrlGetText(IntPtr ctrl)
+         {
+            if (_GuiButtonBaseCtrlGetTextFunc == null)
+            {
+               _GuiButtonBaseCtrlGetTextFunc =
+                  (_GuiButtonBaseCtrlGetText)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiButtonBaseCtrlGetText"), typeof(_GuiButtonBaseCtrlGetText));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiButtonBaseCtrlSetText(IntPtr ctrl, string text);
+            return _GuiButtonBaseCtrlGetTextFunc(ctrl);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiButtonBaseCtrlGetTextID(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiButtonBaseCtrlSetText(IntPtr ctrl, string text);
+         private static _GuiButtonBaseCtrlSetText _GuiButtonBaseCtrlSetTextFunc;
+         internal static void GuiButtonBaseCtrlSetText(IntPtr ctrl, string text)
+         {
+            if (_GuiButtonBaseCtrlSetTextFunc == null)
+            {
+               _GuiButtonBaseCtrlSetTextFunc =
+                  (_GuiButtonBaseCtrlSetText)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiButtonBaseCtrlSetText"), typeof(_GuiButtonBaseCtrlSetText));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiButtonBaseCtrlSetTextID(IntPtr ctrl, string textId);
+            _GuiButtonBaseCtrlSetTextFunc(ctrl, text);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern int GuiButtonBaseCtrlGetGroupNum(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiButtonBaseCtrlGetTextID(IntPtr ctrl);
+         private static _GuiButtonBaseCtrlGetTextID _GuiButtonBaseCtrlGetTextIDFunc;
+         internal static IntPtr GuiButtonBaseCtrlGetTextID(IntPtr ctrl)
+         {
+            if (_GuiButtonBaseCtrlGetTextIDFunc == null)
+            {
+               _GuiButtonBaseCtrlGetTextIDFunc =
+                  (_GuiButtonBaseCtrlGetTextID)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiButtonBaseCtrlGetTextID"), typeof(_GuiButtonBaseCtrlGetTextID));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiButtonBaseCtrlSetGroupNum(IntPtr ctrl, int groupNum);
+            return _GuiButtonBaseCtrlGetTextIDFunc(ctrl);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern int GuiButtonBaseCtrlGetButtonType(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiButtonBaseCtrlSetTextID(IntPtr ctrl, string textId);
+         private static _GuiButtonBaseCtrlSetTextID _GuiButtonBaseCtrlSetTextIDFunc;
+         internal static void GuiButtonBaseCtrlSetTextID(IntPtr ctrl, string textId)
+         {
+            if (_GuiButtonBaseCtrlSetTextIDFunc == null)
+            {
+               _GuiButtonBaseCtrlSetTextIDFunc =
+                  (_GuiButtonBaseCtrlSetTextID)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiButtonBaseCtrlSetTextID"), typeof(_GuiButtonBaseCtrlSetTextID));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiButtonBaseCtrlSetButtonType(IntPtr ctrl, int buttonType);
+            _GuiButtonBaseCtrlSetTextIDFunc(ctrl, textId);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool GuiButtonBaseCtrlGetUseMouseEvents(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate int _GuiButtonBaseCtrlGetGroupNum(IntPtr ctrl);
+         private static _GuiButtonBaseCtrlGetGroupNum _GuiButtonBaseCtrlGetGroupNumFunc;
+         internal static int GuiButtonBaseCtrlGetGroupNum(IntPtr ctrl)
+         {
+            if (_GuiButtonBaseCtrlGetGroupNumFunc == null)
+            {
+               _GuiButtonBaseCtrlGetGroupNumFunc =
+                  (_GuiButtonBaseCtrlGetGroupNum)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiButtonBaseCtrlGetGroupNum"), typeof(_GuiButtonBaseCtrlGetGroupNum));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiButtonBaseCtrlSetUseMouseEvents(IntPtr ctrl, bool useMouseEvents);
+            return _GuiButtonBaseCtrlGetGroupNumFunc(ctrl);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiButtonBaseCtrlCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiButtonBaseCtrlSetGroupNum(IntPtr ctrl, int groupNum);
+         private static _GuiButtonBaseCtrlSetGroupNum _GuiButtonBaseCtrlSetGroupNumFunc;
+         internal static void GuiButtonBaseCtrlSetGroupNum(IntPtr ctrl, int groupNum)
+         {
+            if (_GuiButtonBaseCtrlSetGroupNumFunc == null)
+            {
+               _GuiButtonBaseCtrlSetGroupNumFunc =
+                  (_GuiButtonBaseCtrlSetGroupNum)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiButtonBaseCtrlSetGroupNum"), typeof(_GuiButtonBaseCtrlSetGroupNum));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiButtonBaseCtrlPerformClick(IntPtr ctrl);
+            _GuiButtonBaseCtrlSetGroupNumFunc(ctrl, groupNum);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiButtonBaseCtrlSetStateOn(IntPtr ctrl, bool isStateOn);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate int _GuiButtonBaseCtrlGetButtonType(IntPtr ctrl);
+         private static _GuiButtonBaseCtrlGetButtonType _GuiButtonBaseCtrlGetButtonTypeFunc;
+         internal static int GuiButtonBaseCtrlGetButtonType(IntPtr ctrl)
+         {
+            if (_GuiButtonBaseCtrlGetButtonTypeFunc == null)
+            {
+               _GuiButtonBaseCtrlGetButtonTypeFunc =
+                  (_GuiButtonBaseCtrlGetButtonType)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiButtonBaseCtrlGetButtonType"), typeof(_GuiButtonBaseCtrlGetButtonType));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool GuiButtonBaseCtrlGetStateOn(IntPtr ctrl);
+            return _GuiButtonBaseCtrlGetButtonTypeFunc(ctrl);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiButtonBaseCtrlSetButtonType(IntPtr ctrl, int buttonType);
+         private static _GuiButtonBaseCtrlSetButtonType _GuiButtonBaseCtrlSetButtonTypeFunc;
+         internal static void GuiButtonBaseCtrlSetButtonType(IntPtr ctrl, int buttonType)
+         {
+            if (_GuiButtonBaseCtrlSetButtonTypeFunc == null)
+            {
+               _GuiButtonBaseCtrlSetButtonTypeFunc =
+                  (_GuiButtonBaseCtrlSetButtonType)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiButtonBaseCtrlSetButtonType"), typeof(_GuiButtonBaseCtrlSetButtonType));
+            }
+
+            _GuiButtonBaseCtrlSetButtonTypeFunc(ctrl, buttonType);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _GuiButtonBaseCtrlGetUseMouseEvents(IntPtr ctrl);
+         private static _GuiButtonBaseCtrlGetUseMouseEvents _GuiButtonBaseCtrlGetUseMouseEventsFunc;
+         internal static bool GuiButtonBaseCtrlGetUseMouseEvents(IntPtr ctrl)
+         {
+            if (_GuiButtonBaseCtrlGetUseMouseEventsFunc == null)
+            {
+               _GuiButtonBaseCtrlGetUseMouseEventsFunc =
+                  (_GuiButtonBaseCtrlGetUseMouseEvents)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiButtonBaseCtrlGetUseMouseEvents"), typeof(_GuiButtonBaseCtrlGetUseMouseEvents));
+            }
+
+            return _GuiButtonBaseCtrlGetUseMouseEventsFunc(ctrl);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiButtonBaseCtrlSetUseMouseEvents(IntPtr ctrl, bool useMouseEvents);
+         private static _GuiButtonBaseCtrlSetUseMouseEvents _GuiButtonBaseCtrlSetUseMouseEventsFunc;
+         internal static void GuiButtonBaseCtrlSetUseMouseEvents(IntPtr ctrl, bool useMouseEvents)
+         {
+            if (_GuiButtonBaseCtrlSetUseMouseEventsFunc == null)
+            {
+               _GuiButtonBaseCtrlSetUseMouseEventsFunc =
+                  (_GuiButtonBaseCtrlSetUseMouseEvents)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiButtonBaseCtrlSetUseMouseEvents"), typeof(_GuiButtonBaseCtrlSetUseMouseEvents));
+            }
+
+            _GuiButtonBaseCtrlSetUseMouseEventsFunc(ctrl, useMouseEvents);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiButtonBaseCtrlCreateInstance();
+         private static _GuiButtonBaseCtrlCreateInstance _GuiButtonBaseCtrlCreateInstanceFunc;
+         internal static IntPtr GuiButtonBaseCtrlCreateInstance()
+         {
+            if (_GuiButtonBaseCtrlCreateInstanceFunc == null)
+            {
+               _GuiButtonBaseCtrlCreateInstanceFunc =
+                  (_GuiButtonBaseCtrlCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiButtonBaseCtrlCreateInstance"), typeof(_GuiButtonBaseCtrlCreateInstance));
+            }
+
+            return _GuiButtonBaseCtrlCreateInstanceFunc();
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiButtonBaseCtrlPerformClick(IntPtr ctrl);
+         private static _GuiButtonBaseCtrlPerformClick _GuiButtonBaseCtrlPerformClickFunc;
+         internal static void GuiButtonBaseCtrlPerformClick(IntPtr ctrl)
+         {
+            if (_GuiButtonBaseCtrlPerformClickFunc == null)
+            {
+               _GuiButtonBaseCtrlPerformClickFunc =
+                  (_GuiButtonBaseCtrlPerformClick)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiButtonBaseCtrlPerformClick"), typeof(_GuiButtonBaseCtrlPerformClick));
+            }
+
+            _GuiButtonBaseCtrlPerformClickFunc(ctrl);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiButtonBaseCtrlSetStateOn(IntPtr ctrl, bool isStateOn);
+         private static _GuiButtonBaseCtrlSetStateOn _GuiButtonBaseCtrlSetStateOnFunc;
+         internal static void GuiButtonBaseCtrlSetStateOn(IntPtr ctrl, bool isStateOn)
+         {
+            if (_GuiButtonBaseCtrlSetStateOnFunc == null)
+            {
+               _GuiButtonBaseCtrlSetStateOnFunc =
+                  (_GuiButtonBaseCtrlSetStateOn)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiButtonBaseCtrlSetStateOn"), typeof(_GuiButtonBaseCtrlSetStateOn));
+            }
+
+            _GuiButtonBaseCtrlSetStateOnFunc(ctrl, isStateOn);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _GuiButtonBaseCtrlGetStateOn(IntPtr ctrl);
+         private static _GuiButtonBaseCtrlGetStateOn _GuiButtonBaseCtrlGetStateOnFunc;
+         internal static bool GuiButtonBaseCtrlGetStateOn(IntPtr ctrl)
+         {
+            if (_GuiButtonBaseCtrlGetStateOnFunc == null)
+            {
+               _GuiButtonBaseCtrlGetStateOnFunc =
+                  (_GuiButtonBaseCtrlGetStateOn)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiButtonBaseCtrlGetStateOn"), typeof(_GuiButtonBaseCtrlGetStateOn));
+            }
+
+            return _GuiButtonBaseCtrlGetStateOnFunc(ctrl);
+         }
       }
       
       #endregion

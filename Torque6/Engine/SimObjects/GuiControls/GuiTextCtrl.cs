@@ -40,32 +40,140 @@ namespace Torque6.Engine.SimObjects.GuiControls
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiTextCtrlGetText(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiTextCtrlGetText(IntPtr ctrl);
+         private static _GuiTextCtrlGetText _GuiTextCtrlGetTextFunc;
+         internal static IntPtr GuiTextCtrlGetText(IntPtr ctrl)
+         {
+            if (_GuiTextCtrlGetTextFunc == null)
+            {
+               _GuiTextCtrlGetTextFunc =
+                  (_GuiTextCtrlGetText)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiTextCtrlGetText"), typeof(_GuiTextCtrlGetText));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiTextCtrlSetText(IntPtr ctrl, string text);
+            return _GuiTextCtrlGetTextFunc(ctrl);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiTextCtrlGetTextID(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiTextCtrlSetText(IntPtr ctrl, string text);
+         private static _GuiTextCtrlSetText _GuiTextCtrlSetTextFunc;
+         internal static void GuiTextCtrlSetText(IntPtr ctrl, string text)
+         {
+            if (_GuiTextCtrlSetTextFunc == null)
+            {
+               _GuiTextCtrlSetTextFunc =
+                  (_GuiTextCtrlSetText)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiTextCtrlSetText"), typeof(_GuiTextCtrlSetText));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiTextCtrlSetTextID(IntPtr ctrl, string text);
+            _GuiTextCtrlSetTextFunc(ctrl, text);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern int GuiTextCtrlGetMaxLength(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiTextCtrlGetTextID(IntPtr ctrl);
+         private static _GuiTextCtrlGetTextID _GuiTextCtrlGetTextIDFunc;
+         internal static IntPtr GuiTextCtrlGetTextID(IntPtr ctrl)
+         {
+            if (_GuiTextCtrlGetTextIDFunc == null)
+            {
+               _GuiTextCtrlGetTextIDFunc =
+                  (_GuiTextCtrlGetTextID)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiTextCtrlGetTextID"), typeof(_GuiTextCtrlGetTextID));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiTextCtrlSetMaxLength(IntPtr ctrl, int length);
+            return _GuiTextCtrlGetTextIDFunc(ctrl);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool GuiTextCtrlGetTruncate(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiTextCtrlSetTextID(IntPtr ctrl, string text);
+         private static _GuiTextCtrlSetTextID _GuiTextCtrlSetTextIDFunc;
+         internal static void GuiTextCtrlSetTextID(IntPtr ctrl, string text)
+         {
+            if (_GuiTextCtrlSetTextIDFunc == null)
+            {
+               _GuiTextCtrlSetTextIDFunc =
+                  (_GuiTextCtrlSetTextID)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiTextCtrlSetTextID"), typeof(_GuiTextCtrlSetTextID));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiTextCtrlSetTruncate(IntPtr ctrl, bool truncate);
+            _GuiTextCtrlSetTextIDFunc(ctrl, text);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiTextCtrlCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate int _GuiTextCtrlGetMaxLength(IntPtr ctrl);
+         private static _GuiTextCtrlGetMaxLength _GuiTextCtrlGetMaxLengthFunc;
+         internal static int GuiTextCtrlGetMaxLength(IntPtr ctrl)
+         {
+            if (_GuiTextCtrlGetMaxLengthFunc == null)
+            {
+               _GuiTextCtrlGetMaxLengthFunc =
+                  (_GuiTextCtrlGetMaxLength)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiTextCtrlGetMaxLength"), typeof(_GuiTextCtrlGetMaxLength));
+            }
+
+            return _GuiTextCtrlGetMaxLengthFunc(ctrl);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiTextCtrlSetMaxLength(IntPtr ctrl, int length);
+         private static _GuiTextCtrlSetMaxLength _GuiTextCtrlSetMaxLengthFunc;
+         internal static void GuiTextCtrlSetMaxLength(IntPtr ctrl, int length)
+         {
+            if (_GuiTextCtrlSetMaxLengthFunc == null)
+            {
+               _GuiTextCtrlSetMaxLengthFunc =
+                  (_GuiTextCtrlSetMaxLength)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiTextCtrlSetMaxLength"), typeof(_GuiTextCtrlSetMaxLength));
+            }
+
+            _GuiTextCtrlSetMaxLengthFunc(ctrl, length);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _GuiTextCtrlGetTruncate(IntPtr ctrl);
+         private static _GuiTextCtrlGetTruncate _GuiTextCtrlGetTruncateFunc;
+         internal static bool GuiTextCtrlGetTruncate(IntPtr ctrl)
+         {
+            if (_GuiTextCtrlGetTruncateFunc == null)
+            {
+               _GuiTextCtrlGetTruncateFunc =
+                  (_GuiTextCtrlGetTruncate)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiTextCtrlGetTruncate"), typeof(_GuiTextCtrlGetTruncate));
+            }
+
+            return _GuiTextCtrlGetTruncateFunc(ctrl);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiTextCtrlSetTruncate(IntPtr ctrl, bool truncate);
+         private static _GuiTextCtrlSetTruncate _GuiTextCtrlSetTruncateFunc;
+         internal static void GuiTextCtrlSetTruncate(IntPtr ctrl, bool truncate)
+         {
+            if (_GuiTextCtrlSetTruncateFunc == null)
+            {
+               _GuiTextCtrlSetTruncateFunc =
+                  (_GuiTextCtrlSetTruncate)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiTextCtrlSetTruncate"), typeof(_GuiTextCtrlSetTruncate));
+            }
+
+            _GuiTextCtrlSetTruncateFunc(ctrl, truncate);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiTextCtrlCreateInstance();
+         private static _GuiTextCtrlCreateInstance _GuiTextCtrlCreateInstanceFunc;
+         internal static IntPtr GuiTextCtrlCreateInstance()
+         {
+            if (_GuiTextCtrlCreateInstanceFunc == null)
+            {
+               _GuiTextCtrlCreateInstanceFunc =
+                  (_GuiTextCtrlCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiTextCtrlCreateInstance"), typeof(_GuiTextCtrlCreateInstance));
+            }
+
+            return _GuiTextCtrlCreateInstanceFunc();
+         }
       }
       
       #endregion

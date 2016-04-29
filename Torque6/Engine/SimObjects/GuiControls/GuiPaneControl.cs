@@ -40,35 +40,155 @@ namespace Torque6.Engine.SimObjects.GuiControls
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiPaneControlGetCaption(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiPaneControlGetCaption(IntPtr ctrl);
+         private static _GuiPaneControlGetCaption _GuiPaneControlGetCaptionFunc;
+         internal static IntPtr GuiPaneControlGetCaption(IntPtr ctrl)
+         {
+            if (_GuiPaneControlGetCaptionFunc == null)
+            {
+               _GuiPaneControlGetCaptionFunc =
+                  (_GuiPaneControlGetCaption)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiPaneControlGetCaption"), typeof(_GuiPaneControlGetCaption));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiPaneControlSetCaption(IntPtr ctrl, string caption);
+            return _GuiPaneControlGetCaptionFunc(ctrl);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiPaneControlGetCaptionID(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiPaneControlSetCaption(IntPtr ctrl, string caption);
+         private static _GuiPaneControlSetCaption _GuiPaneControlSetCaptionFunc;
+         internal static void GuiPaneControlSetCaption(IntPtr ctrl, string caption)
+         {
+            if (_GuiPaneControlSetCaptionFunc == null)
+            {
+               _GuiPaneControlSetCaptionFunc =
+                  (_GuiPaneControlSetCaption)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiPaneControlSetCaption"), typeof(_GuiPaneControlSetCaption));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiPaneControlSetCaptionID(IntPtr ctrl, string captionID);
+            _GuiPaneControlSetCaptionFunc(ctrl, caption);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool GuiPaneControlGetCollapsable(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiPaneControlGetCaptionID(IntPtr ctrl);
+         private static _GuiPaneControlGetCaptionID _GuiPaneControlGetCaptionIDFunc;
+         internal static IntPtr GuiPaneControlGetCaptionID(IntPtr ctrl)
+         {
+            if (_GuiPaneControlGetCaptionIDFunc == null)
+            {
+               _GuiPaneControlGetCaptionIDFunc =
+                  (_GuiPaneControlGetCaptionID)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiPaneControlGetCaptionID"), typeof(_GuiPaneControlGetCaptionID));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiPaneControlSetCollapsable(IntPtr ctrl, bool collapsable);
+            return _GuiPaneControlGetCaptionIDFunc(ctrl);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool GuiPaneControlGetBarBehindText(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiPaneControlSetCaptionID(IntPtr ctrl, string captionID);
+         private static _GuiPaneControlSetCaptionID _GuiPaneControlSetCaptionIDFunc;
+         internal static void GuiPaneControlSetCaptionID(IntPtr ctrl, string captionID)
+         {
+            if (_GuiPaneControlSetCaptionIDFunc == null)
+            {
+               _GuiPaneControlSetCaptionIDFunc =
+                  (_GuiPaneControlSetCaptionID)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiPaneControlSetCaptionID"), typeof(_GuiPaneControlSetCaptionID));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiPaneControlSetBarBehindText(IntPtr ctrl, bool enable);
+            _GuiPaneControlSetCaptionIDFunc(ctrl, captionID);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiPaneControlCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _GuiPaneControlGetCollapsable(IntPtr ctrl);
+         private static _GuiPaneControlGetCollapsable _GuiPaneControlGetCollapsableFunc;
+         internal static bool GuiPaneControlGetCollapsable(IntPtr ctrl)
+         {
+            if (_GuiPaneControlGetCollapsableFunc == null)
+            {
+               _GuiPaneControlGetCollapsableFunc =
+                  (_GuiPaneControlGetCollapsable)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiPaneControlGetCollapsable"), typeof(_GuiPaneControlGetCollapsable));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiPaneControlSetCollapsed(IntPtr ctrl, bool collapsed);
+            return _GuiPaneControlGetCollapsableFunc(ctrl);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiPaneControlSetCollapsable(IntPtr ctrl, bool collapsable);
+         private static _GuiPaneControlSetCollapsable _GuiPaneControlSetCollapsableFunc;
+         internal static void GuiPaneControlSetCollapsable(IntPtr ctrl, bool collapsable)
+         {
+            if (_GuiPaneControlSetCollapsableFunc == null)
+            {
+               _GuiPaneControlSetCollapsableFunc =
+                  (_GuiPaneControlSetCollapsable)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiPaneControlSetCollapsable"), typeof(_GuiPaneControlSetCollapsable));
+            }
+
+            _GuiPaneControlSetCollapsableFunc(ctrl, collapsable);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _GuiPaneControlGetBarBehindText(IntPtr ctrl);
+         private static _GuiPaneControlGetBarBehindText _GuiPaneControlGetBarBehindTextFunc;
+         internal static bool GuiPaneControlGetBarBehindText(IntPtr ctrl)
+         {
+            if (_GuiPaneControlGetBarBehindTextFunc == null)
+            {
+               _GuiPaneControlGetBarBehindTextFunc =
+                  (_GuiPaneControlGetBarBehindText)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiPaneControlGetBarBehindText"), typeof(_GuiPaneControlGetBarBehindText));
+            }
+
+            return _GuiPaneControlGetBarBehindTextFunc(ctrl);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiPaneControlSetBarBehindText(IntPtr ctrl, bool enable);
+         private static _GuiPaneControlSetBarBehindText _GuiPaneControlSetBarBehindTextFunc;
+         internal static void GuiPaneControlSetBarBehindText(IntPtr ctrl, bool enable)
+         {
+            if (_GuiPaneControlSetBarBehindTextFunc == null)
+            {
+               _GuiPaneControlSetBarBehindTextFunc =
+                  (_GuiPaneControlSetBarBehindText)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiPaneControlSetBarBehindText"), typeof(_GuiPaneControlSetBarBehindText));
+            }
+
+            _GuiPaneControlSetBarBehindTextFunc(ctrl, enable);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiPaneControlCreateInstance();
+         private static _GuiPaneControlCreateInstance _GuiPaneControlCreateInstanceFunc;
+         internal static IntPtr GuiPaneControlCreateInstance()
+         {
+            if (_GuiPaneControlCreateInstanceFunc == null)
+            {
+               _GuiPaneControlCreateInstanceFunc =
+                  (_GuiPaneControlCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiPaneControlCreateInstance"), typeof(_GuiPaneControlCreateInstance));
+            }
+
+            return _GuiPaneControlCreateInstanceFunc();
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiPaneControlSetCollapsed(IntPtr ctrl, bool collapsed);
+         private static _GuiPaneControlSetCollapsed _GuiPaneControlSetCollapsedFunc;
+         internal static void GuiPaneControlSetCollapsed(IntPtr ctrl, bool collapsed)
+         {
+            if (_GuiPaneControlSetCollapsedFunc == null)
+            {
+               _GuiPaneControlSetCollapsedFunc =
+                  (_GuiPaneControlSetCollapsed)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiPaneControlSetCollapsed"), typeof(_GuiPaneControlSetCollapsed));
+            }
+
+            _GuiPaneControlSetCollapsedFunc(ctrl, collapsed);
+         }
       }
       
       #endregion

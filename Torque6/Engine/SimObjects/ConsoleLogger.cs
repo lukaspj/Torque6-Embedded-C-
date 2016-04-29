@@ -40,20 +40,80 @@ namespace Torque6.Engine.SimObjects
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern int ConsoleLoggerGetLevel(IntPtr logger);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate int _ConsoleLoggerGetLevel(IntPtr logger);
+         private static _ConsoleLoggerGetLevel _ConsoleLoggerGetLevelFunc;
+         internal static int ConsoleLoggerGetLevel(IntPtr logger)
+         {
+            if (_ConsoleLoggerGetLevelFunc == null)
+            {
+               _ConsoleLoggerGetLevelFunc =
+                  (_ConsoleLoggerGetLevel)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "ConsoleLoggerGetLevel"), typeof(_ConsoleLoggerGetLevel));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void ConsoleLoggerSetLevel(IntPtr logger, int value);
+            return _ConsoleLoggerGetLevelFunc(logger);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr ConsoleLoggerCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _ConsoleLoggerSetLevel(IntPtr logger, int value);
+         private static _ConsoleLoggerSetLevel _ConsoleLoggerSetLevelFunc;
+         internal static void ConsoleLoggerSetLevel(IntPtr logger, int value)
+         {
+            if (_ConsoleLoggerSetLevelFunc == null)
+            {
+               _ConsoleLoggerSetLevelFunc =
+                  (_ConsoleLoggerSetLevel)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "ConsoleLoggerSetLevel"), typeof(_ConsoleLoggerSetLevel));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool ConsoleLoggerAttach(IntPtr logger);
+            _ConsoleLoggerSetLevelFunc(logger, value);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool ConsoleLoggerDetach(IntPtr logger);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _ConsoleLoggerCreateInstance();
+         private static _ConsoleLoggerCreateInstance _ConsoleLoggerCreateInstanceFunc;
+         internal static IntPtr ConsoleLoggerCreateInstance()
+         {
+            if (_ConsoleLoggerCreateInstanceFunc == null)
+            {
+               _ConsoleLoggerCreateInstanceFunc =
+                  (_ConsoleLoggerCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "ConsoleLoggerCreateInstance"), typeof(_ConsoleLoggerCreateInstance));
+            }
+
+            return _ConsoleLoggerCreateInstanceFunc();
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _ConsoleLoggerAttach(IntPtr logger);
+         private static _ConsoleLoggerAttach _ConsoleLoggerAttachFunc;
+         internal static bool ConsoleLoggerAttach(IntPtr logger)
+         {
+            if (_ConsoleLoggerAttachFunc == null)
+            {
+               _ConsoleLoggerAttachFunc =
+                  (_ConsoleLoggerAttach)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "ConsoleLoggerAttach"), typeof(_ConsoleLoggerAttach));
+            }
+
+            return _ConsoleLoggerAttachFunc(logger);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _ConsoleLoggerDetach(IntPtr logger);
+         private static _ConsoleLoggerDetach _ConsoleLoggerDetachFunc;
+         internal static bool ConsoleLoggerDetach(IntPtr logger)
+         {
+            if (_ConsoleLoggerDetachFunc == null)
+            {
+               _ConsoleLoggerDetachFunc =
+                  (_ConsoleLoggerDetach)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "ConsoleLoggerDetach"), typeof(_ConsoleLoggerDetach));
+            }
+
+            return _ConsoleLoggerDetachFunc(logger);
+         }
       }
       
       #endregion

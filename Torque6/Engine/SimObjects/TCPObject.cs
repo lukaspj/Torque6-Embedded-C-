@@ -40,26 +40,110 @@ namespace Torque6.Engine.SimObjects
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr TCPObjectCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _TCPObjectCreateInstance();
+         private static _TCPObjectCreateInstance _TCPObjectCreateInstanceFunc;
+         internal static IntPtr TCPObjectCreateInstance()
+         {
+            if (_TCPObjectCreateInstanceFunc == null)
+            {
+               _TCPObjectCreateInstanceFunc =
+                  (_TCPObjectCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "TCPObjectCreateInstance"), typeof(_TCPObjectCreateInstance));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void TCPObjectSend(IntPtr tcpObj, int argsC, string[] argsV);
+            return _TCPObjectCreateInstanceFunc();
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void TCPObjectListen(IntPtr tcpObj, int port);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _TCPObjectSend(IntPtr tcpObj, int argsC, string[] argsV);
+         private static _TCPObjectSend _TCPObjectSendFunc;
+         internal static void TCPObjectSend(IntPtr tcpObj, int argsC, string[] argsV)
+         {
+            if (_TCPObjectSendFunc == null)
+            {
+               _TCPObjectSendFunc =
+                  (_TCPObjectSend)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "TCPObjectSend"), typeof(_TCPObjectSend));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void TCPObjectConnect(IntPtr tcpObj, string address);
+            _TCPObjectSendFunc(tcpObj, argsC, argsV);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void TCPObjectOpenAndConnect(IntPtr tcpObj, string address);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _TCPObjectListen(IntPtr tcpObj, int port);
+         private static _TCPObjectListen _TCPObjectListenFunc;
+         internal static void TCPObjectListen(IntPtr tcpObj, int port)
+         {
+            if (_TCPObjectListenFunc == null)
+            {
+               _TCPObjectListenFunc =
+                  (_TCPObjectListen)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "TCPObjectListen"), typeof(_TCPObjectListen));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void TCPObjectDisconnect(IntPtr tcpObj);
+            _TCPObjectListenFunc(tcpObj, port);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr TCPObjectURLEncodeString(IntPtr tcpObj, string data);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _TCPObjectConnect(IntPtr tcpObj, string address);
+         private static _TCPObjectConnect _TCPObjectConnectFunc;
+         internal static void TCPObjectConnect(IntPtr tcpObj, string address)
+         {
+            if (_TCPObjectConnectFunc == null)
+            {
+               _TCPObjectConnectFunc =
+                  (_TCPObjectConnect)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "TCPObjectConnect"), typeof(_TCPObjectConnect));
+            }
+
+            _TCPObjectConnectFunc(tcpObj, address);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _TCPObjectOpenAndConnect(IntPtr tcpObj, string address);
+         private static _TCPObjectOpenAndConnect _TCPObjectOpenAndConnectFunc;
+         internal static void TCPObjectOpenAndConnect(IntPtr tcpObj, string address)
+         {
+            if (_TCPObjectOpenAndConnectFunc == null)
+            {
+               _TCPObjectOpenAndConnectFunc =
+                  (_TCPObjectOpenAndConnect)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "TCPObjectOpenAndConnect"), typeof(_TCPObjectOpenAndConnect));
+            }
+
+            _TCPObjectOpenAndConnectFunc(tcpObj, address);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _TCPObjectDisconnect(IntPtr tcpObj);
+         private static _TCPObjectDisconnect _TCPObjectDisconnectFunc;
+         internal static void TCPObjectDisconnect(IntPtr tcpObj)
+         {
+            if (_TCPObjectDisconnectFunc == null)
+            {
+               _TCPObjectDisconnectFunc =
+                  (_TCPObjectDisconnect)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "TCPObjectDisconnect"), typeof(_TCPObjectDisconnect));
+            }
+
+            _TCPObjectDisconnectFunc(tcpObj);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _TCPObjectURLEncodeString(IntPtr tcpObj, string data);
+         private static _TCPObjectURLEncodeString _TCPObjectURLEncodeStringFunc;
+         internal static IntPtr TCPObjectURLEncodeString(IntPtr tcpObj, string data)
+         {
+            if (_TCPObjectURLEncodeStringFunc == null)
+            {
+               _TCPObjectURLEncodeStringFunc =
+                  (_TCPObjectURLEncodeString)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "TCPObjectURLEncodeString"), typeof(_TCPObjectURLEncodeString));
+            }
+
+            return _TCPObjectURLEncodeStringFunc(tcpObj, data);
+         }
       }
       
       #endregion

@@ -40,14 +40,50 @@ namespace Torque6.Engine.SimObjects
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr HTTPObjectCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _HTTPObjectCreateInstance();
+         private static _HTTPObjectCreateInstance _HTTPObjectCreateInstanceFunc;
+         internal static IntPtr HTTPObjectCreateInstance()
+         {
+            if (_HTTPObjectCreateInstanceFunc == null)
+            {
+               _HTTPObjectCreateInstanceFunc =
+                  (_HTTPObjectCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "HTTPObjectCreateInstance"), typeof(_HTTPObjectCreateInstance));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void HTTPObjectGet(IntPtr httpObj, string address, string requestURI, string query);
+            return _HTTPObjectCreateInstanceFunc();
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void HTTPObjectPost(IntPtr httpObj, string address, string requestURI, string query, string post);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _HTTPObjectGet(IntPtr httpObj, string address, string requestURI, string query);
+         private static _HTTPObjectGet _HTTPObjectGetFunc;
+         internal static void HTTPObjectGet(IntPtr httpObj, string address, string requestURI, string query)
+         {
+            if (_HTTPObjectGetFunc == null)
+            {
+               _HTTPObjectGetFunc =
+                  (_HTTPObjectGet)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "HTTPObjectGet"), typeof(_HTTPObjectGet));
+            }
+
+            _HTTPObjectGetFunc(httpObj, address, requestURI, query);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _HTTPObjectPost(IntPtr httpObj, string address, string requestURI, string query, string post);
+         private static _HTTPObjectPost _HTTPObjectPostFunc;
+         internal static void HTTPObjectPost(IntPtr httpObj, string address, string requestURI, string query, string post)
+         {
+            if (_HTTPObjectPostFunc == null)
+            {
+               _HTTPObjectPostFunc =
+                  (_HTTPObjectPost)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "HTTPObjectPost"), typeof(_HTTPObjectPost));
+            }
+
+            _HTTPObjectPostFunc(httpObj, address, requestURI, query, post);
+         }
       }
       
       #endregion

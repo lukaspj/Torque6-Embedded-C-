@@ -40,32 +40,140 @@ namespace Torque6.Engine.SimObjects.GuiControls
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern int GuiControlArrayControlGetColCount(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate int _GuiControlArrayControlGetColCount(IntPtr ctrl);
+         private static _GuiControlArrayControlGetColCount _GuiControlArrayControlGetColCountFunc;
+         internal static int GuiControlArrayControlGetColCount(IntPtr ctrl)
+         {
+            if (_GuiControlArrayControlGetColCountFunc == null)
+            {
+               _GuiControlArrayControlGetColCountFunc =
+                  (_GuiControlArrayControlGetColCount)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiControlArrayControlGetColCount"), typeof(_GuiControlArrayControlGetColCount));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiControlArrayControlSetColCount(IntPtr ctrl, int cols);
+            return _GuiControlArrayControlGetColCountFunc(ctrl);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern int GuiControlArrayControlGetRowSize(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiControlArrayControlSetColCount(IntPtr ctrl, int cols);
+         private static _GuiControlArrayControlSetColCount _GuiControlArrayControlSetColCountFunc;
+         internal static void GuiControlArrayControlSetColCount(IntPtr ctrl, int cols)
+         {
+            if (_GuiControlArrayControlSetColCountFunc == null)
+            {
+               _GuiControlArrayControlSetColCountFunc =
+                  (_GuiControlArrayControlSetColCount)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiControlArrayControlSetColCount"), typeof(_GuiControlArrayControlSetColCount));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiControlArrayControlSetRowSize(IntPtr ctrl, int size);
+            _GuiControlArrayControlSetColCountFunc(ctrl, cols);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern int GuiControlArrayControlGetRowSpacing(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate int _GuiControlArrayControlGetRowSize(IntPtr ctrl);
+         private static _GuiControlArrayControlGetRowSize _GuiControlArrayControlGetRowSizeFunc;
+         internal static int GuiControlArrayControlGetRowSize(IntPtr ctrl)
+         {
+            if (_GuiControlArrayControlGetRowSizeFunc == null)
+            {
+               _GuiControlArrayControlGetRowSizeFunc =
+                  (_GuiControlArrayControlGetRowSize)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiControlArrayControlGetRowSize"), typeof(_GuiControlArrayControlGetRowSize));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiControlArrayControlSetRowSpacing(IntPtr ctrl, int spacing);
+            return _GuiControlArrayControlGetRowSizeFunc(ctrl);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern int GuiControlArrayControlGetColSpacing(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiControlArrayControlSetRowSize(IntPtr ctrl, int size);
+         private static _GuiControlArrayControlSetRowSize _GuiControlArrayControlSetRowSizeFunc;
+         internal static void GuiControlArrayControlSetRowSize(IntPtr ctrl, int size)
+         {
+            if (_GuiControlArrayControlSetRowSizeFunc == null)
+            {
+               _GuiControlArrayControlSetRowSizeFunc =
+                  (_GuiControlArrayControlSetRowSize)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiControlArrayControlSetRowSize"), typeof(_GuiControlArrayControlSetRowSize));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiControlArrayControlSetColSpacing(IntPtr ctrl, int spacing);
+            _GuiControlArrayControlSetRowSizeFunc(ctrl, size);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiControlArrayControlCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate int _GuiControlArrayControlGetRowSpacing(IntPtr ctrl);
+         private static _GuiControlArrayControlGetRowSpacing _GuiControlArrayControlGetRowSpacingFunc;
+         internal static int GuiControlArrayControlGetRowSpacing(IntPtr ctrl)
+         {
+            if (_GuiControlArrayControlGetRowSpacingFunc == null)
+            {
+               _GuiControlArrayControlGetRowSpacingFunc =
+                  (_GuiControlArrayControlGetRowSpacing)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiControlArrayControlGetRowSpacing"), typeof(_GuiControlArrayControlGetRowSpacing));
+            }
+
+            return _GuiControlArrayControlGetRowSpacingFunc(ctrl);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiControlArrayControlSetRowSpacing(IntPtr ctrl, int spacing);
+         private static _GuiControlArrayControlSetRowSpacing _GuiControlArrayControlSetRowSpacingFunc;
+         internal static void GuiControlArrayControlSetRowSpacing(IntPtr ctrl, int spacing)
+         {
+            if (_GuiControlArrayControlSetRowSpacingFunc == null)
+            {
+               _GuiControlArrayControlSetRowSpacingFunc =
+                  (_GuiControlArrayControlSetRowSpacing)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiControlArrayControlSetRowSpacing"), typeof(_GuiControlArrayControlSetRowSpacing));
+            }
+
+            _GuiControlArrayControlSetRowSpacingFunc(ctrl, spacing);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate int _GuiControlArrayControlGetColSpacing(IntPtr ctrl);
+         private static _GuiControlArrayControlGetColSpacing _GuiControlArrayControlGetColSpacingFunc;
+         internal static int GuiControlArrayControlGetColSpacing(IntPtr ctrl)
+         {
+            if (_GuiControlArrayControlGetColSpacingFunc == null)
+            {
+               _GuiControlArrayControlGetColSpacingFunc =
+                  (_GuiControlArrayControlGetColSpacing)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiControlArrayControlGetColSpacing"), typeof(_GuiControlArrayControlGetColSpacing));
+            }
+
+            return _GuiControlArrayControlGetColSpacingFunc(ctrl);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiControlArrayControlSetColSpacing(IntPtr ctrl, int spacing);
+         private static _GuiControlArrayControlSetColSpacing _GuiControlArrayControlSetColSpacingFunc;
+         internal static void GuiControlArrayControlSetColSpacing(IntPtr ctrl, int spacing)
+         {
+            if (_GuiControlArrayControlSetColSpacingFunc == null)
+            {
+               _GuiControlArrayControlSetColSpacingFunc =
+                  (_GuiControlArrayControlSetColSpacing)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiControlArrayControlSetColSpacing"), typeof(_GuiControlArrayControlSetColSpacing));
+            }
+
+            _GuiControlArrayControlSetColSpacingFunc(ctrl, spacing);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiControlArrayControlCreateInstance();
+         private static _GuiControlArrayControlCreateInstance _GuiControlArrayControlCreateInstanceFunc;
+         internal static IntPtr GuiControlArrayControlCreateInstance()
+         {
+            if (_GuiControlArrayControlCreateInstanceFunc == null)
+            {
+               _GuiControlArrayControlCreateInstanceFunc =
+                  (_GuiControlArrayControlCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiControlArrayControlCreateInstance"), typeof(_GuiControlArrayControlCreateInstance));
+            }
+
+            return _GuiControlArrayControlCreateInstanceFunc();
+         }
       }
       
       #endregion

@@ -40,41 +40,185 @@ namespace Torque6.Engine.SimObjects.GuiControls
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern int GuiDynamicCtrlArrayControlGetColCount(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate int _GuiDynamicCtrlArrayControlGetColCount(IntPtr ctrl);
+         private static _GuiDynamicCtrlArrayControlGetColCount _GuiDynamicCtrlArrayControlGetColCountFunc;
+         internal static int GuiDynamicCtrlArrayControlGetColCount(IntPtr ctrl)
+         {
+            if (_GuiDynamicCtrlArrayControlGetColCountFunc == null)
+            {
+               _GuiDynamicCtrlArrayControlGetColCountFunc =
+                  (_GuiDynamicCtrlArrayControlGetColCount)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiDynamicCtrlArrayControlGetColCount"), typeof(_GuiDynamicCtrlArrayControlGetColCount));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiDynamicCtrlArrayControlSetColCount(IntPtr ctrl, int cols);
+            return _GuiDynamicCtrlArrayControlGetColCountFunc(ctrl);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern int GuiDynamicCtrlArrayControlGetColSize(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiDynamicCtrlArrayControlSetColCount(IntPtr ctrl, int cols);
+         private static _GuiDynamicCtrlArrayControlSetColCount _GuiDynamicCtrlArrayControlSetColCountFunc;
+         internal static void GuiDynamicCtrlArrayControlSetColCount(IntPtr ctrl, int cols)
+         {
+            if (_GuiDynamicCtrlArrayControlSetColCountFunc == null)
+            {
+               _GuiDynamicCtrlArrayControlSetColCountFunc =
+                  (_GuiDynamicCtrlArrayControlSetColCount)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiDynamicCtrlArrayControlSetColCount"), typeof(_GuiDynamicCtrlArrayControlSetColCount));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiDynamicCtrlArrayControlSetColSize(IntPtr ctrl, int colSize);
+            _GuiDynamicCtrlArrayControlSetColCountFunc(ctrl, cols);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern int GuiDynamicCtrlArrayControlGetRowSize(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate int _GuiDynamicCtrlArrayControlGetColSize(IntPtr ctrl);
+         private static _GuiDynamicCtrlArrayControlGetColSize _GuiDynamicCtrlArrayControlGetColSizeFunc;
+         internal static int GuiDynamicCtrlArrayControlGetColSize(IntPtr ctrl)
+         {
+            if (_GuiDynamicCtrlArrayControlGetColSizeFunc == null)
+            {
+               _GuiDynamicCtrlArrayControlGetColSizeFunc =
+                  (_GuiDynamicCtrlArrayControlGetColSize)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiDynamicCtrlArrayControlGetColSize"), typeof(_GuiDynamicCtrlArrayControlGetColSize));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiDynamicCtrlArrayControlSetRowSize(IntPtr ctrl, int size);
+            return _GuiDynamicCtrlArrayControlGetColSizeFunc(ctrl);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern int GuiDynamicCtrlArrayControlGetRowSpacing(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiDynamicCtrlArrayControlSetColSize(IntPtr ctrl, int colSize);
+         private static _GuiDynamicCtrlArrayControlSetColSize _GuiDynamicCtrlArrayControlSetColSizeFunc;
+         internal static void GuiDynamicCtrlArrayControlSetColSize(IntPtr ctrl, int colSize)
+         {
+            if (_GuiDynamicCtrlArrayControlSetColSizeFunc == null)
+            {
+               _GuiDynamicCtrlArrayControlSetColSizeFunc =
+                  (_GuiDynamicCtrlArrayControlSetColSize)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiDynamicCtrlArrayControlSetColSize"), typeof(_GuiDynamicCtrlArrayControlSetColSize));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiDynamicCtrlArrayControlSetRowSpacing(IntPtr ctrl, int Spacing);
+            _GuiDynamicCtrlArrayControlSetColSizeFunc(ctrl, colSize);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern int GuiDynamicCtrlArrayControlGetColSpacing(IntPtr ctrl);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate int _GuiDynamicCtrlArrayControlGetRowSize(IntPtr ctrl);
+         private static _GuiDynamicCtrlArrayControlGetRowSize _GuiDynamicCtrlArrayControlGetRowSizeFunc;
+         internal static int GuiDynamicCtrlArrayControlGetRowSize(IntPtr ctrl)
+         {
+            if (_GuiDynamicCtrlArrayControlGetRowSizeFunc == null)
+            {
+               _GuiDynamicCtrlArrayControlGetRowSizeFunc =
+                  (_GuiDynamicCtrlArrayControlGetRowSize)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiDynamicCtrlArrayControlGetRowSize"), typeof(_GuiDynamicCtrlArrayControlGetRowSize));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiDynamicCtrlArrayControlSetColSpacing(IntPtr ctrl, int Spacing);
+            return _GuiDynamicCtrlArrayControlGetRowSizeFunc(ctrl);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiDynamicCtrlArrayControlCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiDynamicCtrlArrayControlSetRowSize(IntPtr ctrl, int size);
+         private static _GuiDynamicCtrlArrayControlSetRowSize _GuiDynamicCtrlArrayControlSetRowSizeFunc;
+         internal static void GuiDynamicCtrlArrayControlSetRowSize(IntPtr ctrl, int size)
+         {
+            if (_GuiDynamicCtrlArrayControlSetRowSizeFunc == null)
+            {
+               _GuiDynamicCtrlArrayControlSetRowSizeFunc =
+                  (_GuiDynamicCtrlArrayControlSetRowSize)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiDynamicCtrlArrayControlSetRowSize"), typeof(_GuiDynamicCtrlArrayControlSetRowSize));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void GuiDynamicCtrlArrayControlRefresh(IntPtr ctrl);
+            _GuiDynamicCtrlArrayControlSetRowSizeFunc(ctrl, size);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate int _GuiDynamicCtrlArrayControlGetRowSpacing(IntPtr ctrl);
+         private static _GuiDynamicCtrlArrayControlGetRowSpacing _GuiDynamicCtrlArrayControlGetRowSpacingFunc;
+         internal static int GuiDynamicCtrlArrayControlGetRowSpacing(IntPtr ctrl)
+         {
+            if (_GuiDynamicCtrlArrayControlGetRowSpacingFunc == null)
+            {
+               _GuiDynamicCtrlArrayControlGetRowSpacingFunc =
+                  (_GuiDynamicCtrlArrayControlGetRowSpacing)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiDynamicCtrlArrayControlGetRowSpacing"), typeof(_GuiDynamicCtrlArrayControlGetRowSpacing));
+            }
+
+            return _GuiDynamicCtrlArrayControlGetRowSpacingFunc(ctrl);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiDynamicCtrlArrayControlSetRowSpacing(IntPtr ctrl, int Spacing);
+         private static _GuiDynamicCtrlArrayControlSetRowSpacing _GuiDynamicCtrlArrayControlSetRowSpacingFunc;
+         internal static void GuiDynamicCtrlArrayControlSetRowSpacing(IntPtr ctrl, int Spacing)
+         {
+            if (_GuiDynamicCtrlArrayControlSetRowSpacingFunc == null)
+            {
+               _GuiDynamicCtrlArrayControlSetRowSpacingFunc =
+                  (_GuiDynamicCtrlArrayControlSetRowSpacing)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiDynamicCtrlArrayControlSetRowSpacing"), typeof(_GuiDynamicCtrlArrayControlSetRowSpacing));
+            }
+
+            _GuiDynamicCtrlArrayControlSetRowSpacingFunc(ctrl, Spacing);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate int _GuiDynamicCtrlArrayControlGetColSpacing(IntPtr ctrl);
+         private static _GuiDynamicCtrlArrayControlGetColSpacing _GuiDynamicCtrlArrayControlGetColSpacingFunc;
+         internal static int GuiDynamicCtrlArrayControlGetColSpacing(IntPtr ctrl)
+         {
+            if (_GuiDynamicCtrlArrayControlGetColSpacingFunc == null)
+            {
+               _GuiDynamicCtrlArrayControlGetColSpacingFunc =
+                  (_GuiDynamicCtrlArrayControlGetColSpacing)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiDynamicCtrlArrayControlGetColSpacing"), typeof(_GuiDynamicCtrlArrayControlGetColSpacing));
+            }
+
+            return _GuiDynamicCtrlArrayControlGetColSpacingFunc(ctrl);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiDynamicCtrlArrayControlSetColSpacing(IntPtr ctrl, int Spacing);
+         private static _GuiDynamicCtrlArrayControlSetColSpacing _GuiDynamicCtrlArrayControlSetColSpacingFunc;
+         internal static void GuiDynamicCtrlArrayControlSetColSpacing(IntPtr ctrl, int Spacing)
+         {
+            if (_GuiDynamicCtrlArrayControlSetColSpacingFunc == null)
+            {
+               _GuiDynamicCtrlArrayControlSetColSpacingFunc =
+                  (_GuiDynamicCtrlArrayControlSetColSpacing)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiDynamicCtrlArrayControlSetColSpacing"), typeof(_GuiDynamicCtrlArrayControlSetColSpacing));
+            }
+
+            _GuiDynamicCtrlArrayControlSetColSpacingFunc(ctrl, Spacing);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiDynamicCtrlArrayControlCreateInstance();
+         private static _GuiDynamicCtrlArrayControlCreateInstance _GuiDynamicCtrlArrayControlCreateInstanceFunc;
+         internal static IntPtr GuiDynamicCtrlArrayControlCreateInstance()
+         {
+            if (_GuiDynamicCtrlArrayControlCreateInstanceFunc == null)
+            {
+               _GuiDynamicCtrlArrayControlCreateInstanceFunc =
+                  (_GuiDynamicCtrlArrayControlCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiDynamicCtrlArrayControlCreateInstance"), typeof(_GuiDynamicCtrlArrayControlCreateInstance));
+            }
+
+            return _GuiDynamicCtrlArrayControlCreateInstanceFunc();
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _GuiDynamicCtrlArrayControlRefresh(IntPtr ctrl);
+         private static _GuiDynamicCtrlArrayControlRefresh _GuiDynamicCtrlArrayControlRefreshFunc;
+         internal static void GuiDynamicCtrlArrayControlRefresh(IntPtr ctrl)
+         {
+            if (_GuiDynamicCtrlArrayControlRefreshFunc == null)
+            {
+               _GuiDynamicCtrlArrayControlRefreshFunc =
+                  (_GuiDynamicCtrlArrayControlRefresh)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiDynamicCtrlArrayControlRefresh"), typeof(_GuiDynamicCtrlArrayControlRefresh));
+            }
+
+            _GuiDynamicCtrlArrayControlRefreshFunc(ctrl);
+         }
       }
       
       #endregion

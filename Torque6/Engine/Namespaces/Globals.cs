@@ -13,29 +13,125 @@ namespace Torque6.Engine.Namespaces
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool Globals_GetBool(string variable);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _Globals_GetBool(string variable);
+         private static _Globals_GetBool _Globals_GetBoolFunc;
+         internal static bool Globals_GetBool(string variable)
+         {
+            if (_Globals_GetBoolFunc == null)
+            {
+               _Globals_GetBoolFunc =
+                  (_Globals_GetBool)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "Globals_GetBool"), typeof(_Globals_GetBool));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void Globals_SetBool(string variable, bool val);
+            return _Globals_GetBoolFunc(variable);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern int Globals_GetInt(string variable);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _Globals_SetBool(string variable, bool val);
+         private static _Globals_SetBool _Globals_SetBoolFunc;
+         internal static void Globals_SetBool(string variable, bool val)
+         {
+            if (_Globals_SetBoolFunc == null)
+            {
+               _Globals_SetBoolFunc =
+                  (_Globals_SetBool)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "Globals_SetBool"), typeof(_Globals_SetBool));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void Globals_SetInt(string variable, int val);
+            _Globals_SetBoolFunc(variable, val);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern float Globals_GetFloat(string variable);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate int _Globals_GetInt(string variable);
+         private static _Globals_GetInt _Globals_GetIntFunc;
+         internal static int Globals_GetInt(string variable)
+         {
+            if (_Globals_GetIntFunc == null)
+            {
+               _Globals_GetIntFunc =
+                  (_Globals_GetInt)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "Globals_GetInt"), typeof(_Globals_GetInt));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void Globals_SetFloat(string variable, float val);
+            return _Globals_GetIntFunc(variable);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr Globals_GetString(string variable);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _Globals_SetInt(string variable, int val);
+         private static _Globals_SetInt _Globals_SetIntFunc;
+         internal static void Globals_SetInt(string variable, int val)
+         {
+            if (_Globals_SetIntFunc == null)
+            {
+               _Globals_SetIntFunc =
+                  (_Globals_SetInt)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "Globals_SetInt"), typeof(_Globals_SetInt));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void Globals_SetString(string variable, string val);
+            _Globals_SetIntFunc(variable, val);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate float _Globals_GetFloat(string variable);
+         private static _Globals_GetFloat _Globals_GetFloatFunc;
+         internal static float Globals_GetFloat(string variable)
+         {
+            if (_Globals_GetFloatFunc == null)
+            {
+               _Globals_GetFloatFunc =
+                  (_Globals_GetFloat)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "Globals_GetFloat"), typeof(_Globals_GetFloat));
+            }
+
+            return _Globals_GetFloatFunc(variable);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _Globals_SetFloat(string variable, float val);
+         private static _Globals_SetFloat _Globals_SetFloatFunc;
+         internal static void Globals_SetFloat(string variable, float val)
+         {
+            if (_Globals_SetFloatFunc == null)
+            {
+               _Globals_SetFloatFunc =
+                  (_Globals_SetFloat)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "Globals_SetFloat"), typeof(_Globals_SetFloat));
+            }
+
+            _Globals_SetFloatFunc(variable, val);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _Globals_GetString(string variable);
+         private static _Globals_GetString _Globals_GetStringFunc;
+         internal static IntPtr Globals_GetString(string variable)
+         {
+            if (_Globals_GetStringFunc == null)
+            {
+               _Globals_GetStringFunc =
+                  (_Globals_GetString)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "Globals_GetString"), typeof(_Globals_GetString));
+            }
+
+            return _Globals_GetStringFunc(variable);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _Globals_SetString(string variable, string val);
+         private static _Globals_SetString _Globals_SetStringFunc;
+         internal static void Globals_SetString(string variable, string val)
+         {
+            if (_Globals_SetStringFunc == null)
+            {
+               _Globals_SetStringFunc =
+                  (_Globals_SetString)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "Globals_SetString"), typeof(_Globals_SetString));
+            }
+
+            _Globals_SetStringFunc(variable, val);
+         }
       }
 
       #endregion

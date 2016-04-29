@@ -13,14 +13,50 @@ namespace Torque6.Engine.Namespaces
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern bool Gui_CreateCanvas(string title);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate bool _Gui_CreateCanvas(string title);
+         private static _Gui_CreateCanvas _Gui_CreateCanvasFunc;
+         internal static bool Gui_CreateCanvas(string title)
+         {
+            if (_Gui_CreateCanvasFunc == null)
+            {
+               _Gui_CreateCanvasFunc =
+                  (_Gui_CreateCanvas)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "Gui_CreateCanvas"), typeof(_Gui_CreateCanvas));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void Gui_SetCanvasTitle(string windowTitle);
+            return _Gui_CreateCanvasFunc(title);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void Gui_ScreenShot(string file, string format);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _Gui_SetCanvasTitle(string windowTitle);
+         private static _Gui_SetCanvasTitle _Gui_SetCanvasTitleFunc;
+         internal static void Gui_SetCanvasTitle(string windowTitle)
+         {
+            if (_Gui_SetCanvasTitleFunc == null)
+            {
+               _Gui_SetCanvasTitleFunc =
+                  (_Gui_SetCanvasTitle)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "Gui_SetCanvasTitle"), typeof(_Gui_SetCanvasTitle));
+            }
+
+            _Gui_SetCanvasTitleFunc(windowTitle);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _Gui_ScreenShot(string file, string format);
+         private static _Gui_ScreenShot _Gui_ScreenShotFunc;
+         internal static void Gui_ScreenShot(string file, string format)
+         {
+            if (_Gui_ScreenShotFunc == null)
+            {
+               _Gui_ScreenShotFunc =
+                  (_Gui_ScreenShot)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "Gui_ScreenShot"), typeof(_Gui_ScreenShot));
+            }
+
+            _Gui_ScreenShotFunc(file, format);
+         }
       }
 
       #endregion

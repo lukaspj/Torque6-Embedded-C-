@@ -31,32 +31,35 @@ namespace Torque6.Interop
       public delegate void T6SetCallFunction(
          IntPtr pFunctionPtr, IntPtr pMethodPtr, IntPtr pIsMethodPtr, IntPtr pMainPtr);
 
+      public static string LibraryName;
+      internal static IntPtr Torque6LibHandle;
+      internal static IDllLoadUtils DllLoadUtils;
+
       public static void Initialize(string[] args, Libraries libraryNames)
       {
-         IDllLoadUtils dllLoadUtils = Platform.IsLinux()
+         DllLoadUtils = Platform.IsLinux()
             ? (IDllLoadUtils)new DllLoadUtilsLinux()
             : new DllLoadUtilsWindows();
-         string libraryName;
-
+ 
          string platformMain;
          if (Platform.IsLinux())
          {
             platformMain = "unixmain";
-            libraryName = IntPtr.Size == 8 ? libraryNames.Linux64bit : libraryNames.Linux32bit;
+            LibraryName = IntPtr.Size == 8 ? libraryNames.Linux64bit : libraryNames.Linux32bit;
          } else if (Platform.IsOSX())
          {
             platformMain = "osxmain";
-            libraryName = IntPtr.Size == 8 ? libraryNames.OSX64bit : libraryNames.OSX32bit;
+            LibraryName = IntPtr.Size == 8 ? libraryNames.OSX64bit : libraryNames.OSX32bit;
          }
          else
          {
             platformMain = "winmain";
-            libraryName = IntPtr.Size == 8 ? libraryNames.Windows64bit : libraryNames.Windows32bit;
+            LibraryName = IntPtr.Size == 8 ? libraryNames.Windows64bit : libraryNames.Windows32bit;
          }
 
-         var dllHandle = dllLoadUtils.LoadLibrary(libraryName);
-         var mainHandle = dllLoadUtils.GetProcAddress(dllHandle, platformMain);
-         var setCallbacksHandle = dllLoadUtils.GetProcAddress(dllHandle, "SetCallbacks");
+         Torque6LibHandle = DllLoadUtils.LoadLibrary(LibraryName);
+         var mainHandle = DllLoadUtils.GetProcAddress(Torque6LibHandle, platformMain);
+         var setCallbacksHandle = DllLoadUtils.GetProcAddress(Torque6LibHandle, "SetCallbacks");
 
          var setCallbacks = (T6SetCallFunction)Marshal.GetDelegateForFunctionPointer(
             setCallbacksHandle, typeof(T6SetCallFunction));
@@ -81,6 +84,8 @@ namespace Torque6.Interop
             , mainEntryPointPtr);
 
          main(args.Length, args, IntPtr.Zero);
+
+         DllLoadUtils.FreeLibrary(Torque6LibHandle);
       }
 
       public static string CallFunctionDelegate(IntPtr name, IntPtr argv, int argc, out bool result)

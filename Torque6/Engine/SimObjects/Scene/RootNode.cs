@@ -40,8 +40,20 @@ namespace Torque6.Engine.SimObjects.Scene
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr RootNodeCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _RootNodeCreateInstance();
+         private static _RootNodeCreateInstance _RootNodeCreateInstanceFunc;
+         internal static IntPtr RootNodeCreateInstance()
+         {
+            if (_RootNodeCreateInstanceFunc == null)
+            {
+               _RootNodeCreateInstanceFunc =
+                  (_RootNodeCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "RootNodeCreateInstance"), typeof(_RootNodeCreateInstance));
+            }
+
+            return _RootNodeCreateInstanceFunc();
+         }
       }
       
       #endregion

@@ -40,14 +40,50 @@ namespace Torque6.Engine.SimObjects.Scene
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr CosNodeGetXSrc(IntPtr cosNode);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _CosNodeGetXSrc(IntPtr cosNode);
+         private static _CosNodeGetXSrc _CosNodeGetXSrcFunc;
+         internal static IntPtr CosNodeGetXSrc(IntPtr cosNode)
+         {
+            if (_CosNodeGetXSrcFunc == null)
+            {
+               _CosNodeGetXSrcFunc =
+                  (_CosNodeGetXSrc)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "CosNodeGetXSrc"), typeof(_CosNodeGetXSrc));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void CosNodeSetXSrc(IntPtr cosNode, string src);
+            return _CosNodeGetXSrcFunc(cosNode);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr CosNodeCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _CosNodeSetXSrc(IntPtr cosNode, string src);
+         private static _CosNodeSetXSrc _CosNodeSetXSrcFunc;
+         internal static void CosNodeSetXSrc(IntPtr cosNode, string src)
+         {
+            if (_CosNodeSetXSrcFunc == null)
+            {
+               _CosNodeSetXSrcFunc =
+                  (_CosNodeSetXSrc)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "CosNodeSetXSrc"), typeof(_CosNodeSetXSrc));
+            }
+
+            _CosNodeSetXSrcFunc(cosNode, src);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _CosNodeCreateInstance();
+         private static _CosNodeCreateInstance _CosNodeCreateInstanceFunc;
+         internal static IntPtr CosNodeCreateInstance()
+         {
+            if (_CosNodeCreateInstanceFunc == null)
+            {
+               _CosNodeCreateInstanceFunc =
+                  (_CosNodeCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "CosNodeCreateInstance"), typeof(_CosNodeCreateInstance));
+            }
+
+            return _CosNodeCreateInstanceFunc();
+         }
       }
       
       #endregion

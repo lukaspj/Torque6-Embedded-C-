@@ -40,8 +40,20 @@ namespace Torque6.Engine.SimObjects.GuiControls
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr GuiBubbleTextCtrlCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _GuiBubbleTextCtrlCreateInstance();
+         private static _GuiBubbleTextCtrlCreateInstance _GuiBubbleTextCtrlCreateInstanceFunc;
+         internal static IntPtr GuiBubbleTextCtrlCreateInstance()
+         {
+            if (_GuiBubbleTextCtrlCreateInstanceFunc == null)
+            {
+               _GuiBubbleTextCtrlCreateInstanceFunc =
+                  (_GuiBubbleTextCtrlCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "GuiBubbleTextCtrlCreateInstance"), typeof(_GuiBubbleTextCtrlCreateInstance));
+            }
+
+            return _GuiBubbleTextCtrlCreateInstanceFunc();
+         }
       }
       
       #endregion

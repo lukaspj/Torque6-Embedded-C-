@@ -40,14 +40,50 @@ namespace Torque6.Engine.SimObjects
 
       new internal struct InternalUnsafeMethods
       {
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr MessageForwarderGetToQueue(IntPtr forwarder);
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _MessageForwarderGetToQueue(IntPtr forwarder);
+         private static _MessageForwarderGetToQueue _MessageForwarderGetToQueueFunc;
+         internal static IntPtr MessageForwarderGetToQueue(IntPtr forwarder)
+         {
+            if (_MessageForwarderGetToQueueFunc == null)
+            {
+               _MessageForwarderGetToQueueFunc =
+                  (_MessageForwarderGetToQueue)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "MessageForwarderGetToQueue"), typeof(_MessageForwarderGetToQueue));
+            }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern void MessageForwarderSetToQueue(IntPtr forwarder, string value);
+            return _MessageForwarderGetToQueueFunc(forwarder);
+         }
 
-         [DllImport("Torque6_DEBUG", CallingConvention = CallingConvention.Cdecl)]
-         internal static extern IntPtr MessageForwarderCreateInstance();
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate void _MessageForwarderSetToQueue(IntPtr forwarder, string value);
+         private static _MessageForwarderSetToQueue _MessageForwarderSetToQueueFunc;
+         internal static void MessageForwarderSetToQueue(IntPtr forwarder, string value)
+         {
+            if (_MessageForwarderSetToQueueFunc == null)
+            {
+               _MessageForwarderSetToQueueFunc =
+                  (_MessageForwarderSetToQueue)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "MessageForwarderSetToQueue"), typeof(_MessageForwarderSetToQueue));
+            }
+
+            _MessageForwarderSetToQueueFunc(forwarder, value);
+         }
+
+         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+         private delegate IntPtr _MessageForwarderCreateInstance();
+         private static _MessageForwarderCreateInstance _MessageForwarderCreateInstanceFunc;
+         internal static IntPtr MessageForwarderCreateInstance()
+         {
+            if (_MessageForwarderCreateInstanceFunc == null)
+            {
+               _MessageForwarderCreateInstanceFunc =
+                  (_MessageForwarderCreateInstance)Marshal.GetDelegateForFunctionPointer(Interop.Torque6.DllLoadUtils.GetProcAddress(Interop.Torque6.Torque6LibHandle,
+                     "MessageForwarderCreateInstance"), typeof(_MessageForwarderCreateInstance));
+            }
+
+            return _MessageForwarderCreateInstanceFunc();
+         }
       }
       
       #endregion
