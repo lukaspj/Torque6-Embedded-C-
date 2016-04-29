@@ -1,2 +1,2 @@
-# Torque6-Embedded-C-
-Torque6 embedded into C#
+# Torque6-Embedded-C#
+Please look at the wiki: https://github.com/lukaspj/Torque6-Embedded-CSharp/wiki
