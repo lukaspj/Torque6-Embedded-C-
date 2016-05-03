@@ -60,7 +60,7 @@ namespace Torque6.Interop
          Torque6LibHandle = DllLoadUtils.LoadLibrary(LibraryName);
          if (Torque6LibHandle == IntPtr.Zero)
          {
-            throw new Exception("Unable to load " + (IntPtr.Size == 8 ? "32" : "64") + " bit dll: " + LibraryName);
+            throw new Exception("Unable to load " + (IntPtr.Size == 8 ? "64" : "32") + " bit dll: " + LibraryName);
          }
          var mainHandle = DllLoadUtils.GetProcAddress(Torque6LibHandle, platformMain);
          var setCallbacksHandle = DllLoadUtils.GetProcAddress(Torque6LibHandle, "SetCallbacks");
