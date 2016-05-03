@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using System.Runtime.Serialization;
 using Torque6.Engine.SimObjects;
@@ -10,6 +11,7 @@ namespace Torque6.Interop
    {
       private static readonly Dictionary<string, Type> ClassTypeDictionary = new Dictionary<string, Type>();
       private static readonly Dictionary<string, MethodInfo> FunctionDictionary = new Dictionary<string, MethodInfo>();
+      private static readonly Dictionary<uint, SimObject> ObjectDictionary = new Dictionary<uint, SimObject>();
 
       public static void RegisterType(string className, Type classType)
       {
@@ -19,6 +21,12 @@ namespace Torque6.Interop
       public static void RegisterFunction(string functionName, MethodInfo methodInfo)
       {
          FunctionDictionary.Add(functionName, methodInfo);
+      }
+
+      public static void Clear()
+      {
+         ClassTypeDictionary.Clear();
+         FunctionDictionary.Clear();
       }
 
       public static string CallScriptFunction(string pFunctionName, object[] args, out bool found)
@@ -72,9 +80,13 @@ namespace Torque6.Interop
 
       private static object CreateInstance(Type type, SimObject objectWrapper)
       {
-         SimObject obj = (SimObject)FormatterServices.GetUninitializedObject(type);
-         obj.SetPointerFromObject(objectWrapper);
-         return obj;
+         if (!ObjectDictionary.ContainsKey(objectWrapper.GetID()))
+         {
+            SimObject obj = (SimObject)FormatterServices.GetUninitializedObject(type);
+            obj.SetPointerFromObject(objectWrapper);
+            ObjectDictionary[objectWrapper.GetID()] = obj;
+         }
+         return ObjectDictionary[objectWrapper.GetID()];
       }
 
       public static bool IsMethod(string className, string methodName)

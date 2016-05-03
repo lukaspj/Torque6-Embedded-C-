@@ -60,8 +60,7 @@ namespace Torque6.Interop
          Torque6LibHandle = DllLoadUtils.LoadLibrary(LibraryName);
          if (Torque6LibHandle == IntPtr.Zero)
          {
-            Console.WriteLine("Unable to load " + (IntPtr.Size == 8 ? "32" : "64") + " bit dll: " + LibraryName);
-            return;
+            throw new Exception("Unable to load " + (IntPtr.Size == 8 ? "32" : "64") + " bit dll: " + LibraryName);
          }
          var mainHandle = DllLoadUtils.GetProcAddress(Torque6LibHandle, platformMain);
          var setCallbacksHandle = DllLoadUtils.GetProcAddress(Torque6LibHandle, "SetCallbacks");
@@ -71,8 +70,6 @@ namespace Torque6.Interop
 
          var main = (T6Main)Marshal.GetDelegateForFunctionPointer(
             mainHandle, typeof(T6Main));
-
-         Initializer.InitializeTypeDictionaries();
 
          CallFunction callDelegate = CallFunctionDelegate;
          CallMethod methodDelegate = CallMethodDelegate;

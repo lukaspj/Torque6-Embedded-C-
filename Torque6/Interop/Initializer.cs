@@ -5,9 +5,8 @@ using System.Reflection;
 
 namespace Torque6.Interop
 {
-   class Initializer
+   public class Initializer
    {
-
       private static MethodInfo mScriptEntryPointMethodInfo = null;
 
       public static MethodInfo GetScriptEntry()
@@ -15,10 +14,16 @@ namespace Torque6.Interop
          return mScriptEntryPointMethodInfo;
       }
 
-      public static void InitializeTypeDictionaries()
+      public static void InitializeTypeDictionaries(string path)
       {
-         var types = AppDomain.CurrentDomain.GetAssemblies()
-            .SelectMany(a => a.GetTypes());
+         Assembly assembly = Assembly.LoadFrom(path);
+         InitializeTypeDictionaries(assembly.GetTypes());
+      }
+
+      public static void InitializeTypeDictionaries(IEnumerable<Type> types)
+      {
+         EngineCallbacks.Clear();
+
          foreach (Type type in types)
          {
             IEnumerable<ConsoleClassAttribute> attributes =

@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Torque6", "Torque6\Torque6.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleGame", "SampleGame\SampleGame.csproj", "{2457F506-30A8-49E1-B3C1-A0DD98EA4A28}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleExample", "Console\ConsoleExample.csproj", "{50400D2D-BB65-48C8-B14A-C10FD08B4EC0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Game", "Game\Game.csproj", "{05683467-37EB-42CE-BE6B-8F1C6EA22FBE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{2457F506-30A8-49E1-B3C1-A0DD98EA4A28}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2457F506-30A8-49E1-B3C1-A0DD98EA4A28}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2457F506-30A8-49E1-B3C1-A0DD98EA4A28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50400D2D-BB65-48C8-B14A-C10FD08B4EC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50400D2D-BB65-48C8-B14A-C10FD08B4EC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50400D2D-BB65-48C8-B14A-C10FD08B4EC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50400D2D-BB65-48C8-B14A-C10FD08B4EC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05683467-37EB-42CE-BE6B-8F1C6EA22FBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05683467-37EB-42CE-BE6B-8F1C6EA22FBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05683467-37EB-42CE-BE6B-8F1C6EA22FBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05683467-37EB-42CE-BE6B-8F1C6EA22FBE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
